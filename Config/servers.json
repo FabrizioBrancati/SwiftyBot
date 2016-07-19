@@ -1,7 +1,7 @@
 {
 	"default": {
-		"port": 1992,
-		"host": "51.255.51.145",
+		"port": 8080,
+		"host": "127.0.0.1",
 		"securityLayer": "none"
 	}
 }
