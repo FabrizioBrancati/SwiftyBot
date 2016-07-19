@@ -1,26 +1,14 @@
 import Vapor
-import VaporMustache
-
-
-/**
-    Adding a provider allows it to boot
-    and initialize itself as a dependency.
-
-    Includes are relative to the Views (`Resources/Views`)
-    directory by default.
-*/
-let mustache = VaporMustache.Provider(withIncludes: [
-    "header": "Includes/header.mustache"
-])
+import VaporTLS
 
 /**
     Xcode defaults to a working directory in
-    a temporary build folder. 
-    
+    a temporary build folder.
+
     In order for Vapor to access Resources and
     Configuration files, the working directory
     must be the root directory of your project.
- 
+
     This can also be achieved by passing
     --workDir=$(SRCROOT) in the Xcode arguments
     or setting the root directory manually in:
@@ -41,7 +29,7 @@ let workDir: String?
     or `drop.client()` to create a client for
     request data from other servers.
 */
-let drop = Droplet(workDir: workDir, providers: [mustache])
+let drop = Droplet(workDir: workDir)
 
 /**
     Vapor configuration files are located
@@ -61,40 +49,13 @@ let _ = drop.config["app", "key"].string ?? ""
     view to any request to the root directory of the website.
 
     Views referenced with `app.view` are by default assumed
-    to live in <workDir>/Resources/Views/ 
+    to live in <workDir>/Resources/Views/
 
     You can override the working directory by passing
     --workDir to the application upon execution.
 */
 drop.get("/") { request in
     return try drop.view("welcome.html")
-}
-
-/**
-    Return JSON requests easy by wrapping
-    any JSON data type (String, Int, Dict, etc)
-    in JSON() and returning it.
-
-    Types can be made convertible to JSON by 
-    conforming to JsonRepresentable. The User
-    model included in this example demonstrates this.
-
-    By conforming to JsonRepresentable, you can pass
-    the data structure into any JSON data as if it
-    were a native JSON data type.
-*/
-drop.get("json") { request in
-    return JSON([
-        "number": 123,
-        "string": "test",
-        "array": JSON([
-            0, 1, 2, 3
-        ]),
-        "dict": JSON([
-            "name": "Vapor",
-            "lang": "Swift"
-        ])
-    ])
 }
 
 /**
@@ -127,7 +88,7 @@ drop.get("data", Int.self) { request, int in
 }
 
 /**
-    Here's an example of using type-safe routing to ensure 
+    Here's an example of using type-safe routing to ensure
     only requests to "posts/<some-integer>" will be handled.
 
     String is the most general and will match any request
@@ -154,19 +115,8 @@ let users = UserController(droplet: drop)
 drop.resource("users", users)
 
 /**
-    VaporMustache hooks into Vapor's view class to
-    allow rendering of Mustache templates. You can
-    even reference included files setup through the provider.
-*/
-drop.get("mustache") { request in
-    return try drop.view("template.mustache", context: [
-        "greeting": "Hello, world!"
-    ])
-}
-
-/**
     A custom validator definining what
-    constitutes a valid name. Here it is 
+    constitutes a valid name. Here it is
     defined as an alphanumeric string that
     is between 5 and 20 characters.
 */
@@ -261,13 +211,13 @@ drop.get("localization", String.self) { request, lang in
 }
 
 /**
-    Middleware is a great place to filter 
-    and modifying incoming requests and outgoing responses. 
+    Middleware is a great place to filter
+    and modifying incoming requests and outgoing responses.
 
     Check out the middleware in App/Middleware.
 
     You can also add middleware to a single route by
-    calling the routes inside of `app.middleware(MiddlewareType) { 
+    calling the routes inside of `app.middleware(MiddlewareType) {
         app.get() { ... }
     }`
 */

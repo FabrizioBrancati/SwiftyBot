@@ -7,7 +7,7 @@ final class UserController: Resource {
     init(droplet: Droplet) {
         drop = droplet
     }
-    
+
     func index(request: Request) throws -> ResponseRepresentable {
         return JSON([
             "controller": "UserController.index"
@@ -41,5 +41,4 @@ final class UserController: Resource {
         //User is ResponseRepresentable by proxy of JsonRepresentable
         return user
     }
-
 }
