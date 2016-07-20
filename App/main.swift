@@ -1,5 +1,7 @@
 import Vapor
-import TLS
+import VaporTLS
+
+let tls = VaporTLS.Provider(modes: [.server])
 
 /**
     Xcode defaults to a working directory in
@@ -29,23 +31,7 @@ let workDir: String?
     or `drop.client()` to create a client for
     request data from other servers.
 */
-let drop = Droplet(workDir: workDir)
-
-
-
-let socket: MyUnsecureSocket
-let descriptor: Int32 = socket.mySocketDescriptor
-let context = try TLS.Context(mode: .server, certificates: .files(
-    certificateFile: "./Certs/cert.pem",
-    privateKeyFile: "./Certs/key.pem",
-    signature: .selfSigned
-))
-
-let secureSocket = try TLS.Socket(context: context, descriptor: descriptor)
-
-try secureSocket.accept()
-
-
+let drop = Droplet(workDir: workDir, providers: [tls])
 
 /**
     Vapor configuration files are located
