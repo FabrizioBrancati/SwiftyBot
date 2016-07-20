@@ -1,7 +1,4 @@
 import Vapor
-import VaporTLS
-
-let tls = VaporTLS.Provider(modes: [.server])
 
 /**
     Xcode defaults to a working directory in
@@ -31,7 +28,7 @@ let workDir: String?
     or `drop.client()` to create a client for
     request data from other servers.
 */
-let drop = Droplet(workDir: workDir, providers: [tls])
+let drop = Droplet(workDir: workDir)
 
 /**
     Vapor configuration files are located
