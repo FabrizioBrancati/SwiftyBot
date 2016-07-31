@@ -45,7 +45,7 @@ drop.post(secret) { request in
 
     let response = try Response(status: .ok, json: JSON([
         "chat_id": chatID,
-        "text": String(text!.characters.reverse()),
+        "text": String(text!.characters.reversed()),
         "method": "sendMessage"
     ]))
 
