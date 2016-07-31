@@ -29,3 +29,6 @@ Cartfile.resolved
 # Build
 build/
 DerivedData/
+
+# Secrets
+Config/secrets/app.json
