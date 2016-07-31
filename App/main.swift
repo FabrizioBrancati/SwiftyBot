@@ -20,6 +20,14 @@ drop.get("/") { request in
     return response
 }
 
+drop.get(token) { request in
+    let response = try Response(status: .ok, json: JSON([
+        "status": "OK",
+        "token": "OK"
+    ]))
+
+    return response
+}
 /**
     Here's an example of using type-safe routing to ensure
     only requests to "posts/<some-integer>" will be handled.
