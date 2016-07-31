@@ -10,7 +10,7 @@ let workDir: String?
 
 let drop = Droplet(workDir: workDir)
 
-let token = drop.config["app", "token"].string ?? ""
+let secret = drop.config["app", "secret"].string ?? ""
 
 drop.get("/") { request in
     let response = try Response(status: .ok, json: JSON([
@@ -20,7 +20,7 @@ drop.get("/") { request in
     return response
 }
 
-drop.get(token) { request in
+drop.get(secret) { request in
     let response = try Response(status: .ok, json: JSON([
         "status": "OK",
         "token": "OK"
@@ -29,7 +29,7 @@ drop.get(token) { request in
     return response
 }
 
-drop.get(token, String.self) { request, method in
+drop.get(secret, String.self) { request, method in
     let response = try Response(status: .ok, json: JSON([
         "status": "OK",
         "token": "OK",
@@ -38,21 +38,6 @@ drop.get(token, String.self) { request, method in
 
     return response
 }
-
-/**
-    Here's an example of using type-safe routing to ensure
-    only requests to "posts/<some-integer>" will be handled.
-
-    String is the most general and will match any request
-    to "posts/<some-string>". To make your data structure
-    work with type-safe routing, make it StringInitializable.
-
-    The User model included in this example is StringInitializable.
-
-drop.get("posts", Int.self) { request, postId in
-    return "Requesting post with ID \(postId)"
-}
-*/
 
 /**
     Add Localization to your app by creating
