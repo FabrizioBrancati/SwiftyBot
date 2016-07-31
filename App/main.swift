@@ -13,7 +13,11 @@ let drop = Droplet(workDir: workDir)
 let token = drop.config["app", "token"].string ?? ""
 
 drop.get("/") { request in
-    return token
+    let response = Response(status: .ok, headers: ["Content-Type": "application/json"])
+
+    response.body = "OK"
+
+    return response
 }
 
 /**
