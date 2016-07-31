@@ -1,7 +1,7 @@
 {
 	"production": {
-		"port": 88,
-		"host": "51.255.51.145",
+		"port": 1992,
+		"host": "0.0.0.0",
 		"securityLayer": "none"
 	}
 }
