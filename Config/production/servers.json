@@ -2,6 +2,6 @@
 	"production": {
 		"port": 88,
 		"host": "51.255.51.145",
-		"securityLayer": "tls"
+		"securityLayer": "none"
 	}
 }
