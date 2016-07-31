@@ -39,6 +39,19 @@ drop.get(secret, String.self) { request, method in
     return response
 }
 
+drop.post(secret) { request in
+    let chatID = request.data["message", "chat", "id"].int
+    let text = request.data["message", "text"].string
+
+    let response = try Response(status: .ok, json: JSON([
+        "chat_id": chatID,
+        "text": text.reversed(),
+        "method": "sendMessage"
+    ]))
+
+    return response
+}
+
 /**
     Add Localization to your app by creating
     a `Localization` folder in the root of your
