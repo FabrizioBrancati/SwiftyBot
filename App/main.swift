@@ -1,14 +1,6 @@
 import Vapor
 
-let workDir: String?
-#if Xcode
-    let parent = #file.characters.split(separator: "/").map(String.init).dropLast().joined(separator: "/")
-    workDir = "/\(parent)/.."
-#else
-    workDir = nil
-#endif
-
-let drop = Droplet(workDir: workDir)
+let drop = Droplet()
 
 let secret = drop.config["app", "secret"].string ?? ""
 
@@ -51,28 +43,5 @@ drop.post(secret) { request in
 
     return response
 }
-
-/**
-    Add Localization to your app by creating
-    a `Localization` folder in the root of your
-    project.
-
-    /Localization
-       |- en.json
-       |- es.json
-       |_ default.json
-
-    The first parameter to `app.localization` is
-    the language code.
-
-drop.get("localization", String.self) { request, lang in
-    return JSON([
-        "title": drop.localization[lang, "welcome", "title"],
-        "body": drop.localization[lang, "welcome", "body"]
-    ])
-}
-*/
-
-let port = drop.config["app", "port"].int ?? 80
 
 drop.serve()
