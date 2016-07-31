@@ -40,8 +40,8 @@ drop.get(secret, String.self) { request, method in
 }
 
 drop.post(secret) { request in
-    let chatID = request.data["message", "chat", "id"].int
-    let text = request.data["message", "text"].string
+    let chatID = request.data["message", "chat", "id"].int ?? 0
+    let text = request.data["message", "text"].string ?? ""
 
     let response = try Response(status: .ok, json: JSON([
         "chat_id": chatID,
