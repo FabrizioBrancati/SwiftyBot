@@ -13,11 +13,7 @@ let drop = Droplet(workDir: workDir)
 let token = drop.config["app", "token"].string ?? ""
 
 drop.get("/") { request in
-    return ""
-}
-
-drop.get(token) { request in
-    return "OK"
+    return token
 }
 
 /**
