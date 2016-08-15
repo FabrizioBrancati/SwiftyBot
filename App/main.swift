@@ -14,6 +14,8 @@ drop.post(secret) { request in
         switch message {
         case "/start":
             responseMessage = "Welcome to SwiftyBot"
+        default:
+            responseMessage = "Command unavailable"
         }
     }
     
