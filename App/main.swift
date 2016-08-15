@@ -19,15 +19,12 @@ drop.post(secret) { request in
         }
     }
     
-    let response = try Response(status: .ok, json: JSON(
+    return try JSON(
         [
             "method": "sendMessage",
             "chat_id": chatID,
             "text": responseMessage
         ])
-    )
-    
-    return response
 }
 
 drop.serve()
