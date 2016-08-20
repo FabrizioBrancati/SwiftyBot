@@ -26,9 +26,9 @@ drop.post(secret) { request in
                        "To list all available commands type /help"
         }
     } else {
-        response = message.reversed()
+        response = message.reversed(preserveFormat: true)
     }
-    
+
     return try JSON(
         [
             "method": "sendMessage",
