@@ -54,8 +54,7 @@ drop.post(secret) { request in
         [
             "method": "sendMessage",
             "chat_id": chatID,
-            "text": response,
-            "parse_mode": "HTML"
+            "text": response
         ]
     )
 }
