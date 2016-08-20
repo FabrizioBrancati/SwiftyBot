@@ -39,9 +39,11 @@ extension String {
 
     /// Returns the reversed String.
     ///
-    /// - parameter preserveFormat: If set to true preserve the String format. The default value is false.
+    /// - parameter preserveFormat: If set to true preserve the String format.
+    ///                             The default value is false.
     ///                             **Example:**
-    ///                                 "Let's try this function. Or no?" -> "?on Ro .noitcnuf siht yrt S'tel"
+    ///                                 "Let's try this function. Or no?" -> 
+    ///                                 "?on Ro .noitcnuf siht yrt S'tel"
     ///
     /// - returns: Returns the reversed String.
     public func reversed(preserveFormat: Bool = false) -> String {
@@ -66,7 +68,7 @@ extension String {
 
         return reversed
     }
-    
+
     /// Returns true if the String has at least one uppercase chatacter, otherwise false.
     ///
     /// - returns: Returns true if the String has at least one uppercase chatacter, otherwise false.

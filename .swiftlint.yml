@@ -2,7 +2,7 @@ included:
   - App
 
 disabled_rules:
-  - line_length
+  #- line_length
   - force_cast
   - trailing_whitespace
 
