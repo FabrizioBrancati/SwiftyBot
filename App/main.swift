@@ -42,13 +42,13 @@ drop.post(secret) { request in
             response = "Unrecognized command.\n" +
                        "To list all available commands type /help"
         }
-    /// It isn't a Telegram command, so creates a reversed message text
+    /// It isn't a Telegram command, so creates a reversed message text.
     } else {
         /// Set the response message text.
         response = message.reversed(preserveFormat: true)
     }
 
-    /// Create the JSON response
+    /// Create the JSON response.
     /// https://core.telegram.org/bots/api#sendmessage
     return try JSON(
         [
@@ -59,4 +59,5 @@ drop.post(secret) { request in
     )
 }
 
+/// Serve the Droplet.
 drop.serve()
