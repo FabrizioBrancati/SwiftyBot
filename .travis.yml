@@ -13,6 +13,6 @@ install:
 script:
   - swiftenv version
   - swiftenv versions
-  - swiftlint
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "swiftlint"; fi
   - swift build
   - swift build -c release
