@@ -24,6 +24,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/// Import Vapor.
 import Vapor
 
 /// Create the Droplet.
@@ -57,11 +58,11 @@ drop.post(secret) { request in
         case "/help":
             /// Set the response message text.
             response = "Welcome to SwiftyBot " +
-                       "an example on how create a Telegram Bot in Swift with Vapor.\n" +
+                       "an example on how create a Telegram Bot with Swift using Vapor.\n" +
                        "https://www.fabriziobrancati.com/blog\n\n" +
                        "/start - Welcome message\n" +
                        "/help - Help message\n" +
-                       "Any text - Reversed"
+                       "Any text - Returns the reversed message"
         /// Command not valid.
         default:
             /// Set the response message text and suggest to type "/help".
