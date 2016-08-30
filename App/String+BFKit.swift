@@ -86,6 +86,6 @@ extension String {
     /// - returns: Remove double or more duplicated spaces.
     public func removeExtraSpaces() -> String {
         let squashed = self.replacingOccurrences(of: "[ ]*", with: " ")
-        return squashed.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        return squashed ///.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
 }
