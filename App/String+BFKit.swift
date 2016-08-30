@@ -42,18 +42,20 @@ extension String {
     /// - parameter preserveFormat: If set to true preserve the String format.
     ///                             The default value is false.
     ///                             **Example:**
-    ///                                 "Let's try this function. Or no?" -> 
-    ///                                 "?on Ro .noitcnuf siht yrt S'tel"
+    ///                                 "Let's try this function?" ->
+    ///                                 "?noitcnuf siht yrt S'tel"
     ///
     /// - returns: Returns the reversed String.
     public func reversed(preserveFormat: Bool = false) -> String {
-        var reversed = self.removeExtraSpaces()
-
-        if !preserveFormat {
-            return String(reversed.characters.reversed())
+        guard !self.characters.isEmpty else {
+            return ""
         }
 
-        reversed = String(reversed.characters.reversed())
+        var reversed = String(self.removeExtraSpaces().characters.reversed())
+
+        if !preserveFormat {
+            return reversed
+        }
 
         let words = reversed.components(separatedBy: " ").filter { $0 != "" }
 
