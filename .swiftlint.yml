@@ -1,5 +1,5 @@
 included:
-  - App
+  - SwiftyBot
 
 disabled_rules:
   - force_cast
