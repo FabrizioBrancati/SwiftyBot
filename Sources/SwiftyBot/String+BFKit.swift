@@ -24,7 +24,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-// All the following code has been extracted from BFKit.
+// All the following code has been extracted from BFKit-Swift.
 // https://github.com/FabrizioBrancati/BFKit-Swift
 // Check the swift3.0 branch at /Sources/Extensions/Foundation/String+BFKit.swift file.
 
