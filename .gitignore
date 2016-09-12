@@ -32,3 +32,7 @@ DerivedData/
 
 # Secrets
 Config/secrets/app.json
+
+# Server
+.logs/
+
