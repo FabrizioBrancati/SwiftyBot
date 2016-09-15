@@ -26,27 +26,39 @@
 
 /// Import Vapor.
 import Vapor
+import Console
 
 /// Create the Droplet.
-let drop = Droplet()
+let drop: Droplet = Droplet()
 
 /// Read the secret key from Config/secrets/app.json.
-let secret = drop.config["app", "secret"]!.string ?? ""
+var secret: String = ""
+
+if let _secret = drop.config["app", "secret"]?.string {
+    secret = _secret
+} else {
+    drop.console.error("Missing secret key!")
+    drop.console.warning("Add one in Config/secrets/app.json")
+}
 
 /// Setting up the POST request with the secret key.
 /// With a secret path to be sure that nobody else knows that URL.
 /// https://core.telegram.org/bots/api#setwebhook
 drop.post(secret) { request in
-    /// The chat ID from the request JSON.
-    let chatID = request.data["message", "chat", "id"]!.int ?? 0
-    /// The message text from the request JSON.
-    let message = request.data["message", "text"]!.string ?? ""
-
     /// Let's prepare the response message text.
     var response: String = ""
 
-    /// Check if the message is not empty
-    if !message.characters.isEmpty {
+    /// Chat ID from request JSON.
+    let chatID: Int = request.data["message", "chat", "id"]?.int ?? 0
+    /// Message text from request JSON.
+    let message: String = request.data["message", "text"]?.string ?? ""
+
+    /// Check if the message is empty
+    if message.characters.isEmpty {
+        /// Set the response message text.
+        response = "I'm sorry but your message is empty 😢"
+    /// The message is not empty
+    } else {
         /// Check if the message is a Telegram command.
         if message.hasPrefix("/") {
             /// Check what type of command is.
@@ -76,10 +88,6 @@ drop.post(secret) { request in
             /// Set the response message text.
             response = message.reversed(preserveFormat: true)
         }
-    /// The message is empty
-    } else {
-        /// Set the response message text.
-        response = "How did you get here? 😨"
     }
 
     /// Create the JSON response.
