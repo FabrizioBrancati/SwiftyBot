@@ -1,5 +1,5 @@
-Contributing ⚙
-==============
+Contributing
+============
 I'd love to see your ideas for improving this bot.
 
 ## Pull requests
