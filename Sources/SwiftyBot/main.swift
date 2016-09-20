@@ -24,21 +24,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/// Import Vapor.
+/// Import Vapor framework.
 import Vapor
-import Console
+
+/// Bot errors enum.
+enum BotError: Swift.Error {
+    /// Missing secret key in Config/secrets/app.json.
+    case missingSecretKey
+}
 
 /// Create the Droplet.
 let drop: Droplet = Droplet()
 
 /// Read the secret key from Config/secrets/app.json.
-var secret: String = ""
-
-if let _secret = drop.config["app", "secret"]?.string {
-    secret = _secret
-} else {
+guard let secret = drop.config["app", "secret"]?.string else {
+    /// Show errors in console.
     drop.console.error("Missing secret key!")
     drop.console.warning("Add one in Config/secrets/app.json")
+
+    /// Throw missing secret key error.
+    throw BotError.missingSecretKey
 }
 
 /// Setting up the POST request with the secret key.
@@ -101,5 +106,5 @@ drop.post(secret) { request in
     )
 }
 
-/// Serve the Droplet.
-drop.serve()
+/// Run the Droplet.
+drop.run()
