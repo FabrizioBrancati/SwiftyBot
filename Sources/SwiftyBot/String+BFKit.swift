@@ -90,9 +90,8 @@ extension String {
     /// - returns: Remove double or more duplicated spaces.
     public func removeExtraSpaces() -> String {
         let squashed = self.replacingOccurrences(of: "[ ]*", with: " ")
-        return squashed.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        /// There is a bug here, maybe only for Linux and maybe has been already fixed.
-        /// Currently Vapor is using 2016-07-25.
-        /// Try it in newer versions when Vapor will be updated.
+        return squashed ///.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        /// There is a bug here, only for Linux.
+        /// Currently Vapor is using Swift 3.0 release build.
     }
 }
