@@ -91,7 +91,8 @@ extension String {
     public func removeExtraSpaces() -> String {
         let squashed = self.replacingOccurrences(of: "[ ]*", with: " ")
         return squashed ///.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        /// There is a bug here, only for Linux.
-        /// Currently Vapor is using Swift 3.0 release build.
+        /// There is a Linux only bug here.
+        /// The Bot crashes every time an emoji is sent.
+        /// Telegram trims every input, so we can skip trimming.
     }
 }
