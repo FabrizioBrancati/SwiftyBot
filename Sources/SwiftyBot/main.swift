@@ -57,6 +57,8 @@ drop.post(secret) { request in
     let chatID: Int = request.data["message", "chat", "id"]?.int ?? 0
     /// Message text from request JSON.
     let message: String = request.data["message", "text"]?.string ?? ""
+    /// User first name from request JSON.
+    var userFirstName: String = request.data["message", "from", "first_name"]?.string ?? ""
 
     /// Check if the message is empty
     if message.characters.isEmpty {
@@ -71,7 +73,7 @@ drop.post(secret) { request in
             /// Start command "/start".
             case "/start":
                 /// Set the response message text.
-                response = "Welcome to SwiftyBot!\n" +
+                response = "Welcome to SwiftyBot " + userFirstName + "!\n" +
                            "To list all available commands type /help"
             /// Help command "/help".
             case "/help":
