@@ -92,7 +92,7 @@ extension String {
         let squashed = self.replacingOccurrences(of: "[ ]*", with: " ")
         return squashed ///.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         /// There is a Linux only bug here.
-        /// The Bot crashes every time an emoji is sent.
+        /// The bot crashes every time an emoji is sent.
         /// Telegram trims every input, so we can skip trimming.
     }
 }
