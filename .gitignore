@@ -21,10 +21,7 @@ DerivedData
 *.xcuserstate
 timeline.xctimeline
 playground.xcworkspace
-
-# Carthage
-Carthage/
-Cartfile.resolved
+*.xcodeproj
 
 # Build
 build/
@@ -35,4 +32,3 @@ Config/secrets/app.json
 
 # Server
 .logs/
-
