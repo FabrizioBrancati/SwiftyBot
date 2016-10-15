@@ -1,14 +1,3 @@
-<p align="center"><img src="https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner.png" alt="SwiftyBot Banner"></p>
-
-[![Build Status](https://travis-ci.org/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
-[![Codebeat Badge](https://codebeat.co/badges/)](https://codebeat.co/projects/github-com-fabriziobrancati-swiftybot)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://developer.apple.com/swift/)
-[![Language](https://img.shields.io/badge/language-Swift%203.0-orange.svg)](https://developer.apple.com/swift/)
-[![Platform](https://img.shields.io/badge/platform-Linux%20/%20macOS-ffc713.svg)](https://developer.apple.com/swift/)
-[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/LICENSE)
-
----
-
 <p align="center">
     <a href="#what-is-that-folder">What is that folder?</a> &bull;
     <a href="#why-it-is-empty">Why it is empty?</a>
