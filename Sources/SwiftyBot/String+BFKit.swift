@@ -28,6 +28,7 @@
 // https://github.com/FabrizioBrancati/BFKit-Swift
 // Check the swift3.0 branch at /Sources/Extensions/Foundation/String+BFKit.swift file.
 
+/// Import Swift Foundation framework.
 import Foundation
 
 /// This extesion adds some useful functions to String
