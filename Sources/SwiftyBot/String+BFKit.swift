@@ -31,7 +31,7 @@
 /// Import Swift Foundation framework.
 import Foundation
 
-/// This extesion adds some useful functions to String.
+/// This extension adds some useful functions to String.
 extension String {
     // MARK: - Instance functions -
 
@@ -76,9 +76,9 @@ extension String {
         return reversed
     }
 
-    /// Returns true if the String has at least one uppercase chatacter, otherwise false.
+    /// Returns true if the String has at least one uppercase character, otherwise false.
     ///
-    /// - returns: Returns true if the String has at least one uppercase chatacter, otherwise false.
+    /// - returns: Returns true if the String has at least one uppercase character, otherwise false.
     public func hasUppercaseCharacter() -> Bool {
         if CharacterSet.uppercaseLetters.contains(self.unicodeScalars.last!) {
             return true

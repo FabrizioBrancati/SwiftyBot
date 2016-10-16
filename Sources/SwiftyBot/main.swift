@@ -79,8 +79,8 @@ drop.post(secret) { request in
             case "/help":
                 /// Set the response message text.
                 response = "Welcome to SwiftyBot " +
-                           "an example on how create a Telegram bot with Swift using Vapor.\n" +
-                           "https://www.fabriziobrancati.com/posts/how-create-telegram-bot-swift-vapor-ubuntu-macos\n\n" +
+                           "an example on how to create a Telegram bot with Swift using Vapor.\n" +
+                           "https://www.fabriziobrancati.com/SwiftyBot\n\n" +
                            "/start - Welcome message\n" +
                            "/help - Help message\n" +
                            "Any text - Returns the reversed message"
