@@ -16,7 +16,7 @@
     <a href="#communication">Communication</a> &bull;
     <a href="#contributing">Contributing</a> &bull;
     <a href="#installing-and-usage">Installing and Usage</a> &bull;
-    <a href="#documentation-100">Documentation</a> &bull;
+    <a href="#documentation">Documentation</a> &bull;
     <a href="#changelog">Changelog</a> &bull;
     <a href="#demo">Demo</a> &bull;
     <a href="#todo">Todo</a> &bull;
