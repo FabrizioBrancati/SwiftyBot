@@ -31,7 +31,7 @@
 /// Import Swift Foundation framework.
 import Foundation
 
-/// This extesion adds some useful functions to String
+/// This extesion adds some useful functions to String.
 extension String {
     // MARK: - Instance functions -
 
