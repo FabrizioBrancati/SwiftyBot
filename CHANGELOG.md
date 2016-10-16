@@ -9,12 +9,12 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ### 1.X Releases
-- `1.0.0` Releases - [1.0.0](#100)
+- `1.0.x` Releases - [1.0.0](#100)
 
 ---
 
-## [1.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/v1.0.0)
-### XX XXX 2016
+## [1.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/v1.0.0) - Send me a Telegram
+### 17 Oct 2016
 #### Added
 - Added Telegram support
 - Added reversed message
