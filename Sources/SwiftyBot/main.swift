@@ -40,7 +40,7 @@ let drop: Droplet = Droplet()
 guard let secret = drop.config["app", "secret"]?.string else {
     /// Show errors in console.
     drop.console.error("Missing secret key!")
-    drop.console.warning("Add one in Config/secrets/app.json")
+    drop.console.error("Add one in Config/secrets/app.json")
 
     /// Throw missing secret key error.
     throw BotError.missingSecretKey
