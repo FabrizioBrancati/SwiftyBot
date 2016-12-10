@@ -24,8 +24,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/// Import Vapor framework.
+/// Import Vapor & BFKit frameworks.
 import Vapor
+import BFKit
 
 /// Bot errors enum.
 enum BotError: Swift.Error {
@@ -90,7 +91,7 @@ drop.post(secret) { request in
                 response = "Unrecognized command.\n" +
                            "To list all available commands type /help"
             }
-        /// It isn't a Telegram command, so creates a reversed message text.
+        /// It is not a Telegram command, so create a reversed message text.
         } else {
             /// Set the response message text.
             response = message.reversed(preserveFormat: true)
