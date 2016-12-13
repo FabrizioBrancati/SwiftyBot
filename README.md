@@ -85,7 +85,6 @@ Todo
 - [ ] Add support for edited messages
 - [ ] Add support for images
 - [ ] Use a database to define a user state (Example: `reverse`, `uppercase`, `lowercase`, etc...)
-- [ ] Improve `reversed` function in [String+BFKit.swift](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Sources/SwiftyBot/String%2BBFKit.swift)
 - [x] Include [BFKit-Swift](https://github.com/FabrizioBrancati/SwiftyBot) dependency instead of a single file like [String+BFKit.swift](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Sources/SwiftyBot/String%2BBFKit.swift)
 
 Author
