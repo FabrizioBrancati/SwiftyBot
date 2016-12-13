@@ -37,8 +37,7 @@ Language support
 
 Requirements
 ============
-- Ubuntu 14.04 or later with Swift 3
-- macOS with Xcode 8
+- Ubuntu 14.04 or later with Swift 3.0.1 / macOS with Xcode 8.1 or 8.2
 - Telegram account and a Telegram App for any platform
 
 Communication
@@ -54,7 +53,7 @@ See [CONTRIBUTING.md](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/
 
 Installing and Usage
 ====================
-#### Swift & Vapor experts
+#### Linux / macOS
 - Install Swift on your computer / server
 - Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
 - Set a secret key in `secrets/app.json`
@@ -63,16 +62,16 @@ Installing and Usage
 - Create a Telegram bot with [BotFather](https://telegram.me/botfather)
 - Use Supervisor to ensure your bot is always running
 
-#### Swift & Vapor newbie
-To see how to install and make the bot working, check _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
+If you need more help through this steps you can check _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
 
 Documentation
 =============
-Every line of [main.swift](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Sources/SwiftyBot/main.swift) and [String+BFKit.swift](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Sources/SwiftyBot/String+BFKit.swift) file is commented.
+Every line of [main.swift](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Sources/SwiftyBot/main.swift) file is commented.<br>
+If you need Vapor documentation you can find it [here](https://vapor.github.io/documentation/).
 
 Changelog
 =========
-To see what has changed in recent version of SwiftyBot, see the **[CHANGELOG](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/CHANGELOG.md)**.
+To see what has changed in recent version of SwiftyBot, see the **[CHANGELOG.md](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/CHANGELOG.md)** file.
 
 Demo
 ====
@@ -91,9 +90,9 @@ Author
 ======
 **Fabrizio Brancati**
 
-[![Website](https://img.shields.io/badge/website-fabriziobrancati.com-4fb0c8.svg)](http://www.fabriziobrancati.com)
+[Website: https://www.fabriziobrancati.com](https://www.fabriziobrancati.com)
 <br>
-[![Email](https://img.shields.io/badge/email-fabrizio.brancati%40gmail.com-green.svg)](mailto:fabrizio.brancati@gmail.com)
+[Email: fabrizio.brancati@gmail.com](mailto:fabrizio.brancati@gmail.com)
 
 License
 =======
