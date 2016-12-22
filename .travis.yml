@@ -22,4 +22,5 @@ script:
       swiftlint;
     fi
   - swift build
+  - rm -r .build && rm -r Packages
   - swift build -c release
