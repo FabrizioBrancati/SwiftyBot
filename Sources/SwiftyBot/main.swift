@@ -129,7 +129,7 @@ drop.get("messenger", messengerSecret, "*") { request in
         throw Abort.custom(status: .badRequest, message: "Missing Messenger data!")
     }
     
-    return Response(status: .ok, body: challenge)
+    return Response(status: .ok, headers: ["Content-Type": "text/plain"], body: challenge)
 }
 
 /// Run the Droplet.
