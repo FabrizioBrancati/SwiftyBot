@@ -26,6 +26,7 @@
 
 /// Import Vapor & BFKit frameworks.
 import Vapor
+import HTTP
 import BFKit
 
 /// Bot errors enum.
@@ -128,7 +129,7 @@ drop.get("messenger", messengerSecret, "*") { request in
         throw Abort.custom(status: .badRequest, message: "Missing Messenger data!")
     }
     
-    return challenge
+    return Response(status: .ok, body: challenge)
 }
 
 /// Run the Droplet.
