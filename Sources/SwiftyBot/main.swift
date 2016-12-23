@@ -30,27 +30,35 @@ import BFKit
 
 /// Bot errors enum.
 enum BotError: Swift.Error {
-    /// Missing secret key in Config/secrets/app.json.
+    /// Missing Telegram or Messenger secret key in Config/secrets/app.json.
     case missingSecretKey
 }
 
 /// Create the Droplet.
 let drop: Droplet = Droplet()
 
-/// Read the secret key from Config/secrets/app.json.
-guard let secret = drop.config["app", "secret"]?.string else {
+/// Read Telegram secret key from Config/secrets/app.json.
+let telegramSecret = drop.config["app", "secret", "telegram"]?.string ?? ""
+let messengerSecret = drop.config["app", "secret", "telegram"]?.string ?? ""
+
+if telegramSecret == "" && messengerSecret == "" {
     /// Show errors in console.
-    drop.console.error("Missing secret key!")
-    drop.console.error("Add one in Config/secrets/app.json")
+    drop.console.error("Missing secret keys!")
+    drop.console.error("Add almost one in Config/secrets/app.json")
 
     /// Throw missing secret key error.
     throw BotError.missingSecretKey
 }
 
-/// Setting up the POST request with the secret key.
+/// Setting up the POST request with Telegram secret key.
 /// With a secret path to be sure that nobody else knows that URL.
 /// https://core.telegram.org/bots/api#setwebhook
-drop.post(secret) { request in
+drop.post("telegram", telegramSecret) { request in
+    /// If Telegram secret key is missing throw a bad request error.
+    guard telegramSecret != "" else {
+        throw Abort.custom(status: .badRequest, message: "Missing Telegram secret key!")
+    }
+    
     /// Let's prepare the response message text.
     var response: String = ""
 
@@ -105,6 +113,17 @@ drop.post(secret) { request in
             "method": "sendMessage",
             "chat_id": chatID,
             "text": response
+        ]
+    )
+}
+
+/// Setting up the POST request with Messenger secret key.
+/// With a secret path to be sure that nobody else knows that URL.
+/// https://developers.facebook.com/docs/messenger-platform/guides/quick-start
+drop.post("messenger", messengerSecret) { request in
+    return try JSON(node:
+        [
+            "ok": "ok"
         ]
     )
 }
