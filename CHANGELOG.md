@@ -15,7 +15,7 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
-## [1.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/v1.2.0) - General Update
+## [1.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.2.0) - General Update
 ### 23 Dec 2016
 ### Added
 - Added support for Xcode 8.2 and Swift 3.0.2
@@ -26,14 +26,14 @@ All notable changes to this project will be documented in this file.<br>
 - Updated SwiftLint to 0.14.0
 
 
-## [1.1.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/v1.1.0) - BFKit Swift is awesome
+## [1.1.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.1.0) - BFKit Swift is awesome
 ### 10 Dec 2016
 ### Added
 - Added [BFKit Swift](https://github.com/FabrizioBrancati/BFKit-Swift) dependency
 - Added support for Xcode 8.1 and Swift 3.0.1
 
 
-## [1.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/v1.0.0) - Send me a Telegram
+## [1.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.0.0) - Send me a Telegram
 ### 17 Oct 2016
 ### Added
 - Added Telegram support
