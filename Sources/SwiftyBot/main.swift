@@ -38,8 +38,8 @@ enum BotError: Swift.Error {
 let drop: Droplet = Droplet()
 
 /// Read Telegram secret key from Config/secrets/app.json.
-let telegramSecret = drop.config["app", "secret", "telegram"]?.string ?? ""
-let messengerSecret = drop.config["app", "secret", "telegram"]?.string ?? ""
+let telegramSecret = drop.config["app", "telegram", "secret"]?.string ?? ""
+let messengerSecret = drop.config["app", "messenger", "secret"]?.string ?? ""
 
 if telegramSecret == "" && messengerSecret == "" {
     /// Show errors in console.
