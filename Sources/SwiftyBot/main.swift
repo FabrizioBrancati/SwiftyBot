@@ -121,10 +121,10 @@ drop.post("telegram", telegramSecret) { request in
 /// With a secret path to be sure that nobody else knows that URL.
 /// This is step 2 of the following guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start
-drop.get("messenger", messengerSecret) { request in
-    guard request.data["hub", "mode"]?.string == "subscribe" &&
-        request.data["hub", "verify_token"]?.string == messengerSecret,
-        let challenge = request.data["hub", "challenge"]?.string else {
+drop.get("messenger", messengerSecret, "*") { request in
+    guard request.parameters["hub.mode"]?.string == "subscribe" &&
+        request.parameters["hub.verify_token"]?.string == messengerSecret,
+        let challenge = request.parameters["hub.challenge"]?.string else {
         throw Abort.custom(status: .badRequest, message: "Missing Messenger data!")
     }
     
