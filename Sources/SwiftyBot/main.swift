@@ -61,14 +61,14 @@ drop.post("telegram", telegramSecret) { request in
     
     /// Let's prepare the response message text.
     var response: String = ""
-
+    
     /// Chat ID from request JSON.
     let chatID: Int = request.data["message", "chat", "id"]?.int ?? 0
     /// Message text from request JSON.
     let message: String = request.data["message", "text"]?.string ?? ""
     /// User first name from request JSON.
     var userFirstName: String = request.data["message", "from", "first_name"]?.string ?? ""
-
+    
     /// Check if the message is empty
     if message.characters.isEmpty {
         /// Set the response message text.
@@ -105,7 +105,7 @@ drop.post("telegram", telegramSecret) { request in
             response = message.reversed(preserveFormat: true)
         }
     }
-
+    
     /// Create the JSON response.
     /// https://core.telegram.org/bots/api#sendmessage
     return try JSON(node:
@@ -122,7 +122,9 @@ drop.post("telegram", telegramSecret) { request in
 /// This is step 2 of the following guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start
 drop.get("messenger", messengerSecret) { request in
-    guard request.data["hub.mode"]?.string == "subscribe" && request.data["hub.verify_token"]?.string == "6d657373656e67657220626f7420696e20737769667479626f74", let challenge = request.data["hub.challenge"]?.string else {
+    guard request.data["hub.mode"]?.string == "subscribe" &&
+        request.data["hub.verify_token"]?.string == messengerSecret,
+        let challenge = request.data["hub.challenge"]?.string else {
         throw Abort.custom(status: .badRequest, message: "Missing Messenger data!")
     }
     

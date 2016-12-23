@@ -2,6 +2,7 @@ included:
   - Sources
 
 disabled_rules:
+  - trailing_whitespace
   - force_cast
 
 opt_in_rules:
