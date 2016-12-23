@@ -117,15 +117,16 @@ drop.post("telegram", telegramSecret) { request in
     )
 }
 
-/// Setting up the POST request with Messenger secret key.
+/// Setting up the GET request with Messenger secret key.
 /// With a secret path to be sure that nobody else knows that URL.
+/// This is step 2 of the following guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start
-drop.post("messenger", messengerSecret) { request in
-    return try JSON(node:
-        [
-            "ok": "ok"
-        ]
-    )
+drop.get("messenger", messengerSecret) { request in
+    guard request.data["hub.mode"]?.string == "subscribe" && request.data["hub.verify_token"]?.string == "6d657373656e67657220626f7420696e20737769667479626f74", let challenge = request.data["hub.challenge"]?.string else {
+        throw Abort.custom(status: .badRequest, message: "Missing Messenger data!")
+    }
+    
+    return challenge
 }
 
 /// Run the Droplet.
