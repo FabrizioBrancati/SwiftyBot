@@ -36,16 +36,16 @@ enum BotError: Swift.Error {
 }
 
 /// Create the Droplet.
-let drop: Droplet = Droplet()
+let droplet: Droplet = Droplet()
 
 /// Read Telegram secret key from Config/secrets/app.json.
-let telegramSecret = drop.config["app", "telegram", "secret"]?.string ?? ""
-let messengerSecret = drop.config["app", "messenger", "secret"]?.string ?? ""
+let telegramSecret = droplet.config["app", "telegram", "secret"]?.string ?? ""
+let messengerSecret = droplet.config["app", "messenger", "secret"]?.string ?? ""
 
 if telegramSecret == "" && messengerSecret == "" {
     /// Show errors in console.
-    drop.console.error("Missing secret keys!")
-    drop.console.error("Add almost one in Config/secrets/app.json")
+    droplet.console.error("Missing secret keys!")
+    droplet.console.error("Add almost one in Config/secrets/app.json")
 
     /// Throw missing secret key error.
     throw BotError.missingSecretKey
@@ -54,7 +54,7 @@ if telegramSecret == "" && messengerSecret == "" {
 /// Setting up the POST request with Telegram secret key.
 /// With a secret path to be sure that nobody else knows that URL.
 /// https://core.telegram.org/bots/api#setwebhook
-drop.post("telegram", telegramSecret) { request in
+droplet.post("telegram", telegramSecret) { request in
     /// If Telegram secret key is missing throw a bad request error.
     guard telegramSecret != "" else {
         throw Abort.custom(status: .badRequest, message: "Missing Telegram secret key!")
@@ -122,15 +122,26 @@ drop.post("telegram", telegramSecret) { request in
 /// With a secret path to be sure that nobody else knows that URL.
 /// This is step 2 of the following guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start
-drop.get("messenger", messengerSecret, "*") { request in
-    guard request.data["hub.mode"]?.string == "subscribe" &&
-        request.data["hub.verify_token"]?.string == messengerSecret,
-        let challenge = request.data["hub.challenge"]?.string else {
+droplet.get("messenger", messengerSecret, "*") { request in
+    guard request.data["hub.mode"]?.string == "subscribe" && request.data["hub.verify_token"]?.string == messengerSecret, let challenge = request.data["hub.challenge"]?.string else {
         throw Abort.custom(status: .badRequest, message: "Missing Messenger data!")
     }
     
     return Response(status: .ok, headers: ["Content-Type": "text/plain"], body: challenge)
 }
 
+/// Setting up the POST request with Messenger secret key.
+/// With a secret path to be sure that nobody else knows that URL.
+/// This is step 5 of the following guide:
+/// https://developers.facebook.com/docs/messenger-platform/guides/quick-start
+droplet.post("messenger", messengerSecret, "*") { request in
+    if let contentType = request.headers["Content-Type"], contentType.contains("application/json"), let bytes = request.body.bytes {
+        let json = try JSON(bytes: bytes)
+        droplet.console.info("Got JSON: \(json)")
+    }
+    
+    return Response(status: .ok, headers: ["Content-Type": "text/plain"], body: "OK")
+}
+
 /// Run the Droplet.
-drop.run()
+droplet.run()
