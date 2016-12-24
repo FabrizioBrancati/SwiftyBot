@@ -4,6 +4,7 @@ included:
 disabled_rules:
   - trailing_whitespace
   - force_cast
+  - line_length
 
 opt_in_rules:
    - empty_count
