@@ -117,7 +117,7 @@ droplet.post("telegram", telegramSecret) { request in
 /// Setting up the GET request with Messenger secret key.
 /// With a secret path to be sure that nobody else knows that URL.
 /// This is step 2 of the following guide:
-/// https://developers.facebook.com/docs/messenger-platform/guides/quick-start
+/// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#setup_webhook
 droplet.get("messenger", messengerSecret, "*") { request in
     guard request.data["hub.mode"]?.string == "subscribe" && request.data["hub.verify_token"]?.string == messengerSecret, let challenge = request.data["hub.challenge"]?.string else {
         throw Abort.custom(status: .badRequest, message: "Missing Messenger verification data.")
@@ -129,7 +129,7 @@ droplet.get("messenger", messengerSecret, "*") { request in
 /// Setting up the POST request with Messenger secret key.
 /// With a secret path to be sure that nobody else knows that URL.
 /// This is step 5 of the following guide:
-/// https://developers.facebook.com/docs/messenger-platform/guides/quick-start
+/// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#receive_messages
 droplet.post("messenger", messengerSecret, "*") { request in
     /// Check that the request cames from a "page".
     guard request.json?["object"]?.string == "page" else {
@@ -172,16 +172,15 @@ droplet.post("messenger", messengerSecret, "*") { request in
             } else {
                 /// Set the response message text.
                 response = text.reversed(preserveFormat: true)
-                
-                /// Creating the response JSON data bytes.
-                let responseData = try JSON(node: ["recipient": JSON(node: ["id": senderID]), "message": JSON(node: ["text": response])]).makeBytes()
-                
-                /// Calling the Facebook API to send the response.
-                let facebookAPICall = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", headers: ["Content-Type": "application/json"], query: ["access_token": messengerToken], body: Body.data(responseData))
-                
-                droplet.console.info("Message sent to: \(senderID), with text: \(response)")
-                droplet.console.info("Messenger response: \(facebookAPICall)")
             }
+            
+            /// Creating the response JSON data bytes.
+            /// At step 6 of Facebook Node.js demo they will tell you to use the "recipient.id", but is incorrect, you have to use the "sender.id".
+            /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#send_text_message
+            let responseData = try JSON(node: ["recipient": JSON(node: ["id": senderID]), "message": JSON(node: ["text": response])]).makeBytes()
+            
+            /// Calling the Facebook API to send the response.
+            let facebookAPICall = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", headers: ["Content-Type": "application/json"], query: ["access_token": messengerToken], body: Body.data(responseData))
         }
     }
     
