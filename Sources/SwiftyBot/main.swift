@@ -29,11 +29,15 @@ import Vapor
 import HTTP
 import BFKit
 
+// MARK: - Errors
+
 /// Bot errors enum.
 enum BotError: Swift.Error {
     /// Missing Telegram or Messenger secret key in Config/secrets/app.json.
-    case missingSecretKey
+    case missingAppSecrets
 }
+
+// MARK: - Configuration
 
 /// Create the Droplet.
 let droplet: Droplet = Droplet()
@@ -49,8 +53,10 @@ guard telegramSecret != "" || (messengerSecret != "" && messengerToken != "") el
     droplet.console.error("Add almost one in Config/secrets/app.json")
 
     /// Throw missing secret key error.
-    throw BotError.missingSecretKey
+    throw BotError.missingAppSecrets
 }
+
+// MARK: - Telegram
 
 /// Setting up the POST request with Telegram secret key.
 /// With a secret path to be sure that nobody else knows that URL.
@@ -113,6 +119,8 @@ droplet.post("telegram", telegramSecret) { request in
         ]
     )
 }
+
+// MARK: - Messenger
 
 /// Setting up the GET request with Messenger secret key.
 /// With a secret path to be sure that nobody else knows that URL.
@@ -189,6 +197,8 @@ droplet.post("messenger", messengerSecret, "*") { request in
     /// The header is added just to mute a Vapor warning.
     return Response(status: .ok, headers: ["Content-Type": "application/json"])
 }
+
+// MARK: - Droplet run
 
 /// Run the Droplet.
 droplet.run()
