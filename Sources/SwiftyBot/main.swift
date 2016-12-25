@@ -178,6 +178,8 @@ droplet.post("messenger", messengerSecret, "*") { request in
                 
                 /// Calling the Facebook API to send the response.
                 let facebookAPICall = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", headers: ["Content-Type": "application/json"], query: ["access_token": messengerToken], body: Body.data(responseData))
+                
+                droplet.console.info("Message sent to: \(recipientID), with text: \(response)")
             }
         }
     }
