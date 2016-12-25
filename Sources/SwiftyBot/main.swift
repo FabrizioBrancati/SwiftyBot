@@ -153,10 +153,10 @@ droplet.post("messenger", messengerSecret, "*") { request in
         for event in messaging {
             /// Message of the event.
             let message: [String: Polymorphic] = event.object?["message"]?.object ?? [:]
-            /// Recipient of the event.
-            let recipient: [String: Polymorphic] = event.object?["recipient"]?.object ?? [:]
-            /// Recipient ID, it is used to make a response to the right chat.
-            let recipientID: String = recipient["id"]?.string ?? ""
+            /// Sender of the event.
+            let sender: [String: Polymorphic] = event.object?["sender"]?.object ?? [:]
+            /// Sender ID, it is used to make a response to the right user.
+            let senderID: String = sender["id"]?.string ?? ""
             /// Text sended to bot.
             let text: String = message["text"]?.string ?? ""
             
@@ -174,13 +174,13 @@ droplet.post("messenger", messengerSecret, "*") { request in
                 response = text.reversed(preserveFormat: true)
                 
                 /// Creating the response JSON data bytes.
-                let responseData = try JSON(node: ["recipient": JSON(node: ["id": recipientID]), "message": JSON(node: ["text": response])]).makeBytes()
+                let responseData = try JSON(node: ["recipient": JSON(node: ["id": senderID]), "message": JSON(node: ["text": response])]).makeBytes()
                 
                 /// Calling the Facebook API to send the response.
                 let facebookAPICall = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", headers: ["Content-Type": "application/json"], query: ["access_token": messengerToken], body: Body.data(responseData))
                 
-                droplet.console.info("Message sent to: \(recipientID), with text: \(response)")
-                droplet.console.info("Message request: \(facebookAPICall)")
+                droplet.console.info("Message sent to: \(senderID), with text: \(response)")
+                droplet.console.info("Messenger response: \(facebookAPICall)")
             }
         }
     }
