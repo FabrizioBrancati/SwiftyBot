@@ -151,16 +151,9 @@ struct Messenger {
     
     struct Element: NodeRepresentable {
         struct Button: NodeRepresentable {
-            enum `Type`: String, NodeRepresentable {
+            enum `Type`: String {
                 case webURL = "web_url"
                 case postback = "postback"
-                
-                public func makeNode(context: Context) throws -> Node {
-                    return try Node(node: [
-                        "type": self.rawValue
-                        ]
-                    )
-                }
             }
             
             /// https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-ID18
@@ -188,8 +181,8 @@ struct Messenger {
             }
             
             public func makeNode(context: Context) throws -> Node {
-                var node: Node = try [
-                    "type": type.makeNode(),
+                var node: Node = [
+                    "type": type.rawValue.makeNode(),
                     "title": title.makeNode()
                 ]
                 
