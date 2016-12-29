@@ -138,6 +138,7 @@ struct Messenger {
     }
     
     static func structuredMessage(elements: [Element]) throws -> Node {
+        droplet.console.info("\(elements)")
         return try ["attachment":
             ["type": "template",
              "payload":
@@ -295,12 +296,15 @@ droplet.post("messenger", messengerSecret, "*") { request in
                     
                     var elements: [Messenger.Element] = []
                     elements += BFKitSwift
+                    elements += BFKit
+                    elements += SwiftyBot
                 
                     /// Create a structured message to sell something to the user.
                     response = try Messenger.structuredMessage(elements: elements)
                 } catch {
                     /// Throw an abort response, with a custom message.
                     throw Abort.custom(status: .badRequest, message: "Error while creating elements.")
+                    droplet.console.error("Error while creating elements.")
                 }
             /// The message object and its text are not empty, and the user does not want to buy anything, so create a reversed message text.
             } else {
