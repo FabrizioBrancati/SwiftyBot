@@ -138,7 +138,6 @@ struct Messenger {
     }
     
     static func structuredMessage(elements: [Element]) throws -> Node {
-        droplet.console.info("\(elements)")
         return try ["attachment":
             ["type": "template",
              "payload":
@@ -301,12 +300,9 @@ droplet.post("messenger", messengerSecret) { request in
                 
                     /// Create a structured message to sell something to the user.
                     response = try Messenger.structuredMessage(elements: elements)
-                    
-                    droplet.console.info("\(response)")
                 } catch {
                     /// Throw an abort response, with a custom message.
                     throw Abort.custom(status: .badRequest, message: "Error while creating elements.")
-                    droplet.console.error("Error while creating elements.")
                 }
             /// The message object and its text are not empty, and the user does not want to buy anything, so create a reversed message text.
             } else {
@@ -321,8 +317,6 @@ droplet.post("messenger", messengerSecret) { request in
             
             /// Calling the Facebook API to send the response.
             let facebookAPICall = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", headers: ["Content-Type": "application/json"], query: ["access_token": messengerToken], body: Body.data(responseData))
-            
-            droplet.console.info("\(facebookAPICall)")
         }
     }
     
