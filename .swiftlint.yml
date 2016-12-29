@@ -5,7 +5,8 @@ disabled_rules:
   - trailing_whitespace
   - force_cast
   - line_length
+  - nesting
 
 opt_in_rules:
    - empty_count
-   - missing_docs
+   #- missing_docs

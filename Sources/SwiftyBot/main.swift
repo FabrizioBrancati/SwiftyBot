@@ -127,17 +127,24 @@ droplet.post("telegram", telegramSecret) { request in
 
 /// Struct to help with Messenger messages.
 struct Messenger {
-    /// Create a standard Messenger message.
+    /// Creates a standard Messenger message.
     ///
     /// - Parameter message: Message text to be sent.
     /// - Returns: Returns the created Node ready to be sent.
     static func standardMesssage(_ message: String) -> Node {
+        /// Create the Node.
         return [
             "text": message.makeNode()
         ]
     }
     
+    /// Creates a structured Messenger message.
+    ///
+    /// - Parameter elements: Elements of the structured message.
+    /// - Returns: Returns the representable Node.
+    /// - Throws: Throws NodeError errors.
     static func structuredMessage(elements: [Element]) throws -> Node {
+        /// Create the Node.
         return try ["attachment":
             ["type": "template",
              "payload":
@@ -148,60 +155,26 @@ struct Messenger {
         ]
     }
     
+    /// Messenger structured message element.
     struct Element: NodeRepresentable {
-        struct Button: NodeRepresentable {
-            enum `Type`: String {
-                case webURL = "web_url"
-                case postback = "postback"
-            }
-            
-            /// https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-ID18
-            private(set) var type: Type
-            private(set) var title: String
-            private(set) var payload: String?
-            private(set) var url: String?
-            
-            init(type: Type, title: String, payload: String? = nil, url: String? = nil) throws {
-                self.type = type
-                self.title = title
-                
-                switch type {
-                case .webURL:
-                    guard let url = url else {
-                        throw BotError.missingURL
-                    }
-                    self.url = url
-                case .postback:
-                    guard let payload = payload else {
-                        throw BotError.missingPayload
-                    }
-                    self.payload = payload
-                }
-            }
-            
-            public func makeNode(context: Context) throws -> Node {
-                var node: Node = [
-                    "type": type.rawValue.makeNode(),
-                    "title": title.makeNode()
-                ]
-                
-                switch type {
-                case .webURL:
-                    node["url"] = url?.makeNode() ?? ""
-                case .postback:
-                    node["payload"] = payload?.makeNode() ?? ""
-                }
-                return try Node(node: node)
-            }
-        }
-        
+        /// Element title.
         var title: String
+        /// Element subtitle.
         var subtitle: String
+        /// Element item URL.
         var itemURL: String
+        /// Element image URL.
         var imageURL: String
+        /// Element Button array.
         var buttons: [Button]
         
+        /// Element conforms to NodeRepresentable, turn the convertible into a node.
+        ///
+        /// - Parameter context: Context beyond Node.
+        /// - Returns: Returns the Element Node representation.
+        /// - Throws: Throws NodeError errors.
         public func makeNode(context: Context) throws -> Node {
+            /// Create the Node.
             return try Node(node: [
                 "title": title,
                 "subtitle": subtitle,
@@ -210,6 +183,89 @@ struct Messenger {
                 "buttons": buttons.makeNode()
                 ]
             )
+        }
+        
+        /// Button of Messenger structured message element.
+        struct Button: NodeRepresentable {
+            
+            /// Button type of Messenger strucuted message element.
+            ///
+            /// - webURL: Web URL type.
+            /// - postback: Postback type.
+            enum `Type`: String {
+                case webURL = "web_url"
+                case postback = "postback"
+            }
+            
+            /// Set all its property get only.
+            /// https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-ID18
+            /// Button type.
+            private(set) var type: Type
+            /// Button title.
+            private(set) var title: String
+            /// Button payload, postback type only.
+            private(set) var payload: String?
+            /// Button URL, webURL type only.
+            private(set) var url: String?
+            
+            /// Creates a Button for Messenger structured message element.
+            ///
+            /// - Parameters:
+            ///   - type: Button type.
+            ///   - title: Button title.
+            ///   - payload: Button payload.
+            ///   - url: Button URL.
+            /// - Throws: Throws NodeError errors.
+            init(type: Type, title: String, payload: String? = nil, url: String? = nil) throws {
+                /// Set Button type.
+                self.type = type
+                /// Set Button title.
+                self.title = title
+                
+                /// Check what Button type is.
+                switch type {
+                /// Is a webURL type, so se its url.
+                case .webURL:
+                    /// Check if url is nil.
+                    guard let url = url else {
+                        throw BotError.missingURL
+                    }
+                    self.url = url
+                /// Is a postback type, so se its payload.
+                case .postback:
+                    /// Check if payload is nil.
+                    guard let payload = payload else {
+                        throw BotError.missingPayload
+                    }
+                    self.payload = payload
+                }
+            }
+            
+            /// Button conforms to NodeRepresentable, turn the convertible into a node.
+            ///
+            /// - Parameter context: Context beyond Node.
+            /// - Returns: Returns the Button Node representation.
+            /// - Throws: Throws NodeError errors.
+            public func makeNode(context: Context) throws -> Node {
+                /// Create the Node with type and title.
+                var node: Node = [
+                    "type": type.rawValue.makeNode(),
+                    "title": title.makeNode()
+                ]
+                
+                /// Extends the Node with url or payload, depends on Button type.
+                switch type {
+                /// Extends with url property.
+                case .webURL:
+                    node["url"] = url?.makeNode() ?? ""
+                /// Extends with payload property.
+                case .postback:
+                    node["payload"] = payload?.makeNode() ?? ""
+                }
+                
+                /// Create the Node.
+                return try Node(node: node)
+            }
         }
     }
 }
@@ -283,19 +339,27 @@ droplet.post("messenger", messengerSecret) { request in
             /// The user wants to buy something.
             } else if text.lowercased().range(of: "sell") || text.lowercased().range(of: "buy") || text.lowercased().range(of: "shop") {
                 do {
+                    /// Create all the elements in elements object of the Messenger structured message.
+                    /// Element number 1: BFKit-Swift
                     let BFKitSwift = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift.png", buttons: [
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit-Swift"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit-Swift payload.")])
+                    /// Element number 2: BFKit
                     let BFKit = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png", buttons: [
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit payload.")])
+                    /// Element number 3: SwiftyBot
                     let SwiftyBot = try Messenger.Element(title: "SwiftyBot", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/SwiftyBot", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner.png", buttons: [
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/SwiftyBot"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "SwiftyBot payload.")])
                     
+                    /// Create the elements array.
                     var elements: [Messenger.Element] = []
+                    /// Add BFKit-Swift to elements array.
                     elements += BFKitSwift
+                    /// Add BFKit to elements array.
                     elements += BFKit
+                    /// Add SwiftyBot to elements array.
                     elements += SwiftyBot
                 
                     /// Create a structured message to sell something to the user.
