@@ -35,6 +35,10 @@ import BFKit
 enum BotError: Swift.Error {
     /// Missing Telegram or Messenger secret key in Config/secrets/app.json.
     case missingAppSecrets
+    /// Missing URL in Messenger structured message button.
+    case missingURL
+    /// Missing payload in Messenger structured message button.
+    case missingPayload
 }
 
 // MARK: - Configuration
@@ -111,8 +115,7 @@ droplet.post("telegram", telegramSecret) { request in
     
     /// Create the JSON response.
     /// https://core.telegram.org/bots/api#sendmessage
-    return try JSON(node:
-        [
+    return try JSON(node: [
             "method": "sendMessage",
             "chat_id": chatID,
             "text": response
@@ -123,50 +126,91 @@ droplet.post("telegram", telegramSecret) { request in
 // MARK: - Messenger bot
 
 /// Struct to help with Messenger messages.
-public struct Messenger {
+struct Messenger {
     /// Create a standard Messenger message.
     ///
     /// - Parameter message: Message text to be sent.
     /// - Returns: Returns the created Node ready to be sent.
     static func standardMesssage(_ message: String) -> Node {
-        return ["text": message.makeNode()]
+        return [
+            "text": message.makeNode()
+        ]
     }
     
-    static func structuredMessage() -> Node {
-        return ["attachment":
+    static func structuredMessage(elements: [Element]) throws -> Node {
+        return try ["attachment":
             ["type": "template",
              "payload":
                 ["template_type": "generic",
-                 "elements": [[
-                    "title": "BFKit-Swift",
-                    "subtitle": "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.",
-                    "item_url": "https://github.com/FabrizioBrancati/BFKit-Swift",
-                    "image_url": "https://github.fabriziobrancati.com/bfkit/resources/banner-swift.png",
-                    "buttons": [[
-                        "type": "web_url",
-                        "url": "https://github.com/FabrizioBrancati/BFKit-Swift",
-                        "title": "Open in GitHub"
-                    ], [
-                        "type": "postback",
-                        "title": "Call Postback",
-                        "payload": "This is the payload for BFKit-Swift."
-                    ]]], [
-                    "title": "BFKit",
-                    "subtitle": "BFKit is a collection of useful classes and categories to develop Apps faster.",
-                    "item_url": "https://github.com/FabrizioBrancati/BFKit",
-                    "image_url": "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png",
-                    "buttons": [[
-                        "type": "web_url",
-                        "url": "https://github.com/FabrizioBrancati/BFKit",
-                        "title": "Open in GitHub"
-                    ], [
-                        "type": "postback",
-                        "title": "Call Postback",
-                        "payload": "This is the payload for BFKit."
-                    ]]]]
+                 "elements": elements.makeNode()
                 ]
             ]
         ]
+    }
+    
+    struct Element: NodeRepresentable {
+        struct Button: NodeRepresentable {
+            enum `Type`: String, NodeRepresentable {
+                case webURL = "web_url"
+                case postback = "postback"
+                
+                public func makeNode(context: Context) throws -> Node {
+                    return try Node(node: [
+                        "type": self.rawValue
+                        ]
+                    )
+                }
+            }
+            
+            /// https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-ID18
+            private(set) var type: Type
+            private(set) var title: String
+            private(set) var payload: String?
+            private(set) var url: String?
+            
+            init(type: Type, title: String, payload: String? = nil, url: String? = nil) throws {
+                self.type = type
+                self.title = title
+                
+                switch type {
+                case .webURL:
+                    guard let url = url else {
+                        throw BotError.missingURL
+                    }
+                    self.url = url
+                case .postback:
+                    guard let payload = payload else {
+                        throw BotError.missingPayload
+                    }
+                    self.payload = payload
+                }
+            }
+            
+            public func makeNode(context: Context) throws -> Node {
+                return try Node(node: [
+                    "type": type.makeNode(),
+                    "title": title
+                    ]
+                )
+            }
+        }
+        
+        var title: String
+        var subtitle: String
+        var itemURL: String
+        var imageURL: String
+        var buttons: [Button]
+        
+        public func makeNode(context: Context) throws -> Node {
+            return try Node(node: [
+                "title": title,
+                "subtitle": subtitle,
+                "item_url": itemURL,
+                "image_url": imageURL,
+                "buttons": buttons.makeNode()
+                ]
+            )
+        }
     }
 }
 
@@ -238,8 +282,26 @@ droplet.post("messenger", messengerSecret, "*") { request in
                 response = Messenger.standardMesssage("I'm sorry but your message is empty 😢")
             /// The user wants to buy something.
             } else if text.lowercased().range(of: "sell") || text.lowercased().range(of: "buy") || text.lowercased().range(of: "shop") {
-                /// Create a structured message to sell something to the user.
-                response = Messenger.structuredMessage()
+                do {
+                    let BFKitSwift = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift.png", buttons: [
+                        Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit-Swift"),
+                        Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit-Swift payload.")])
+                    let BFKit = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png", buttons: [
+                        Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit"),
+                        Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit payload.")])
+                    let SwiftyBot = try Messenger.Element(title: "SwiftyBot", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/SwiftyBot", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner.png", buttons: [
+                        Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/SwiftyBot"),
+                        Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "SwiftyBot payload.")])
+                    
+                    var elements: [Messenger.Element] = []
+                    elements += BFKitSwift
+                
+                    /// Create a structured message to sell something to the user.
+                    response = try Messenger.structuredMessage(elements: elements)
+                } catch {
+                    /// Throw an abort response, with a custom message.
+                    throw Abort.custom(status: .badRequest, message: "Error while creating elements.")
+                }
             /// The message object and its text are not empty, and the user does not want to buy anything, so create a reversed message text.
             } else {
                 /// Set the response message text.
