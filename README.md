@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
 [![Codebeat Badge](https://codebeat.co/badges/5c994b12-c55e-46ec-b870-1c42154289a3)](https://codebeat.co/projects/github-com-fabriziobrancati-swiftybot)
-[![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)](https://developer.apple.com/swift/)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://developer.apple.com/swift/)
 [![Language](https://img.shields.io/badge/language-Swift%203.0-orange.svg)](https://developer.apple.com/swift/)
 [![Platform](https://img.shields.io/badge/platform-Linux%20/%20macOS-ffc713.svg)](https://developer.apple.com/swift/)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/LICENSE)
@@ -11,6 +11,7 @@
 
 <p align="center">
     <a href="#what-does-it-do">What does it do</a> &bull;
+    <a href="#compatibility">Compatibility</a> &bull;
     <a href="#language-support">Language support</a> &bull;
     <a href="#requirements">Requirements</a> &bull;
     <a href="#communication">Communication</a> &bull;
@@ -28,8 +29,16 @@
 
 What does it do
 ===============
-SwiftyBot is an example on how to create a Telegram bot with Swift using Vapor.<br>
-Read more about it at _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_.
+SwiftyBot is an example on how to create a Telegram & Messenger bot with Swift using Vapor.<br>
+See [Compatibility](https://github.com/FabrizioBrancati/SwiftyBot#compatibility) section to check service and version it supports, you can also see its blog post with the link in that table.
+
+Compatibility
+=============
+
+| **Bot Type** | **Version** | **Blog Post Link**                     |
+|--------------|-------------|----------------------------------------|
+| Telegram     | 1.0...1.2   | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
+| Messenger    | 2.0         | _[...](https://www.fabriziobrancati.com/SwiftyBot-2)_ |
 
 Language support
 ================
@@ -37,8 +46,9 @@ Language support
 
 Requirements
 ============
-- Ubuntu 14.04 or later with Swift 3.0.1 / macOS with Xcode 8.1 or 8.2
-- Telegram account and a Telegram App for any platform
+- Ubuntu 14.04 or later with Swift 3.0.2 / macOS with Xcode 8.1 or 8.2
+- Telegram account and a Telegram App for any platform (Telegram bot only)
+- Facebook account and a Messenger App for any platform (Messenger bot only)
 
 Communication
 =============
@@ -53,7 +63,7 @@ See [CONTRIBUTING.md](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/
 
 Installing and Usage
 ====================
-#### Linux / macOS
+### Telegram
 - Install Swift on your computer / server
 - Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
 - Set a secret key in `secrets/app.json`
@@ -64,10 +74,17 @@ Installing and Usage
 
 If you need more help through this steps you can check _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
 
+### Messenger
+- First
+- Second
+- ...
+
 Documentation
 =============
 Every line of [main.swift](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Sources/SwiftyBot/main.swift) file is commented.<br>
-If you need Vapor documentation you can find it [here](https://vapor.github.io/documentation/).
+If you need Vapor documentation you can find it [here](https://vapor.github.io/documentation/).<br>
+If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).<br>
+If you need Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
 
 Changelog
 =========
@@ -75,7 +92,11 @@ To see what has changed in recent version of SwiftyBot, see the **[CHANGELOG.md]
 
 Demo
 ====
+### Telegram
 You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** and start talking with him!
+
+### Messenger
+You can...
 
 Todo
 ====
@@ -83,7 +104,6 @@ Todo
 - [ ] Add support for combined emoji on Linux
 - [ ] Add support for edited messages
 - [ ] Add support for images
-- [ ] Use a database to define a user state (Example: `reverse`, `uppercase`, `lowercase`, etc...)
 - [x] Include [BFKit-Swift](https://github.com/FabrizioBrancati/SwiftyBot) dependency instead of a single file like String+BFKit.swift
 
 Author
