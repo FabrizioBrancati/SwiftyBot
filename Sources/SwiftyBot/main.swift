@@ -219,7 +219,7 @@ struct Messenger {
 /// With a secret path to be sure that nobody else knows that URL.
 /// This is step 2 of the following guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#setup_webhook
-droplet.get("messenger", messengerSecret, "*") { request in
+droplet.get("messenger", messengerSecret) { request in
     /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
     guard request.data["hub.mode"]?.string == "subscribe" && request.data["hub.verify_token"]?.string == messengerSecret, let challenge = request.data["hub.challenge"]?.string else {
         throw Abort.custom(status: .badRequest, message: "Missing Messenger verification data.")
@@ -233,7 +233,7 @@ droplet.get("messenger", messengerSecret, "*") { request in
 /// With a secret path to be sure that nobody else knows that URL.
 /// This is step 5 of the following guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#receive_messages
-droplet.post("messenger", messengerSecret, "*") { request in
+droplet.post("messenger", messengerSecret) { request in
     /// Check that the request cames from a "page".
     guard request.json?["object"]?.string == "page" else {
         /// Throw an abort response, with a custom message.
