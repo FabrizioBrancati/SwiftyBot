@@ -308,6 +308,8 @@ droplet.post("messenger", messengerSecret, "*") { request in
                 
                     /// Create a structured message to sell something to the user.
                     response = try Messenger.structuredMessage(elements: elements)
+                    
+                    droplet.console.info("\(response)")
                 } catch {
                     /// Throw an abort response, with a custom message.
                     throw Abort.custom(status: .badRequest, message: "Error while creating elements.")
