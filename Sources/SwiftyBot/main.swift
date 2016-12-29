@@ -188,9 +188,9 @@ struct Messenger {
                 
                 switch type {
                 case .webURL:
-                    node["web_url"] = url?.makeNode() ?? ""
+                    node["url"] = url?.makeNode() ?? ""
                 case .postback:
-                    node["postback"] = payload?.makeNode() ?? ""
+                    node["payload"] = payload?.makeNode() ?? ""
                 }
                 return try Node(node: node)
             }
