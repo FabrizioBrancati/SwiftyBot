@@ -188,11 +188,18 @@ struct Messenger {
             }
             
             public func makeNode(context: Context) throws -> Node {
-                return try Node(node: [
+                var node: Node = try [
                     "type": type.makeNode(),
-                    "title": title
-                    ]
-                )
+                    "title": title.makeNode()
+                ]
+                
+                switch type {
+                case .webURL:
+                    node["web_url"] = url?.makeNode() ?? ""
+                case .postback:
+                    node["postback"] = payload?.makeNode() ?? ""
+                }
+                return try Node(node: node)
             }
         }
         
