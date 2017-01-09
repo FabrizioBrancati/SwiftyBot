@@ -187,8 +187,7 @@ struct Messenger {
         
         /// Button of Messenger structured message element.
         struct Button: NodeRepresentable {
-            
-            /// Button type of Messenger strucuted message element.
+            /// Button type of Messenger structured message element.
             ///
             /// - webURL: Web URL type.
             /// - postback: Postback type.
@@ -197,7 +196,7 @@ struct Messenger {
                 case postback = "postback"
             }
             
-            /// Set all its property get only.
+            /// Set all its property to get only.
             /// https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AccessControl.html#//apple_ref/doc/uid/TP40014097-CH41-ID18
             /// Button type.
             private(set) var type: Type
@@ -272,7 +271,7 @@ struct Messenger {
 
 /// Setting up the GET request with Messenger secret key.
 /// With a secret path to be sure that nobody else knows that URL.
-/// This is step 2 of the following guide:
+/// This is "step 2" of the following guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#setup_webhook
 droplet.get("messenger", messengerSecret) { request in
     /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
@@ -286,7 +285,7 @@ droplet.get("messenger", messengerSecret) { request in
 
 /// Setting up the POST request with Messenger secret key.
 /// With a secret path to be sure that nobody else knows that URL.
-/// This is step 5 of the following guide:
+/// This is "step 5" of the following guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#receive_messages
 droplet.post("messenger", messengerSecret) { request in
     /// Check that the request cames from a "page".
