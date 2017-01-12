@@ -339,15 +339,15 @@ droplet.post("messenger", messengerSecret) { request in
             } else if text.lowercased().range(of: "sell") || text.lowercased().range(of: "buy") || text.lowercased().range(of: "shop") {
                 do {
                     /// Create all the elements in elements object of the Messenger structured message.
-                    /// Element number 1: BFKit-Swift
+                    /// First Element: BFKit-Swift
                     let BFKitSwift = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift.png", buttons: [
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit-Swift"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit-Swift payload.")])
-                    /// Element number 2: BFKit
+                    /// Second Element: BFKit
                     let BFKit = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png", buttons: [
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit payload.")])
-                    /// Element number 3: SwiftyBot
+                    /// Third Element: SwiftyBot
                     let SwiftyBot = try Messenger.Element(title: "SwiftyBot", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/SwiftyBot", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner.png", buttons: [
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/SwiftyBot"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "SwiftyBot payload.")])
@@ -374,7 +374,7 @@ droplet.post("messenger", messengerSecret) { request in
             }
             
             /// Creating the response JSON data bytes.
-            /// At step 6 of Facebook Node.js demo, they told you to use the "recipient.id", but the correct one is "sender.id".
+            /// At step 6 of Facebook Node.js demo, they told you to send back the "recipient.id", but the correct one is "sender.id".
             /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#send_text_message
             responseData = try JSON(["recipient": ["id": senderID.makeNode()], "message": response]).makeBytes()
             

@@ -38,7 +38,7 @@ Compatibility
 | **Bot Type** | **Version** | **Blog Post Link**                     |
 |--------------|-------------|----------------------------------------|
 | Telegram     | 1.0...1.2   | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
-| Messenger    | 2.0         | _[...](https://www.fabriziobrancati.com/SwiftyBot-2)_ |
+| Messenger    | 2.0         | _[How to create a Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ |
 
 Language support
 ================
@@ -72,12 +72,17 @@ Installing and Usage
 - Create a Telegram bot with [BotFather](https://telegram.me/botfather)
 - Use Supervisor to ensure your bot is always running
 
-If you need more help through this steps you can check _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
+If you need more help through this steps for the Telegram bot you can check _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
 
 ### Messenger
-- First
-- Second
-- ...
+- Install Swift on your computer / server
+- Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
+- Set a secret key in `secrets/app.json`
+- Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
+- Use Apache or nginx as a reverse proxy
+- Create a Facebook App and Page
+- Get a Page access token and add it to `secrets/app.json`
+- Use Supervisor to ensure your bot is always running
 
 Documentation
 =============
@@ -96,7 +101,7 @@ Demo
 You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** and start talking with him!
 
 ### Messenger
-You can...
+You can open Facebook and search for **[SwiftyBot](http://m.me/MessengerSwiftyBot)** and start talking with him!
 
 Todo
 ====
@@ -104,7 +109,7 @@ Todo
 - [ ] Add support for combined emoji on Linux
 - [ ] Add support for edited messages
 - [ ] Add support for images
-- [x] Include [BFKit-Swift](https://github.com/FabrizioBrancati/SwiftyBot) dependency instead of a single file like String+BFKit.swift
+- [x] Include [BFKit-Swift](https://github.com/FabrizioBrancati/SwiftyBot) dependency
 
 Author
 ======
