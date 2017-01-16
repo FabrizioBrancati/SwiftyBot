@@ -46,7 +46,7 @@ enum BotError: Swift.Error {
 /// Create the Droplet.
 let droplet: Droplet = Droplet()
 
-/// Read Telegram secret key from Config/secrets/app.json.
+/// Read Telegram & Messenger secrets key from Config/secrets/app.json.
 let telegramSecret = droplet.config["app", "telegram", "secret"]?.string ?? ""
 let messengerSecret = droplet.config["app", "messenger", "secret"]?.string ?? ""
 let messengerToken = droplet.config["app", "messenger", "token"]?.string ?? ""
@@ -131,7 +131,7 @@ struct Messenger {
     ///
     /// - Parameter message: Message text to be sent.
     /// - Returns: Returns the created Node ready to be sent.
-    static func standardMessage(_ message: String) -> Node {
+    static func message(_ message: String) -> Node {
         /// Create the Node.
         return [
             "text": message.makeNode()
@@ -326,15 +326,15 @@ droplet.post("messenger", messengerSecret) { request in
                 /// Gwt payload from postback.
                 let payload: String = postback["payload"]?.string ?? "No payload provided by developer."
                 /// Set the response message text.
-                response = Messenger.standardMessage(payload)
+                response = Messenger.message(payload)
             /// Check if the message object is empty.
             } else if message.isEmpty {
                 /// Set the response message text.
-                response = Messenger.standardMessage("Webhook received unknown event.")
+                response = Messenger.message("Webhook received unknown event.")
             /// Check if the message text is empty
             } else if text.isEmpty {
                 /// Set the response message text.
-                response = Messenger.standardMessage("I'm sorry but your message is empty 😢")
+                response = Messenger.message("I'm sorry but your message is empty 😢")
             /// The user wants to buy something.
             } else if text.lowercased().range(of: "sell") || text.lowercased().range(of: "buy") || text.lowercased().range(of: "shop") {
                 do {
@@ -370,7 +370,7 @@ droplet.post("messenger", messengerSecret) { request in
             /// The message object and its text are not empty, and the user does not want to buy anything, so create a reversed message text.
             } else {
                 /// Set the response message text.
-                response = Messenger.standardMessage(text.reversed(preserveFormat: true))
+                response = Messenger.message(text.reversed(preserveFormat: true))
             }
             
             /// Creating the response JSON data bytes.
