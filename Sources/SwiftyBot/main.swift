@@ -271,7 +271,7 @@ struct Messenger {
 
 /// Setting up the GET request with Messenger secret key.
 /// With a secret path to be sure that nobody else knows that URL.
-/// This is "Step 2" of Facebook Messenger Quick Start guide:
+/// This is the Step 2 of Facebook Messenger Quick Start guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#setup_webhook
 droplet.get("messenger", messengerSecret) { request in
     /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
@@ -285,7 +285,7 @@ droplet.get("messenger", messengerSecret) { request in
 
 /// Setting up the POST request with Messenger secret key.
 /// With a secret path to be sure that nobody else knows that URL.
-/// This is "Step 5" of Facebook Messenger Quick Start guide:
+/// This is the Step 5 of Facebook Messenger Quick Start guide:
 /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#receive_messages
 droplet.post("messenger", messengerSecret) { request in
     /// Check that the request comes from a "page".
@@ -318,12 +318,12 @@ droplet.post("messenger", messengerSecret) { request in
             let sender: [String: Polymorphic] = event.object?["sender"]?.object ?? [:]
             /// Sender ID, it is used to make a response to the right user.
             let senderID: String = sender["id"]?.string ?? ""
-            /// Text sended to bot.
+            /// Text sent to bot.
             let text: String = message["text"]?.string ?? ""
             
             /// Check if is a postback action.
             if !postback.isEmpty {
-                /// Gwt payload from postback.
+                /// Get payload from postback.
                 let payload: String = postback["payload"]?.string ?? "No payload provided by developer."
                 /// Set the response message text.
                 response = Messenger.message(payload)
