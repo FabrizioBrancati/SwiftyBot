@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner.png" alt="SwiftyBot Banner"></p>
+<p align="center"><img src="https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png" alt="SwiftyBot Banner"></p>
 
 [![Build Status](https://travis-ci.org/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
 [![Codebeat Badge](https://codebeat.co/badges/5c994b12-c55e-46ec-b870-1c42154289a3)](https://codebeat.co/projects/github-com-fabriziobrancati-swiftybot)
@@ -46,7 +46,7 @@ Language support
 
 Requirements
 ============
-- Ubuntu 14.04 or later with Swift 3.0.2 / macOS with Xcode 8.1 or 8.2
+- Ubuntu 14.04 or later with Swift 3.0.2 / macOS with Xcode 8.2
 - Telegram account and a Telegram App for any platform (Telegram bot only)
 - Facebook account and a Messenger App for any platform (Messenger bot only)
 
@@ -68,21 +68,23 @@ Installing and Usage
 - Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
 - Set a secret key in `secrets/app.json`
 - Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
-- Use Apache or nginx as a reverse proxy
+- Use Apache or nginx as reverse proxy
 - Create a Telegram bot with [BotFather](https://telegram.me/botfather)
 - Use Supervisor to ensure your bot is always running
 
-If you need more help through this steps for the Telegram bot you can check _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
+If you need more help through this steps, you can read _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
 
 ### Messenger
 - Install Swift on your computer / server
 - Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
 - Set a secret key in `secrets/app.json`
 - Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
-- Use Apache or nginx as a reverse proxy
+- Use Apache or nginx as reverse proxy
 - Create a Facebook App and Page
 - Get a Page access token and add it to `secrets/app.json`
 - Use Supervisor to ensure your bot is always running
+
+If you need more help through this steps, you can read _[How to create a Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ blog post.
 
 Documentation
 =============
