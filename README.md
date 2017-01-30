@@ -121,6 +121,12 @@ Author
 <br>
 [Email: fabrizio.brancati@gmail.com](mailto:fabrizio.brancati@gmail.com)
 
+Icon
+====
+**Roberto Chiaveri**
+
+[Website: http://robertochiaveri.it](http://robertochiaveri.it)
+
 License
 =======
 SwiftyBot is available under the MIT license. See the **[LICENSE](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/LICENSE)** file for more info.
