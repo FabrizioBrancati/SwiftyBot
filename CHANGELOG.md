@@ -23,6 +23,11 @@ All notable changes to this project will be documented in this file.<br>
 ### Added
 - Added Facebook Messenger support
 
+### Improved
+- Updated Vapor to 1.5.x
+- Updated BFKit-Swift to 2.2.x
+- Updated SwiftLint to 0.16.1
+
 
 ## [1.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.2.0) - General Update
 ### 23 Dec 2016
