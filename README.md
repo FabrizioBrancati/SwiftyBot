@@ -29,16 +29,16 @@
 
 What does it do
 ===============
-SwiftyBot is an example on how to create a Telegram & Messenger bot with Swift using Vapor.<br>
+SwiftyBot is an example on how to create a Telegram & Facebook Messenger bot with Swift using Vapor.<br>
 See [Compatibility](https://github.com/FabrizioBrancati/SwiftyBot#compatibility) section to check service and version it supports, you can also see its blog post with the link in that table.
 
 Compatibility
 =============
 
-| **Bot Type** | **Version** | **Blog Post Link**                     |
-|--------------|-------------|----------------------------------------|
-| Telegram     | 1.0...1.2   | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
-| Messenger    | 2.0         | _[...]()_ |
+| **Bot Type**       | **Version** | **Blog Post Link**                                                                                                    |
+|--------------------|-------------|-----------------------------------------------------------------------------------------------------------------------|
+| Telegram           | 1.0...1.2   | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
+| Facebook Messenger | 2.0         | _[.How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_                  |
 
 Language support
 ================
@@ -48,7 +48,7 @@ Requirements
 ============
 - Ubuntu 14.04 or later with Swift 3.0.2 / macOS with Xcode 8.2
 - Telegram account and a Telegram App for any platform (Telegram bot only)
-- Facebook account and a Messenger App for any platform (Messenger bot only)
+- Facebook account and a Facebook Messenger App for any platform (Facebook Messenger bot only)
 
 Communication
 =============
@@ -74,7 +74,7 @@ Installing and Usage
 
 If you need more help through this steps, you can read _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
 
-### Messenger
+### Facebook Messenger
 - Install Swift on your computer / server
 - Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
 - Set a secret key in `secrets/app.json`
@@ -84,14 +84,14 @@ If you need more help through this steps, you can read _[How to create a Telegra
 - Get a Page access token and add it to `secrets/app.json`
 - Use Supervisor to ensure your bot is always running
 
-If you need more help through this steps, you can read _[How to create a Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ blog post.
+If you need more help through this steps, you can read _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ blog post.
 
 Documentation
 =============
 Every line of [main.swift](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Sources/SwiftyBot/main.swift) file is commented.<br>
 If you need Vapor documentation you can find it [here](https://vapor.github.io/documentation/).<br>
 If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).<br>
-If you need Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
+If you need Facebook Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
 
 Changelog
 =========
@@ -102,8 +102,8 @@ Demo
 ### Telegram
 You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** and start talking with him!
 
-### Messenger
-You can open Facebook and search for **[SwiftyBot](http://m.me/MessengerSwiftyBot)** and start talking with him!
+### Facebook Messenger
+You can open Facebook and search for **[SwiftyBot](http://m.me/SwiftyBotMessenger)** and start talking with him!
 
 Todo
 ====
