@@ -9,11 +9,20 @@ What is that folder?
 ===================
 Inside this folder you need to create an *app.json* file.<br>
 In this JSON file you have to write your secret key to be set in the Telegram Webhook URL.<br>
-This is the file format:
+This is the file format for **Telegram**:
 
 ```json
 {
     "secret": "XXXXXXXXXXXXXX"
+}
+```
+
+And this is the one for **Messenger**:
+
+```json
+{
+    "secret": "XXXXXXXXXXXXXX",
+    "token": "XXXXXXXXXXXXXX"
 }
 ```
 
@@ -22,4 +31,4 @@ Why it is empty?
 For security reason I can't commit my *app.json* file.<br>
 So for now you have to create it by your self.<br>
 
-P.S.: If you want you can use an environment variable and use it with something like `$SECRET`. I prefer to use a JSON file instead.
+**P.S.:** If you want you can use an environment variable and use it with something like `$SECRET`. I prefer to use a JSON file instead.
