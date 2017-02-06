@@ -21,7 +21,7 @@ All notable changes to this project will be documented in this file.<br>
 ## [2.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.0.0) - Sell Me Something
 ### 07 Feb 2017
 ### Added
-- Added Messenger support
+- Added Facebook Messenger support
 
 
 ## [1.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.2.0) - General Update
