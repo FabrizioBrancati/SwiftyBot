@@ -344,7 +344,7 @@ droplet.post("messenger", messengerSecret) { request in
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit-Swift"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit-Swift payload.")])
                     /// Second Element: BFKit
-                    let BFKit = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png", buttons: [
+                    let BFKit = try Messenger.Element(title: "BFKit", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png", buttons: [
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit payload.")])
                     /// Third Element: SwiftyBot
