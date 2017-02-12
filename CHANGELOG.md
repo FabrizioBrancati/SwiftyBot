@@ -9,12 +9,12 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ### 2.X Releases
-- `2.0.x` Releases - [2.0.0](#100)
+- `2.0.x` Releases - [2.0.0](#200---sell-me-something)
 
 ### 1.X Releases
-- `1.2.x` Releases - [1.2.0](#120)
-- `1.1.x` Releases - [1.1.0](#110)
-- `1.0.x` Releases - [1.0.0](#100)
+- `1.2.x` Releases - [1.2.0](#120---general-update)
+- `1.1.x` Releases - [1.1.0](#110---bfkit-swift-is-awesome)
+- `1.0.x` Releases - [1.0.0](#100---send-me-a-telegram)
 
 ---
 
