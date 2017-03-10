@@ -60,6 +60,26 @@ guard telegramSecret != "" || (messengerSecret != "" && messengerToken != "") el
     throw BotError.missingAppSecrets
 }
 
+// MARK: - Helpers
+
+/// Detector helper struct.
+extension String {
+    /// Detect if the message has greetings.
+    ///
+    /// - Returns: Returns true if the message has greetings, otherwise false.
+    func hasGreetings() -> Bool {
+        let message = self.lowercased()
+        if message.contains("hi") ||
+           message.contains("hello") ||
+           message.contains("hey") ||
+           message.contains("hei") ||
+           message.contains("ciao") {
+            return true
+        }
+        return false
+    }
+}
+
 // MARK: - Telegram bot
 
 /// Setting up the POST request with Telegram secret key.
@@ -335,6 +355,9 @@ droplet.post("messenger", messengerSecret) { request in
             } else if text.isEmpty {
                 /// Set the response message text.
                 response = Messenger.message("I'm sorry but your message is empty 😢")
+            /// The user greeted the bot.
+            } else if text.hasGreetings() {
+                response = Messenger.message("Hi!\nThis is an example on how to create a bot with Swift.\nIf you want to see more try to send me \"buy\", \"sell\" or \"shop\".")
             /// The user wants to buy something.
             } else if text.lowercased().range(of: "sell") || text.lowercased().range(of: "buy") || text.lowercased().range(of: "shop") {
                 do {

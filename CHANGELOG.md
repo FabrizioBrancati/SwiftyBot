@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ### 2.X Releases
+- `2.1.x` Releases - [2.1.0](#210---big-greetings)
 - `2.0.x` Releases - [2.0.0](#200---sell-me-something)
 
 ### 1.X Releases
@@ -17,6 +18,12 @@ All notable changes to this project will be documented in this file.<br>
 - `1.0.x` Releases - [1.0.0](#100---send-me-a-telegram)
 
 ---
+
+## [2.1.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.1.0) - Big Greetings
+### 10 Mar 2017
+### Added
+- Added greetings for Facebook Messenger
+
 
 ## [2.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.0.0) - Sell Me Something
 ### 07 Feb 2017
