@@ -103,13 +103,14 @@ Demo
 You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** and start talking with him!
 
 ### Facebook Messenger
-You can open Facebook and search for **[SwiftyBot](http://m.me/SwiftyBotMessenger)** and start talking with him!
+You can open Facebook and search for **[SwiftyBotMessenger](http://m.me/SwiftyBotMessenger)** and start talking with him!
 
 Todo
 ====
+- [ ] Add tests
 - [ ] Add more functions and commands
-- [ ] Add support for combined emoji on Linux
 - [ ] Add support for edited messages
+- [ ] Add support for deleted messages
 - [ ] Add support for images
 - [x] Include [BFKit-Swift](https://github.com/FabrizioBrancati/SwiftyBot) dependency
 
