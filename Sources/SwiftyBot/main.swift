@@ -62,7 +62,7 @@ guard telegramSecret != "" || (messengerSecret != "" && messengerToken != "") el
 
 // MARK: - Helpers
 
-/// Detector helper struct.
+/// Detector String extension.
 extension String {
     /// Detect if the message has greetings.
     ///
@@ -371,7 +371,7 @@ droplet.post("messenger", messengerSecret) { request in
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit payload.")])
                     /// Third Element: SwiftyBot
-                    let SwiftyBot = try Messenger.Element(title: "SwiftyBot", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/SwiftyBot", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner.png", buttons: [
+                    let SwiftyBot = try Messenger.Element(title: "SwiftyBot", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/SwiftyBot", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png", buttons: [
                         Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/SwiftyBot"),
                         Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "SwiftyBot payload.")])
                     
