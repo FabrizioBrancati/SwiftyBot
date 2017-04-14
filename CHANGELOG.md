@@ -19,11 +19,19 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
+## Master
+### Improved
+- Updated with Swift 3.1 compatibility
+- Updated SwiftLint to 0.18.1
+
+---
+
 ## [2.1.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.1.0) - Big Greetings
 ### 10 Mar 2017
 ### Added
 - Added greetings for Facebook Messenger
 
+---
 
 ## [2.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.0.0) - Sell Me Something
 ### 07 Feb 2017
@@ -35,6 +43,7 @@ All notable changes to this project will be documented in this file.<br>
 - Updated BFKit-Swift to 2.2.x
 - Updated SwiftLint to 0.16.1
 
+---
 
 ## [1.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.2.0) - General Update
 ### 23 Dec 2016
@@ -46,6 +55,7 @@ All notable changes to this project will be documented in this file.<br>
 - Updated BFKit-Swift to 2.1.x
 - Updated SwiftLint to 0.14.0
 
+---
 
 ## [1.1.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.1.0) - BFKit Swift Is Awesome
 ### 10 Dec 2016
@@ -53,6 +63,7 @@ All notable changes to this project will be documented in this file.<br>
 - Added [BFKit Swift](https://github.com/FabrizioBrancati/BFKit-Swift) dependency
 - Added Xcode 8.1 and Swift 3.0.1 support
 
+---
 
 ## [1.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.0.0) - Send Me A Telegram
 ### 17 Oct 2016
