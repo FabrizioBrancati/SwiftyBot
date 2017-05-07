@@ -15,12 +15,13 @@ install:
     fi
 
 script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-        swiftenv version;
-    fi
+  - swift -version
+
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       swiftlint;
     fi
+
   - swift build
   - rm -rf .build && rm -rf Packages
+
   - swift build -c release
