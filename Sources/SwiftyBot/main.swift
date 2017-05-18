@@ -154,7 +154,7 @@ struct Messenger {
     static func message(_ message: String) -> Node {
         /// Create the Node.
         return [
-            "text": message.makeNode()
+            "text": message.makeNode(in: nil)
         ]
     }
     
@@ -169,7 +169,7 @@ struct Messenger {
             ["type": "template",
              "payload":
                 ["template_type": "generic",
-                 "elements": elements.makeNode()
+                 "elements": elements.makeNode(in: nil)
                 ]
             ]
         ]
@@ -196,11 +196,11 @@ struct Messenger {
         public func makeNode(in context: Context?) throws -> Node {
             /// Create the Node.
             return try Node(node: [
-                "title": title,
-                "subtitle": subtitle,
-                "item_url": itemURL,
-                "image_url": imageURL,
-                "buttons": buttons.makeNode()
+                "title": title.makeNode(in: nil),
+                "subtitle": subtitle.makeNode(in: nil),
+                "item_url": itemURL.makeNode(in: nil),
+                "image_url": imageURL.makeNode(in: nil),
+                "buttons": buttons.makeNode(in: nil)
                 ]
             )
         }
@@ -268,18 +268,18 @@ struct Messenger {
             public func makeNode(in context: Context?) throws -> Node {
                 /// Create the Node with type and title.
                 var node: Node = [
-                    "type": type.rawValue.makeNode(),
-                    "title": title.makeNode()
+                    "type": type.rawValue.makeNode(in: nil),
+                    "title": title.makeNode(in: nil)
                 ]
                 
                 /// Extends the Node with url or payload, depends on Button type.
                 switch type {
                 /// Extends with url property.
                 case .webURL:
-                    node["url"] = url?.makeNode() ?? ""
+                    node["url"] = url?.makeNode(in: nil) ?? ""
                 /// Extends with payload property.
                 case .postback:
-                    node["payload"] = payload?.makeNode() ?? ""
+                    node["payload"] = payload?.makeNode(in: nil) ?? ""
                 }
                 
                 /// Create the Node.
@@ -378,11 +378,11 @@ droplet.post("messenger", messengerSecret) { request in
                     /// Create the elements array.
                     var elements: [Messenger.Element] = []
                     /// Add BFKit-Swift to elements array.
-                    elements += BFKitSwift
+                    elements.append(BFKitSwift)
                     /// Add BFKit to elements array.
-                    elements += BFKit
+                    elements.append(BFKit)
                     /// Add SwiftyBot to elements array.
-                    elements += SwiftyBot
+                    elements.append(SwiftyBot)
                 
                     /// Create a structured message to sell something to the user.
                     response = try Messenger.structuredMessage(elements: elements)
@@ -399,10 +399,14 @@ droplet.post("messenger", messengerSecret) { request in
             /// Creating the response JSON data bytes.
             /// At Step 6 of Facebook Messenger Quick Start guide, using Node.js demo, they told you to send back the "recipient.id", but the correct one is "sender.id".
             /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#send_text_message
-            responseData = try JSON(["recipient": ["id": senderID.makeNode()], "message": response]).makeBytes()
+            //responseData = try JSON(["recipient": ["id": senderID.makeNode()], "message": response]).makeBytes()
+            
+            var responseData = JSON()
+            try responseData.set("recipient", ["id": senderID])
+            try responseData.set("message", response)
             
             /// Calling the Facebook API to send the response.
-            let facebookAPICall = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", query: ["access_token": messengerToken], ["Content-Type": "application/json"], Body.data(responseData))
+            let facebookAPICall = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", query: ["access_token": messengerToken], ["Content-Type": "application/json"], Body.data(responseData.makeBytes()))
         }
     }
     
