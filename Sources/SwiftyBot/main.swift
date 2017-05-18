@@ -399,14 +399,12 @@ droplet.post("messenger", messengerSecret) { request in
             /// Creating the response JSON data bytes.
             /// At Step 6 of Facebook Messenger Quick Start guide, using Node.js demo, they told you to send back the "recipient.id", but the correct one is "sender.id".
             /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#send_text_message
-            //responseData = try JSON(["recipient": ["id": senderID.makeNode()], "message": response]).makeBytes()
-            
-            var responseData = JSON()
+            var responseData: JSON = JSON()
             try responseData.set("recipient", ["id": senderID])
             try responseData.set("message", response)
             
             /// Calling the Facebook API to send the response.
-            let facebookAPICall = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", query: ["access_token": messengerToken], ["Content-Type": "application/json"], Body.data(responseData.makeBytes()))
+            let facebookAPICall: Response = try droplet.client.post("https://graph.facebook.com/v2.8/me/messages", query: ["access_token": messengerToken], ["Content-Type": "application/json"], Body.data(responseData.makeBytes()))
         }
     }
     
