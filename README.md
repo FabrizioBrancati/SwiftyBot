@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
 [![Codebeat Badge](https://codebeat.co/badges/5c994b12-c55e-46ec-b870-1c42154289a3)](https://codebeat.co/projects/github-com-fabriziobrancati-swiftybot)
-[![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)](https://developer.apple.com/swift/)
+[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](https://developer.apple.com/swift/)
 [![Language](https://img.shields.io/badge/language-Swift%203.0%20/%203.1-orange.svg)](https://developer.apple.com/swift/)
 [![Platform](https://img.shields.io/badge/platform-Linux%20/%20macOS-ffc713.svg)](https://developer.apple.com/swift/)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/LICENSE)
@@ -38,7 +38,7 @@ Compatibility
 | **Bot Type**       | **Version** | **Blog Post Link**                                                                                                    |
 |--------------------|-------------|-----------------------------------------------------------------------------------------------------------------------|
 | Telegram           | 1.0...1.2   | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
-| Facebook Messenger | 2.0...2.1   | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_                   |
+| Facebook Messenger | 2.0...2.2   | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_                   |
 
 Language support
 ================
