@@ -25,8 +25,9 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ## [2.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.2.0) - Vaporizer
-### 20 Mar 2017
+### 21 Mar 2017
 ### Improved
+- Updated Facebook Graph API to 2.9
 - Updated Vapor to 2.0.x
 - Updated BFKit-Swift to 2.3.x
 - Updated with Swift 3.1 compatibility
