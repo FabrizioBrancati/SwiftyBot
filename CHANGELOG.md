@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ### 2.X Releases
+- `2.2.x` Releases - [2.2.0](#220---vaporizer)
 - `2.1.x` Releases - [2.1.0](#210---big-greetings)
 - `2.0.x` Releases - [2.0.0](#200---sell-me-something)
 
@@ -20,7 +21,15 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ## Master
+
+---
+
+## [2.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.2.0) - Vaporizer
+### 21 Mar 2017
 ### Improved
+- Updated Facebook Graph API to 2.9
+- Updated Vapor to 2.0.x
+- Updated BFKit-Swift to 2.3.x
 - Updated with Swift 3.1 compatibility
 - Updated SwiftLint to 0.18.1
 
