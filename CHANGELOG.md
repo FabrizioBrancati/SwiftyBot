@@ -8,20 +8,19 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
-### 2.X Releases
+### 2.X Releases
 - `2.2.x` Releases - [2.2.0](#220---vaporizer)
 - `2.1.x` Releases - [2.1.0](#210---big-greetings)
 - `2.0.x` Releases - [2.0.0](#200---sell-me-something)
 
-### 1.X Releases
+### 1.X Releases
 - `1.2.x` Releases - [1.2.0](#120---general-update)
 - `1.1.x` Releases - [1.1.0](#110---bfkit-swift-is-awesome)
 - `1.0.x` Releases - [1.0.0](#100---send-me-a-telegram)
 
 ---
 
-## Master
-
+## Master
 ---
 
 ## [2.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.2.0) - Vaporizer
@@ -37,14 +36,14 @@ All notable changes to this project will be documented in this file.<br>
 
 ## [2.1.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.1.0) - Big Greetings
 ### 10 Mar 2017
-### Added
+### Added
 - Added greetings for Facebook Messenger
 
 ---
 
 ## [2.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.0.0) - Sell Me Something
 ### 07 Feb 2017
-### Added
+### Added
 - Added Facebook Messenger support
 
 ### Improved
@@ -56,7 +55,7 @@ All notable changes to this project will be documented in this file.<br>
 
 ## [1.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.2.0) - General Update
 ### 23 Dec 2016
-### Added
+### Added
 - Added Xcode 8.2 and Swift 3.0.2 support
 
 ### Improved
@@ -68,7 +67,7 @@ All notable changes to this project will be documented in this file.<br>
 
 ## [1.1.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.1.0) - BFKit Swift Is Awesome
 ### 10 Dec 2016
-### Added
+### Added
 - Added [BFKit Swift](https://github.com/FabrizioBrancati/BFKit-Swift) dependency
 - Added Xcode 8.1 and Swift 3.0.1 support
 
@@ -76,6 +75,6 @@ All notable changes to this project will be documented in this file.<br>
 
 ## [1.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/1.0.0) - Send Me A Telegram
 ### 17 Oct 2016
-### Added
+### Added
 - Added Telegram support
 - Added reversed message
