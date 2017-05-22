@@ -7,6 +7,10 @@ dist: trusty
 osx_image: xcode8.3
 
 before_install:
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      eval "$(curl -sL https://apt.vapor.sh)";
+      sudo apt-get install ctls;
+    fi
   - if [ $TRAVIS_OS_NAME == "osx" ]; then
       brew update;
       brew tap vapor/homebrew-tap;
