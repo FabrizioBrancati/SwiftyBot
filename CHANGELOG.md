@@ -21,6 +21,9 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ## Master
+### Improved
+- Updated BFKit-Swift to 2.4.x
+
 ---
 
 ## [2.2.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.2.0) - Vaporizer
