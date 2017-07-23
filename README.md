@@ -29,6 +29,7 @@
 
 What does it do
 ===============
+
 SwiftyBot is an example on how to create a Telegram & Facebook Messenger bot with Swift using Vapor.<br>
 See [Compatibility](https://github.com/FabrizioBrancati/SwiftyBot#compatibility) section to check service and version it supports, you can also see its blog post with the link in that table.
 
@@ -42,16 +43,19 @@ Compatibility
 
 Language support
 ================
+
 - English (en)
 
 Requirements
 ============
+
 - Ubuntu 14.04 or later with Swift 3.0.2 or later / macOS with Xcode 8.2 or later
 - Telegram account and a Telegram App for any platform (Telegram bot only)
 - Facebook account and a Facebook Messenger App for any platform (Facebook Messenger bot only)
 
 Communication
 =============
+
 - If you need help, use Stack Overflow.
 - If you found a bug, open an issue.
 - If you have a feature request, open an issue.
@@ -59,10 +63,12 @@ Communication
 
 Contributing
 ============
+
 See [CONTRIBUTING.md](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/.github/CONTRIBUTING.md) file.
 
 Installing and Usage
 ====================
+
 ### Telegram
 - Install Swift on your computer / server
 - Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
@@ -88,6 +94,7 @@ If you need more help through this steps, you can read _[How to create a Faceboo
 
 Documentation
 =============
+
 Every line of [main.swift](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Sources/SwiftyBot/main.swift) file is commented.<br>
 If you need Vapor documentation you can find it [here](https://vapor.github.io/documentation/).<br>
 If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).<br>
@@ -95,10 +102,12 @@ If you need Facebook Messenger bot documentation you can find it [here](https://
 
 Changelog
 =========
+
 To see what has changed in recent version of SwiftyBot, see the **[CHANGELOG.md](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/CHANGELOG.md)** file.
 
 Demo
 ====
+
 ### Telegram
 You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** and start talking with him!
 
@@ -107,6 +116,7 @@ You can open Facebook and search for **[SwiftyBotMessenger](http://m.me/SwiftyBo
 
 Todo
 ====
+
 - [ ] Add tests
 - [ ] Add more functions and commands
 - [ ] Add support for edited messages
@@ -116,6 +126,7 @@ Todo
 
 Author
 ======
+
 **Fabrizio Brancati**
 
 [Website: https://www.fabriziobrancati.com](https://www.fabriziobrancati.com)
@@ -130,4 +141,5 @@ Icon
 
 License
 =======
+
 SwiftyBot is available under the MIT license. See the **[LICENSE](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/LICENSE)** file for more info.
