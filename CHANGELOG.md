@@ -23,7 +23,7 @@ All notable changes to this project will be documented in this file.<br>
 ## Master
 ### Improved
 - Updated BFKit-Swift to 2.4.x
-- Updated SwiftLint to 0.20.0
+- Updated SwiftLint to 0.21.0
 
 ---
 
