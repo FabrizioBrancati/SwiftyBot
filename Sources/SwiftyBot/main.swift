@@ -94,7 +94,7 @@ droplet.post("telegram", telegramSecret) { request in
     /// Message text from request JSON.
     let message: String = request.data["message", "text"]?.string ?? ""
     /// User first name from request JSON.
-    var userFirstName: String = request.data["message", "from", "first_name"]?.string ?? ""
+    let userFirstName: String = request.data["message", "from", "first_name"]?.string ?? ""
     
     /// Check if the message is empty.
     if message.isEmpty {
@@ -316,15 +316,11 @@ droplet.post("messenger", messengerSecret) { request in
     
     /// Prepare the response message text.
     var response: Node = ["text": "Unknown error."]
-    /// Prepare the response bytes.
-    var responseData: Bytes = []
     /// Entries from request JSON.
     let entries: [JSON] = request.json?["entry"]?.array ?? []
     
     /// Iterate over all entries.
     for entry in entries {
-        /// Page ID of the entry.
-        let pageID: String = entry.object?["id"]?.string ?? "0"
         /// Messages from entry.
         let messaging: [JSON] = entry.object?["messaging"]?.array ?? []
         
@@ -404,7 +400,7 @@ droplet.post("messenger", messengerSecret) { request in
             try responseData.set("message", response)
             
             /// Calling the Facebook API to send the response.
-            let facebookAPICall: Response = try droplet.client.post("https://graph.facebook.com/v2.9/me/messages", query: ["access_token": messengerToken], ["Content-Type": "application/json"], Body.data(responseData.makeBytes()))
+            let _: Response = try droplet.client.post("https://graph.facebook.com/v2.9/me/messages", query: ["access_token": messengerToken], ["Content-Type": "application/json"], Body.data(responseData.makeBytes()))
         }
     }
     
