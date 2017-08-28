@@ -24,6 +24,9 @@ All notable changes to this project will be documented in this file.<br>
 ### Added
 - Added support for Swift 4
 
+### Improved
+- Updated Facebook Graph API to 2.10
+
 ---
 
 ## Master
