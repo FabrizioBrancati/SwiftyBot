@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.<br>
 
 ### Improved
 - Updated Facebook Graph API to 2.10
+- Updated SwiftLint to 0.22.0
 
 ---
 
