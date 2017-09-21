@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
 [![Codebeat Badge](https://codebeat.co/badges/5c994b12-c55e-46ec-b870-1c42154289a3)](https://codebeat.co/projects/github-com-fabriziobrancati-swiftybot)
-[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](https://developer.apple.com/swift/)
-[![Language](https://img.shields.io/badge/language-Swift%203.0%20/%203.1-orange.svg)](https://developer.apple.com/swift/)
+[![Version](https://img.shields.io/badge/version-2.3.0-blue.svg)](https://developer.apple.com/swift/)
+[![Language](https://img.shields.io/badge/language-Swift%204.0-orange.svg)](https://developer.apple.com/swift/)
 [![Platform](https://img.shields.io/badge/platform-Linux%20/%20macOS-ffc713.svg)](https://developer.apple.com/swift/)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/LICENSE)
 
@@ -49,7 +49,7 @@ Language support
 Requirements
 ============
 
-- Ubuntu 14.04 or later with Swift 3.0.2 or later / macOS with Xcode 8.2 or later
+- Ubuntu 14.04 or later with Swift 4.0 or later / macOS with Xcode 9.0 or later
 - Telegram account and a Telegram App for any platform (Telegram bot only)
 - Facebook account and a Facebook Messenger App for any platform (Facebook Messenger bot only)
 

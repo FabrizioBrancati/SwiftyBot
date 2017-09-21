@@ -20,6 +20,16 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
+## Swift 4
+### Added
+- Added support for Swift 4
+
+### Improved
+- Updated Facebook Graph API to 2.10
+- Updated SwiftLint to 0.22.0
+
+---
+
 ## Master
 ### Improved
 - Updated BFKit-Swift to 2.4.x

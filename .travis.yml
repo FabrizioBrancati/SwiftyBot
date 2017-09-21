@@ -1,10 +1,20 @@
-os:
-  - linux
-  - osx
-language: generic
-sudo: required
-dist: trusty
-osx_image: xcode8.3
+matrix:
+  include:
+    - os: linux
+      language: generic
+      sudo: required
+      dist: trusty
+    - os: linux
+      language: generic
+      sudo: required
+      dist: xenial
+    - os: linux
+      language: generic
+      sudo: required
+      dist: yakkety
+    - os: osx
+      language: objective-c
+      osx_image: xcode9
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
