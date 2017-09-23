@@ -39,7 +39,7 @@ Compatibility
 | **Bot Type**       | **Version** | **Blog Post Link**                                                                                                    |
 |--------------------|-------------|-----------------------------------------------------------------------------------------------------------------------|
 | Telegram           | 1.0...1.2   | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
-| Facebook Messenger | 2.0...2.2   | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_                   |
+| Facebook Messenger | 2.0...2.3   | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_                   |
 
 Language support
 ================
@@ -56,7 +56,7 @@ Requirements
 Communication
 =============
 
-- If you need help, use Stack Overflow.
+- If you need help, open an issue.
 - If you found a bug, open an issue.
 - If you have a feature request, open an issue.
 - If you want to contribute, see [Contributing](https://github.com/FabrizioBrancati/SwiftyBot#contributing) section.

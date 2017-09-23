@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ### 2.X Releases
+- `2.3.x` Releases - [2.3.0](#220---swift-4-support)
 - `2.2.x` Releases - [2.2.0](#220---vaporizer)
 - `2.1.x` Releases - [2.1.0](#210---big-greetings)
 - `2.0.x` Releases - [2.0.0](#200---sell-me-something)
@@ -20,20 +21,15 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
-## Swift 4
-### Added
+## [2.3.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.3.0) - Swift 4 Support
+### 23 Sep 2017
+### Added
 - Added support for Swift 4
 
 ### Improved
 - Updated Facebook Graph API to 2.10
+- Updated BFKit-Swift to 3.0.x
 - Updated SwiftLint to 0.22.0
-
----
-
-## Master
-### Improved
-- Updated BFKit-Swift to 2.4.x
-- Updated SwiftLint to 0.21.0
 
 ---
 
