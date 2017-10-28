@@ -21,6 +21,12 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
+## Master
+### Improved
+- Updated SwiftLint to 0.23.1
+
+---
+
 ## [2.3.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.3.0) - Swift 4 Support
 ### 23 Sep 2017
 ### Added
