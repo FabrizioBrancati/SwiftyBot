@@ -4,14 +4,6 @@ matrix:
       language: generic
       sudo: required
       dist: trusty
-    - os: linux
-      language: generic
-      sudo: required
-      dist: xenial
-    - os: linux
-      language: generic
-      sudo: required
-      dist: yakkety
     - os: osx
       language: objective-c
       osx_image: xcode9.2
