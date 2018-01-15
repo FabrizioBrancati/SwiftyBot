@@ -12,8 +12,12 @@ In this JSON file you have to write your secret key to be set in the Telegram We
 This is the file format for **Telegram**:
 
 ```json
+
 {
+  "telegram" :
+  {
     "secret": "XXXXXXXXXXXXXX"
+  }
 }
 ```
 
@@ -21,8 +25,27 @@ And this is the one for **Messenger**:
 
 ```json
 {
+  "messenger" :
+  {
     "secret": "XXXXXXXXXXXXXX",
     "token": "XXXXXXXXXXXXXX"
+  }
+}
+```
+
+Or combine them together:
+```json
+{
+  "telegram" :
+  {
+    "secret": "XXXXXXXXXXXXXX"
+  },
+
+  "messenger" : 
+  {
+    "secret": "XXXXXXXXXXXXXX",
+    "token": "XXXXXXXXXXXXXX"
+  }
 }
 ```
 
