@@ -21,9 +21,13 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
-## Master
+## Develop
+
+### Added
+- Added Hound CI
+
 ### Improved
-- Updated SwiftLint to 0.23.1
+- Updated SwiftLint to 0.25.0
 
 ---
 
