@@ -8,13 +8,13 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
-### 2.X Releases
-- `2.3.x` Releases - [2.3.0](#220---swift-4-support)
+### 2.x Releases
+- `2.3.x` Releases - [2.3.0](#230---swift-4-support) | [2.3.1](#231---minor-improvements)
 - `2.2.x` Releases - [2.2.0](#220---vaporizer)
 - `2.1.x` Releases - [2.1.0](#210---big-greetings)
 - `2.0.x` Releases - [2.0.0](#200---sell-me-something)
 
-### 1.X Releases
+### 1.x Releases
 - `1.2.x` Releases - [1.2.0](#120---general-update)
 - `1.1.x` Releases - [1.1.0](#110---bfkit-swift-is-awesome)
 - `1.0.x` Releases - [1.0.0](#100---send-me-a-telegram)
@@ -23,11 +23,18 @@ All notable changes to this project will be documented in this file.<br>
 
 ## Develop
 
+---
+
+## [2.3.1](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.3.1) - Minor Improvements
+### 18 Feb 2017
 ### Added
 - Added Hound CI
 
 ### Improved
 - Updated SwiftLint to 0.25.0
+- Improved `Config/secrets/` folder explanation [#5](https://github.com/FabrizioBrancati/SwiftyBot/issue/5)
+
+Thanks to [@n0an](https://github.com/n0an) for this release
 
 ---
 
