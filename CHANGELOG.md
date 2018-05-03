@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ### 2.x Releases
-- `2.3.x` Releases - [2.3.0](#230---swift-4-support) | [2.3.1](#231---minor-improvements)
+- `2.3.x` Releases - [2.3.0](#230---swift-4-support) | [2.3.1](#231---minor-improvements) | [2.3.2](#232---graph-api-30)
 - `2.2.x` Releases - [2.2.0](#220---vaporizer)
 - `2.1.x` Releases - [2.1.0](#210---big-greetings)
 - `2.0.x` Releases - [2.0.0](#200---sell-me-something)
@@ -21,7 +21,13 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
-## Develop
+## [2.3.2](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.3.2) - Graph API 3.0
+### 4 May 2018
+### Improved
+- Updated SwiftLint to 0.25.1
+- Updated Facebook Graph API to 3.0
+- Updated with Swift 4.1 compatibility
+- Updated BFKit-Swift to 3.1.x
 
 ---
 
