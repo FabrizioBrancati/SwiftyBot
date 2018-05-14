@@ -1,22 +1,29 @@
 import Vapor
+import Messenger
 
 /// Register your application's routes here.
 public func routes(_ router: Router) throws {
     // MARK: - Telegram Bot
     
+    /// Setting up the GET request with Messenger secret key.
+    /// With a secret path to be sure that nobody else knows that URL.
+    /// This is the Step 2 of Facebook Messenger Quick Start guide:
+    /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#setup_webhook
+    router.get("telegram", telegramSecret) { request -> HTTPResponse in
+        /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
+        let activation = try request.query.decode(Activation.self)
+        guard activation.mode == "subscribe", activation.token == messengerSecret else {
+            throw Abort(.badRequest, reason: "Missing Messenger verification data.")
+        }
+        
+        /// Create a response with the challenge query parameter to verify the webhook.
+        let body = try HTTPBody(data: JSONEncoder().encode(activation.challenge))
+        return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
+    }
+    
     /// Setting up the POST request with Telegram secret key.
     /// With a secret path to be sure that nobody else knows that URL.
     /// https://core.telegram.org/bots/api#setwebhook
-//    router.get("telegram", telegramSecret) { request -> HTTPResponse in
-//        /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
-//        guard try request.parameters.next(String.self) == "subscribe" && request.data["hub.verify_token"]?.string == messengerSecret, let challenge = request.data["hub.challenge"]?.string else {
-//            throw Abort(.badRequest, reason: "Missing Messenger verification data.")
-//        }
-//
-//        /// Create a response with the challenge query parameter to verify the webhook.
-//        let body = try HTTPBody(data: JSONEncoder().encode(challenge))
-//        return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
-//    }
 //    router.post(telegramSecret, at: "telegram") { request, data in
 //        /// Let's prepare the response message text.
 //        var response: String = ""
@@ -77,10 +84,10 @@ public func routes(_ router: Router) throws {
 //
 //    // MARK: - Messenger Bot
 //
-//    /// Setting up the GET request with Messenger secret key.
-//    /// With a secret path to be sure that nobody else knows that URL.
-//    /// This is the Step 2 of Facebook Messenger Quick Start guide:
-//    /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#setup_webhook
+    /// Setting up the GET request with Messenger secret key.
+    /// With a secret path to be sure that nobody else knows that URL.
+    /// This is the Step 2 of Facebook Messenger Quick Start guide:
+    /// https://developers.facebook.com/docs/messenger-platform/guides/quick-start#setup_webhook
 //    router.get("messenger", messengerSecret) { request, data in
 //        /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
 //        guard request.data["hub.mode"]?.string == "subscribe" && request.data["hub.verify_token"]?.string == messengerSecret, let challenge = request.data["hub.challenge"]?.string else {

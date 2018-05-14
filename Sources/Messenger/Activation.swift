@@ -1,6 +1,5 @@
-// swift-tools-version:4.0
 //
-//  Package.swift
+//  Activation.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,19 +24,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import PackageDescription
+import Foundation
+import Vapor
 
-let package = Package(
-    name: "SwiftyBot",
-    products: [
-        .executable(name: "SwiftyBot", targets: ["SwiftyBot"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.0.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.1.0"))
-    ],
-    targets: [
-        .target(name: "SwiftyBot", dependencies: ["Vapor", "BFKit", "Messenger"]),
-        .target(name: "Messenger", dependencies: ["Vapor", "BFKit"])
-    ]
-)
+public struct Activation: Codable {
+    private(set) public var mode: String
+    private(set) public var token: String
+    private(set) public var challenge: String
+
+    /// Coding keys, used by Codable protocol.
+    private enum CodingKeys: String, CodingKey {
+        case mode = "hub.mode"
+        case token = "hub.verify_token"
+        case challenge = "hub.challenge"
+    }
+}
