@@ -1,5 +1,5 @@
 //
-//  Activation.swift
+//  Response.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,15 +26,10 @@
 
 import Foundation
 
-public struct Activation: Codable {
-    private(set) public var mode: String
-    private(set) public var token: String
-    private(set) public var challenge: String
-
-    /// Coding keys, used by Codable protocol.
-    private enum CodingKeys: String, CodingKey {
-        case mode = "hub.mode"
-        case token = "hub.verify_token"
-        case challenge = "hub.challenge"
+public struct Response: Codable {
+    private(set) public var text: String
+    
+    public init(text: String) {
+        self.text = text
     }
 }
