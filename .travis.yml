@@ -16,7 +16,7 @@ before_install:
   - if [ $TRAVIS_OS_NAME == "osx" ]; then
       brew update;
       brew tap vapor/homebrew-tap;
-      brew install vapor/tap/vapor
+      brew install vapor/tap/vapor;
     fi
 
 install:
