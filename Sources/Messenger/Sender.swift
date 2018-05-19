@@ -1,5 +1,5 @@
 //
-//  PageMessage.swift
+//  Sender.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,8 +26,6 @@
 
 import Foundation
 
-public struct PageMessage: Codable {
-    private(set) public var message: Message?
-    private(set) public var postback: Postback?
-    private(set) public var sender: Sender
+public struct Sender: Codable {
+    private(set) public var id: String
 }

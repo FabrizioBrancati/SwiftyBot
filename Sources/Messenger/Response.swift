@@ -27,7 +27,7 @@
 import Foundation
 
 public struct Response: Codable {
-    private(set) public var text: String
+    public var text: String
     
     public init(text: String) {
         self.text = text
