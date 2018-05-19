@@ -1,3 +1,29 @@
+//
+//  routes.swift
+//  SwiftyBot
+//
+//  The MIT License (MIT)
+//
+//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+
 import Vapor
 import Messenger
 
@@ -44,6 +70,10 @@ public func routes(_ router: Router) throws {
                         response.text = "I'm sorry but your message is empty 😢"
                     } else if message.text.hasGreetings() {
                         response.text = "Hi!\nThis is an example on how to create a bot with Swift.\nIf you want to see more try to send me \"buy\", \"sell\" or \"shop\"."
+                    } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
+                        var queuer = StructuredMessage(title: "Queuer", subtitle: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).", itemURL: "https://github.com/FabrizioBrancati/Queuer", imageURL: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png")
+                        queuer.add(button: MessageButton(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/Queuer"))
+                        queuer.add(button: MessageButton(type: .postback, title: "Call Postback", payload: "BFKit-Swift payload."))
                     }
                 } else if event.message == nil {
                     response.text = "Webhook received unknown event."
@@ -58,7 +88,7 @@ public func routes(_ router: Router) throws {
 //                    do {
 //                        /// Create all the elements in elements object of the Messenger structured message.
 //                        /// First Element: BFKit-Swift
-//                        let BFKitSwift = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift.png", buttons: [
+//                        let BFKitSwift = try Messenger.Element(title: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png", buttons: [
 //                            Messenger.Element.Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit-Swift"),
 //                            Messenger.Element.Button(type: .postback, title: "Call Postback", payload: "BFKit-Swift payload.")])
 //                        /// Second Element: BFKit

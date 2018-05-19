@@ -1,6 +1,5 @@
-// swift-tools-version:4.0
 //
-//  Package.swift
+//  StructuredMessage.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,20 +24,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import PackageDescription
+import Foundation
 
-let package = Package(
-    name: "SwiftyBot",
-    products: [
-        .executable(name: "SwiftyBot", targets: ["SwiftyBot"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.0.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.1.0"))
-    ],
-    targets: [
-        .target(name: "SwiftyBot", dependencies: ["Vapor", "BFKit", "Messenger", "Bot"]),
-        .target(name: "Messenger", dependencies: ["Vapor", "BFKit"]),
-        .target(name: "Bot")
-    ]
-)
+public struct StructuredMessage: Codable {
+    // Element title.
+    private(set) public var title: String
+    /// Element subtitle.
+    private(set) public var subtitle: String
+    /// Element item URL.
+    private(set) public var itemURL: String
+    /// Element image URL.
+    private(set) public var imageURL: String
+    /// Element Button array.
+    private(set) public var buttons: [MessageButton] = []
+    
+    public init(title: String, subtitle: String, itemURL: String, imageURL: String, buttons: [MessageButton] = []) {
+        self.title = title
+        self.subtitle = subtitle
+        self.itemURL = itemURL
+        self.imageURL = imageURL
+        self.buttons = buttons
+    }
+    
+    public mutating func add(button: MessageButton) {
+        buttons.append(button)
+    }
+}

@@ -1,6 +1,5 @@
-// swift-tools-version:4.0
 //
-//  Package.swift
+//  BotError.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,20 +24,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import PackageDescription
+import Foundation
 
-let package = Package(
-    name: "SwiftyBot",
-    products: [
-        .executable(name: "SwiftyBot", targets: ["SwiftyBot"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.0.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.1.0"))
-    ],
-    targets: [
-        .target(name: "SwiftyBot", dependencies: ["Vapor", "BFKit", "Messenger", "Bot"]),
-        .target(name: "Messenger", dependencies: ["Vapor", "BFKit"]),
-        .target(name: "Bot")
-    ]
-)
+/// Bot errors enum.
+public enum BotError: Error {
+    /// Missing Telegram or Messenger secret key in Config/secrets/app.json.
+    case missingAppSecrets
+}
