@@ -26,10 +26,5 @@
 
 import Vapor
 
-// MARK: - Configuration
-
-/// Read Telegram & Messenger secrets key from environment.
-let telegramSecret = Environment.get("TELEGRAM_SECRET") ?? ""
-
 /// Run the Bot.
 try app(.detect()).run()

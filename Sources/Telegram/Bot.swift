@@ -1,6 +1,5 @@
-// swift-tools-version:4.0
 //
-//  Package.swift
+//  Bot.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,27 +24,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import PackageDescription
+import Foundation
+import Vapor
 
-let package = Package(
-    name: "SwiftyBot",
-    products: [
-        .executable(name: "SwiftyBot", targets: ["SwiftyBot"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.0.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.1.0"))
-    ],
-    targets: [
-        .target(name: "SwiftyBot", dependencies: [
-            "Vapor",
-            "BFKit",
-            "Telegram",
-            "Messenger",
-            "Bot"
-        ]),
-        .target(name: "Telegram", dependencies: ["Vapor", "BFKit"]),
-        .target(name: "Messenger", dependencies: ["Vapor", "BFKit"]),
-        .target(name: "Bot")
-    ]
-)
+public let telegramSecret = Environment.get("TELEGRAM_SECRET") ?? ""
+
+public enum BotError: Error {
+    /// Missing Telegram secret key.
+    case missingAppSecrets
+}
