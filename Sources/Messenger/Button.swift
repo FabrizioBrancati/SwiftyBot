@@ -1,5 +1,5 @@
 //
-//  MessageButton.swift
+//  Button.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,7 +26,7 @@
 
 import Foundation
 
-public struct MessageButton: Codable {
+public struct Button: Codable {
     /// Button type of Messenger structured message element.
     ///
     /// - webURL: Web URL type.

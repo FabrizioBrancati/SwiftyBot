@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  Element.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,12 +25,28 @@
 //  SOFTWARE.
 
 import Foundation
-import Vapor
 
-public struct Response: Content {
-    public var message: String
+public struct Element: Codable {
+    // Element title.
+    private(set) public var title: String
+    /// Element subtitle.
+    private(set) public var subtitle: String
+    /// Element item URL.
+    private(set) public var itemURL: String
+    /// Element image URL.
+    private(set) public var imageURL: String
+    /// Element Button array.
+    private(set) public var buttons: [Button] = []
     
-    public init(message: String) {
-        self.message = message
+    public init(title: String, subtitle: String, itemURL: String, imageURL: String, buttons: [Button] = []) {
+        self.title = title
+        self.subtitle = subtitle
+        self.itemURL = itemURL
+        self.imageURL = imageURL
+        self.buttons = buttons
+    }
+    
+    public mutating func add(button: Button) {
+        buttons.append(button)
     }
 }

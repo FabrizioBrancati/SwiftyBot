@@ -27,26 +27,5 @@
 import Foundation
 
 public struct StructuredMessage: Codable {
-    // Element title.
-    private(set) public var title: String
-    /// Element subtitle.
-    private(set) public var subtitle: String
-    /// Element item URL.
-    private(set) public var itemURL: String
-    /// Element image URL.
-    private(set) public var imageURL: String
-    /// Element Button array.
-    private(set) public var buttons: [MessageButton] = []
-    
-    public init(title: String, subtitle: String, itemURL: String, imageURL: String, buttons: [MessageButton] = []) {
-        self.title = title
-        self.subtitle = subtitle
-        self.itemURL = itemURL
-        self.imageURL = imageURL
-        self.buttons = buttons
-    }
-    
-    public mutating func add(button: MessageButton) {
-        buttons.append(button)
-    }
+    private(set) public var attachment: Attachment
 }

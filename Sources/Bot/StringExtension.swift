@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  StringExtension.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,12 +25,14 @@
 //  SOFTWARE.
 
 import Foundation
-import Vapor
 
-public struct Response: Content {
-    public var message: String
-    
-    public init(message: String) {
-        self.message = message
+/// Detector String extension.
+public extension String {
+    /// Detect if the message has greetings.
+    ///
+    /// - Returns: Returns true if the message has greetings, otherwise false.
+    public func hasGreetings() -> Bool {
+        let message = self.lowercased()
+        return message.starts(with: "hi") || message.contains("hello") || message.contains("hey") || message.contains("hei") || message.contains("ciao")
     }
 }

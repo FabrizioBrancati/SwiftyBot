@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  Payload.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,12 +25,18 @@
 //  SOFTWARE.
 
 import Foundation
-import Vapor
 
-public struct Response: Content {
-    public var message: String
+public struct Payload: Codable {
+    public enum TemplateType: String, Codable {
+        case generic
+    }
     
-    public init(message: String) {
-        self.message = message
+    private(set) public var templateType: TemplateType
+    private(set) public var elements: [Element]
+    
+    /// Coding keys, used by Codable protocol.
+    private enum CodingKeys: String, CodingKey {
+        case templateType = "template_type"
+        case elements
     }
 }

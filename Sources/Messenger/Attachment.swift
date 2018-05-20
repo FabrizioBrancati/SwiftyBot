@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  Attachment.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,12 +25,12 @@
 //  SOFTWARE.
 
 import Foundation
-import Vapor
 
-public struct Response: Content {
-    public var message: String
-    
-    public init(message: String) {
-        self.message = message
+public struct Attachment: Codable {
+    public enum `Type`: String, Codable {
+        case template
     }
+    
+    private(set) public var type: Type
+    private(set) public var payload: Payload
 }
