@@ -1,5 +1,5 @@
 //
-//  Response.swift
+//  Recipient.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,26 +25,11 @@
 //  SOFTWARE.
 
 import Foundation
-import Vapor
 
-public struct Response: Content {
-    public enum MessagingType: String, Codable {
-        case response = "RESPONSE"
-    }
+public struct Recipient: Codable {
+    private(set) public var id: String
     
-    private(set) public var messagingType: MessagingType
-    public var recipient: Recipient?
-    public var message: String
-    
-    public init(messagingType: MessagingType, message: String) {
-        self.messagingType = messagingType
-        self.message = message
-    }
-    
-    /// Coding keys, used by Codable protocol.
-    private enum CodingKeys: String, CodingKey {
-        case messagingType = "messaging_type"
-        case recipient
-        case message
+    public init(id: String) {
+        self.id = id
     }
 }
