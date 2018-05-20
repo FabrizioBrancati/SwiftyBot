@@ -1,6 +1,5 @@
-// swift-tools-version:4.0
 //
-//  Package.swift
+//  Routes.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,25 +24,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import PackageDescription
+import Foundation
+import BFKit
+import Vapor
+import Bot
 
-let package = Package(
-    name: "SwiftyBot",
-    products: [
-        .executable(name: "SwiftyBot", targets: ["SwiftyBot"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.0.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.1.0"))
-    ],
-    targets: [
-        .target(name: "SwiftyBot", dependencies: [
-            "Vapor",
-            "Telegram",
-            "Messenger"
-        ]),
-        .target(name: "Telegram", dependencies: ["Vapor", "BFKit", "Bot"]),
-        .target(name: "Messenger", dependencies: ["Vapor", "BFKit", "Bot"]),
-        .target(name: "Bot")
-    ]
-)
+/// Registering Facebook Messenger routes.
+public func routes(_ router: Router) throws {
+    /// Setting up the POST request with Telegram secret key.
+    /// With a secret path to be sure that nobody else knows that URL.
+    /// https://core.telegram.org/bots/api#setwebhook
+    router.get("telegram", telegramSecret) { request -> HTTPResponse in
+        let messageRequest = try request.query.decode(MessageRequest.self)
+        
+        return HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
+    }
+}

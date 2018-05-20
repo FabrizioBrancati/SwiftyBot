@@ -1,6 +1,5 @@
-// swift-tools-version:4.0
 //
-//  Package.swift
+//  Message.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,25 +24,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import PackageDescription
+import Foundation
 
-let package = Package(
-    name: "SwiftyBot",
-    products: [
-        .executable(name: "SwiftyBot", targets: ["SwiftyBot"])
-    ],
-    dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.0.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.1.0"))
-    ],
-    targets: [
-        .target(name: "SwiftyBot", dependencies: [
-            "Vapor",
-            "Telegram",
-            "Messenger"
-        ]),
-        .target(name: "Telegram", dependencies: ["Vapor", "BFKit", "Bot"]),
-        .target(name: "Messenger", dependencies: ["Vapor", "BFKit", "Bot"]),
-        .target(name: "Bot")
-    ]
-)
+public struct Message: Codable {
+    private(set) public var chat: Chat
+    private(set) public var text: String
+    private(set) public var from: MessageSender
+}
