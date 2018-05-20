@@ -39,7 +39,10 @@ public struct Activation: Codable {
         case challenge = "hub.challenge"
     }
     
-    public func check() throws -> HTTPResponse {
+    public static func check(_ request: Request) throws -> HTTPResponse {
+        /// Try decoding the request query as `Activation`.
+        let activation = try request.query.decode(Activation.self)
+        
         guard messengerSecret != "" && messengerToken != "" else {
             /// Show errors in console.
             let terminal = Terminal()
@@ -48,12 +51,12 @@ public struct Activation: Codable {
         }
         
         /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
-        guard mode == "subscribe", token == messengerSecret else {
+        guard activation.mode == "subscribe", activation.token == messengerSecret else {
             throw Abort(.badRequest, reason: "Missing Messenger verification data.")
         }
         
         /// Create a response with the challenge query parameter to verify the webhook.
-        let body = try HTTPBody(data: JSONEncoder().encode(challenge))
+        let body = try HTTPBody(data: JSONEncoder().encode(activation.challenge))
         /// Send a 200 (OK) response.
         return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
     }
