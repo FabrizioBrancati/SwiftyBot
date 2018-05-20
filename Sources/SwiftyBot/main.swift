@@ -24,28 +24,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/// Import Vapor & BFKit frameworks.
 import Vapor
-import Bot
 
 // MARK: - Configuration
 
 /// Read Telegram & Messenger secrets key from environment.
 let telegramSecret = Environment.get("TELEGRAM_SECRET") ?? ""
-let messengerSecret = Environment.get("MESSENGER_SECRET") ?? ""
-let messengerToken = Environment.get("MESSENGER_TOKEN") ?? ""
-
-guard telegramSecret != "" || (messengerSecret != "" && messengerToken != "") else {
-    /// Show errors in console.
-    let terminal = Terminal()
-    terminal.error("Missing secret or token keys!", newLine: true)
-    terminal.error("Add almost one in Config/secrets/app.json", newLine: true)
-
-    /// Throw missing secret key error.
-    throw BotError.missingAppSecrets
-}
-
-// MARK: - Bot run
 
 /// Run the Bot.
 try app(.detect()).run()

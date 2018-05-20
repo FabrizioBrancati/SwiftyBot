@@ -25,6 +25,7 @@
 //  SOFTWARE.
 
 import Foundation
+import Vapor
 
 public struct Activation: Codable {
     private(set) public var mode: String
@@ -36,5 +37,24 @@ public struct Activation: Codable {
         case mode = "hub.mode"
         case token = "hub.verify_token"
         case challenge = "hub.challenge"
+    }
+    
+    public func check() throws -> HTTPResponse {
+        guard messengerSecret != "" && messengerToken != "" else {
+            /// Show errors in console.
+            let terminal = Terminal()
+            terminal.error("Missing secret or token keys!", newLine: true)
+            throw Abort(.badRequest, reason: "Missing Messenger verification data.")
+        }
+        
+        /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
+        guard mode == "subscribe", token == messengerSecret else {
+            throw Abort(.badRequest, reason: "Missing Messenger verification data.")
+        }
+        
+        /// Create a response with the challenge query parameter to verify the webhook.
+        let body = try HTTPBody(data: JSONEncoder().encode(challenge))
+        /// Send a 200 (OK) response.
+        return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
     }
 }

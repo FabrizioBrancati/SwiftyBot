@@ -101,15 +101,8 @@ public func routes(_ router: Router) throws {
     router.get("messenger", messengerSecret) { request -> HTTPResponse in
         /// Try decoding the request query as `Activation`.
         let activation = try request.query.decode(Activation.self)
-        /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
-        guard activation.mode == "subscribe", activation.token == messengerSecret else {
-            throw Abort(.badRequest, reason: "Missing Messenger verification data.")
-        }
         
-        /// Create a response with the challenge query parameter to verify the webhook.
-        let body = try HTTPBody(data: JSONEncoder().encode(activation.challenge))
-        /// Send a 200 (OK) response.
-        return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
+        return try activation.check()
     }
     
     /// Setting up the POST request with Messenger secret key.

@@ -1,5 +1,5 @@
 //
-//  BotError.swift
+//  Bot.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,10 +25,16 @@
 //  SOFTWARE.
 
 import Foundation
+import Vapor
+
+public let messengerSecret = Environment.get("MESSENGER_SECRET") ?? ""
+public let messengerToken = Environment.get("MESSENGER_TOKEN") ?? ""
 
 public enum BotError: Error {
     /// Missing URL in Messenger structured message button.
     case missingURL
     /// Missing payload in Messenger structured message button.
     case missingPayload
+    /// Missing Messenger secret keys.
+    case missingAppSecrets
 }
