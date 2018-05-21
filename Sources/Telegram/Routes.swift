@@ -34,8 +34,8 @@ public func routes(_ router: Router) throws {
     /// Setting up the POST request with Telegram secret key.
     /// With a secret path to be sure that nobody else knows that URL.
     /// https://core.telegram.org/bots/api#setwebhook
-    router.post("telegram", telegramSecret) { request -> HTTPResponse in
-        let messageRequest = try request.content.syncDecode(MessageRequest.self)
+    router.post("telegram", telegramSecret) { httpRequest -> HTTPResponse in
+        let messageRequest = try httpRequest.content.syncDecode(MessageRequest.self)
         
         var response = Telegram.Response(method: .sendMessage, chatID: messageRequest.message.chat.id, text: "I'm sorry but your message is empty 😢")
         
@@ -68,6 +68,8 @@ public func routes(_ router: Router) throws {
         
         /// Create the JSON response.
         /// https://core.telegram.org/bots/api#sendmessage
-        return HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
+        var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
+        try JSONEncoder().encode(response, to: &httpResponse, on: httpRequest.eventLoop)
+        return httpResponse
     }
 }
