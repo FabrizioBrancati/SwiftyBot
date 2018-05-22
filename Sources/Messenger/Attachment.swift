@@ -26,11 +26,16 @@
 
 import Foundation
 
+/// Messenger message attachment.
 public struct Attachment: Codable {
+    /// Attachment type
     public enum `Type`: String, Codable {
+        /// Template type.
         case template
     }
     
+    /// Message template type.
     private(set) public var type: Type
+    /// Message payload.
     private(set) public var payload: Payload
 }

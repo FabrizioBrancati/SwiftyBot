@@ -24,10 +24,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Foundation
 import BFKit
-import Vapor
 import Bot
+import Foundation
+import Vapor
 
 /// Registering Facebook Messenger routes.
 public func routes(_ router: Router) throws {
@@ -64,18 +64,22 @@ public func routes(_ router: Router) throws {
                         """
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
                         var queuer = Element(title: "Queuer", subtitle: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).", itemURL: "https://github.com/FabrizioBrancati/Queuer", imageURL: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png")
+                        
                         queuer.add(button: Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/Queuer"))
                         queuer.add(button: Button(type: .postback, title: "Call Postback", payload: "Queuer pressed."))
                         
                         var bfkitSwift = Element(title: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png")
+                        
                         bfkitSwift.add(button: Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit-Swift"))
                         bfkitSwift.add(button: Button(type: .postback, title: "Call Postback", payload: "BFKit-Swift pressed."))
                         
                         var bfkit = Element(title: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png")
+                        
                         bfkit.add(button: Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/BFKit"))
                         bfkit.add(button: Button(type: .postback, title: "Call Postback", payload: "BFKit pressed."))
                         
                         var swiftyBot = Element(title: "BFKit-Swift", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png")
+                        
                         swiftyBot.add(button: Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/SwiftyBot"))
                         swiftyBot.add(button: Button(type: .postback, title: "Call Postback", payload: "SwiftyBot pressed."))
                     } else {

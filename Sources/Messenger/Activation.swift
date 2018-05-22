@@ -27,9 +27,13 @@
 import Foundation
 import Vapor
 
+/// Actiovation struct.
 public struct Activation: Codable {
+    /// Activation mode.
     private(set) public var mode: String
+    /// Activation token.
     private(set) public var token: String
+    /// Activation challenge.
     private(set) public var challenge: String
 
     /// Coding keys, used by Codable protocol.
@@ -39,13 +43,20 @@ public struct Activation: Codable {
         case challenge = "hub.challenge"
     }
     
+    /// Check if the activation is valid.
+    ///
+    /// - Parameter request: Activation request.
+    /// - Returns: Returns the activation `HTTPResponse`.
+    /// - Throws: Decoding errors.
     public static func check(_ request: Request) throws -> HTTPResponse {
         /// Try decoding the request query as `Activation`.
         let activation = try request.query.decode(Activation.self)
         
+        /// Check if the Messenger secret and token has been set.
         guard messengerSecret != "" && messengerToken != "" else {
             /// Show errors in console.
             let terminal = Terminal()
+            /// Prints the error to the console.
             terminal.error("Missing secret or token keys!", newLine: true)
             throw Abort(.badRequest, reason: "Missing Messenger verification data.")
         }

@@ -26,9 +26,14 @@
 
 import Foundation
 
+/// Messenger recipient.
 public struct Recipient: Codable {
+    /// Recipient ID.
     private(set) public var id: String
     
+    /// Initialize a Recipient.
+    ///
+    /// - Parameter id: Recipient ID.
     public init(id: String) {
         self.id = id
     }

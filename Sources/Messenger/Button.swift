@@ -26,6 +26,7 @@
 
 import Foundation
 
+/// Button helper.
 public struct Button: Codable {
     /// Button type of Messenger structured message element.
     ///

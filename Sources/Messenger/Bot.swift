@@ -27,9 +27,12 @@
 import Foundation
 import Vapor
 
+/// Messenger secret.
 public let messengerSecret = Environment.get("MESSENGER_SECRET") ?? ""
+/// Messenger token.
 public let messengerToken = Environment.get("MESSENGER_TOKEN") ?? ""
 
+/// Bot error.
 public enum BotError: Error {
     /// Missing URL in Messenger structured message button.
     case missingURL

@@ -24,10 +24,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Foundation
 import BFKit
-import Vapor
 import Bot
+import Foundation
+import Vapor
 
 /// Registering Facebook Messenger routes.
 public func routes(_ router: Router) throws {
@@ -69,6 +69,7 @@ public func routes(_ router: Router) throws {
         /// Create the JSON response.
         /// https://core.telegram.org/bots/api#sendmessage
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
+        
         try JSONEncoder().encode(response, to: &httpResponse, on: httpRequest.eventLoop)
         return httpResponse
     }

@@ -33,6 +33,11 @@ public extension String {
     /// - Returns: Returns true if the message has greetings, otherwise false.
     public func hasGreetings() -> Bool {
         let message = self.lowercased()
-        return message.starts(with: "hi") || message.contains("hello") || message.contains("hey") || message.contains("hei") || message.contains("ciao")
+        
+        return message.starts(with: "hi")
+            || message.contains("hello")
+            || message.contains("hey")
+            || message.contains("hei")
+            || message.contains("ciao")
     }
 }
