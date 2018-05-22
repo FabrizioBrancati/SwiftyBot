@@ -33,14 +33,20 @@ import Vapor
 /// - Returns: Returns the Application.
 /// - Throws: Application creation errors.
 public func app(_ env: Environment) throws -> Application {
+    /// Creates a default configuration.
     var config = Config.default()
+    /// Converts `env` to a `var`.
     var env = env
+    /// Creates default services.
     var services = Services.default()
     
+    /// Starts configure the App.
     try configure(&config, &env, &services)
     
+    /// Create the final App.
     let app = try Application(config: config, environment: env, services: services)
     
+    /// Tries to boot the App.
     try boot(app)
     
     return app

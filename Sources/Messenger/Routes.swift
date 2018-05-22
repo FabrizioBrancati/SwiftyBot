@@ -82,6 +82,23 @@ public func routes(_ router: Router) throws {
                         
                         swiftyBot.add(button: Button(type: .webURL, title: "Open in GitHub", url: "https://github.com/FabrizioBrancati/SwiftyBot"))
                         swiftyBot.add(button: Button(type: .postback, title: "Call Postback", payload: "SwiftyBot pressed."))
+                        
+                        /// Create the elements array and add all the created elements.
+                        var elements: [Element] = []
+                        /// Add Queuer element.
+                        elements.append(queuer)
+                        /// Add BFKit-Swift element.
+                        elements.append(bfkitSwift)
+                        /// Add BFKit element.
+                        elements.append(bfkit)
+                        /// Add SwiftyBot element.
+                        elements.append(swiftyBot)
+                        
+                        let payload = Payload(templateType: .generic, elements: elements)
+                        let attachment = Attachment(type: .template, payload: payload)
+                        let structuredMessage = StructuredMessage(attachment: attachment)
+                        
+                        response.message = String(data: try JSONEncoder().encode(structuredMessage), encoding: .utf8) ?? ""
                     } else {
                         response.message = message.text.reversed(preserveFormat: true)
                     }
@@ -89,9 +106,9 @@ public func routes(_ router: Router) throws {
                     response.message = "Webhook received unknown event."
                 }
                 
+                response.recipient = Recipient(id: event.sender.id)
+                
                 _ = try httpRequest.client().post("https://graph.facebook.com/v3.0/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
-                    response.recipient = Recipient(id: event.sender.id)
-                    
                     try messageRequest.content.encode(response)
                 }
             }

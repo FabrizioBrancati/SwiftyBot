@@ -26,5 +26,5 @@
 
 import Vapor
 
-/// Run the Bot.
+/// Run the App.
 try app(.detect()).run()
