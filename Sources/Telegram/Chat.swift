@@ -26,6 +26,8 @@
 
 import Foundation
 
+/// Telegram chat.
 public struct Chat: Codable {
+    /// Chat ID.
     private(set) public var id: Int
 }

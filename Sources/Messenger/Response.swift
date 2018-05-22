@@ -27,15 +27,26 @@
 import Foundation
 import Vapor
 
+/// Messenger response.
 public struct Response: Content {
+    /// Message type.
     public enum MessagingType: String, Codable {
+        /// Resposne type.
         case response = "RESPONSE"
     }
     
+    /// Messaging type.
     private(set) public var messagingType: MessagingType
+    /// Recipient.
     public var recipient: Recipient?
+    /// Final response message.
     public var message: String
     
+    /// Initialize a messaging type.
+    ///
+    /// - Parameters:
+    ///   - messagingType: Messeging type.
+    ///   - message: Response message.
     public init(messagingType: MessagingType, message: String) {
         self.messagingType = messagingType
         self.message = message

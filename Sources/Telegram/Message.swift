@@ -26,8 +26,12 @@
 
 import Foundation
 
+/// Telegram message.
 public struct Message: Codable {
+    /// Message chat.
     private(set) public var chat: Chat
+    /// Message text.
     private(set) public var text: String
+    /// Contains from who has been sent the message.
     private(set) public var from: MessageSender
 }

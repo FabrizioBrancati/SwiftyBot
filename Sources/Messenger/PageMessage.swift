@@ -26,8 +26,12 @@
 
 import Foundation
 
+/// Messenger page message.
 public struct PageMessage: Codable {
+    /// User message.
     private(set) public var message: Message?
+    /// Message postback.
     private(set) public var postback: Postback?
+    /// Message sender.
     private(set) public var sender: Sender
 }

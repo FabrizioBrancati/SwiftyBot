@@ -26,13 +26,19 @@
 
 import Foundation
 
+/// Telegram response
 public struct Response: Codable {
+    /// Response method.
     public enum Method: String, Codable {
+        /// Send message method.
         case sendMessage
     }
     
+    /// Response method.
     private(set) public var method: Method
+    /// Response chat ID.
     private(set) public var chatID: Int
+    /// Response text.
     public var text: String
     
     /// Coding keys, used by Codable protocol.

@@ -26,12 +26,17 @@
 
 import Foundation
 
+/// Messenger message payload.
 public struct Payload: Codable {
+    /// Payload template.
     public enum TemplateType: String, Codable {
+        /// Generic template.
         case generic
     }
     
+    /// Payload template type.
     private(set) public var templateType: TemplateType
+    /// Payload elements.
     private(set) public var elements: [Element]
     
     /// Coding keys, used by Codable protocol.

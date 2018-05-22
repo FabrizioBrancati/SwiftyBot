@@ -27,10 +27,18 @@
 import BFKit
 import Foundation
 
+/// Telegram command.
 public struct Command {
+    /// Command.
     private(set) public var command: String
+    /// Command parameters.
     private(set) public var parameters: String
     
+    /// Initialize a command.
+    ///
+    /// - Parameters:
+    ///   - command: Command to be created.
+    ///   - text: User sent message text.
     public init?(_ command: String, text: String) {
         let spaceIndex = text.index(of: " ")
         
