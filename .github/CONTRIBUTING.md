@@ -16,4 +16,4 @@ Please make sure to follow my general coding style for new features.
 Every line of the Bot has to be commented.
 
 #### Writing code
-Please follow my coding style.
+Please follow [Ray Wenderlich - Swift Style Guide](https://github.com/raywenderlich/swift-style-guide#correctness) codestyle. Comment every public methods, properties, classes. Make commits as atomic as possible with undestandable comment. If you are developing feature of fixing bug, please mention issue number (e.g. #1) in commit text.
