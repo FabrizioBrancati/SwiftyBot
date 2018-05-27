@@ -64,6 +64,7 @@ number_separator:
 
 custom_rules:
   comments_space:
+    included: ".*.swift"
     name: "Space After Comment"
     regex: "(^ *//\\w+)"
     message: "There should be a space after //"
@@ -76,11 +77,13 @@ custom_rules:
     match_kinds: keyword
     severity: warning
   empty_line_after_guard:
+    included: ".*.swift"
     name: "Empty Line After Guard"
     regex: "(^ *guard[ a-zA-Z0-9=?.\\(\\),><!]*\\{[ a-zA-Z0-9=?.\\(\\),><!]*\\}\n *(?!(?:return|guard))\\S+)"
     message: "There should be an empty line after a guard"
     severity: warning
   empty_line_after_super:
+    included: ".*.swift"
     name: "Empty Line After Super"
     regex: "(^ *super\\.[ a-zA-Z0-9=?.\\(\\)\\{\\}:,><!]*\n *(?!(?:\\}|return))\\S+)"
     message: "There should be an empty line after super"
@@ -103,6 +106,12 @@ custom_rules:
     name: "Missing Docs"
     message: "Types, properties and methods with public or open access level should be documented."
     severity: warning
+  redundant-parentheses:
+    included: ".*.swift"
+    name: "Redundant Parentheses"
+    regex: "if \\(.*\\) {"
+    message: "Condition should not be enclosed within parentheses"
+    severity: warning
   single_line_return:
     included: ".*.swift"
     regex: '\.\S+ *\{(?: *return|[^\n\}]+ in return) [^\}]+\}'
@@ -122,9 +131,16 @@ custom_rules:
     message: "Don't assign nil as a value when defining an optional type – it's nil by default."
     severity: warning
   unnecessary_type:
+    included: ".*.swift"
     name: "Unnecessary Type"
     regex: "[ a-zA-Z0-9]*(?:let|var) [ a-zA-Z0-9]*: ([a-zA-Z0-9]*)[\\? ]*= \\1"
     message: "Type Definition Not Needed"
+    severity: warning
+  upper-camel-case:
+    included: ".*.swift"
+    name: "Upper Camel Case"
+    regex: "(?:protocol|class|struct|enum) [a-z]+[a-zA-Z]*"
+    message: "Class, Struct and Enum names should be UpperCamelCase"
     severity: warning
   vertical_whitespaces_around_mark:
     included: ".*.swift"
