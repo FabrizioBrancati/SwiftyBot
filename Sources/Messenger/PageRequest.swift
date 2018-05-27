@@ -1,5 +1,5 @@
 //
-//  StringExtension.swift
+//  PageRequest.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,18 +26,16 @@
 
 import Foundation
 
-/// Detector String extension.
-public extension String {
-    /// Detect if the message has greetings.
-    ///
-    /// - Returns: Returns true if the message has greetings, otherwise false.
-    public func hasGreetings() -> Bool {
-        let message = lowercased()
-        
-        return message.starts(with: "hi")
-            || message.contains("hello")
-            || message.contains("hey")
-            || message.contains("hei")
-            || message.contains("ciao")
+/// Messenger page response.
+public struct PageRequest: Codable {
+    /// Page object, usually is `page`.
+    private(set) public var object: String
+    /// Page entries.
+    private(set) public var entries: [PageEntry]
+    
+    /// Coding keys, used by Codable protocol.
+    private enum CodingKeys: String, CodingKey {
+        case object
+        case entries = "entry"
     }
 }

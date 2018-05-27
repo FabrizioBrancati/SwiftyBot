@@ -1,5 +1,5 @@
 //
-//  PageResponse.swift
+//  ExampleElement.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,16 +26,27 @@
 
 import Foundation
 
-/// Messenger page response.
-public struct PageResponse: Codable {
-    /// Page object, usually is `page`.
-    private(set) public var object: String
-    /// Page entries.
-    private(set) public var entries: [PageEntry]
+/// Example element helper.
+public class ExampleElement: Element {
+    /// Creates an example element.
+    ///
+    /// - Parameters:
+    ///   - title: Element title
+    ///   - subtitle: Element subtitle.
+    ///   - itemURL: Element item URL.
+    ///   - imageURL: Element image URL.
+    public init(title: String, subtitle: String, itemURL: String, imageURL: String) {
+        super.init(title: title, subtitle: subtitle, itemURL: itemURL, imageURL: imageURL)
+        
+        add(button: Button(type: .webURL, title: "Open in GitHub", url: itemURL))
+        add(button: Button(type: .webURL, title: "Call Postback", payload: "\(title) pressed"))
+    }
     
-    /// Coding keys, used by Codable protocol.
-    private enum CodingKeys: String, CodingKey {
-        case object
-        case entries = "entry"
+    /// Required decoder init function.
+    ///
+    /// - Parameter decoder: Decoder.
+    /// - Throws: Throws decoder errors.
+    public required init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
     }
 }

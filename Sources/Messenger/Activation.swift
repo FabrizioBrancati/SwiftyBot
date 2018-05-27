@@ -45,12 +45,12 @@ public struct Activation: Codable {
     
     /// Check if the activation is valid.
     ///
-    /// - Parameter request: Activation request.
+    /// - Parameter httpRequest: Activation request.
     /// - Returns: Returns the activation `HTTPResponse`.
     /// - Throws: Decoding errors.
-    public static func check(_ request: Request) throws -> HTTPResponse {
+    public func check(_ httpRequest: Request) throws -> HTTPResponse {
         /// Try decoding the request query as `Activation`.
-        let activation = try request.query.decode(Activation.self)
+        let activation = try httpRequest.query.decode(Activation.self)
         
         /// Check if the Messenger secret and token has been set.
         guard messengerSecret != "" && messengerToken != "" else {
@@ -70,5 +70,18 @@ public struct Activation: Codable {
         let body = try HTTPBody(data: JSONEncoder().encode(activation.challenge))
         /// Send a 200 (OK) response.
         return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
+    }
+}
+
+// MARK: - Activation Extension
+
+/// Activation extension.
+public extension Activation {
+    /// Empty init method.
+    /// Declared in an extension to not override default `init` function.
+    public init() {
+        mode = ""
+        token = ""
+        challenge = ""
     }
 }
