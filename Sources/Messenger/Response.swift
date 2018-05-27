@@ -76,7 +76,7 @@ public struct Response: Content {
                         response.message = """
                         Hi!
                         This is an example on how to create a bot with Swift.
-                        If you want to see more try to send me \"buy\", \"sell\" or \"shop\".
+                        If you want to see more try to send me "buy", "sell" or "shop".
                         """
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
                         let queuer = ExampleElement(title: "Queuer", subtitle: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).", itemURL: "https://github.com/FabrizioBrancati/Queuer", imageURL: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png")
