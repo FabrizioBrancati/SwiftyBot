@@ -8,6 +8,9 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
+### 3.x Releases
+- `3.0.x` Releases - [3.0.0](#300---???)
+
 ### 2.x Releases
 - `2.3.x` Releases - [2.3.0](#230---swift-4-support) | [2.3.1](#231---minor-improvements) | [2.3.2](#232---graph-api-30) | [2.3.3](#233---facebook-requirements)
 - `2.2.x` Releases - [2.2.0](#220---vaporizer)
@@ -21,10 +24,21 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
+## [3.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/3.0.0) - ???
+### ?? ??? 2018
+### Added
+- Added tests
+
+### Improved
+- Entirely rewritten with Vapor 3
+- Created a target for each bot platform
+
+---
+
 ## [2.3.3](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.3.3) - Facebook Requirements
 ### 5 May 2018
 ### Added
-Adding `messaging_type` string in JSON response
+- Added `messaging_type` string in JSON response
 
 ---
 
