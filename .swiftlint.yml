@@ -90,7 +90,7 @@ custom_rules:
     severity: warning
   hardcoded_credential:
     included: ".*.swift"
-    regex: '.*(?:token|password|Token|Password).*= ?".+"'
+    regex: 'let (?:token|password|Token|Password).*= ?".+"'
     name: "Credentials should not be hard-coded"
     message: "Because it is easy to extract strings from a compiled application, credentials should never be hard-coded."
     severity: warning
