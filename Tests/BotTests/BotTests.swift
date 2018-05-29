@@ -26,13 +26,22 @@
 
 import Foundation
 import XCTest
+@testable import Bot
 
 public class BotTests: XCTestCase {
     static let allTests = [
-        ("testFunc", testFunc)
+        ("testHasGreetings", testHasGreetings)
     ]
     
-    func testFunc() {
+    func testHasGreetings() {
+        let phrase = "Hi Bot!"
         
+        XCTAssertTrue(phrase.hasGreetings())
+    }
+    
+    func testHasNotGreetings() {
+        let phrase = "What do you do Bot?"
+        
+        XCTAssertFalse(phrase.hasGreetings())
     }
 }
