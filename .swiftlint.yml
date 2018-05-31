@@ -109,12 +109,6 @@ custom_rules:
     name: "Missing Docs"
     message: "Types, properties and methods with public or open access level should be documented."
     severity: warning
-  redundant-parentheses:
-    included: ".*.swift"
-    name: "Redundant Parentheses"
-    regex: "if \\(.*\\) {"
-    message: "Condition should not be enclosed within parentheses"
-    severity: warning
   single_line_return:
     included: ".*.swift"
     regex: '\.\S+ *\{(?: *return|[^\n\}]+ in return) [^\}]+\}'
@@ -144,12 +138,6 @@ custom_rules:
     name: "Upper Camel Case"
     regex: "(?:protocol|class|struct|enum) [a-z]+[a-zA-Z]*"
     message: "Class, Struct and Enum names should be UpperCamelCase"
-    severity: warning
-  useless_if:
-    included: ".*.swift"
-    name: "Useless If"
-    regex: "if[ (]*?(:?true|false)[ )]*?{"
-    message: "`if` statements with conditions that are always false have the effect of making blocks of code non-functional."
     severity: warning
   vertical_whitespaces_around_mark:
     included: ".*.swift"
