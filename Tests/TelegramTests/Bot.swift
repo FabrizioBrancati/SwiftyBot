@@ -27,12 +27,12 @@
 import Foundation
 import XCTest
 
+/// Telegram Tests.
 public class TelegramTests: XCTestCase {
     static let allTests = [
         ("testFunc", testFunc)
     ]
-    
+
     func testFunc() {
-        
     }
 }

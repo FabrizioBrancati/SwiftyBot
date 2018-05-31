@@ -27,12 +27,12 @@
 import Foundation
 import XCTest
 
+/// SwiftyBot Tests.
 public class SwiftyBotTests: XCTestCase {
     static let allTests = [
         ("testFunc", testFunc)
     ]
-    
+
     func testFunc() {
-        
     }
 }

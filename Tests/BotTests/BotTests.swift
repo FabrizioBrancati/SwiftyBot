@@ -24,24 +24,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+@testable import Bot
 import Foundation
 import XCTest
-@testable import Bot
 
+/// Bot Tests.
 public class BotTests: XCTestCase {
     static let allTests = [
         ("testHasGreetings", testHasGreetings)
     ]
-    
+
     func testHasGreetings() {
         let phrase = "Hi Bot!"
-        
+
         XCTAssertTrue(phrase.hasGreetings())
     }
-    
+
     func testHasNotGreetings() {
         let phrase = "What do you do Bot?"
-        
+
         XCTAssertFalse(phrase.hasGreetings())
     }
 }

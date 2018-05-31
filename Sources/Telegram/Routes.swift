@@ -36,9 +36,9 @@ public func routes(_ router: Router) throws {
     /// https://core.telegram.org/bots/api#setwebhook
     router.post("telegram", telegramSecret) { httpRequest -> HTTPResponse in
         let messageRequest = try httpRequest.content.syncDecode(MessageRequest.self)
-        
+
         var response = Telegram.Response(method: .sendMessage, chatID: messageRequest.message.chat.id, text: "I'm sorry but your message is empty 😢")
-        
+
         if !messageRequest.message.text.isEmpty {
             if messageRequest.message.text.hasPrefix("/") {
                 if Command("start", text: messageRequest.message.text) != nil {
@@ -50,7 +50,7 @@ public func routes(_ router: Router) throws {
                     response.text = """
                     Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
                     https://www.fabriziobrancati.com/SwiftyBot
-                    
+
                     /start - Welcome message
                     /help - Help message
                     Any text - Returns the reversed message
@@ -65,11 +65,11 @@ public func routes(_ router: Router) throws {
                 response.text = messageRequest.message.text.reversed(preserveFormat: true)
             }
         }
-        
+
         /// Create the JSON response.
         /// https://core.telegram.org/bots/api#sendmessage
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
-        
+
         try JSONEncoder().encode(response, to: &httpResponse, on: httpRequest.eventLoop)
         return httpResponse
     }

@@ -27,12 +27,12 @@
 import Foundation
 import XCTest
 
+/// Messenger Tests.
 public class MessengerTests: XCTestCase {
     static let allTests = [
         ("testFunc", testFunc)
     ]
-    
+
     func testFunc() {
-        
     }
 }
