@@ -52,7 +52,6 @@ let package = Package(
             "Messenger"
         ]),
         .testTarget(name: "TelegramTests", dependencies: ["Telegram"]),
-        .testTarget(name: "MessengerTests", dependencies: ["Messenger"]),
         .testTarget(name: "BotTests", dependencies: ["Bot"])
     ]
 )
