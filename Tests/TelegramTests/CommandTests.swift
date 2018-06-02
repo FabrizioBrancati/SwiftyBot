@@ -1,5 +1,5 @@
 //
-//  Bot.swift
+//  CommandTests.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -28,23 +28,16 @@ import Foundation
 @testable import Telegram
 import XCTest
 
-/// Telegram Tests.
+/// Command Tests.
 public class CommandTests: XCTestCase {
-    static let allTests = [
-        ("testInitCommand", testInitCommand),
-        ("testInitNilCommand", testInitNilCommand)
-    ]
-
     func testInitCommand() {
         let command = Command("/test", text: "test")
-        
         XCTAssertEqual(command?.command, "test")
         XCTAssertEqual(command?.parameters, "test")
     }
     
     func testInitNilCommand() {
         let command = Command("test", text: "test")
-        
         XCTAssertNil(command)
     }
 }

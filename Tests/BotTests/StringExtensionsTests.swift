@@ -1,5 +1,5 @@
 //
-//  StringExtension.swift
+//  Bot.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -24,20 +24,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+@testable import Bot
 import Foundation
+import XCTest
 
-/// Detector String extension.
-public extension String {
-    /// Detect if the message has greetings.
-    ///
-    /// - Returns: Returns true if the message has greetings, otherwise false.
-    public func hasGreetings() -> Bool {
-        let message = lowercased()
+/// String Extensions Tests.
+public class StringExtensionsTests: XCTestCase {
+    func testHasGreetings() {
+        let phrase = "Hi Bot!"
+        XCTAssertTrue(phrase.hasGreetings())
+    }
+
+    func testHasNotGreetings() {
+        let phrase = "What do you do Bot?"
+        XCTAssertFalse(phrase.hasGreetings())
         
-        return message.starts(with: "hi")
-            || message.contains("hello")
-            || message.contains("hey")
-            || message.contains("hei")
-            || message.contains("ciao")
+        let phrase2 = "Ohhh a Bot! Hi!"
+        XCTAssertFalse(phrase2.hasGreetings())
     }
 }
