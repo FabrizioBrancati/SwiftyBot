@@ -28,8 +28,8 @@ import Foundation
 import SwiftyBot
 import Vapor
 
-extension Vapor.Application {
-    static func testable(envArgs: [String]? = nil) throws -> Vapor.Application {
+public extension Application {
+    public static func testable(envArgs: [String]? = nil) throws -> Application {
         var config = Config.default()
         var services = Services.default()
         var env = Environment.testing
@@ -38,10 +38,10 @@ extension Vapor.Application {
             env.arguments = environmentArgs
         }
         
-        try SwiftyBot.configure(&config, &env, &services)
-        let app = try Vapor.Application(config: config, environment: env, services: services)
+        try configure(&config, &env, &services)
+        let app = try Application(config: config, environment: env, services: services)
         
-        try SwiftyBot.boot(app)
+        try boot(app)
         return app
     }
 }

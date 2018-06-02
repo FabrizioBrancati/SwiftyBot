@@ -29,6 +29,8 @@ import Bot
 import Foundation
 import Vapor
 
+/// Move this to Response.swift.
+
 /// Registering Facebook Messenger routes.
 public func routes(_ router: Router) throws {
     /// Setting up the POST request with Telegram secret key.
