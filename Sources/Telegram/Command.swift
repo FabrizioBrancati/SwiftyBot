@@ -45,7 +45,7 @@ public struct Command {
         self.command = text.substring(to: spaceIndex)
         self.parameters = text.substring(from: spaceIndex)
         
-        guard "/\(command)" == self.command else {
+        guard self.command == "/\(command)" else {
             return nil
         }
     }

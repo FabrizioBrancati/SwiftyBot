@@ -41,12 +41,12 @@ public func routes(_ router: Router) throws {
 
         if !messageRequest.message.text.isEmpty {
             if messageRequest.message.text.hasPrefix("/") {
-                if Command("start", text: messageRequest.message.text) != nil {
+                if Command("/start", text: messageRequest.message.text) != nil {
                     response.text = """
                     Welcome to SwiftyBot \(messageRequest.message.from.firstName)!
                     To list all available commands type /help
                     """
-                } else if Command("help", text: messageRequest.message.text) != nil {
+                } else if Command("/help", text: messageRequest.message.text) != nil {
                     response.text = """
                     Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
                     https://www.fabriziobrancati.com/SwiftyBot
