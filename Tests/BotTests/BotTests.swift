@@ -31,7 +31,8 @@ import XCTest
 /// Bot Tests.
 public class BotTests: XCTestCase {
     static let allTests = [
-        ("testHasGreetings", testHasGreetings)
+        ("testHasGreetings", testHasGreetings),
+        ("testHasNotGreetings", testHasNotGreetings)
     ]
 
     func testHasGreetings() {

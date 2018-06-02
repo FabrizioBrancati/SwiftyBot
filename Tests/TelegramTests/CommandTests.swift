@@ -25,14 +25,26 @@
 //  SOFTWARE.
 
 import Foundation
+@testable import Telegram
 import XCTest
 
 /// Telegram Tests.
-public class TelegramTests: XCTestCase {
+public class CommandTests: XCTestCase {
     static let allTests = [
-        ("testFunc", testFunc)
+        ("testInitCommand", testInitCommand),
+        ("testInitNilCommand", testInitNilCommand)
     ]
 
-    func testFunc() {
+    func testInitCommand() {
+        let command = Command("/test", text: "test")
+        
+        XCTAssertEqual(command?.command, "test")
+        XCTAssertEqual(command?.parameters, "test")
+    }
+    
+    func testInitNilCommand() {
+        let command = Command("test", text: "test")
+        
+        XCTAssertNil(command)
     }
 }
