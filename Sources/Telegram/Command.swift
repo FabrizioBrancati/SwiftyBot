@@ -41,11 +41,14 @@ public struct Command {
     ///   - text: User sent message text.
     public init?(_ command: String, text: String) {
         let spaceIndex = text.index(of: " ")
+        guard spaceIndex != -1 else {
+            return nil
+        }
         
-        self.command = text.substring(to: spaceIndex)
-        self.parameters = text.substring(from: spaceIndex)
+        self.command = text.substring(to: spaceIndex).replacingOccurrences(of: "/", with: "")
+        self.parameters = text.substring(from: spaceIndex + 1)
         
-        guard self.command == "/\(command)" else {
+        guard self.command == command else {
             return nil
         }
     }

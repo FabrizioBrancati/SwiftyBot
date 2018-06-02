@@ -38,10 +38,10 @@ public extension Application {
             env.arguments = environmentArgs
         }
         
-        try configure(&config, &env, &services)
+//        try configure(&config, &env, &services)
         let app = try Application(config: config, environment: env, services: services)
         
-        try boot(app)
+//        try boot(app)
         return app
     }
 }

@@ -31,9 +31,13 @@ import XCTest
 /// Command Tests.
 public class CommandTests: XCTestCase {
     func testInitCommand() {
-        let command = Command("/test", text: "test")
-        XCTAssertEqual(command?.command, "test")
-        XCTAssertEqual(command?.parameters, "test")
+        guard let command = Command("test", text: "/test test") else {
+            XCTFail("Command is empty")
+            return
+        }
+        
+        XCTAssertEqual(command.command, "test")
+        XCTAssertEqual(command.parameters, "test")
     }
     
     func testInitNilCommand() {
