@@ -31,17 +31,36 @@ import XCTest
 
 /// Telegram Routes Tests.
 public class TelegramRoutesTests: XCTestCase {
-    var application: Application!
+    var bot: Application!
     
     override public func setUp() {
-        application = try! Application.testable()
+        do {
+            bot = try Application.testable()
+        } catch {}
     }
     
-    func testRouteInPostWithStartCommand() {
+    func testRouteInPostWithStartCommand() throws {
+        let message = Telegram.MessageRequest(message: Message(chat: Chat(id: 0), text: "/start this is a test", from: MessageSender(firstName: "Fabrizio")))
+        let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Telegram.Response.self)
         
+        XCTAssertEqual(response.chatID, 0)
+        XCTAssertEqual(response.method, .sendMessage)
+        XCTAssertEqual(response.text, "Welcome to SwiftyBot Fabrizio!\nTo list all available commands type /help")
     }
     
     func testRouteInPostWithHelpCommand() {
+        
+    }
+    
+    func testRouteInPostWithUnknownCommand() {
+        
+    }
+    
+    func testRouteInPostWithText() {
+        
+    }
+    
+    func testRouteInPostWithTextWithEmoji() {
         
     }
 }

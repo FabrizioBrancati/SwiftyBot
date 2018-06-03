@@ -24,8 +24,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-@testable import Helpers
 import Foundation
+@testable import Helpers
 import XCTest
 
 /// String Extensions Tests.

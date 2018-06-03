@@ -20,11 +20,10 @@ import XCTest
 ///
 
 extension StringExtensionsTests {
-    static var allTests : [(String, (StringExtensionsTests) -> () throws -> Void)] {
+    static var allTests: [(String, (StringExtensionsTests) -> () throws -> Void)] {
         return [
             ("testHasGreetings", testHasGreetings),
-            ("testHasNotGreetings", testHasNotGreetings),
+            ("testHasNotGreetings", testHasNotGreetings)
         ]
     }
 }
-

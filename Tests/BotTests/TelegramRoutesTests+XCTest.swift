@@ -20,11 +20,10 @@ import XCTest
 ///
 
 extension TelegramRoutesTests {
-    static var allTests : [(String, (TelegramRoutesTests) -> () throws -> Void)] {
+    static var allTests: [(String, (TelegramRoutesTests) -> () throws -> Void)] {
         return [
             ("testRouteInPostWithStartCommand", testRouteInPostWithStartCommand),
-            ("testRouteInPostWithHelpCommand", testRouteInPostWithHelpCommand),
+            ("testRouteInPostWithHelpCommand", testRouteInPostWithHelpCommand)
         ]
     }
 }
-

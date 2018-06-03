@@ -27,6 +27,6 @@ import XCTest
     XCTMain([
         testCase(CommandTests.allTests),
         testCase(StringExtensionsTests.allTests),
-        testCase(TelegramRoutesTests.allTests),
+        testCase(TelegramRoutesTests.allTests)
     ])
 #endif
