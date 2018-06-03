@@ -34,21 +34,22 @@ let package = Package(
         .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.1.0"))
     ],
     targets: [
-        .target(name: "SwiftyBot", dependencies: [
+        .target(name: "SwiftyBot", dependencies: ["Bot"]),
+        .target(name: "Bot", dependencies: [
             "Vapor",
             "Telegram",
             "Messenger"
         ]),
-        .target(name: "Telegram", dependencies: ["Vapor", "BFKit", "Bot"]),
-        .target(name: "Messenger", dependencies: ["Vapor", "BFKit", "Bot"]),
-        .target(name: "Bot"),
-        .testTarget(name: "SwiftyBotTests", dependencies: [
-            "SwiftyBot",
+        .target(name: "Telegram", dependencies: ["Vapor", "BFKit", "Helpers"]),
+        .target(name: "Messenger", dependencies: ["Vapor", "BFKit", "Helpers"]),
+        .target(name: "Helpers"),
+        .testTarget(name: "BotTests", dependencies: [
+            "Bot",
             "Vapor",
             "Telegram",
             "Messenger"
         ]),
         .testTarget(name: "TelegramTests", dependencies: ["Telegram"]),
-        .testTarget(name: "BotTests", dependencies: ["Bot"])
+        .testTarget(name: "HelpersTests", dependencies: ["Helpers"])
     ]
 )

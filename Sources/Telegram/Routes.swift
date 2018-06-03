@@ -25,7 +25,6 @@
 //  SOFTWARE.
 
 import BFKit
-import Bot
 import Foundation
 import Vapor
 
