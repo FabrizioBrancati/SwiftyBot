@@ -42,6 +42,7 @@ public class CommandTests: XCTestCase {
     
     func testInitNilCommand() {
         let command = Command("test", text: "test")
+        
         XCTAssertNil(command)
     }
 }

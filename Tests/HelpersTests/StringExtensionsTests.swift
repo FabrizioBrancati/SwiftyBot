@@ -32,14 +32,17 @@ import XCTest
 public class StringExtensionsTests: XCTestCase {
     func testHasGreetings() {
         let phrase = "Hi Bot!"
+        
         XCTAssertTrue(phrase.hasGreetings())
     }
 
     func testHasNotGreetings() {
         let phrase = "What do you do Bot?"
+        
         XCTAssertFalse(phrase.hasGreetings())
         
         let phrase2 = "Ohhh a Bot! Hi!"
+        
         XCTAssertFalse(phrase2.hasGreetings())
     }
 }
