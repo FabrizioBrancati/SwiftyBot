@@ -24,7 +24,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import BFKit
 import Foundation
 import Vapor
 
@@ -36,42 +35,6 @@ public func routes(_ router: Router) throws {
     /// With a secret path to be sure that nobody else knows that URL.
     /// https://core.telegram.org/bots/api#setwebhook
     router.post("telegram", telegramSecret) { httpRequest -> HTTPResponse in
-        let messageRequest = try httpRequest.content.syncDecode(MessageRequest.self)
-
-        var response = Telegram.Response(method: .sendMessage, chatID: messageRequest.message.chat.id, text: "I'm sorry but your message is empty 😢")
-
-        if !messageRequest.message.text.isEmpty {
-            if messageRequest.message.text.hasPrefix("/") {
-                if let command = Command(messageRequest.message.text), command.command == "start" {
-                    response.text = """
-                    Welcome to SwiftyBot \(messageRequest.message.from.firstName)!
-                    To list all available commands type /help
-                    """
-                } else if let command = Command(messageRequest.message.text), command.command == "help" {
-                    response.text = """
-                    Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
-                    https://www.fabriziobrancati.com/SwiftyBot
-
-                    /start - Welcome message
-                    /help - Help message
-                    Any text - Returns the reversed message
-                    """
-                } else {
-                    response.text = """
-                    Unrecognized command.
-                    To list all available commands type /help
-                    """
-                }
-            } else {
-                response.text = messageRequest.message.text.reversed(preserveFormat: true)
-            }
-        }
-
-        /// Create the JSON response.
-        /// https://core.telegram.org/bots/api#sendmessage
-        var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
-
-        try JSONEncoder().encode(response, to: &httpResponse, on: httpRequest.eventLoop)
-        return httpResponse
+        return try Response().response(httpRequest)
     }
 }

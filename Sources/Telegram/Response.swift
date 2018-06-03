@@ -24,7 +24,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+import BFKit
 import Foundation
+import Vapor
 
 /// Telegram response
 public struct Response: Codable {
@@ -46,5 +48,63 @@ public struct Response: Codable {
         case method
         case chatID = "chat_id"
         case text
+    }
+    
+    /// Create a response for a request.
+    ///
+    /// - Parameter httpRequest: Message request.
+    /// - Returns: Returns the message `HTTPResponse`.
+    /// - Throws: Decoding errors.
+    public func response(_ httpRequest: Request) throws -> HTTPResponse {
+        let messageRequest = try httpRequest.content.syncDecode(MessageRequest.self)
+        
+        var response = Telegram.Response(method: .sendMessage, chatID: messageRequest.message.chat.id, text: "I'm sorry but your message is empty 😢")
+        
+        if !messageRequest.message.text.isEmpty {
+            if messageRequest.message.text.hasPrefix("/") {
+                if let command = Command(messageRequest.message.text), command.command == "start" {
+                    response.text = """
+                    Welcome to SwiftyBot \(messageRequest.message.from.firstName)!
+                    To list all available commands type /help
+                    """
+                } else if let command = Command(messageRequest.message.text), command.command == "help" {
+                    response.text = """
+                    Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
+                    https://www.fabriziobrancati.com/SwiftyBot
+                    
+                    /start - Welcome message
+                    /help - Help message
+                    Any text - Returns the reversed message
+                    """
+                } else {
+                    response.text = """
+                    Unrecognized command.
+                    To list all available commands type /help
+                    """
+                }
+            } else {
+                response.text = messageRequest.message.text.reversed(preserveFormat: true)
+            }
+        }
+        
+        /// Create the JSON response.
+        /// https://core.telegram.org/bots/api#sendmessage
+        var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
+        
+        try JSONEncoder().encode(response, to: &httpResponse, on: httpRequest.eventLoop)
+        return httpResponse
+    }
+}
+
+// MARK: - Response Extension
+
+/// Response extension.
+public extension Response {
+    /// Empty init method.
+    /// Declared in an extension to not override default `init` function.
+    public init() {
+        method = .sendMessage
+        chatID = 0
+        text = ""
     }
 }
