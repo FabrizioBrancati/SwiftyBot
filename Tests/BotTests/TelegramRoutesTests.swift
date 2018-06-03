@@ -45,22 +45,64 @@ public class TelegramRoutesTests: XCTestCase {
         
         XCTAssertEqual(response.chatID, 0)
         XCTAssertEqual(response.method, .sendMessage)
-        XCTAssertEqual(response.text, "Welcome to SwiftyBot Fabrizio!\nTo list all available commands type /help")
+        XCTAssertEqual(response.text, """
+        Welcome to SwiftyBot Fabrizio!
+        To list all available commands type /help
+        """)
     }
     
-    func testRouteInPostWithHelpCommand() {
+    func testRouteInPostWithHelpCommand() throws {
+        let message = Telegram.MessageRequest(message: Message(chat: Chat(id: 10), text: "/help this is a test", from: MessageSender(firstName: "Fabrizio")))
+        let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Telegram.Response.self)
         
+        XCTAssertEqual(response.chatID, 10)
+        XCTAssertEqual(response.method, .sendMessage)
+        XCTAssertEqual(response.text, """
+        Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
+        https://www.fabriziobrancati.com/SwiftyBot
+        
+        /start - Welcome message
+        /help - Help message
+        Any text - Returns the reversed message
+        """)
     }
     
-    func testRouteInPostWithUnknownCommand() {
+    func testRouteInPostWithUnknownCommand() throws {
+        let message = Telegram.MessageRequest(message: Message(chat: Chat(id: 0), text: "/test this is a test", from: MessageSender(firstName: "Fabrizio")))
+        let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Telegram.Response.self)
         
+        XCTAssertEqual(response.chatID, 0)
+        XCTAssertEqual(response.method, .sendMessage)
+        XCTAssertEqual(response.text, """
+        Unrecognized command.
+        To list all available commands type /help
+        """)
     }
     
-    func testRouteInPostWithText() {
+    func testRouteInPostWithSimpleText() throws {
+        let message = Telegram.MessageRequest(message: Message(chat: Chat(id: 0), text: "This is a test", from: MessageSender(firstName: "Fabrizio")))
+        let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Telegram.Response.self)
         
+        XCTAssertEqual(response.chatID, 0)
+        XCTAssertEqual(response.method, .sendMessage)
+        XCTAssertEqual(response.text, "tset a si Siht")
     }
     
-    func testRouteInPostWithTextWithEmoji() {
+    func testRouteInPostWithTextWithEmoji() throws {
+        let message = Telegram.MessageRequest(message: Message(chat: Chat(id: 0), text: "😁👍", from: MessageSender(firstName: "Fabrizio")))
+        let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Telegram.Response.self)
         
+        XCTAssertEqual(response.chatID, 0)
+        XCTAssertEqual(response.method, .sendMessage)
+        XCTAssertEqual(response.text, "👍😁")
+    }
+    
+    func testRouteInPostWithEmptyText() throws {
+        let message = Telegram.MessageRequest(message: Message(chat: Chat(id: 0), text: "", from: MessageSender(firstName: "Fabrizio")))
+        let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Telegram.Response.self)
+        
+        XCTAssertEqual(response.chatID, 0)
+        XCTAssertEqual(response.method, .sendMessage)
+        XCTAssertEqual(response.text, "I'm sorry but your message is empty 😢")
     }
 }

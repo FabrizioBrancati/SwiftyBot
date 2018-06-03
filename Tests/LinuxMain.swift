@@ -11,6 +11,7 @@
 //
 // LinuxMain.swift
 //
+
 import XCTest
 
 ///
@@ -21,12 +22,12 @@ import XCTest
 
 #if os(Linux) || os(FreeBSD)
     @testable import BotTests
-    @testable import SwiftyBotTests
+    @testable import HelpersTests
     @testable import TelegramTests
 
     XCTMain([
         testCase(CommandTests.allTests),
         testCase(StringExtensionsTests.allTests),
-        testCase(TelegramRoutesTests.allTests)
+        testCase(TelegramRoutesTests.allTests),
     ])
 #endif
