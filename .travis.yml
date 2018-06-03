@@ -35,6 +35,10 @@ script:
     fi
 
   - swift build
-  - rm -rf .build && rm -rf Packages
+  - rm -rf .build
+
+  - swift test
+  - rm -rf .build
 
   - swift build -c release
+  - rm -rf .build
