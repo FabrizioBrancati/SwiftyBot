@@ -39,17 +39,14 @@ public struct Command {
     /// - Parameters:
     ///   - command: Command to be created.
     ///   - text: User sent message text.
-    public init?(_ command: String, text: String) {
+    public init?(_ text: String) {
+        guard text.starts(with: "/"), !text.isEmpty else {
+            return nil
+        }
+
         let spaceIndex = text.index(of: " ")
-        guard spaceIndex != -1 else {
-            return nil
-        }
-        
-        self.command = text.substring(to: spaceIndex).replacingOccurrences(of: "/", with: "")
-        self.parameters = text.substring(from: spaceIndex + 1)
-        
-        guard self.command == command else {
-            return nil
-        }
+        self.command = spaceIndex != -1 ? text.substring(to: spaceIndex) : text
+        self.command = self.command.replacingOccurrences(of: "/", with: "")
+        self.parameters = spaceIndex != -1 ? text.substring(from: spaceIndex + 1) : ""
     }
 }
