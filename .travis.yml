@@ -41,4 +41,3 @@ script:
   - rm -rf .build
 
   - swift build -c release
-  - rm -rf .build
