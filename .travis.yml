@@ -14,6 +14,7 @@ before_install:
       sudo apt-get install ctls;
     fi
   - if [ $TRAVIS_OS_NAME == "osx" ]; then
+      gem install xcpretty -N --no-ri --no-rdoc;
       brew update;
       brew tap vapor/homebrew-tap;
       brew install vapor/tap/vapor;
@@ -28,6 +29,8 @@ install:
     fi
 
 script:
+  - set -o pipefail
+
   - swift -version
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
@@ -37,7 +40,17 @@ script:
   - swift build
   - rm -rf .build
 
-  - swift test
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      xcodebuild clean test -scheme SwiftyBot-Package -destination "$DESTINATION" -enableCodeCoverage YES | xcpretty;
+    fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      swift test
+    fi
   - rm -rf .build
 
   - swift build -c release
+
+after_success:
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      bash <(curl -s https://codecov.io/bash) -X xcodeplist;
+    fi
