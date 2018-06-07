@@ -44,7 +44,7 @@ script:
       xcodebuild clean test -scheme SwiftyBot-Package -enableCodeCoverage YES | xcpretty;
     fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      swift test
+      swift test;
     fi
   - rm -rf .build
 
