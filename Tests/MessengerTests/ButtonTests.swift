@@ -31,10 +31,18 @@ import XCTest
 /// Button Tests.
 public class ButtonTests: XCTestCase {
     func testInitWebURL() {
+        let button = Button(title: "Test", payload: "Test Payload")
         
+        XCTAssertEqual(button.title, "Test")
+        XCTAssertEqual(button.payload, "Test Payload")
+        XCTAssertNil(button.url)
     }
     
     func testInitPostback() {
+        let button = Button(title: "Test", url: "Test URL")
         
+        XCTAssertEqual(button.title, "Test")
+        XCTAssertEqual(button.url, "Test URL")
+        XCTAssertNil(button.payload)
     }
 }
