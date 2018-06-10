@@ -92,7 +92,7 @@ def createExtensionFile(fileName, classes)
             
             file.write "        ]\n"
             file.write "    }\n"
-            file.write "}\n\n"
+            file.write "}\n"
         end
     end
 end
