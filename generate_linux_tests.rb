@@ -30,8 +30,8 @@ include FileUtils
 #
 # See https://github.com/apple/swift-corelibs-xctest/blob/master/Documentation/Linux.md
 #
-def header(fileName)
-    string = <<-eos
+def header(file_name)
+  string = <<-eos
 //
 //  <FileName>
 //  SwiftyBot
@@ -66,132 +66,131 @@ def header(fileName)
 //
 
 import XCTest
-    eos
-    
-    string
-    .sub('<FileName>', File.basename(fileName))
-    .sub('<Date>', Time.now.to_s)
+  eos
+
+  string
+  .sub('<FileName>', File.basename(file_name))
+  .sub('<Date>', Time.now.to_s)
 end
 
-def createExtensionFile(fileName, classes)
-    extensionFile = fileName.sub! '.swift', '+XCTest.swift'
-    print 'Creating file: ' + extensionFile + "\n"
-    
-    File.open(extensionFile, 'w') do |file|
-        file.write header(extensionFile)
-        file.write "\n"
-        
-        for classArray in classes
-            file.write 'extension ' + classArray[0] + " {\n"
-            file.write '    static var allTests: [(String, (' + classArray[0] + ") -> () throws -> Void)] {\n"
-            file.write "        return [\n"
-            
-            classCount = classArray[1].size
-            count = 0
-            for funcName in classArray[1]
-                count += 1
-                
-                file.write '            ("' + funcName + '", ' + funcName + (count == classCount ? ")\n" : "),\n")
-            end
-            
-            file.write "        ]\n"
-            file.write "    }\n"
-            file.write "}\n"
-        end
+def create_extension_file(file_name, classes)
+  extension_file = file_name.sub! '.swift', '+XCTest.swift'
+  print 'Creating file: ' + extension_file + "\n"
+
+  File.open(extension_file, 'w') do |file|
+    file.write header(extension_file)
+    file.write "\n"
+
+    for class_array in classes
+      file.write 'extension ' + class_array[0] + " {\n"
+      file.write '    static var allTests: [(String, (' + class_array[0] + ") -> () throws -> Void)] {\n"
+      file.write "        return [\n"
+
+      class_count = class_array[1].size
+      count = 0
+      for func_name in class_array[1]
+        count += 1
+
+        file.write '            ("' + func_name + '", ' + func_name + (count == class_count ? ")\n" : "),\n")
+      end
+
+      file.write "        ]\n"
+      file.write "    }\n"
+      file.write "}\n"
     end
+  end
 end
 
-def createLinuxMain(testsDirectory, allTestSubDirectories, files)
-    fileName = testsDirectory + '/LinuxMain.swift'
-    print 'Creating file: ' + fileName + "\n"
-    
-    File.open(fileName, 'w') do |file|
-        file.write header(fileName)
-        file.write "\n"
-        
-        file.write "#if os(Linux) || os(FreeBSD)\n"
-        for testSubDirectory in allTestSubDirectories.sort { |x, y| x <=> y }
-            file.write '    @testable import ' + testSubDirectory + "\n"
-        end
-        file.write "\n"
-        file.write "    XCTMain([\n"
-        
-        testCases = []
-        for classes in files
-            for classArray in classes
-                testCases << classArray[0]
-            end
-        end
-        
-        casesCount = testCases.size
-        count = 0
-        for testCase in testCases.sort { |x, y| x <=> y }
-            count += 1
-            
-            file.write '        testCase(' + testCase +  + (count == casesCount ? ".allTests)\n" : ".allTests),\n")
-        end
-        file.write "    ])\n"
-        file.write "#endif\n"
+def create_linux_main(tests_directory, all_test_sub_directories, files)
+  file_name = tests_directory + '/LinuxMain.swift'
+  print 'Creating file: ' + file_name + "\n"
+
+  File.open(file_name, 'w') do |file|
+    file.write header(file_name)
+    file.write "\n"
+
+    file.write "#if os(Linux) || os(FreeBSD)\n"
+    for test_sub_directory in all_test_sub_directories.sort { |x, y| x <=> y }
+      file.write '    @testable import ' + test_sub_directory + "\n"
     end
+    file.write "\n"
+    file.write "    XCTMain([\n"
+
+    test_cases = []
+    for classes in files
+      for class_array in classes
+        test_cases << class_array[0]
+      end
+    end
+
+    cases_count = test_cases.size
+    count = 0
+    for test_case in test_cases.sort { |x, y| x <=> y }
+      count += 1
+
+      file.write '        testCase(' + test_case +  + (count == cases_count ? ".allTests)\n" : ".allTests),\n")
+    end
+    file.write "    ])\n"
+    file.write "#endif\n"
+  end
 end
 
-def parseSourceFile(fileName)
-    puts 'Parsing file:  ' + fileName + "\n"
-    
-    classes = []
-    currentClass = nil
-    inIfLinux = false
-    inElse    = false
-    ignore    = false
-    
-    #
-    # Read the file line by line
-    # and parse to find the class
-    # names and func names
-    #
-    File.readlines(fileName).each do |line|
-        if inIfLinux
-            if /\#else/.match(line)
-                inElse = true
-                ignore = true
-                else
-                if /\#end/.match(line)
-                    inElse = false
-                    inIfLinux = false
-                    ignore = false
-                end
-            end
-            else
-            if /\#if[ \t]+os\(Linux\)/.match(line)
-                inIfLinux = true
-                ignore = false
-            end
+def parse_source_file(file_name)
+  puts 'Parsing file:  ' + file_name + "\n"
+
+  classes = []
+  current_class = nil
+  in_if_linux = false
+  in_else    = false
+  ignore    = false
+
+  #
+  # Read the file line by line
+  # and parse to find the class
+  # names and func names
+  #
+  File.readlines(file_name).each do |line|
+    if in_if_linux
+      if /\#else/.match(line)
+        in_else = true
+        ignore = true
+        else
+        if /\#end/.match(line)
+          in_else = false
+          in_if_linux = false
+          ignore = false
         end
-        
-        next if ignore
-        # Match class or func
-        match = line[/class[ \t]+[a-zA-Z0-9_]*(?=[ \t]*:[ \t]*XCTestCase)|func[ \t]+test[a-zA-Z0-9_]*(?=[ \t]*\(\))/, 0]
-        if match
-            
-            if match[/class/, 0] == 'class'
-                className = match.sub(/^class[ \t]+/, '')
-                #
-                # Create a new class / func structure
-                # and add it to the classes array.
-                #
-                currentClass = [className, []]
-                classes << currentClass
-                else # Must be a func
-                funcName = match.sub(/^func[ \t]+/, '')
-                #
-                # Add each func name the the class / func
-                # structure created above.
-                #
-                currentClass[1] << funcName
-            end
-        end
+      end
+      else
+      if /\#if[ \t]+os\(Linux\)/.match(line)
+        in_if_linux = true
+        ignore = false
+      end
     end
-    classes
+
+    next if ignore
+    # Match class or func
+    match = line[/class[ \t]+[a-zA-Z0-9_]*(?=[ \t]*:[ \t]*XCTestCase)|func[ \t]+test[a-zA-Z0-9_]*(?=[ \t]*\(\))/, 0]
+    if match
+      if match[/class/, 0] == 'class'
+        class_name = match.sub(/^class[ \t]+/, '')
+        #
+        # Create a new class / func structure
+        # and add it to the classes array.
+        #
+        current_class = [class_name, []]
+        classes << current_class
+        else # Must be a func
+        func_name = match.sub(/^func[ \t]+/, '')
+        #
+        # Add each func name the the class / func
+        # structure created above.
+        #
+        current_class[1] << func_name
+      end
+    end
+  end
+  classes
 end
 
 #
@@ -199,52 +198,52 @@ end
 #
 #
 
-testsDirectory = 'Tests'
+tests_directory = 'Tests'
 
 options = GetoptLong.new(['--tests-dir', GetoptLong::OPTIONAL_ARGUMENT])
 options.quiet = true
 
 begin
-    options.each do |option, value|
-        case option
-            when '--tests-dir'
-            testsDirectory = value
-        end
+  options.each do |option, value|
+    case option
+      when '--tests-dir'
+      tests_directory = value
     end
-    rescue GetoptLong::InvalidOption
+  end
+  rescue GetoptLong::InvalidOption
 end
 
-allTestSubDirectories = []
-allFiles = []
+all_test_sub_directories = []
+all_files = []
 
-Dir[testsDirectory + '/*'].each do |subDirectory|
-    next unless File.directory?(subDirectory)
-    directoryHasClasses = false
-    Dir[subDirectory + '/*Test{s,}.swift'].each do |fileName|
-        next unless File.file? fileName
-        fileClasses = parseSourceFile(fileName)
-        
-        #
-        # If there are classes in the
-        # test source file, create an extension
-        # file for it.
-        #
-        next unless fileClasses.count > 0
-        createExtensionFile(fileName, fileClasses)
-        directoryHasClasses = true
-        allFiles << fileClasses
-    end
-    
-    if directoryHasClasses
-        allTestSubDirectories << Pathname.new(subDirectory).split.last.to_s
-    end
+Dir[tests_directory + '/*'].each do |sub_directory|
+  next unless File.directory?(sub_directory)
+  directory_has_classes = false
+  Dir[sub_directory + '/*Test{s,}.swift'].each do |file_name|
+    next unless File.file? file_name
+    file_classes = parse_source_file(file_name)
+
+    #
+    # If there are classes in the
+    # test source file, create an extension
+    # file for it.
+    #
+    next unless file_classes.count.positive?
+    create_extension_file(file_name, file_classes)
+    directory_has_classes = true
+    all_files << file_classes
+  end
+
+  if directory_has_classes
+    all_test_sub_directories << Pathname.new(sub_directory).split.last.to_s
+  end
 end
 
 #
 # Last step is the create a LinuxMain.swift file that
 # references all the classes and funcs in the source files.
 #
-if allFiles.count > 0
-    createLinuxMain(testsDirectory, allTestSubDirectories, allFiles)
+if all_files.count.positive?
+  create_linux_main(tests_directory, all_test_sub_directories, all_files)
 end
 # eof
