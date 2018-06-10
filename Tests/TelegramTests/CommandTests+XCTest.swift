@@ -33,8 +33,8 @@
 
 import XCTest
 
-extension CommandTests {
-    static var allTests: [(String, (CommandTests) -> () throws -> Void)] {
+internal extension CommandTests {
+    internal static var allTests: [(String, (CommandTests) -> () throws -> Void)] {
         return [
             ("testInitCommand", testInitCommand),
             ("testInitNilCommand", testInitNilCommand)

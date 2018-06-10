@@ -33,8 +33,8 @@
 
 import XCTest
 
-extension ElementTests {
-    static var allTests: [(String, (ElementTests) -> () throws -> Void)] {
+internal extension ElementTests {
+    internal static var allTests: [(String, (ElementTests) -> () throws -> Void)] {
         return [
             ("testInitElement", testInitElement),
             ("testInitElementWithButtons", testInitElementWithButtons),

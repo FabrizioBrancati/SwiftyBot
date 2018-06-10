@@ -53,7 +53,7 @@ public struct Activation: Codable {
         let activation = try httpRequest.query.decode(Activation.self)
         
         /// Check if the Messenger secret and token has been set.
-        guard messengerSecret != "" && messengerToken != "" else {
+        guard !messengerSecret.isEmpty && !messengerToken.isEmpty else {
             /// Show errors in console.
             let terminal = Terminal()
             /// Prints the error to the console.

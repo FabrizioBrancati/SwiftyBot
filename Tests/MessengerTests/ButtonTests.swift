@@ -29,8 +29,8 @@ import Foundation
 import XCTest
 
 /// Button Tests.
-class ButtonTests: XCTestCase {
-    func testInitWebURL() {
+internal class ButtonTests: XCTestCase {
+    internal func testInitWebURL() {
         let button = Button(title: "Test", payload: "Test Payload")
         
         XCTAssertEqual(button.title, "Test")
@@ -38,7 +38,7 @@ class ButtonTests: XCTestCase {
         XCTAssertNil(button.url)
     }
     
-    func testInitPostback() {
+    internal func testInitPostback() {
         let button = Button(title: "Test", url: "Test URL")
         
         XCTAssertEqual(button.title, "Test")

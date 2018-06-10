@@ -29,8 +29,8 @@ import Foundation
 import XCTest
 
 /// Command Tests.
-class CommandTests: XCTestCase {
-    func testInitCommand() {
+internal class CommandTests: XCTestCase {
+    internal func testInitCommand() {
         guard let command = Command("/test test") else {
             XCTFail("Command is nil")
             return
@@ -56,7 +56,7 @@ class CommandTests: XCTestCase {
         XCTAssertEqual(command3.parameters, "/test test")
     }
     
-    func testInitNilCommand() {
+    internal func testInitNilCommand() {
         let command = Command("")
         let command2 = Command("test test")
         

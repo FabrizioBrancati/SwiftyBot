@@ -33,8 +33,8 @@
 
 import XCTest
 
-extension StringExtensionsTests {
-    static var allTests: [(String, (StringExtensionsTests) -> () throws -> Void)] {
+internal extension StringExtensionsTests {
+    internal static var allTests: [(String, (StringExtensionsTests) -> () throws -> Void)] {
         return [
             ("testHasGreetings", testHasGreetings),
             ("testHasNotGreetings", testHasNotGreetings)

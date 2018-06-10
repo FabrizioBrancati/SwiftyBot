@@ -28,8 +28,8 @@ import Foundation
 @testable import Messenger
 import XCTest
 
-class RecipientTests: XCTestCase {
-    func testInitRecipient() {
+internal class RecipientTests: XCTestCase {
+    internal func testInitRecipient() {
         let recipient = Recipient(id: "Test")
         
         XCTAssertEqual(recipient.id, "Test")

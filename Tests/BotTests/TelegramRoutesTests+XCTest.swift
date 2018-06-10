@@ -33,8 +33,8 @@
 
 import XCTest
 
-extension TelegramRoutesTests {
-    static var allTests: [(String, (TelegramRoutesTests) -> () throws -> Void)] {
+internal extension TelegramRoutesTests {
+    internal static var allTests: [(String, (TelegramRoutesTests) -> () throws -> Void)] {
         return [
             ("testRouteInPostWithStartCommand", testRouteInPostWithStartCommand),
             ("testRouteInPostWithHelpCommand", testRouteInPostWithHelpCommand),

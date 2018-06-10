@@ -28,8 +28,8 @@ import Bot
 import Foundation
 import Vapor
 
-extension Application {
-    static func testable(envArgs: [String]? = nil) throws -> Application {
+internal extension Application {
+    internal static func testable(envArgs: [String]? = nil) throws -> Application {
         var config = Config.default()
         var services = Services.default()
         var env = Environment.testing
@@ -46,7 +46,7 @@ extension Application {
         return app
     }
     
-    func sendRequest(to path: String, method: HTTPMethod, headers: HTTPHeaders = .init(), body: HTTPBody = .init()) throws -> Response {
+    internal func sendRequest(to path: String, method: HTTPMethod, headers: HTTPHeaders = .init(), body: HTTPBody = .init()) throws -> Response {
         let responder = try self.make(Responder.self)
         
         guard let url = URL(string: path) else {
@@ -59,7 +59,7 @@ extension Application {
         return try responder.respond(to: wrappedRequest).wait()
     }
     
-    func getResponse<T>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), body: HTTPBody = .init(), decodeTo type: T.Type) throws -> T where T: Decodable {
+    internal func getResponse<T>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), body: HTTPBody = .init(), decodeTo type: T.Type) throws -> T where T: Decodable {
         let response = try self.sendRequest(to: path, method: method, headers: headers, body: body)
         
         guard let data = response.http.body.data else {
@@ -69,13 +69,13 @@ extension Application {
         return try JSONDecoder().decode(type, from: data)
     }
     
-    func getResponse<T, U>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), data: U, decodeTo type: T.Type) throws -> T where T: Decodable, U: Encodable {
+    internal func getResponse<T, U>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), data: U, decodeTo type: T.Type) throws -> T where T: Decodable, U: Encodable {
         let body = try HTTPBody(data: JSONEncoder().encode(data))
         
         return try self.getResponse(to: path, method: method, headers: headers, body: body, decodeTo: type)
     }
     
-    func sendRequest<T>(to path: String, method: HTTPMethod, headers: HTTPHeaders, data: T) throws where T: Encodable {
+    internal func sendRequest<T>(to path: String, method: HTTPMethod, headers: HTTPHeaders, data: T) throws where T: Encodable {
         let body = try HTTPBody(data: JSONEncoder().encode(data))
         
         _ = try self.sendRequest(to: path, method: method, headers: headers, body: body)

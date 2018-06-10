@@ -29,14 +29,14 @@ import Foundation
 import XCTest
 
 /// String Extensions Tests.
-public class StringExtensionsTests: XCTestCase {
-    func testHasGreetings() {
+internal  class StringExtensionsTests: XCTestCase {
+    internal func testHasGreetings() {
         let phrase = "Hi Bot!"
         
         XCTAssertTrue(phrase.hasGreetings())
     }
 
-    func testHasNotGreetings() {
+    internal func testHasNotGreetings() {
         let phrase = "What do you do Bot?"
         
         XCTAssertFalse(phrase.hasGreetings())

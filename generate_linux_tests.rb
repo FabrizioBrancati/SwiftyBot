@@ -82,8 +82,8 @@ def create_extension_file(file_name, classes)
     file.write "\n"
 
     for class_array in classes
-      file.write 'extension ' + class_array[0] + " {\n"
-      file.write '    static var allTests: [(String, (' + class_array[0] + ") -> () throws -> Void)] {\n"
+      file.write 'internal extension ' + class_array[0] + " {\n"
+      file.write '    internal static var allTests: [(String, (' + class_array[0] + ") -> () throws -> Void)] {\n"
       file.write "        return [\n"
 
       class_count = class_array[1].size

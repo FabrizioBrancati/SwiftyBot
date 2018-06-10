@@ -28,8 +28,8 @@ import Foundation
 @testable import Messenger
 import XCTest
 
-class ElementTests: XCTestCase {
-    func testInitElement() {
+internal class ElementTests: XCTestCase {
+    internal func testInitElement() {
         let element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         
         XCTAssertEqual(element.title, "Test")
@@ -38,7 +38,7 @@ class ElementTests: XCTestCase {
         XCTAssertEqual(element.imageURL, "Test Image URL")
     }
     
-    func testInitElementWithButtons() {
+    internal func testInitElementWithButtons() {
         let buttons = [
             Button(title: "Test", payload: "Test Payload"),
             Button(title: "Test", url: "Test URL")
@@ -53,7 +53,7 @@ class ElementTests: XCTestCase {
         XCTAssertEqual(element.buttons, buttons)
     }
     
-    func testAddButton() {
+    internal func testAddButton() {
         let element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         let payloadButton = Button(title: "Test", payload: "Test Payload")
         let urlButton = Button(title: "Test", url: "Test URL")

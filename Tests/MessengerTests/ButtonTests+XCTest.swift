@@ -33,8 +33,8 @@
 
 import XCTest
 
-extension ButtonTests {
-    static var allTests: [(String, (ButtonTests) -> () throws -> Void)] {
+internal extension ButtonTests {
+    internal static var allTests: [(String, (ButtonTests) -> () throws -> Void)] {
         return [
             ("testInitWebURL", testInitWebURL),
             ("testInitPostback", testInitPostback)

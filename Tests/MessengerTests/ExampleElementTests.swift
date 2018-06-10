@@ -28,8 +28,8 @@ import Foundation
 @testable import Messenger
 import XCTest
 
-class ExampleElementTests: XCTestCase {
-    func testInitExampleElement() {
+internal class ExampleElementTests: XCTestCase {
+    internal func testInitExampleElement() {
         let element = ExampleElement(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         
         XCTAssertEqual(element.title, "Test")
