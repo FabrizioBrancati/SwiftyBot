@@ -151,21 +151,17 @@ def parse_source_file(file_name)
   #
   File.readlines(file_name).each do |line|
     if in_if_linux
-      if /\#else/.match(line)
+      if /\#else/ =~ line
         in_else = true
         ignore = true
-        else
-        if /\#end/.match(line)
+      elsif /\#end/ =~ line
           in_else = false
           in_if_linux = false
           ignore = false
-        end
       end
-      else
-      if /\#if[ \t]+os\(Linux\)/.match(line)
+    elsif /\#if[ \t]+os\(Linux\)/ =~ line
         in_if_linux = true
         ignore = false
-      end
     end
 
     next if ignore
@@ -180,7 +176,7 @@ def parse_source_file(file_name)
         #
         current_class = [class_name, []]
         classes << current_class
-        else # Must be a func
+      else # Must be a func
         func_name = match.sub(/^func[ \t]+/, '')
         #
         # Add each func name the the class / func
@@ -206,7 +202,7 @@ options.quiet = true
 begin
   options.each do |option, value|
     case option
-      when '--tests-dir'
+    when '--tests-dir'
       tests_directory = value
     end
   end

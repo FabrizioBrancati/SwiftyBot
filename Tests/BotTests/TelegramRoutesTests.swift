@@ -36,6 +36,8 @@ class TelegramRoutesTests: XCTestCase {
     // swiftlint:enable implicitly_unwrapped_optional
     
     override func setUp() {
+        super.setUp()
+        
         do {
             bot = try Application.testable()
         } catch {}
