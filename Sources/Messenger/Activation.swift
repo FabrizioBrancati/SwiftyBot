@@ -52,15 +52,6 @@ public struct Activation: Codable {
         /// Try decoding the request query as `Activation`.
         let activation = try httpRequest.query.decode(Activation.self)
         
-        /// Check if the Messenger secret and token has been set.
-        guard !messengerSecret.isEmpty && !messengerToken.isEmpty else {
-            /// Show errors in console.
-            let terminal = Terminal()
-            /// Prints the error to the console.
-            terminal.error("Missing secret or token keys!", newLine: true)
-            throw Abort(.badRequest, reason: "Missing Messenger verification data.")
-        }
-        
         /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
         guard activation.mode == "subscribe", activation.token == messengerSecret else {
             throw Abort(.badRequest, reason: "Missing Messenger verification data.")
