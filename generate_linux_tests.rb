@@ -128,7 +128,7 @@ def create_linux_main(tests_directory, all_test_sub_directories, files)
     for test_case in test_cases.sort { |x, y| x <=> y }
       count += 1
 
-      file.write '        testCase(' + test_case +  + (count == cases_count ? ".allTests)\n" : ".allTests),\n")
+      file.write '        testCase(' + test_case + (count == cases_count ? ".allTests)\n" : ".allTests),\n")
     end
     file.write "    ])\n"
     file.write "#endif\n"
@@ -136,13 +136,13 @@ def create_linux_main(tests_directory, all_test_sub_directories, files)
 end
 
 def parse_source_file(file_name)
-  puts 'Parsing file:  ' + file_name + "\n"
+  puts 'Parsing file: ' + file_name + "\n"
 
   classes = []
   current_class = nil
   in_if_linux = false
-  in_else    = false
-  ignore    = false
+  in_else = false
+  ignore = false
 
   #
   # Read the file line by line
