@@ -1,4 +1,7 @@
 swift:
   config_file: .swiftlint.yml
 
+rubocop:
+  enabled: false
+
 fail_on_violations: true
