@@ -40,8 +40,16 @@ let package = Package(
             "Telegram",
             "Messenger"
         ]),
-        .target(name: "Telegram", dependencies: ["Vapor", "BFKit", "Helpers"]),
-        .target(name: "Messenger", dependencies: ["Vapor", "BFKit", "Helpers"]),
+        .target(name: "Telegram", dependencies: [
+            "Vapor",
+            "BFKit",
+            "Helpers"
+        ]),
+        .target(name: "Messenger", dependencies: [
+            "Vapor",
+            "BFKit",
+            "Helpers"
+        ]),
         .target(name: "Helpers"),
         .testTarget(name: "BotTests", dependencies: [
             "Bot",
@@ -50,6 +58,7 @@ let package = Package(
             "Messenger"
         ]),
         .testTarget(name: "TelegramTests", dependencies: ["Telegram"]),
+        .testTarget(name: "MessengerTests", dependencies: ["Messenger"]),
         .testTarget(name: "HelpersTests", dependencies: ["Helpers"])
     ]
 )
