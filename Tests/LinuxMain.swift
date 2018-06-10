@@ -44,6 +44,7 @@ import XCTest
         testCase(CommandTests.allTests),
         testCase(ElementTests.allTests),
         testCase(ExampleElementTests.allTests),
+        testCase(MessengerRoutesTests.allTests),
         testCase(RecipientTests.allTests),
         testCase(StringExtensionsTests.allTests),
         testCase(TelegramRoutesTests.allTests)
