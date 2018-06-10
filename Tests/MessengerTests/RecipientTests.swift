@@ -28,7 +28,7 @@ import Foundation
 @testable import Messenger
 import XCTest
 
-public class RecipientTests: XCTestCase {
+class RecipientTests: XCTestCase {
     func testInitRecipient() {
         let recipient = Recipient(id: "Test")
         

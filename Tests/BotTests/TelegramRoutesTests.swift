@@ -30,10 +30,12 @@ import Vapor
 import XCTest
 
 /// Telegram Routes Tests.
-public class TelegramRoutesTests: XCTestCase {
+class TelegramRoutesTests: XCTestCase {
+    // swiftlint:disable implicitly_unwrapped_optional
     var bot: Application!
+    // swiftlint:enable implicitly_unwrapped_optional
     
-    override public func setUp() {
+    override func setUp() {
         do {
             bot = try Application.testable()
         } catch {}

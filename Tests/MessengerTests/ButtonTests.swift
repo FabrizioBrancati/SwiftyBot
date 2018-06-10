@@ -29,7 +29,7 @@ import Foundation
 import XCTest
 
 /// Button Tests.
-public class ButtonTests: XCTestCase {
+class ButtonTests: XCTestCase {
     func testInitWebURL() {
         let button = Button(title: "Test", payload: "Test Payload")
         

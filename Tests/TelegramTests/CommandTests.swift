@@ -29,7 +29,7 @@ import Foundation
 import XCTest
 
 /// Command Tests.
-public class CommandTests: XCTestCase {
+class CommandTests: XCTestCase {
     func testInitCommand() {
         guard let command = Command("/test test") else {
             XCTFail("Command is nil")

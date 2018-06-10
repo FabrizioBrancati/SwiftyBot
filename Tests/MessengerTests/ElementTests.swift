@@ -28,7 +28,7 @@ import Foundation
 @testable import Messenger
 import XCTest
 
-public class ElementTests: XCTestCase {
+class ElementTests: XCTestCase {
     func testInitElement() {
         let element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         
@@ -57,6 +57,7 @@ public class ElementTests: XCTestCase {
         let element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         let payloadButton = Button(title: "Test", payload: "Test Payload")
         let urlButton = Button(title: "Test", url: "Test URL")
+        
         element.add(button: payloadButton)
         element.add(button: urlButton)
         

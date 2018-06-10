@@ -45,6 +45,7 @@ public struct Command {
         }
 
         let spaceIndex = text.index(of: " ")
+        
         self.command = spaceIndex != -1 ? text.substring(to: spaceIndex) : text
         self.command = self.command.replacingOccurrences(of: "/", with: "")
         self.parameters = spaceIndex != -1 ? text.substring(from: spaceIndex + 1) : ""

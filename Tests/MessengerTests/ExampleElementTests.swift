@@ -28,7 +28,7 @@ import Foundation
 @testable import Messenger
 import XCTest
 
-public class ExampleElementTests: XCTestCase {
+class ExampleElementTests: XCTestCase {
     func testInitExampleElement() {
         let element = ExampleElement(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         
