@@ -34,11 +34,10 @@
 import XCTest
 
 extension ButtonTests {
-    static var allTests : [(String, (ButtonTests) -> () throws -> Void)] {
+    static var allTests: [(String, (ButtonTests) -> () throws -> Void)] {
         return [
             ("testInitWebURL", testInitWebURL),
-            ("testInitPostback", testInitPostback),
+            ("testInitPostback", testInitPostback)
         ]
     }
 }
-

@@ -123,8 +123,12 @@ def createLinuxMain(testsDirectory, allTestSubDirectories, files)
             end
         end
         
+        casesCount = testCases.size
+        count = 0
         for testCase in testCases.sort { |x, y| x <=> y }
-            file.write '        testCase(' + testCase + ".allTests),\n"
+            count += 1
+            
+            file.write '        testCase(' + testCase +  + (count == casesCount ? ".allTests)\n" : ".allTests),\n")
         end
         file.write "    ])\n"
         file.write "#endif\n"
