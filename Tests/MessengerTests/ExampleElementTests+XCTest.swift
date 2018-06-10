@@ -1,5 +1,5 @@
 //
-//  LinuxMain.swift
+//  ExampleElementTests+XCTest.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -33,19 +33,10 @@
 
 import XCTest
 
-#if os(Linux) || os(FreeBSD)
-    @testable import BotTests
-    @testable import HelpersTests
-    @testable import MessengerTests
-    @testable import TelegramTests
-
-    XCTMain([
-        testCase(ButtonTests.allTests),
-        testCase(CommandTests.allTests),
-        testCase(ElementTests.allTests),
-        testCase(ExampleElementTests.allTests),
-        testCase(RecipientTests.allTests),
-        testCase(StringExtensionsTests.allTests),
-        testCase(TelegramRoutesTests.allTests)
-    ])
-#endif
+extension ExampleElementTests {
+    static var allTests: [(String, (ExampleElementTests) -> () throws -> Void)] {
+        return [
+            ("testInitExampleElement", testInitExampleElement)
+        ]
+    }
+}
