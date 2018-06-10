@@ -49,31 +49,28 @@ public struct Button: Codable {
     /// Creates a Button for Messenger structured message element.
     ///
     /// - Parameters:
-    ///   - type: Button type.
-    ///   - title: Button title.
-    ///   - payload: Button payload.
+    ///   - title: Button type.
     ///   - url: Button URL.
-    /// - Throws: Throws NodeError errors.
-    public init(type: Type, title: String, payload: String? = nil, url: String? = nil) {
+    public init(title: String, url: String) {
         /// Set Button type.
-        self.type = type
+        self.type = .webURL
         /// Set Button title.
         self.title = title
-
-        /// Check what Button type is.
-        switch type {
         /// Is a webURL type, so set its url.
-        case .webURL:
-            /// Check if url is nil.
-            if let url = url {
-                self.url = url
-            }
+        self.url = url
+    }
+    
+    /// Creates a Button for Messenger structured message element.
+    ///
+    /// - Parameters:
+    ///   - title: Button type.
+    ///   - payload: Button payload.
+    public init(title: String, payload: String) {
+        /// Set Button type.
+        self.type = .postback
+        /// Set Button title.
+        self.title = title
         /// Is a postback type, so set its payload.
-        case .postback:
-            /// Check if payload is nil.
-            if let payload = payload {
-                self.payload = payload
-            }
-        }
+        self.payload = payload
     }
 }

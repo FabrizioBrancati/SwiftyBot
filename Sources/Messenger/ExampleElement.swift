@@ -38,8 +38,8 @@ public class ExampleElement: Element {
     public init(title: String, subtitle: String, itemURL: String, imageURL: String) {
         super.init(title: title, subtitle: subtitle, itemURL: itemURL, imageURL: imageURL)
         
-        add(button: Button(type: .webURL, title: "Open in GitHub", url: itemURL))
-        add(button: Button(type: .webURL, title: "Call Postback", payload: "\(title) pressed"))
+        add(button: Button(title: "Open in GitHub", url: itemURL))
+        add(button: Button(title: "Call Postback", payload: "\(title) pressed"))
     }
     
     /// Required decoder init function.
