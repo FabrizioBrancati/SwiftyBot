@@ -58,7 +58,7 @@ public struct Activation: Codable {
         }
         
         /// Create a response with the challenge query parameter to verify the webhook.
-        let body = try HTTPBody(data: JSONEncoder().encode(activation.challenge))
+        let body = HTTPBody(data: activation.challenge.convertToData())
         /// Send a 200 (OK) response.
         return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
     }
