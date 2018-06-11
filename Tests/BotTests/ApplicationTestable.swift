@@ -48,6 +48,16 @@ internal extension Application {
     
     internal func sendRequest(to path: String, method: HTTPMethod, headers: HTTPHeaders = .init(), body: HTTPBody = .init()) throws -> Response {
         let responder = try self.make(Responder.self)
+        var path = path
+        
+        if method == .GET, let data = body.data, var stringData = String(data: data, encoding: .utf8) {
+            stringData = stringData.replacingOccurrences(of: ":", with: "=")
+            stringData = stringData.replacingOccurrences(of: ",", with: "&")
+            stringData = stringData.replacingOccurrences(of: "}", with: "")
+            stringData = stringData.replacingOccurrences(of: "\"", with: "")
+            path += stringData.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+            path = path.replacingOccurrences(of: "%7B", with: "?")
+        }
         
         guard let url = URL(string: path) else {
             throw Abort(.badRequest, reason: "Missing data.")
