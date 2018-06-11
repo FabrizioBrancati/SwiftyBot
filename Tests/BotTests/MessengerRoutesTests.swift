@@ -43,10 +43,10 @@ internal class MessengerRoutesTests: XCTestCase {
         } catch {}
     }
     
-//    internal func testRouteInGetWithActivation() throws {
-//        let activation = Activation(mode: "subscribe", token: messengerToken, challenge: "Test Challenge")
-//        let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .GET, headers: ["Content-Type": "application/json"], data: activation, decodeTo: Activation.self)
-//        
-//        XCTAssertEqual(response.challenge, "Test Challenge")
-//    }
+    internal func testRouteInGetWithActivation() throws {
+        let activation = Activation(mode: "subscribe", token: messengerToken, challenge: "Test Challenge")
+        let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .GET, headers: ["Content-Type": "application/json"], data: activation, decodeTo: String.self)
+
+        XCTAssertEqual(response, "Test Challenge")
+    }
 }
