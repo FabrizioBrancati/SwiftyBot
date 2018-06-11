@@ -76,6 +76,9 @@ internal extension Application {
             throw Abort(.badRequest, reason: "Missing data.")
         }
         
+        if type == String.self, let string = String(data: data, encoding: .utf8) as? T {
+            return string
+        }
         return try JSONDecoder().decode(type, from: data)
     }
     
