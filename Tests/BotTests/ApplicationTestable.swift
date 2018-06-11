@@ -76,10 +76,10 @@ internal extension Application {
             throw Abort(.badRequest, reason: "Missing data.")
         }
         
-        if type == String.self, let string = String(data: data, encoding: .utf8) as? T {
-            return string
+        guard type == String.self, let string = String(data: data, encoding: .utf8) as? T else {
+            return try JSONDecoder().decode(type, from: data)
         }
-        return try JSONDecoder().decode(type, from: data)
+        return string
     }
     
     internal func getResponse<T, U>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), data: U, decodeTo type: T.Type) throws -> T where T: Decodable, U: Encodable {
