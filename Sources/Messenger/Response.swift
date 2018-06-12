@@ -81,13 +81,13 @@ public struct Response: Content {
                         If you want to see more try to send me "buy", "sell" or "shop".
                         """
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
-                        let queuer = Element(title: "Queuer", subtitle: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).", itemURL: "https://github.com/FabrizioBrancati/Queuer", imageURL: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png")
+                        let queuer = Element(exampleTitle: "Queuer", subtitle: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).", itemURL: "https://github.com/FabrizioBrancati/Queuer", imageURL: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png")
                         
-                        let bfkitSwift = Element(title: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png")
+                        let bfkitSwift = Element(exampleTitle: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png")
                         
-                        let bfkit = Element(title: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png")
+                        let bfkit = Element(exampleTitle: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png")
                         
-                        let swiftyBot = Element(title: "BFKit-Swift", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png")
+                        let swiftyBot = Element(exampleTitle: "BFKit-Swift", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png")
                         
                         /// Create the elements array and add all the created elements.
                         var elements: [Element] = []

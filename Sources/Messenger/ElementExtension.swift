@@ -35,7 +35,7 @@ public extension Element {
     ///   - subtitle: Element subtitle.
     ///   - itemURL: Element item URL.
     ///   - imageURL: Element image URL.
-    public convenience init(title: String, subtitle: String, itemURL: String, imageURL: String) {
+    public convenience init(exampleTitle title: String, subtitle: String, itemURL: String, imageURL: String) {
         self.init(title: title, subtitle: subtitle, itemURL: itemURL, imageURL: imageURL)
         
         add(button: Button(title: "Open in GitHub", url: itemURL))

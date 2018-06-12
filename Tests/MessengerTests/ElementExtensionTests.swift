@@ -30,7 +30,7 @@ import XCTest
 
 internal class ElementExtensionTests: XCTestCase {
     internal func testInitElementExtension() {
-        let element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
+        let element = Element(exampleTitle: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         
         XCTAssertEqual(element.title, "Test")
         XCTAssertEqual(element.subtitle, "Test Subtitle")
