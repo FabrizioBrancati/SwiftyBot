@@ -92,3 +92,12 @@ internal extension Application {
         _ = try self.sendRequest(to: path, method: method, headers: headers, body: body)
     }
 }
+
+/// Structure of `ErrorMiddleware` default response.
+internal struct ErrorResponse: Codable {
+    /// Always `true` to indicate this is a non-typical JSON response.
+    internal var error: Bool
+    
+    /// The reason for the error.
+    internal var reason: String
+}
