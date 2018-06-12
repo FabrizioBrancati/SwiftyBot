@@ -72,9 +72,7 @@ internal extension Application {
     internal func getResponse<T>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), body: HTTPBody = .init(), decodeTo type: T.Type) throws -> T where T: Decodable {
         let response = try self.sendRequest(to: path, method: method, headers: headers, body: body)
         
-        guard let data = response.http.body.data else {
-            throw Abort(.badRequest, reason: "Missing data.")
-        }
+        let data = response.http.body.data ?? Data()
         
         guard type == String.self, let string = String(data: data, encoding: .utf8) as? T else {
             return try JSONDecoder().decode(type, from: data)
