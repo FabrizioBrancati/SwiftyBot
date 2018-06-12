@@ -88,14 +88,14 @@ internal class MessengerRoutesTests: XCTestCase {
     }
     
     internal func testRouteInPostWithEmptyPayload() throws {
-        let pageRequest = PageRequest(object: "Test", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Test"), postback: Postback(payload: nil), sender: Sender(id: "10"))])])
+        let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Test"), postback: Postback(payload: nil), sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: String.self)
         
         XCTAssertTrue(response.isEmpty)
     }
     
     internal func testRouteInPostWithGreetings() throws {
-        let pageRequest = PageRequest(object: "Test", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Hi!"), postback: nil, sender: Sender(id: "10"))])])
+        let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Hi!"), postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: String.self)
         
         XCTAssertTrue(response.isEmpty)
