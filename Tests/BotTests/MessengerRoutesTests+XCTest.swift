@@ -36,7 +36,8 @@ import XCTest
 internal extension MessengerRoutesTests {
     internal static var allTests: [(String, (MessengerRoutesTests) -> () throws -> Void)] {
         return [
-            ("testRouteInGetWithActivation", testRouteInGetWithActivation)
+            ("testRouteInGetWithActivation", testRouteInGetWithActivation),
+            ("testRouteInGetWithWrongActivation", testRouteInGetWithWrongActivation)
         ]
     }
 }

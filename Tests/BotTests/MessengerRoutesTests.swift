@@ -49,4 +49,11 @@ internal class MessengerRoutesTests: XCTestCase {
 
         XCTAssertEqual(response, "Test Challenge")
     }
+    
+    internal func testRouteInGetWithWrongActivation() throws {
+        let activation = Activation(mode: "Test", token: messengerToken, challenge: "Test Challenge")
+        let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .GET, headers: ["Content-Type": "application/json"], data: activation, decodeTo: String.self)
+        
+        XCTAssertEqual(response, "{\"error\":true,\"reason\":\"Missing Messenger verification data.\"}")
+    }
 }

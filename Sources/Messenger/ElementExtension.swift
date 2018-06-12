@@ -1,5 +1,5 @@
 //
-//  ExampleElementTests.swift
+//  ElementExtension.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,16 +25,20 @@
 //  SOFTWARE.
 
 import Foundation
-@testable import Messenger
-import XCTest
 
-internal class ExampleElementTests: XCTestCase {
-    internal func testInitExampleElement() {
-        let element = ExampleElement(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
+/// Example element helper.
+public extension Element {
+    /// Creates an example element.
+    ///
+    /// - Parameters:
+    ///   - title: Element title
+    ///   - subtitle: Element subtitle.
+    ///   - itemURL: Element item URL.
+    ///   - imageURL: Element image URL.
+    public convenience init(title: String, subtitle: String, itemURL: String, imageURL: String) {
+        self.init(title: title, subtitle: subtitle, itemURL: itemURL, imageURL: imageURL)
         
-        XCTAssertEqual(element.title, "Test")
-        XCTAssertEqual(element.subtitle, "Test Subtitle")
-        XCTAssertEqual(element.itemURL, "Test URL")
-        XCTAssertEqual(element.imageURL, "Test Image URL")
+        add(button: Button(title: "Open in GitHub", url: itemURL))
+        add(button: Button(title: "Call Postback", payload: "\(title) pressed"))
     }
 }

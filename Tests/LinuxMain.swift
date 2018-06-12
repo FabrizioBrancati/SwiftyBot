@@ -42,8 +42,8 @@ import XCTest
     XCTMain([
         testCase(ButtonTests.allTests),
         testCase(CommandTests.allTests),
+        testCase(ElementExtensionTests.allTests),
         testCase(ElementTests.allTests),
-        testCase(ExampleElementTests.allTests),
         testCase(MessengerRoutesTests.allTests),
         testCase(RecipientTests.allTests),
         testCase(StringExtensionsTests.allTests),
