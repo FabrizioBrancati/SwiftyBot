@@ -37,7 +37,11 @@ internal extension MessengerRoutesTests {
     internal static var allTests: [(String, (MessengerRoutesTests) -> () throws -> Void)] {
         return [
             ("testRouteInGetWithActivation", testRouteInGetWithActivation),
-            ("testRouteInGetWithWrongActivation", testRouteInGetWithWrongActivation)
+            ("testRouteInGetWithWrongActivation", testRouteInGetWithWrongActivation),
+            ("testRouteInPostWithSimpleText", testRouteInPostWithSimpleText),
+            ("testRouteInPostWithTextWithEmoji", testRouteInPostWithTextWithEmoji),
+            ("testRouteInPostWithEmptyText", testRouteInPostWithEmptyText),
+            ("testRouteInPostWithWrongObject", testRouteInPostWithWrongObject)
         ]
     }
 }
