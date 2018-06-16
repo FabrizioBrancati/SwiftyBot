@@ -104,7 +104,7 @@ public struct Response: Content {
                         let attachment = Attachment(type: .template, payload: payload)
                         let structuredMessage = StructuredMessage(attachment: attachment)
                         
-                        response.message = String(data: try JSONEncoder().encode(structuredMessage), encoding: .utf8) ?? ""
+                        response.message = try String(data: JSONEncoder().encode(structuredMessage), encoding: .utf8) ?? "Error while creating the message... Sorry!"
                     } else {
                         response.message = message.text.reversed(preserveFormat: true)
                     }

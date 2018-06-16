@@ -79,6 +79,13 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertTrue(response.isEmpty)
     }
     
+    internal func testRouteInPostWithStructuredResponse() throws {
+        let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Sell"), postback: nil, sender: Sender(id: "10"))])])
+        let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: String.self)
+        
+        XCTAssertTrue(response.isEmpty)
+    }
+    
     internal func testRouteInPostWithWrongObject() throws {
         let pageRequest = PageRequest(object: "Test", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Test"), postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: ErrorResponse.self)
@@ -96,6 +103,13 @@ internal class MessengerRoutesTests: XCTestCase {
     
     internal func testRouteInPostWithGreetings() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Hi!"), postback: nil, sender: Sender(id: "10"))])])
+        let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: String.self)
+        
+        XCTAssertTrue(response.isEmpty)
+    }
+    
+    internal func testRouteInPostWithEmptyMessage() throws {
+        let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: nil, postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: String.self)
         
         XCTAssertTrue(response.isEmpty)
