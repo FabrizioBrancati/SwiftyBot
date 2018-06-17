@@ -30,20 +30,7 @@ import Vapor
 
 internal extension Application {
     internal static func testable(envArgs: [String]? = nil) throws -> Application {
-        var config = Config.default()
-        var services = Services.default()
-        var env = Environment.testing
-        
-        if let environmentArgs = envArgs {
-            env.arguments = environmentArgs
-        }
-        
-        try configure(&config, &env, &services)
-        
-        let app = try Application(config: config, environment: env, services: services)
-        
-        try boot(app)
-        return app
+        return try app(.testing)
     }
     
     internal func sendRequest(to path: String, method: HTTPMethod, headers: HTTPHeaders = .init(), body: HTTPBody = .init()) throws -> Response {

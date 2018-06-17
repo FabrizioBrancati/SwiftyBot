@@ -62,3 +62,9 @@ public class Element: Codable {
         buttons.append(button)
     }
 }
+
+extension Element: Equatable {
+    public static func == (lhs: Element, rhs: Element) -> Bool {
+        return lhs.title == rhs.title && lhs.subtitle == rhs.subtitle && lhs.itemURL == rhs.itemURL && lhs.buttons == rhs.buttons
+    }
+}

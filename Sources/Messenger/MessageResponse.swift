@@ -26,19 +26,9 @@
 
 import Foundation
 
-/// User message.
+/// Message response.
 public enum MessageResponse: Codable {
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .text(let text):
-            try container.encode(text)
-        case .structured(let structured):
-            try container.encode(structured)
-        }
-    }
-    
-    enum MessageResponseError: Error {
+    public enum MessageResponseError: Error {
         case missingValue
     }
     
@@ -57,5 +47,28 @@ public enum MessageResponse: Codable {
         }
         
         throw MessageResponseError.missingValue
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .text(let text):
+            try container.encode(text)
+        case .structured(let structured):
+            try container.encode(structured)
+        }
+    }
+}
+
+extension MessageResponse: Equatable {
+    public static func == (lhs: MessageResponse, rhs: MessageResponse) -> Bool {
+        switch (lhs, rhs) {
+        case (.text(let lText), .text(let rText)):
+            return lText == rText
+        case (.structured(let lStructured), .structured(let rStructured)):
+            return lStructured == rStructured
+        default:
+            return false
+        }
     }
 }

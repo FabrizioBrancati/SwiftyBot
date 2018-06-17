@@ -90,7 +90,7 @@ public struct Response: Codable {
         /// Create the JSON response.
         /// https://core.telegram.org/bots/api#sendmessage
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
-        
+        /// Encode the response.
         try JSONEncoder().encode(response, to: &httpResponse, on: httpRequest.eventLoop)
         return httpResponse
     }

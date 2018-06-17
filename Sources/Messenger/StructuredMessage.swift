@@ -27,7 +27,7 @@
 import Foundation
 
 /// Messenger strctured message response.
-public struct StructuredMessage: Codable {
+public struct StructuredMessage: Codable, Equatable {
     /// Structured message attachment.
     private(set) public var attachment: Attachment
 }

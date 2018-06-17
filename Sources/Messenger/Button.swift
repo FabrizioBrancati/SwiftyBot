@@ -32,7 +32,7 @@ public struct Button: Codable, Equatable {
     ///
     /// - webURL: Web URL type.
     /// - postback: Postback type.
-    public enum `Type`: String, Codable {
+    public enum `Type`: String, Codable, Equatable {
         case webURL = "web_url"
         case postback = "postback"
     }

@@ -27,9 +27,9 @@
 import Foundation
 
 /// Messenger message attachment.
-public struct Attachment: Codable {
+public struct Attachment: Codable, Equatable {
     /// Attachment type
-    public enum `Type`: String, Codable {
+    public enum `Type`: String, Codable, Equatable {
         /// Template type.
         case template
     }
