@@ -40,8 +40,12 @@ internal extension MessengerRoutesTests {
             ("testRouteInGetWithWrongActivation", testRouteInGetWithWrongActivation),
             ("testRouteInPostWithSimpleText", testRouteInPostWithSimpleText),
             ("testRouteInPostWithTextWithEmoji", testRouteInPostWithTextWithEmoji),
+            ("testRouteInPostWithGreetings", testRouteInPostWithGreetings),
             ("testRouteInPostWithEmptyText", testRouteInPostWithEmptyText),
-            ("testRouteInPostWithWrongObject", testRouteInPostWithWrongObject)
+            ("testRouteInPostWithStructuredResponse", testRouteInPostWithStructuredResponse),
+            ("testRouteInPostWithWrongObject", testRouteInPostWithWrongObject),
+            ("testRouteInPostWithEmptyPayload", testRouteInPostWithEmptyPayload),
+            ("testRouteInPostWithEmptyMessage", testRouteInPostWithEmptyMessage)
         ]
     }
 }
