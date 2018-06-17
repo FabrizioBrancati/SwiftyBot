@@ -40,14 +40,19 @@ public struct Command {
     ///   - command: Command to be created.
     ///   - text: User sent message text.
     public init?(_ text: String) {
+        /// Check if it starts with a `/`, otherwise it isn't a command.
         guard text.starts(with: "/"), !text.isEmpty else {
             return nil
         }
 
+        /// Separate the command from the rest of the text.
         let spaceIndex = text.index(of: " ")
         
+        /// Assign command form text.
         self.command = spaceIndex != -1 ? text.substring(to: spaceIndex) : text
+        /// Clear the command by removing `/`.
         self.command = self.command.replacingOccurrences(of: "/", with: "")
+        /// Assign parameters form text, if they exist.
         self.parameters = spaceIndex != -1 ? text.substring(from: spaceIndex + 1) : ""
     }
 }

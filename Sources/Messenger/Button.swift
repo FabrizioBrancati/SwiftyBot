@@ -29,11 +29,10 @@ import Foundation
 /// Button helper.
 public struct Button: Codable, Equatable {
     /// Button type of Messenger structured message element.
-    ///
-    /// - webURL: Web URL type.
-    /// - postback: Postback type.
     public enum `Type`: String, Codable, Equatable {
+        /// Web URL type.
         case webURL = "web_url"
+        /// Postback type.
         case postback = "postback"
     }
 

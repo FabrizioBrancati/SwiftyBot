@@ -28,11 +28,15 @@ import Foundation
 
 /// Message response.
 public enum MessageResponse: Codable {
+    /// Message response error.
     public enum MessageResponseError: Error {
+        /// Missing value error.
         case missingValue
     }
     
+    /// Text message.
     case text(String)
+    /// Structured message.
     case structured(StructuredMessage)
     
     public init(from decoder: Decoder) throws {
@@ -60,7 +64,11 @@ public enum MessageResponse: Codable {
     }
 }
 
+// MARK: - Equatable
+
+/// Equatable extension.
 extension MessageResponse: Equatable {
+    /// Equatable function.
     public static func == (lhs: MessageResponse, rhs: MessageResponse) -> Bool {
         switch (lhs, rhs) {
         case (.text(let lText), .text(let rText)):

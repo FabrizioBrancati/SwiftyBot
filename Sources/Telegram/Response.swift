@@ -56,17 +56,23 @@ public struct Response: Codable {
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
     public func response(_ httpRequest: Request) throws -> HTTPResponse {
+        /// Decode the request.
         let messageRequest = try httpRequest.content.syncDecode(MessageRequest.self)
         
+        /// Creates the initial response, with a default message for empty user's message.
         var response = Telegram.Response(method: .sendMessage, chatID: messageRequest.message.chat.id, text: "I'm sorry but your message is empty 😢")
         
+        /// Check if the message is not empty
         if !messageRequest.message.text.isEmpty {
+            /// Check if it's a command.
             if messageRequest.message.text.hasPrefix("/") {
+                /// Check if it's a `start` command.
                 if let command = Command(messageRequest.message.text), command.command == "start" {
                     response.text = """
                     Welcome to SwiftyBot \(messageRequest.message.from.firstName)!
                     To list all available commands type /help
                     """
+                /// Check if it's a `help` command.
                 } else if let command = Command(messageRequest.message.text), command.command == "help" {
                     response.text = """
                     Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
@@ -76,12 +82,14 @@ public struct Response: Codable {
                     /help - Help message
                     Any text - Returns the reversed message
                     """
+                /// It's not a valid command.
                 } else {
                     response.text = """
                     Unrecognized command.
                     To list all available commands type /help
                     """
                 }
+            /// It's a normal message, so reverse it.
             } else {
                 response.text = messageRequest.message.text.reversed(preserveFormat: true)
             }

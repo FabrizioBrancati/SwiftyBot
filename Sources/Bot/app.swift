@@ -49,5 +49,6 @@ public func app(_ env: Environment) throws -> Application {
     /// Tries to boot the App.
     try boot(app)
     
+    /// Returs the created App.
     return app
 }

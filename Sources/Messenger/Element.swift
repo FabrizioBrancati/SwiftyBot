@@ -63,7 +63,11 @@ public class Element: Codable {
     }
 }
 
+// MARK: - Equatable
+
+/// Equatable extension.
 extension Element: Equatable {
+    /// Equatable function.
     public static func == (lhs: Element, rhs: Element) -> Bool {
         return lhs.title == rhs.title && lhs.subtitle == rhs.subtitle && lhs.itemURL == rhs.itemURL && lhs.buttons == rhs.buttons
     }
