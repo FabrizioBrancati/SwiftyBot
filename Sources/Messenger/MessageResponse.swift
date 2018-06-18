@@ -40,8 +40,8 @@ public enum MessageResponse: Codable {
     case structured(StructuredMessage)
     
     public init(from decoder: Decoder) throws {
-        if let text = try? decoder.singleValueContainer().decode(String.self) {
-            self = .text(text)
+        if let text = try? decoder.singleValueContainer().decode(Message.self) {
+            self = .text(text.text)
             return
         }
         
@@ -57,7 +57,7 @@ public enum MessageResponse: Codable {
         var container = encoder.singleValueContainer()
         switch self {
         case .text(let text):
-            try container.encode(text)
+            try container.encode(Message(text: text))
         case .structured(let structured):
             try container.encode(structured)
         }
