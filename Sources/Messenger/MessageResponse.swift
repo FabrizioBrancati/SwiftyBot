@@ -35,10 +35,15 @@ public enum MessageResponse: Codable {
     }
     
     /// Text message.
-    case text(String)
+    case text(String) // swiftlint:disable:this identifier_name
     /// Structured message.
-    case structured(StructuredMessage)
+    case structured(StructuredMessage) // swiftlint:disable:this identifier_name
     
+    /// This initializer throws an error if reading from the decoder fails,
+    /// or if the data read is corrupted or otherwise invalid.
+    ///
+    /// - Parameter decoder: The decoder to read data from.
+    /// - Throws: Throws decoder errors.
     public init(from decoder: Decoder) throws {
         if let text = try? decoder.singleValueContainer().decode(Message.self) {
             self = .text(text.text)
@@ -53,6 +58,11 @@ public enum MessageResponse: Codable {
         throw MessageResponseError.missingValue
     }
     
+    /// If the value fails to encode anything, encoder will encode an empty keyed container in its place.
+    /// This function throws an error if any values are invalid for the given encoder’s format.
+    ///
+    /// - Parameter encoder: The encoder to write data to.
+    /// - Throws: Throws encoding errors.
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
@@ -69,11 +79,11 @@ public enum MessageResponse: Codable {
 /// Equatable extension.
 extension MessageResponse: Equatable {
     /// Equatable function.
-    public static func == (lhs: MessageResponse, rhs: MessageResponse) -> Bool {
+    public static func == (lhs: MessageResponse, rhs: MessageResponse) -> Bool { // swiftlint:disable:this lower_acl_than_parent
         switch (lhs, rhs) {
-        case (.text(let lText), .text(let rText)):
+        case (.text(let lText), .text(let rText)): // swiftlint:disable:this pattern_matching_keywords
             return lText == rText
-        case (.structured(let lStructured), .structured(let rStructured)):
+        case (.structured(let lStructured), .structured(let rStructured)): // swiftlint:disable:this pattern_matching_keywords
             return lStructured == rStructured
         default:
             return false
