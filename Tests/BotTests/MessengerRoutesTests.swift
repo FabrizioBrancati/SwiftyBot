@@ -77,13 +77,13 @@ internal class MessengerRoutesTests: XCTestCase {
     }
     
     internal func testRouteInPostWithGreetings() throws {
-        let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Hi!"), postback: nil, sender: Sender(id: "10"))])])
+        let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Hi!"), postback: nil, sender: Sender(id: "1366898573"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
         XCTAssertEqual(response.messagingType, .response)
-        XCTAssertEqual(response.recipient?.id, "10")
+        XCTAssertEqual(response.recipient?.id, "1366898573")
         XCTAssertEqual(response.message, .text("""
-        Hi!
+        Hi Fabrizio!
         This is an example on how to create a bot with Swift.
         If you want to see more try to send me "buy", "sell" or "shop".
         """))

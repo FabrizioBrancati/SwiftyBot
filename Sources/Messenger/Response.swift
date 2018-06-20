@@ -82,8 +82,16 @@ public struct Response: Content {
                         response.message = .text("I'm sorry but your message is empty 😢")
                     /// Check if the message has greetings.
                     } else if message.text.hasGreetings() {
+                        /// Requests for user infos.
+                        let userInfoFuture = try httpRequest.client().get("https://graph.facebook.com/v3.0/\(event.sender.id)?fields=id,first_name&access_token=\(messengerToken)").map(to: UserInfo.self) { response in
+                            let userInfo = try response.content.syncDecode(UserInfo.self)
+                            return userInfo
+                        }
+                        /// Let's wait for the response, since the user first name is part of the bot response.
+                        let userInfo = try userInfoFuture.wait()
+                        
                         response.message = .text("""
-                        Hi!
+                        Hi \(userInfo.firstName)!
                         This is an example on how to create a bot with Swift.
                         If you want to see more try to send me "buy", "sell" or "shop".
                         """)
