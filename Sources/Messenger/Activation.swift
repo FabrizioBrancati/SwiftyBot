@@ -32,14 +32,14 @@ public struct Activation: Codable {
     /// Activation mode.
     private(set) public var mode: String
     /// Activation token.
-    private(set) public var token: String
+    private(set) public var verifyToken: String
     /// Activation challenge.
     private(set) public var challenge: String
 
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case mode = "hub.mode"
-        case token = "hub.verify_token"
+        case verifyToken = "hub.verify_token"
         case challenge = "hub.challenge"
     }
     
@@ -53,7 +53,7 @@ public struct Activation: Codable {
         let activation = try httpRequest.query.decode(Activation.self)
         
         /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
-        guard activation.mode == "subscribe", activation.token == messengerSecret else {
+        guard activation.mode == "subscribe", activation.verifyToken == messengerSecret else {
             throw Abort(.badRequest, reason: "Missing Messenger verification data.")
         }
         
@@ -72,7 +72,7 @@ public extension Activation {
     /// Declared in an extension to not override default `init` function.
     public init() {
         mode = ""
-        token = ""
+        verifyToken = ""
         challenge = ""
     }
 }

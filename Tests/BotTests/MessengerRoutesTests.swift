@@ -44,14 +44,14 @@ internal class MessengerRoutesTests: XCTestCase {
     }
     
     internal func testRouteInGetWithActivation() throws {
-        let activation = Activation(mode: "subscribe", token: messengerToken, challenge: "Test Challenge")
+        let activation = Activation(mode: "subscribe", verifyToken: messengerSecret, challenge: "Test Challenge")
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .GET, headers: ["Content-Type": "application/json"], data: activation, decodeTo: String.self)
 
         XCTAssertEqual(response, "Test Challenge")
     }
     
     internal func testRouteInGetWithWrongActivation() throws {
-        let activation = Activation(mode: "Test", token: messengerToken, challenge: "Test Challenge")
+        let activation = Activation(mode: "Test", verifyToken: messengerToken, challenge: "Test Challenge")
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .GET, headers: ["Content-Type": "application/json"], data: activation, decodeTo: ErrorResponse.self)
         
         XCTAssertTrue(response.error)
