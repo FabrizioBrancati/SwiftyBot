@@ -35,9 +35,9 @@ public enum MessageResponse: Codable {
     }
     
     /// Text message.
-    case text(String)
+    case text(String) // swiftlint:disable:this identifier_name
     /// Structured message.
-    case structured(StructuredMessage)
+    case structured(StructuredMessage) // swiftlint:disable:this identifier_name
     
     /// This initializer throws an error if reading from the decoder fails,
     /// or if the data read is corrupted or otherwise invalid.
@@ -79,7 +79,7 @@ public enum MessageResponse: Codable {
 /// Equatable extension.
 extension MessageResponse: Equatable {
     /// Equatable function.
-    public static func == (lhs: MessageResponse, rhs: MessageResponse) -> Bool { // swiftlint:disable:this lower_acl_than_parent
+    public static func == (lhs: MessageResponse, rhs: MessageResponse) -> Bool {
         switch (lhs, rhs) {
         case (.text(let lText), .text(let rText)): // swiftlint:disable:this pattern_matching_keywords
             return lText == rText
