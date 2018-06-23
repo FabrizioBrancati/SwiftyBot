@@ -25,6 +25,7 @@
 //  SOFTWARE.
 
 import Foundation
+import Vapor
 
 /// Messenger User Info response.
 public struct UserInfo: Codable, Equatable {
@@ -37,5 +38,29 @@ public struct UserInfo: Codable, Equatable {
     private enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
         case id
+    }
+    
+    /// Creates a User Info object.
+    ///
+    /// - Parameters:
+    ///   - id: User ID used for the request.
+    ///   - httpRequest: Request to be used as client.
+    public init?(id: String, on request: Request) {
+        /// Requests for user infos.
+        let userInfoFuture = try? request.client().get("https://graph.facebook.com/\(messengerAPIVersion)/\(id)?fields=id,first_name&access_token=\(messengerToken)").map(to: UserInfo.self) { response in
+            return try response.content.syncDecode(UserInfo.self)
+        }
+        
+        /// Catch here the error to not propagate it.
+        do {
+            /// Let's wait for the response, since the user first name is part of the bot response.
+            guard let userInfo = try userInfoFuture?.wait() else {
+                return nil
+            }
+        
+            self = userInfo
+        } catch {
+            return nil
+        }
     }
 }

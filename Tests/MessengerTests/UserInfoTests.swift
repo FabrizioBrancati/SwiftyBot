@@ -1,5 +1,5 @@
 //
-//  Routes.swift
+//  UserInfoTests.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,19 +25,17 @@
 //  SOFTWARE.
 
 import Foundation
+@testable import Messenger
 import Vapor
+import XCTest
 
-/// Registering Facebook Messenger routes.
-public func routes(_ router: Router) throws {
-    /// Setting up the GET request with Messenger secret key.
-    /// With a secret path to be sure that nobody else knows that URL.
-    router.get("messenger", messengerSecret) { request -> HTTPResponse in
-        return try Activation().check(request)
-    }
-    
-    /// Setting up the POST request with Messenger secret key.
-    /// With a secret path to be sure that nobody else knows that URL.
-    router.post("messenger", messengerSecret) { request -> HTTPResponse in
-        return try Response().response(request)
+internal class UserInfoTests: XCTestCase {
+    internal func testInitUserInfo() {
+        let worker = MultiThreadedEventLoopGroup(numberOfThreads: 1)
+        let request = Request(using: BasicContainer(config: Config.default(), environment: Environment.testing, services: Services.default(), on: worker))
+        let userInfo = UserInfo(id: "1366898573", on: request)
+        
+        XCTAssertEqual(userInfo?.id, "1366898573")
+        XCTAssertEqual(userInfo?.firstName, "Fabrizio")
     }
 }

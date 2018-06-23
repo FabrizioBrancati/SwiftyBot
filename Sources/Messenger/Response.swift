@@ -53,12 +53,12 @@ public struct Response: Content {
     
     /// Create a response for a request.
     ///
-    /// - Parameter httpRequest: Message request.
+    /// - Parameter request: Message request.
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
-    public func response(_ httpRequest: Request) throws -> HTTPResponse {
+    public func response(_ request: Request) throws -> HTTPResponse {
         /// Decode the response.
-        let pageResponse = try httpRequest.content.syncDecode(PageRequest.self)
+        let pageResponse = try request.content.syncDecode(PageRequest.self)
         /// Check that the request comes from a "page".
         guard pageResponse.object == "page" else {
             /// Throw an abort response, with a custom message.
@@ -82,16 +82,14 @@ public struct Response: Content {
                         response.message = .text("I'm sorry but your message is empty 😢")
                     /// Check if the message has greetings.
                     } else if message.text.hasGreetings() {
-                        /// Requests for user infos.
-                        let userInfoFuture = try httpRequest.client().get("https://graph.facebook.com/\(messengerAPIVersion)/\(event.sender.id)?fields=id,first_name&access_token=\(messengerToken)").map(to: UserInfo.self) { response in
-                            return try response.content.syncDecode(UserInfo.self)
+                        var greeting = "Hi!"
+                        if let userInfo = UserInfo(id: event.sender.id, on: request) {
+                            greeting = "Hi \(userInfo.firstName)!"
                         }
-                        /// Let's wait for the response, since the user first name is part of the bot response.
-                        let userInfo = try userInfoFuture.wait()
                         
                         /// Set the response message.
                         response.message = .text("""
-                        Hi \(userInfo.firstName)!
+                        \(greeting)
                         This is an example on how to create a bot with Swift.
                         If you want to see more try to send me "buy", "sell" or "shop".
                         """)
@@ -129,7 +127,7 @@ public struct Response: Content {
                 response.recipient = Recipient(id: event.sender.id)
                 
                 /// Sende the response to the Facebook Messenger APIs.
-                _ = try httpRequest.client().post("https://graph.facebook.com/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
+                _ = try request.client().post("https://graph.facebook.com/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
                     try messageRequest.content.encode(response)
                 }
             }
@@ -139,7 +137,7 @@ public struct Response: Content {
         /// https://developers.facebook.com/docs/messenger-platform/webhook#response
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
         /// Encode the response.
-        try JSONEncoder().encode(response, to: &httpResponse, on: httpRequest.eventLoop)
+        try JSONEncoder().encode(response, to: &httpResponse, on: request.eventLoop)
         return httpResponse
     }
 }
