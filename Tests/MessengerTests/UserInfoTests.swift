@@ -32,7 +32,8 @@ import XCTest
 internal class UserInfoTests: XCTestCase {
     internal func testInitUserInfo() {
         let worker = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        let request = Request(using: BasicContainer(config: Config.default(), environment: Environment.testing, services: Services.default(), on: worker))
+        let container = BasicContainer(config: Config.default(), environment: Environment.testing, services: Services.default(), on: worker)
+        let request = Request(using: container)
         let userInfo = UserInfo(id: "1366898573", on: request)
         
         XCTAssertEqual(userInfo?.id, "1366898573")
