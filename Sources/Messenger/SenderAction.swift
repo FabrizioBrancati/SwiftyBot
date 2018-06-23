@@ -1,5 +1,5 @@
 //
-//  UserInfo.swift
+//  SenderAction.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -27,40 +27,41 @@
 import Foundation
 import Vapor
 
-/// Messenger User Info response.
-public struct UserInfo: Codable, Equatable {
-    /// User first name.
-    private(set) public var firstName: String
-    /// User locale.
-    private(set) public var id: String
+/// Messenger sender actions.
+public struct SenderAction: Content {
+    /// Payload template.
+    public enum Action: String, Codable {
+        /// Mark seen action.
+        case markSeen = "mark_seen"
+        /// Typing on action.
+        case typingOn = "typing_on"
+    }
+    
+    /// Recipient.
+    private(set) public var recipient: Recipient
+    /// Sender action.
+    private(set) public var action: Action
     
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
-        case firstName = "first_name"
-        case id
+        case recipient
+        case action = "sender_action"
     }
     
-    /// Creates a User Info object.
+    /// Creates and sends a sender action.
     ///
     /// - Parameters:
     ///   - id: User ID used for the request.
-    ///   - httpRequest: Request to be used as client.
-    public init?(id: String, on request: Request) {
-        /// Requests for user infos.
-        let userInfoFuture = try? request.client().get("https://graph.facebook.com/\(messengerAPIVersion)/\(id)?fields=id,first_name&access_token=\(messengerToken)").map(to: UserInfo.self) { response in
-            return try response.content.syncDecode(UserInfo.self)
-        }
+    ///   - action: Sender action to be sent.
+    ///   - request: Request to be used as client.
+    public init?(id: String, action: Action, on request: Request) {
+        /// Set the sender action properties.
+        recipient = Recipient(id: id)
+        self.action = action
         
-        /// Catch the error here to not propagate it.
-        do {
-            /// Let's wait for the response, since the user first name is part of the bot response.
-            guard let userInfo = try userInfoFuture?.wait() else {
-                return nil
-            }
-        
-            self = userInfo
-        } catch {
-            return nil
+        /// Requests to set sender action.
+        _ = try? request.client().post("https://graph.facebook.com/\(messengerAPIVersion)/messages?access_token=\(messengerToken)") { messageRequest in
+            try messageRequest.content.encode(self)
         }
     }
 }
