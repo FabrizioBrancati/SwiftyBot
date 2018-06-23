@@ -31,6 +31,8 @@ import Vapor
 public let messengerSecret = Environment.get("MESSENGER_SECRET") ?? ""
 /// Messenger token.
 public let messengerToken = Environment.get("MESSENGER_TOKEN") ?? ""
+/// Messenger API version.
+public let messengerAPIVersion = "v3.0"
 
 /// Bot error.
 public enum BotError: Error {

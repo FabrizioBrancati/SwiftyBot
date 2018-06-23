@@ -83,7 +83,7 @@ public struct Response: Content {
                     /// Check if the message has greetings.
                     } else if message.text.hasGreetings() {
                         /// Requests for user infos.
-                        let userInfoFuture = try httpRequest.client().get("https://graph.facebook.com/v3.0/\(event.sender.id)?fields=id,first_name&access_token=\(messengerToken)").map(to: UserInfo.self) { response in
+                        let userInfoFuture = try httpRequest.client().get("https://graph.facebook.com/\(messengerAPIVersion)/\(event.sender.id)?fields=id,first_name&access_token=\(messengerToken)").map(to: UserInfo.self) { response in
                             return try response.content.syncDecode(UserInfo.self)
                         }
                         /// Let's wait for the response, since the user first name is part of the bot response.
@@ -129,7 +129,7 @@ public struct Response: Content {
                 response.recipient = Recipient(id: event.sender.id)
                 
                 /// Sende the response to the Facebook Messenger APIs.
-                _ = try httpRequest.client().post("https://graph.facebook.com/v3.0/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
+                _ = try httpRequest.client().post("https://graph.facebook.com/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
                     try messageRequest.content.encode(response)
                 }
             }
