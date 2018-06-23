@@ -33,13 +33,3 @@ public let messengerSecret = Environment.get("MESSENGER_SECRET") ?? ""
 public let messengerToken = Environment.get("MESSENGER_TOKEN") ?? ""
 /// Messenger API version.
 public let messengerAPIVersion = "v3.0"
-
-/// Bot error.
-public enum BotError: Error {
-    /// Missing URL in Messenger structured message button.
-    case missingURL
-    /// Missing payload in Messenger structured message button.
-    case missingPayload
-    /// Missing Messenger secret keys.
-    case missingAppSecrets
-}

@@ -29,9 +29,3 @@ import Vapor
 
 /// Telegram secret.
 public let telegramSecret = Environment.get("TELEGRAM_SECRET") ?? ""
-
-/// Telegram bot errors.
-public enum BotError: Error {
-    /// Missing Telegram secret key.
-    case missingAppSecrets
-}
