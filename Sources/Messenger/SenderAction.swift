@@ -54,6 +54,7 @@ public struct SenderAction: Content {
     ///   - id: User ID used for the request.
     ///   - action: Sender action to be sent.
     ///   - request: Request to be used as client.
+    @discardableResult
     public init?(id: String, action: Action, on request: Request) {
         /// Set the sender action properties.
         recipient = Recipient(id: id)
