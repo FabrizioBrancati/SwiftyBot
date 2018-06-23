@@ -52,12 +52,12 @@ public struct Response: Codable {
     
     /// Create a response for a request.
     ///
-    /// - Parameter httpRequest: Message request.
+    /// - Parameter request: Message request.
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
-    public func response(_ httpRequest: Request) throws -> HTTPResponse {
+    public func response(_ request: Request) throws -> HTTPResponse {
         /// Decode the request.
-        let messageRequest = try httpRequest.content.syncDecode(MessageRequest.self)
+        let messageRequest = try request.content.syncDecode(MessageRequest.self)
         
         /// Creates the initial response, with a default message for empty user's message.
         var response = Telegram.Response(method: .sendMessage, chatID: messageRequest.message.chat.id, text: "I'm sorry but your message is empty 😢")
@@ -99,7 +99,7 @@ public struct Response: Codable {
         /// https://core.telegram.org/bots/api#sendmessage
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
         /// Encode the response.
-        try JSONEncoder().encode(response, to: &httpResponse, on: httpRequest.eventLoop)
+        try JSONEncoder().encode(response, to: &httpResponse, on: request.eventLoop)
         return httpResponse
     }
 }
