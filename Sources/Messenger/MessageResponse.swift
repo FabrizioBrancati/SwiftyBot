@@ -35,9 +35,9 @@ public enum MessageResponse: Codable {
     }
     
     /// Text message.
-    case text(String) // swiftlint:disable:this identifier_name
+    case text(String)
     /// Structured message.
-    case structured(StructuredMessage) // swiftlint:disable:this identifier_name
+    case structured(StructuredMessage)
     
     /// This initializer throws an error if reading from the decoder fails,
     /// or if the data read is corrupted or otherwise invalid.
