@@ -27,7 +27,7 @@
 import Foundation
 
 /// Messenger element helper.
-public class Element: Codable {
+public struct Element: Codable {
     // Element title.
     private(set) public var title: String
     /// Element subtitle.
@@ -58,7 +58,7 @@ public class Element: Codable {
     /// Adds a button to the Element.
     ///
     /// - Parameter button: Button to be added.
-    public func add(button: Button) {
+    public mutating func add(button: Button) {
         buttons.append(button)
     }
 }
