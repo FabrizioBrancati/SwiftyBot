@@ -38,7 +38,7 @@ script:
     fi
 
   - swift build
-  - rm -rf .build
+  - swift package clean
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       swift package generate-xcodeproj;
@@ -47,7 +47,7 @@ script:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       swift test;
     fi
-  - rm -rf .build
+  - swift package clean
 
   - swift build -c release
 
