@@ -54,7 +54,7 @@ internal class ElementTests: XCTestCase {
     }
     
     internal func testAddButton() {
-        let element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
+        var element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         let payloadButton = Button(title: "Test", payload: "Test Payload")
         let urlButton = Button(title: "Test", url: "Test URL")
         
