@@ -43,7 +43,7 @@ public enum MessageResponse: Codable {
     /// or if the data read is corrupted or otherwise invalid.
     ///
     /// - Parameter decoder: The decoder to read data from.
-    /// - Throws: Throws decoder errors.
+    /// - Throws: Throws decoding errors.
     public init(from decoder: Decoder) throws {
         if let text = try? decoder.singleValueContainer().decode(Message.self) {
             self = .text(text.text)
