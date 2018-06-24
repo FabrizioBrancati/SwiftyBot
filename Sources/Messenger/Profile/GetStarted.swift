@@ -28,6 +28,7 @@ import Foundation
 
 /// Get Started helper.
 public struct GetStarted: Codable {
+    /// Default Get Started payload.
     public static let defaultPayload = "Get Started"
     /// Get Started payload.
     private(set) public var payload: String
