@@ -31,6 +31,9 @@ public struct Greeting: Codable {
     /// Array of Localized Greetings.
     private(set) public var greeting: [LocalizedGreeting]
     
+    /// Creates a Greeting.
+    ///
+    /// - Parameter greeting: Greeting text shown before the chat starts.
     public init(greeting: [LocalizedGreeting]) {
         self.greeting = greeting
     }

@@ -32,6 +32,9 @@ public struct GetStarted: Codable {
     /// Get Started payload.
     private(set) public var payload: String
     
+    /// Creates a GetStarted.
+    ///
+    /// - Parameter payload: Payload to be sent when the Get Started button is pressed.
     public init(payload: String) {
         self.payload = payload
     }

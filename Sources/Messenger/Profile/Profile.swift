@@ -34,6 +34,7 @@ public struct Profile: Content {
     /// Greeting property.
     private(set) public var greeting: Greeting
     
+    /// Coding keys, used by Codable protocol.
     public enum Name: String, CodingKey {
         case getStarted = "get_started"
         case greeting
