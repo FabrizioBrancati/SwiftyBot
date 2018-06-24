@@ -1,5 +1,5 @@
 //
-//  Property.swift
+//  LocalizedGreeting.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,18 +26,23 @@
 
 import Foundation
 
-/// Property helper.
-public struct Property: Codable {
-    /// Property name enum.
-    public enum Name: String, Codable {
-        /// Get started.
-        case getStarted = "get_started"
-        /// Greeting.
-        case greeting
-        /// Persistent menu.
-        case persistentMenu = "persistent_menu"
+public struct LocalizedGreeting: Codable {
+    public enum Language: String, Codable {
+        case `default`
+        case italian = "it_IT"
+    }
+    
+    public enum Template: String {
+        case firstName = "{{user_first_name}}"
+        case lastName = "{{user_last_name}}"
+        case fullName = "{{user_full_name}}"
+    }
+    
+    private(set) public var locale: Language
+    private(set) public var text: String
+    
+    public init(locale: Language, text: String) {
+        self.locale = locale
+        self.text = text
     }
 }
-
-/// Profilable helper.
-public class Profilable: Codable {}

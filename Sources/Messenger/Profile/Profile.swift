@@ -1,5 +1,5 @@
 //
-//  boot.swift
+//  Profile.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -24,16 +24,36 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+import Foundation
 import Vapor
-import Messenger
 
-/// Called after your application has initialized.
-public func boot(_ app: Application) throws {
-    let getStarted = GetStarted(payload: GetStarted.defaultPayload)
-    let greeting = Greeting(greeting: [
-        LocalizedGreeting(locale: .default, text: "Hi \(LocalizedGreeting.Template.firstName.rawValue)! SwiftyBot is an example of how to create a Messenger bot with Swift. See its code at https://github.com/FabrizioBrancati/SwiftyBot"),
-        LocalizedGreeting(locale: .italian, text: "Ciao \(LocalizedGreeting.Template.firstName.rawValue)! SwiftyBot è un esempio di come creare un bot Messenger con Swift. Guarda il codice https://github.com/FabrizioBrancati/SwiftyBot")
-    ])
+/// Messenger Profile helper.
+public struct Profile: Content {
+    /// Get Started property.
+    private(set) public var getStarted: GetStarted
+    /// Greeting property.
+    private(set) public var greeting: Greeting
     
-    _ = Profile(getStarted: getStarted, greeting: greeting, on: app)
+    public enum Name: String, CodingKey {
+        case getStarted = "get_started"
+        case greeting
+        case persistentMenu = "persistent_menu"
+    }
+}
+
+// MARK: - Profile Extension
+
+/// Profile extension.
+extension Profile {
+    /// Custom init method.
+    /// Declared in an extension to not override default `init` function.
+    public init(getStarted: GetStarted, greeting: Greeting, on app: Application) {
+        self.getStarted = getStarted
+        self.greeting = greeting
+        
+        /// Set all the Messenger Profile properties.
+        _ = try? app.client().post("https://graph.facebook.com/\(messengerAPIVersion)/me/messenger_profile?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { profileRequest in
+            try profileRequest.content.encode(self)
+        }
+    }
 }

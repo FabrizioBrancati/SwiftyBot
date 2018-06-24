@@ -1,5 +1,5 @@
 //
-//  boot.swift
+//  Greeting.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -24,16 +24,34 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Vapor
-import Messenger
+import Foundation
 
-/// Called after your application has initialized.
-public func boot(_ app: Application) throws {
-    let getStarted = GetStarted(payload: GetStarted.defaultPayload)
-    let greeting = Greeting(greeting: [
-        LocalizedGreeting(locale: .default, text: "Hi \(LocalizedGreeting.Template.firstName.rawValue)! SwiftyBot is an example of how to create a Messenger bot with Swift. See its code at https://github.com/FabrizioBrancati/SwiftyBot"),
-        LocalizedGreeting(locale: .italian, text: "Ciao \(LocalizedGreeting.Template.firstName.rawValue)! SwiftyBot è un esempio di come creare un bot Messenger con Swift. Guarda il codice https://github.com/FabrizioBrancati/SwiftyBot")
-    ])
+/// Greeting helper.
+public struct Greeting: Codable {
+    /// Array of Localized Greetings.
+    private(set) public var greeting: [LocalizedGreeting]
     
-    _ = Profile(getStarted: getStarted, greeting: greeting, on: app)
+    public init(greeting: [LocalizedGreeting]) {
+        self.greeting = greeting
+    }
+    
+    /// This initializer throws an error if reading from the decoder fails,
+    /// or if the data read is corrupted or otherwise invalid.
+    ///
+    /// - Parameter decoder: The decoder to read data from.
+    /// - Throws: Throws decoding errors.
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        greeting = try container.decode([LocalizedGreeting].self)
+    }
+    
+    /// If the value fails to encode anything, encoder will encode an empty keyed container in its place.
+    /// This function throws an error if any values are invalid for the given encoder’s format.
+    ///
+    /// - Parameter encoder: The encoder to write data to.
+    /// - Throws: Throws encoding errors.
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(greeting)
+    }
 }
