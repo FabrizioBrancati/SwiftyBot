@@ -164,7 +164,7 @@ public extension Response {
     }
 }
 
-// MARK: -
+// MARK: - Response Greeting Extension
 
 internal extension Response {
     internal func createGreeting(for id: String, on request: Request) -> MessageResponse {
