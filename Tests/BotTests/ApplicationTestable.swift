@@ -29,8 +29,25 @@ import Foundation
 import Vapor
 
 internal extension Application {
-    internal static func testable(envArgs: [String]? = nil) throws -> Application {
+    internal static func bot(envArgs: [String]? = nil) throws -> Application {
         return try app(.testing)
+    }
+    
+    internal static func testable(envArgs: [String]? = nil) throws -> Application {
+        var config = Config.default()
+        var services = Services.default()
+        var env = Environment.testing
+        
+        if let environmentArgs = envArgs {
+            env.arguments = environmentArgs
+        }
+        
+        try configure(&config, &env, &services)
+        
+        let app = try Application(config: config, environment: env, services: services)
+        
+        try boot(app)
+        return app
     }
     
     internal func sendRequest(to path: String, method: HTTPMethod, headers: HTTPHeaders = .init(), body: HTTPBody = .init()) throws -> Response {
