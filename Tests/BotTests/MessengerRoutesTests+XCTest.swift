@@ -44,6 +44,8 @@ internal extension MessengerRoutesTests {
             ("testRouteInPostWithEmptyText", testRouteInPostWithEmptyText),
             ("testRouteInPostWithStructuredResponse", testRouteInPostWithStructuredResponse),
             ("testRouteInPostWithWrongObject", testRouteInPostWithWrongObject),
+            ("testRouteInPostWithGetStartedPayload", testRouteInPostWithGetStartedPayload),
+            ("testRouteInPostWithSwiftyBotPayload", testRouteInPostWithSwiftyBotPayload),
             ("testRouteInPostWithEmptyPayload", testRouteInPostWithEmptyPayload),
             ("testRouteInPostWithEmptyMessage", testRouteInPostWithEmptyMessage)
         ]

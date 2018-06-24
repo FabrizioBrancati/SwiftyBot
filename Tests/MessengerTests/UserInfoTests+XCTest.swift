@@ -1,5 +1,5 @@
 //
-//  LinuxMain.swift
+//  UserInfoTests+XCTest.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -33,24 +33,10 @@
 
 import XCTest
 
-#if os(Linux) || os(FreeBSD)
-    @testable import BotTests
-    @testable import HelpersTests
-    @testable import MessengerTests
-    @testable import TelegramTests
-
-    XCTMain([
-        testCase(AppTests.allTests),
-        testCase(ButtonTests.allTests),
-        testCase(CommandTests.allTests),
-        testCase(ElementExtensionTests.allTests),
-        testCase(ElementTests.allTests),
-        testCase(MessageResponseTests.allTests),
-        testCase(MessengerRoutesTests.allTests),
-        testCase(RecipientTests.allTests),
-        testCase(SenderActionTests.allTests),
-        testCase(StringExtensionsTests.allTests),
-        testCase(TelegramRoutesTests.allTests),
-        testCase(UserInfoTests.allTests)
-    ])
-#endif
+internal extension UserInfoTests {
+    internal static var allTests: [(String, (UserInfoTests) -> () throws -> Void)] {
+        return [
+            ("testInitUserInfo", testInitUserInfo)
+        ]
+    }
+}
