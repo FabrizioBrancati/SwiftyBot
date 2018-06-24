@@ -77,7 +77,22 @@ public struct Response: Content {
                 
                 /// If it's a postback action.
                 if let postback = event.postback {
-                    response.message = .text(postback.payload ?? "No payload provided by developer.")
+                    /// Check if it has a payload.
+                    if let payload = postback.payload {
+                        /// Check what type of payload it is.
+                        switch payload {
+                        /// It's a Get Started payload.
+                        case GetStarted.defaultPayload:
+                            /// Set the response message.
+                            response.message = createGreeting(for: event.sender.id, on: request)
+                        /// By default it returns the sent payload.
+                        default:
+                            response.message = .text(payload)
+                        }
+                    /// There is no provided payload.
+                    } else {
+                        response.message = .text("No payload provided by developer.")
+                    }
                 /// If it's a normal message.
                 } else if let message = event.message {
                     /// Check if the message is empty.
@@ -85,17 +100,8 @@ public struct Response: Content {
                         response.message = .text("I'm sorry but your message is empty 😢")
                     /// Check if the message has greetings.
                     } else if message.text.hasGreetings() {
-                        var greeting = "Hi!"
-                        if let userInfo = UserInfo(id: event.sender.id, on: request) {
-                            greeting = "Hi \(userInfo.firstName)!"
-                        }
-                        
                         /// Set the response message.
-                        response.message = .text("""
-                        \(greeting)
-                        This is an example on how to create a bot with Swift.
-                        If you want to see more try to send me "buy", "sell" or "shop".
-                        """)
+                        response.message = createGreeting(for: event.sender.id, on: request)
                     /// Check if the message has "sell", "buy" or "shop" in its text.
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
                         /// Create the elements array and add all the created elements.
@@ -155,5 +161,25 @@ public extension Response {
         messagingType = .response
         recipient = nil
         message = .text("")
+    }
+}
+
+// MARK: -
+
+internal extension Response {
+    internal func createGreeting(for id: String, on request: Request) -> MessageResponse {
+        /// Try to get the user first name.
+        var greeting = "Hi"
+        if let userInfo = UserInfo(id: id, on: request) {
+            greeting += " \(userInfo.firstName)"
+        }
+        greeting += "!"
+    
+        /// Set the response message.
+        return .text("""
+        \(greeting)
+        This is an example on how to create a bot with Swift.
+        If you want to see more try to send me "buy", "sell" or "shop".
+        """)
     }
 }
