@@ -6,7 +6,7 @@ matrix:
       dist: trusty
     - os: osx
       language: objective-c
-      osx_image: xcode9.3
+      osx_image: xcode9.4
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
@@ -45,6 +45,7 @@ script:
       xcodebuild clean test -scheme SwiftyBot-Package -enableCodeCoverage YES | xcpretty;
     fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      ruby generate_linux_tests.rb;
       swift test;
     fi
   - swift package clean
