@@ -1,5 +1,5 @@
 //
-//  LocalizedGreeting.swift
+//  Language.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,18 +26,10 @@
 
 import Foundation
 
-public struct LocalizedGreeting: Codable {
-    public enum Template: String {
-        case firstName = "{{user_first_name}}"
-        case lastName = "{{user_last_name}}"
-        case fullName = "{{user_full_name}}"
-    }
-    
-    private(set) public var locale: Language
-    private(set) public var text: String
-    
-    public init(locale: Language, text: String) {
-        self.locale = locale
-        self.text = text
-    }
+/// Language enum.
+public enum Language: String, Codable {
+    /// Default language, usually english.
+    case `default`
+    /// Italian language.
+    case italian = "it_IT"
 }
