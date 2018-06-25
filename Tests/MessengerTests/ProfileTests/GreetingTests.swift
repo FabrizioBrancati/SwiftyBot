@@ -1,5 +1,5 @@
 //
-//  LocalizedGreeting.swift
+//  GreetingTests.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,31 +25,28 @@
 //  SOFTWARE.
 
 import Foundation
+@testable import Messenger
+import XCTest
 
-/// Localized Greeting helper.
-public struct LocalizedGreeting: Codable, Equatable {
-    /// Available templates, to be used in the text property.
-    public enum Template: String {
-        /// User first name.
-        case firstName = "{{user_first_name}}"
-        /// User last name.
-        case lastName = "{{user_last_name}}"
-        /// User full name.
-        case fullName = "{{user_full_name}}"
+internal class GreetingTests: XCTestCase {
+    internal func testInit() {
+        let greeting = Greeting(greeting: [LocalizedGreeting(locale: .default, text: "Test")])
+        
+        XCTAssertEqual(greeting.greeting, [LocalizedGreeting(locale: .default, text: "Test")])
     }
     
-    /// Locale.
-    private(set) public var locale: Language
-    /// Text shown for the locale.
-    private(set) public var text: String
+    internal func testDecode() {
+        let json = "[{\"locale\":\"it_IT\",\"text\":\"Test\"}]".data(using: .utf8) ?? Data()
+        
+        let decoded = try? JSONDecoder().decode(Greeting.self, from: json)
+        
+        XCTAssertEqual(decoded, Greeting(greeting: [LocalizedGreeting(locale: .italian, text: "Test")]))
+    }
     
-    /// Creates a LocalizedGreeting.
-    ///
-    /// - Parameters:
-    ///   - locale: Locale.
-    ///   - text: Text for the locale.
-    public init(locale: Language, text: String) {
-        self.locale = locale
-        self.text = text
+    internal func testEncode() {
+        let greeting = Greeting(greeting: [LocalizedGreeting(locale: .default, text: "Test")])
+        let encoded = try? JSONEncoder().encode(greeting)
+        
+        XCTAssertEqual(encoded, "[{\"locale\":\"default\",\"text\":\"Test\"}]".data(using: .utf8))
     }
 }

@@ -1,5 +1,5 @@
 //
-//  LocalizedGreeting.swift
+//  LocalizedGreetingTests.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,31 +25,14 @@
 //  SOFTWARE.
 
 import Foundation
+@testable import Messenger
+import XCTest
 
-/// Localized Greeting helper.
-public struct LocalizedGreeting: Codable, Equatable {
-    /// Available templates, to be used in the text property.
-    public enum Template: String {
-        /// User first name.
-        case firstName = "{{user_first_name}}"
-        /// User last name.
-        case lastName = "{{user_last_name}}"
-        /// User full name.
-        case fullName = "{{user_full_name}}"
-    }
-    
-    /// Locale.
-    private(set) public var locale: Language
-    /// Text shown for the locale.
-    private(set) public var text: String
-    
-    /// Creates a LocalizedGreeting.
-    ///
-    /// - Parameters:
-    ///   - locale: Locale.
-    ///   - text: Text for the locale.
-    public init(locale: Language, text: String) {
-        self.locale = locale
-        self.text = text
+internal class LocalizedGreetingTests: XCTestCase {
+    internal func testInit() {
+        let localizedGreeting = LocalizedGreeting(locale: .italian, text: "Test")
+        
+        XCTAssertEqual(localizedGreeting.locale, .italian)
+        XCTAssertEqual(localizedGreeting.text, "Test")
     }
 }

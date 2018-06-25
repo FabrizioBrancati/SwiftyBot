@@ -27,7 +27,7 @@
 import Foundation
 
 /// Greeting helper.
-public struct Greeting: Codable {
+public struct Greeting: Codable, Equatable {
     /// Array of Localized Greetings.
     private(set) public var greeting: [LocalizedGreeting]
     
