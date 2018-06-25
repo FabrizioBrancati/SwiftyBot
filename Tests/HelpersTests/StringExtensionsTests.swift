@@ -38,11 +38,9 @@ internal  class StringExtensionsTests: XCTestCase {
 
     internal func testHasNotGreetings() {
         let phrase = "What do you do Bot?"
-        
-        XCTAssertFalse(phrase.hasGreetings())
-        
         let phrase2 = "Ohhh a Bot! Hi!"
         
+        XCTAssertFalse(phrase.hasGreetings())
         XCTAssertFalse(phrase2.hasGreetings())
     }
 }
