@@ -28,7 +28,6 @@ import Foundation
 @testable import Messenger
 import XCTest
 
-/// Button Tests.
 internal class ButtonTests: XCTestCase {
     internal func testInitWebURL() {
         let button = Button(title: "Test", payload: "Test Payload")
