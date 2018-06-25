@@ -28,32 +28,26 @@ import Foundation
 @testable import Telegram
 import XCTest
 
-/// Command Tests.
 internal class CommandTests: XCTestCase {
-    internal func testInitCommand() {
-        guard let command = Command("/test test") else {
-            XCTFail("Command is nil")
-            return
-        }
+    internal func testInitCommandWithParameter() {
+        let command = Command("/test test")
         
-        XCTAssertEqual(command.command, "test")
-        XCTAssertEqual(command.parameters, "test")
+        XCTAssertEqual(command?.command, "test")
+        XCTAssertEqual(command?.parameters, "test")
+    }
+    
+    internal func testInitCommandWithoutParameter() {
+        let command = Command("/test")
         
-        guard let command2 = Command("/test") else {
-            XCTFail("Command is nil")
-            return
-        }
+        XCTAssertEqual(command?.command, "test")
+        XCTAssertEqual(command?.parameters, "")
+    }
+    
+    internal func testInitCommandWithDoubleSlash() {
+        let command = Command("/test /test test")
         
-        XCTAssertEqual(command2.command, "test")
-        XCTAssertEqual(command2.parameters, "")
-        
-        guard let command3 = Command("/test /test test") else {
-            XCTFail("Command is nil")
-            return
-        }
-        
-        XCTAssertEqual(command3.command, "test")
-        XCTAssertEqual(command3.parameters, "/test test")
+        XCTAssertEqual(command?.command, "test")
+        XCTAssertEqual(command?.parameters, "/test test")
     }
     
     internal func testInitNilCommand() {
