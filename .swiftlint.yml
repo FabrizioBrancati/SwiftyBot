@@ -9,12 +9,15 @@ opt_in_rules:
   - closure_spacing
   - conditional_returns_on_newline
   - contains_over_first_not_nil
+  - convenience_type
   - empty_count
   - empty_string
+  - empty_xctest_method
   - explicit_acl
   - explicit_init
   - fallthrough
   - fatal_error_message
+  - file_name
   - first_where
   - force_unwrapping
   - implicitly_unwrapped_optional
@@ -23,9 +26,12 @@ opt_in_rules:
   - literal_expression_end_indentation
   - lower_acl_than_parent
   - mark
+  - modifier_order
   - multiline_arguments
+  - multiline_function_chains
   - multiline_parameters
   - nimble_operator
+  - no_fallthrough_only
   - number_separator
   - object_literal
   - operator_usage_whitespace
@@ -44,6 +50,7 @@ opt_in_rules:
   - sorted_imports
   - switch_case_on_newline
   - trailing_closure
+  - unavailable_function
   - unneeded_parentheses_in_closure_argument
   - untyped_error_in_catch
   - vertical_parameter_alignment_on_call
@@ -52,6 +59,7 @@ opt_in_rules:
 disabled_rules:
   - trailing_whitespace
   - line_length
+  - file_length
 
 identifier_name:
   excluded:
@@ -87,50 +95,56 @@ custom_rules:
     severity: warning
   hardcoded_credential:
     included: ".*.swift"
-    regex: 'let (?:token|password|Token|Password).*= ?".+"'
     name: "Credentials should not be hard-coded"
+    regex: 'let \s*(?:token|password|Token|Password)\s*= ".+"'
     message: "Because it is easy to extract strings from a compiled application, credentials should never be hard-coded."
     severity: warning
   if_as_guard:
     included: ".*.swift"
-    regex: '\n *if [^\{]+\{\s*(?:return|break|continue)[^\n]*\n *\}(?! *else)'
     name: "If as Guard"
+    regex: '\n *if [^\{]+\{\s*(?:return|break|continue)[^\n]*\n *\}(?! *else)'
     message: "Don't use an if statement to just return/break/continue – use guard for such cases instead."
     severity: warning
   ip_address:
     included: ".*.swift"
-    regex: '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
     name: "IP addresses should not be hardcoded"
+    regex: '\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}'
     message: "Hardcoding an IP address into source code is a bad idea"
     severity: warning
   late_force_unwrapping:
     included: ".*.swift"
-    regex: '\(\S+\?\.\S+\)!'
     name: "Late Force Unwrapping"
+    regex: '\(\S+\?\.\S+\)!'
     message: "Don't use ? first to force unwrap later – directly unwrap within the parantheses."
     severity: warning
   missing_docs:
     included: ".*.swift"
-    regex: '\n *(?!\/\/\/)(\/\/)?[^\n\/]*\n *(?:@\S+ )*(?:public|open)'
     name: "Missing Docs"
+    regex: '\n *(?!\/\/\/)(\/\/)?[^\n\/]*\n *(?:@\S+ )*(?:public|open)'
     message: "Types, properties and methods with public or open access level should be documented."
+    severity: warning
+  redundant_parentheses:
+    included: ".*.swift"
+    name: "Redundant Parentheses"
+    regex: 'if \(.*\) \{'
+    message: "Condition should not be enclosed within parentheses."
     severity: warning
   single_line_return:
     included: ".*.swift"
-    regex: '\.\S+ *\{(?: *return|[^\n\}]+ in return) [^\}]+\}'
     name: "Single Line Return"
+    regex: '\.\S+ *\{(?: *return|[^\n\}]+ in return) [^\}]+\}'
     message: "Remove the 'return' when returning from a single line closure."
     severity: warning
   unnecessary_case_break:
     included: ".*.swift"
-    regex: '(case |default)(?:[^\n\}]+\n){2,}\s*break *\n|\n *\n *break(?:\n *\n|\n *\})'
     name: "Unnecessary Case Break"
+    regex: '(case |default)(?:[^\n\}]+\n){2,}\s*break *\n|\n *\n *break(?:\n *\n|\n *\})'
     message: "Don't use break in switch cases – Swift breaks by default."
     severity: warning
   unnecessary_nil_assignment:
     included: ".*.swift"
-    regex: 'var \S+\s*:\s*[^\s]+\?\s*=\s*nil'
     name: "Unnecessary Nil Assignment"
+    regex: 'var \S+\s*:\s*[^\s]+\?\s*=\s*nil'
     message: "Don't assign nil as a value when defining an optional type – it's nil by default."
     severity: warning
   unnecessary_type:
@@ -142,18 +156,24 @@ custom_rules:
   upper_camel_case:
     included: ".*.swift"
     name: "Upper Camel Case"
-    regex: "(?:protocol|class|struct|enum) [a-z]+[a-zA-Z]*"
-    message: "Class, Struct and Enum names should be UpperCamelCase"
+    regex: "$[^//](?:protocol|class|struct|enum) [a-z]+[a-zA-Z]*"
+    message: "Class, Struct and Enum names should be UpperCamelCase."
+    severity: warning
+  useless_if:
+    included: ".*.swift"
+    name: "Useless If"
+    regex: 'if[ (]*?(:?true|false)[ )]*?\{'
+    message: "`if` statements with conditions that are always false have the effect of making blocks of code non-functional."
     severity: warning
   vertical_whitespaces_around_mark:
     included: ".*.swift"
-    regex: '\/\/\s*MARK:[^\n]*(\n)(?!\n)|(\n\n\n)[ \t]*\/\/\s*MARK:|[^\s{]\n[^\n\/]*\/\/\s*MARK:'
     name: "Vertical Whitespaces Around MARK:"
+    regex: '\/\/\s*MARK:[^\n]*(\n)(?!\n)|(\n\n\n)[ \t]*\/\/\s*MARK:|[^\s{]\n[^\n\/]*\/\/\s*MARK:'
     message: "Include a single vertical whitespace (empty line) before and after MARK: comments."
     severity: warning
   vertical_whitespace_opening_braces:
     included: ".*.swift"
-    regex: '[{(\[][ \t]*\n[ \t]*\n'
     name: "Vertical Whitespace after Opening Braces"
+    regex: '[{(\[][ \t]*\n[ \t]*\n'
     message: "Don't include vertical whitespace (empty line) after opening braces."
     severity: warning
