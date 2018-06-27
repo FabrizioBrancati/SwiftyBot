@@ -1,5 +1,5 @@
 //
-//  StringExtensions.swift
+//  String+Extensions.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)

@@ -38,9 +38,9 @@ public struct SenderAction: Content {
     }
     
     /// Recipient.
-    private(set) public var recipient: Recipient
+    public private(set) var recipient: Recipient
     /// Sender action.
-    private(set) public var action: Action
+    public private(set) var action: Action
     
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {

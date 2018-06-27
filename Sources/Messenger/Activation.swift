@@ -30,11 +30,11 @@ import Vapor
 /// Actiovation struct.
 public struct Activation: Codable {
     /// Activation mode.
-    private(set) public var mode: String
+    public private(set) var mode: String
     /// Activation token.
-    private(set) public var verifyToken: String
+    public private(set) var verifyToken: String
     /// Activation challenge.
-    private(set) public var challenge: String
+    public private(set) var challenge: String
 
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {

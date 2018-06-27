@@ -29,5 +29,5 @@ import Foundation
 /// User message.
 public struct Message: Codable {
     /// User message text.
-    private(set) public var text: String
+    public private(set) var text: String
 }

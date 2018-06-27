@@ -30,9 +30,9 @@ import Foundation
 /// Telegram command.
 public struct Command {
     /// Command.
-    private(set) public var command: String
+    public private(set) var command: String
     /// Command parameters.
-    private(set) public var parameters: String
+    public private(set) var parameters: String
     
     /// Initialize a command.
     ///

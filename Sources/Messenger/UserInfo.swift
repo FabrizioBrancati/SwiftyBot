@@ -30,9 +30,9 @@ import Vapor
 /// Messenger User Info response.
 public struct UserInfo: Codable, Equatable {
     /// User first name.
-    private(set) public var firstName: String
+    public private(set) var firstName: String
     /// User locale.
-    private(set) public var id: String
+    public private(set) var id: String
     
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {

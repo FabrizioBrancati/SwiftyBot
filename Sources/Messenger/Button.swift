@@ -37,13 +37,13 @@ public struct Button: Codable, Equatable {
     }
 
     /// Button type.
-    private(set) public var type: Type
+    public private(set) var type: Type
     /// Button title.
-    private(set) public var title: String
+    public private(set) var title: String
     /// Button payload, postback type only.
-    private(set) public var payload: String?
+    public private(set) var payload: String?
     /// Button URL, webURL type only.
-    private(set) public var url: String?
+    public private(set) var url: String?
     
     /// Creates a Button for Messenger structured message element.
     ///

@@ -29,5 +29,5 @@ import Foundation
 /// Messenger message sender.
 public struct Sender: Codable {
     /// Sender ID.
-    private(set) public var id: String
+    public private(set) var id: String
 }

@@ -29,5 +29,5 @@ import Foundation
 /// Messenger postback.
 public struct Postback: Codable {
     /// Postback payload.
-    private(set) public var payload: String?
+    public private(set) var payload: String?
 }

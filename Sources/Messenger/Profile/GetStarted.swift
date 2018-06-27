@@ -31,7 +31,7 @@ public struct GetStarted: Codable {
     /// Default Get Started payload.
     public static let defaultPayload = "Get Started"
     /// Get Started payload.
-    private(set) public var payload: String
+    public private(set) var payload: String
     
     /// Creates a GetStarted.
     ///

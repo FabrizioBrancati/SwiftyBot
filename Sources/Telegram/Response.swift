@@ -37,9 +37,9 @@ public struct Response: Codable {
     }
     
     /// Response method.
-    private(set) public var method: Method
+    public private(set) var method: Method
     /// Response chat ID.
-    private(set) public var chatID: Int
+    public private(set) var chatID: Int
     /// Response text.
     public var text: String
     

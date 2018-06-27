@@ -29,7 +29,7 @@ import Foundation
 /// Messenger page entry.
 public struct PageEntry: Codable {
     /// Entry messages.
-    private(set) public var messages: [PageMessage]
+    public private(set) var messages: [PageMessage]
     
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {

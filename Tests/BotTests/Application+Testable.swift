@@ -1,5 +1,5 @@
 //
-//  ApplicationTestable.swift
+//  Application+Testable.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)

@@ -29,9 +29,9 @@ import Foundation
 /// Messenger page response.
 public struct PageRequest: Codable {
     /// Page object, usually is `page`.
-    private(set) public var object: String
+    public private(set) var object: String
     /// Page entries.
-    private(set) public var entries: [PageEntry]
+    public private(set) var entries: [PageEntry]
     
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {

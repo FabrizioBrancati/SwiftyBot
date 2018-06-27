@@ -35,9 +35,9 @@ public struct Payload: Codable, Equatable {
     }
     
     /// Payload template type.
-    private(set) public var templateType: TemplateType
+    public private(set) var templateType: TemplateType
     /// Payload elements.
-    private(set) public var elements: [Element]
+    public private(set) var elements: [Element]
     
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {

@@ -28,16 +28,16 @@ import Foundation
 
 /// Messenger element helper.
 public struct Element: Codable {
-    // Element title.
-    private(set) public var title: String
+    /// Element title.
+    public private(set) var title: String
     /// Element subtitle.
-    private(set) public var subtitle: String
+    public private(set) var subtitle: String
     /// Element item URL.
-    private(set) public var itemURL: String
+    public private(set) var itemURL: String
     /// Element image URL.
-    private(set) public var imageURL: String
+    public private(set) var imageURL: String
     /// Element Button array.
-    private(set) public var buttons: [Button] = []
+    public private(set) var buttons: [Button] = []
     
     /// Initialize an Element.
     ///

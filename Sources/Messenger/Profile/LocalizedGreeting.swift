@@ -39,9 +39,9 @@ public struct LocalizedGreeting: Codable, Equatable {
     }
     
     /// Locale.
-    private(set) public var locale: Language
+    public private(set) var locale: Language
     /// Text shown for the locale.
-    private(set) public var text: String
+    public private(set) var text: String
     
     /// Creates a LocalizedGreeting.
     ///

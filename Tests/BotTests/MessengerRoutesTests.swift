@@ -35,7 +35,7 @@ internal class MessengerRoutesTests: XCTestCase {
     internal var bot: Application!
     // swiftlint:enable implicitly_unwrapped_optional
     
-    internal override func setUp() {
+    override internal func setUp() {
         super.setUp()
         
         do {

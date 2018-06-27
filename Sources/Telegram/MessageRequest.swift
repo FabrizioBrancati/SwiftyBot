@@ -29,5 +29,5 @@ import Foundation
 /// Telegram message request.
 public struct MessageRequest: Codable {
     /// Message request message.
-    private(set) public var message: Message
+    public private(set) var message: Message
 }

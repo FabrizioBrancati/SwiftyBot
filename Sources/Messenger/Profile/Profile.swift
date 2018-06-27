@@ -30,9 +30,9 @@ import Vapor
 /// Messenger Profile helper.
 public struct Profile: Content {
     /// Get Started property.
-    private(set) public var getStarted: GetStarted
+    public private(set) var getStarted: GetStarted
     /// Greeting property.
-    private(set) public var greeting: Greeting
+    public private(set) var greeting: Greeting
     
     /// Coding keys, used by Codable protocol.
     public enum Name: String, CodingKey {

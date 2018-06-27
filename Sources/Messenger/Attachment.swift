@@ -35,7 +35,7 @@ public struct Attachment: Codable, Equatable {
     }
     
     /// Message template type.
-    private(set) public var type: Type
+    public private(set) var type: Type
     /// Message payload.
-    private(set) public var payload: Payload
+    public private(set) var payload: Payload
 }

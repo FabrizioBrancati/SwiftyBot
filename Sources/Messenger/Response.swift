@@ -38,7 +38,7 @@ public struct Response: Content {
     }
     
     /// Messaging type.
-    private(set) public var messagingType: MessagingType
+    public private(set) var messagingType: MessagingType
     /// Recipient.
     public var recipient: Recipient?
     /// Final response message.

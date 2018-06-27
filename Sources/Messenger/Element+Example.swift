@@ -1,5 +1,5 @@
 //
-//  ElementExtension.swift
+//  Element+Example.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
