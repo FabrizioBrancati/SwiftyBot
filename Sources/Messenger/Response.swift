@@ -104,19 +104,8 @@ public struct Response: Content {
                         response.message = createGreeting(for: event.sender.id, on: request)
                     /// Check if the message has "sell", "buy" or "shop" in its text.
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
-                        /// Create the elements array and add all the created elements.
-                        var elements: [Element] = []
-                        /// Add Queuer element.
-                        elements.append(Element.queuer)
-                        /// Add BFKit-Swift element.
-                        elements.append(Element.bfkitSwift)
-                        /// Add BFKit element.
-                        elements.append(Element.bfkit)
-                        /// Add SwiftyBot element.
-                        elements.append(Element.swiftyBot)
-                        
-                        /// Creates the payload.
-                        let payload = Payload(templateType: .generic, elements: elements)
+                        /// Creates the payload with all the example elements.
+                        let payload = Payload(templateType: .generic, elements: Element.allExamples)
                         /// Creates the attachment.
                         let attachment = Attachment(type: .template, payload: payload)
                         /// Finally creates the structured message.

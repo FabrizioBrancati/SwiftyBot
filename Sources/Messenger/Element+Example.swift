@@ -28,6 +28,23 @@ import Foundation
 
 /// Example element helper.
 public extension Element {
+    /// Queuer static example constant.
+    public static let queuer = Element(exampleTitle: "Queuer", subtitle: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).", itemURL: "https://github.com/FabrizioBrancati/Queuer", imageURL: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png")
+    
+    /// BFKit-Swift static example constant.
+    public static let bfkitSwift = Element(exampleTitle: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png")
+    
+    /// BFKit static example constant.
+    public static let bfkit = Element(exampleTitle: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png")
+    
+    /// SwiftyBot static example constant.
+    public static let swiftyBot = Element(exampleTitle: "BFKit-Swift", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png")
+    
+    /// Returns all the example elements.
+    public static let allExamples: [Element] = {
+        return [Element.queuer, Element.bfkitSwift, Element.bfkit, Element.swiftyBot]
+    }()
+    
     /// Creates an example element.
     ///
     /// - Parameters:
@@ -41,16 +58,4 @@ public extension Element {
         add(button: Button(title: "Open in GitHub", url: itemURL))
         add(button: Button(title: "Call Postback", payload: "\(title) pressed"))
     }
-    
-    /// Queuer static example constant.
-    public static let queuer = Element(exampleTitle: "Queuer", subtitle: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).", itemURL: "https://github.com/FabrizioBrancati/Queuer", imageURL: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png")
-    
-    /// BFKit-Swift static example constant.
-    public static let bfkitSwift = Element(exampleTitle: "BFKit-Swift", subtitle: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit-Swift", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png")
-    
-    /// BFKit static example constant.
-    public static let bfkit = Element(exampleTitle: "BFKit-Swift", subtitle: "BFKit is a collection of useful classes and categories to develop Apps faster.", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png")
-    
-    /// SwiftyBot static example constant.
-    public static let swiftyBot = Element(exampleTitle: "BFKit-Swift", subtitle: "How to create a Telegram & Messenger bot with Swift using Vapor on Ubuntu / macOS", itemURL: "https://github.com/FabrizioBrancati/BFKit", imageURL: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png")
 }

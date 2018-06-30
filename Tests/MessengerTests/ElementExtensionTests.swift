@@ -37,4 +37,13 @@ internal class ElementExtensionTests: XCTestCase {
         XCTAssertEqual(element.itemURL, "Test URL")
         XCTAssertEqual(element.imageURL, "Test Image URL")
     }
+    
+    internal func testAllExamples() {
+        let allExamples = Element.allExamples
+        
+        XCTAssertTrue(allExamples.contains(Element.queuer))
+        XCTAssertTrue(allExamples.contains(Element.bfkitSwift))
+        XCTAssertTrue(allExamples.contains(Element.bfkit))
+        XCTAssertTrue(allExamples.contains(Element.swiftyBot))
+    }
 }
