@@ -36,7 +36,8 @@ import XCTest
 internal extension ElementExtensionTests {
     internal static var allTests: [(String, (ElementExtensionTests) -> () throws -> Void)] {
         return [
-            ("testInitElementExtension", testInitElementExtension)
+            ("testInitElementExtension", testInitElementExtension),
+            ("testAllExamples", testAllExamples)
         ]
     }
 }
