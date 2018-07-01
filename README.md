@@ -31,7 +31,7 @@
 What does it do
 ===============
 
-SwiftyBot is an example on how to create a Telegram & Facebook Messenger bot with Swift using Vapor.<br>
+SwiftyBot is an example of how to create a Telegram & Facebook Messenger bot with Swift using Vapor.<br>
 See [Compatibility](https://github.com/FabrizioBrancati/SwiftyBot#compatibility) section to check service and version it supports, you can also see its blog post with the link in that table.
 
 Compatibility
