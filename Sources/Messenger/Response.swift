@@ -156,6 +156,12 @@ public extension Response {
 // MARK: - Response Greeting Extension
 
 internal extension Response {
+    /// Create a greeting for a request.
+    ///
+    /// - Parameters:
+    ///   - id: User ID.
+    ///   - request: Messenger request.
+    /// - Returns: Returns the message response.
     internal func createGreeting(for id: String, on request: Request) -> MessageResponse {
         /// Try to get the user first name.
         var greeting = "Hi"
