@@ -51,7 +51,7 @@ Language support
 Requirements
 ============
 
-- Ubuntu 14.04 or later with Swift 4.1 or later / macOS with Xcode 9.4 or later
+- Ubuntu 14.04 or later with Swift 4.1 or later / macOS with Xcode 9.3 or later
 - Telegram account and a Telegram App for any platform (Telegram bot only)
 - Facebook account and a Facebook Messenger App for any platform (Facebook Messenger bot only)
 
@@ -119,10 +119,11 @@ You can open Facebook and search for **[SwiftyBotMessenger](http://m.me/SwiftyBo
 Todo
 ====
 
+- [ ] Add more bot platforms
 - [x] Add Telegram support
 - [x] Add Facebook Messenger support
-- [ ] Add tests
-- [ ] Add code coverage reports
+- [x] Add tests
+- [x] Add code coverage reports
 
 Author
 ======
