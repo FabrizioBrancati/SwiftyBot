@@ -1,5 +1,5 @@
 //
-//  Bot.swift
+//  StringExtensionsTests.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -32,14 +32,14 @@ import XCTest
 internal  class StringExtensionsTests: XCTestCase {
     internal func testHasGreetings() {
         let phrase = "Hi Bot!"
-        
+
         XCTAssertTrue(phrase.hasGreetings())
     }
 
     internal func testHasNotGreetings() {
         let phrase = "What do you do Bot?"
         let phrase2 = "Ohhh a Bot! Hi!"
-        
+
         XCTAssertFalse(phrase.hasGreetings())
         XCTAssertFalse(phrase2.hasGreetings())
     }

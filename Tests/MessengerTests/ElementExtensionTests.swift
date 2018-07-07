@@ -1,5 +1,5 @@
 //
-//  ExampleElementTests.swift
+//  ElementExtensionTests.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -31,16 +31,16 @@ import XCTest
 internal class ElementExtensionTests: XCTestCase {
     internal func testInitElementExtension() {
         let element = Element(exampleTitle: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
-        
+
         XCTAssertEqual(element.title, "Test")
         XCTAssertEqual(element.subtitle, "Test Subtitle")
         XCTAssertEqual(element.itemURL, "Test URL")
         XCTAssertEqual(element.imageURL, "Test Image URL")
     }
-    
+
     internal func testAllExamples() {
         let allExamples = Element.allExamples
-        
+
         XCTAssertTrue(allExamples.contains(Element.queuer))
         XCTAssertTrue(allExamples.contains(Element.bfkitSwift))
         XCTAssertTrue(allExamples.contains(Element.bfkit))
