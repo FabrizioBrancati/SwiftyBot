@@ -34,6 +34,9 @@ All notable changes to this project will be documented in this file.<br>
 - Created a target for each bot platform
 - Updated SwiftLint to 0.26.0
 
+### Removed
+- Removed Hound CI
+
 ---
 
 ## [2.3.3](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.3.3) - Facebook Requirements
