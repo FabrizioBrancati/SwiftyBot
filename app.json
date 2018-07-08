@@ -1,0 +1,27 @@
+{
+  "name": "SwiftyBot",
+  "description": " SwiftyBot is an example on how to create a Telegram & Facebook Messenger bot with Swift using Vapor.",
+  "scripts": {
+  },
+  "env": {
+    "MESSENGER_SECRET": {
+      "required": true
+    },
+    "MESSENGER_TOKEN": {
+      "required": true
+    },
+    "TELEGRAM_SECRET": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/vapor-community/heroku-buildpack.git"
+    }
+  ]
+}
