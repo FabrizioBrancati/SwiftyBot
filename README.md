@@ -11,39 +11,48 @@
 ---
 
 <p align="center">
-    <a href="#what-does-it-do">What does it do</a> &bull;
-    <a href="#compatibility">Compatibility</a> &bull;
-    <a href="#language-support">Language support</a> &bull;
+    <a href="#features">Features</a> &bull;
+    <a href="#integrations-and-tutorials">Integrations and Tutorials</a> &bull;
+    <a href="#language-support">Language Support</a> &bull;
     <a href="#requirements">Requirements</a> &bull;
     <a href="#communication">Communication</a> &bull;
     <a href="#contributing">Contributing</a> &bull;
     <a href="#installing-and-usage">Installing and Usage</a> &bull;
     <a href="#documentation">Documentation</a> &bull;
     <a href="#changelog">Changelog</a> &bull;
-    <a href="#demo">Demo</a> &bull;
-    <a href="#todo">Todo</a> &bull;
-    <a href="#author">Author</a> &bull;
+    <a href="#demos">Demos</a> &bull;
+    <a href="#authors">Authors</a> &bull;
     <a href="#license">License</a>
 </p>
 
 ---
 
-What does it do
-===============
+Features
+========
 
-SwiftyBot is an example of how to create a Telegram & Facebook Messenger bot with Swift using Vapor.<br>
-See [Compatibility](https://github.com/FabrizioBrancati/SwiftyBot#compatibility) section to check service and version it supports, you can also see its blog post with the link in that table.
+SwiftyBot is an example of how to create a bot with [Swift](https://swift.org/) on top of [Vapor](https://github.com/vapor/vapor).
 
-Compatibility
-=============
+Here is the list of all the features:
+- [x] Facebook Messenger bot integration
+- [x] Telegram bot integration
+- [x] Well documented (you can find more in [Documentation](https://github.com/FabrizioBrancati/SwiftyBot#documentation) section)
+- [x] Well tested (currently 98% of code coverage)
+- [x] Clean (every bot platform has its folder with its files and tests)
+- [x] Easy to follow (every bot platform comes with a tutorial, more in [Integrations and Tutorials](https://github.com/FabrizioBrancati/SwiftyBot#integrations-and-tutorials) section)
+- [ ] Multi language support
 
-| **Bot Type** | **Version** | **Blog Post Link** |
-|--------------|-------------|--------------------|
-| Telegram | 1.0...1.2   | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
-| Facebook Messenger | 2.0...2.3 | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ |
-| ??? | 3.0 | _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_ |
+> There are a lot of bot platforms out there that can be added...
 
-Language support
+Integrations and Tutorials
+==========================
+
+| **Bot Platform**   | **Blog Post Link**                                                                                                    |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------|
+| Telegram           | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
+| Facebook Messenger | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_                   |
+| ???                | _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_                                                                 |
+
+Language Support
 ================
 
 - English (en)
@@ -107,8 +116,8 @@ Changelog
 
 To see what has changed in recent version of SwiftyBot, see the **[CHANGELOG.md](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/CHANGELOG.md)** file.
 
-Demo
-====
+Demos
+=====
 
 ### Telegram
 You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** and start talking with him!
@@ -116,29 +125,18 @@ You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot
 ### Facebook Messenger
 You can open Facebook and search for **[SwiftyBotMessenger](http://m.me/SwiftyBotMessenger)** and start talking with him!
 
-Todo
-====
+Authors
+=======
 
-- [ ] Add more bot platforms
-- [x] Add Telegram support
-- [x] Add Facebook Messenger support
-- [x] Add tests
-- [x] Add code coverage reports
-
-Author
-======
-
+### Bot
 **Fabrizio Brancati**
 
-[Website: https://www.fabriziobrancati.com](https://www.fabriziobrancati.com)
-<br>
-[Email: fabrizio.brancati@gmail.com](mailto:fabrizio.brancati@gmail.com)
+[https://www.fabriziobrancati.com](https://www.fabriziobrancati.com) - [fabrizio.brancati@gmail.com](mailto:fabrizio.brancati@gmail.com)
 
-Icon
-====
+### Icon
 **Roberto Chiaveri**
 
-[Website: http://robertochiaveri.it](http://robertochiaveri.it)
+[http://robertochiaveri.it](http://robertochiaveri.it)
 
 License
 =======
