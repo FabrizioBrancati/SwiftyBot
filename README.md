@@ -106,10 +106,13 @@ If you need more help through this steps, you can read _[How to create a Faceboo
 Documentation
 =============
 
-Every line of the project file are commented.<br>
-If you need Vapor documentation you can find it [here](https://docs.vapor.codes/).<br>
-If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).<br>
-If you need Facebook Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
+### Bot
+- Every line of every project file is commented.
+- If you need Vapor documentation you can find it [here](https://docs.vapor.codes/).
+
+### Platforms
+- If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).
+- If you need Facebook Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
 
 Changelog
 =========
