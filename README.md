@@ -110,7 +110,7 @@ Documentation
 - Every line of every project file is commented.
 - If you need Vapor documentation you can find it [here](https://docs.vapor.codes/).
 
-### Platforms
+### Platforms
 - If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).
 - If you need Facebook Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
 
