@@ -17,11 +17,10 @@
   "formation": {
   },
   "addons": [
-
   ],
   "buildpacks": [
     {
-      "url": "https://github.com/vapor-community/heroku-buildpack.git"
+      "url": "https://github.com/FabrizioBrancati/heroku-buildpack.git"
     }
   ]
 }
