@@ -50,6 +50,11 @@ let package = Package(
             "BFKit",
             "Helpers"
         ]),
+        .target(name: "Assistant", dependencies: [
+            "Vapor",
+            "BFKit",
+            "Helpers"
+        ]),
         .target(name: "Helpers"),
         .testTarget(name: "BotTests", dependencies: [
             "Bot",
