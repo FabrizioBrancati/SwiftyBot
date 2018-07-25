@@ -30,4 +30,6 @@ import Foundation
 public struct QueryResult: Codable {
     /// The original text of the query.
     public private(set) var queryText: String
+    /// The language that was triggered during intent matching.
+    public private(set) var languageCode: String
 }
