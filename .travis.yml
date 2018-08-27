@@ -39,19 +39,20 @@ script:
     fi
 
   - swift build
+  
   - swift package clean
+
+  - swift build -c release
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       swift package generate-xcodeproj;
       xcodebuild clean test -scheme SwiftyBot-Package -enableCodeCoverage YES | xcpretty;
     fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      swift package clean;
       ruby generate_linux_tests.rb;
       swift test;
     fi
-  - swift package clean
-
-  - swift build -c release
 
 after_success:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
