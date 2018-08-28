@@ -18,7 +18,7 @@ before_install:
       brew update;
       brew tap vapor/homebrew-tap;
       brew install vapor/tap/vapor;
-      gem install slather;
+      gem install xcov;
     fi
 
 install:
@@ -58,5 +58,5 @@ script:
 
 after_success:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-      slather;
+      xcov;
     fi
