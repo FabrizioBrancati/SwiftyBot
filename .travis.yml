@@ -48,7 +48,7 @@ script:
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       swift package generate-xcodeproj --enable-code-coverage;
-      xcodebuild clean test -scheme SwiftyBot-Package -enableCodeCoverage YES | xcpretty;
+      xcodebuild clean test -scheme SwiftyBot-Package -derivedDataPath .build/xcode -enableCodeCoverage YES | xcpretty;
     fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       swift package clean;
