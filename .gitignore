@@ -29,9 +29,6 @@ playground.xcworkspace
 build/
 DerivedData/
 
-# Xcov
-xcov_report
-
 # Secrets
 Config/secrets/app.json
 
