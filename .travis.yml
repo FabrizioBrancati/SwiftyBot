@@ -18,7 +18,6 @@ before_install:
       brew update;
       brew tap vapor/homebrew-tap;
       brew install vapor/tap/vapor;
-      gem install slather;
     fi
 
 install:
@@ -58,5 +57,5 @@ script:
 
 after_success:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-      slather;
+      bash <(curl -s https://codecov.io/bash);
     fi
