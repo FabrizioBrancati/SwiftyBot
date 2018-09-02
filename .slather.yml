@@ -1,0 +1,6 @@
+coverage_service: coveralls
+xcodeproj: SwiftyBot.xcodeproj
+scheme: SwiftyBot-Package
+ignore:
+  - Tests/*
+  - .build/*

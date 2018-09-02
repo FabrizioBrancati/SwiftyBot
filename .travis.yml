@@ -6,7 +6,7 @@ matrix:
       dist: trusty
     - os: osx
       language: objective-c
-      osx_image: xcode9.4
+      osx_image: xcode10
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
@@ -48,7 +48,7 @@ script:
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       swift package generate-xcodeproj --enable-code-coverage;
-      xcodebuild clean test -scheme SwiftyBot-Package -enableCodeCoverage YES | xcpretty;
+      xcodebuild clean test -project SwiftyBot-Package.xcodeproj -scheme SwiftyBot-Package -destination arch=x86_64 -enableCodeCoverage YES | xcpretty;
     fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       swift package clean;
@@ -58,5 +58,5 @@ script:
 
 after_success:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-      xcov --coveralls_service_name travis-ci --coveralls_service_job_id $TRAVIS_JOB_ID;
+      slather;
     fi
