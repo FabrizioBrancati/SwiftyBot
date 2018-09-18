@@ -63,7 +63,7 @@ All notable changes to this project will be documented in this file.<br>
 
 ### Improved
 - Updated SwiftLint to 0.25.0
-- Improved `Config/secrets/` folder explanation [#5](https://github.com/FabrizioBrancati/SwiftyBot/issue/5)
+- Improved `Config/secrets/` folder explanation [#5](https://github.com/FabrizioBrancati/SwiftyBot/issues/5)
 
 Thanks to [@n0an](https://github.com/n0an) for this release
 
