@@ -46,11 +46,11 @@ Here is the list of all the features:
 Integrations and Tutorials
 ==========================
 
-| **Bot Platform**   | **Blog Post Link**                                                                                                    |
-|--------------------|-----------------------------------------------------------------------------------------------------------------------|
+| **Bot Platform**   | **Blog Post Link** |
+|--------------------|--------------------|
 | Telegram           | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
-| Facebook Messenger | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_                   |
-| ???                | _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_                                                                 |
+| Facebook Messenger | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ |
+| ???                | _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_ |
 
 Language Support
 ================
