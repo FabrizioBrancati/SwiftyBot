@@ -30,8 +30,8 @@ import PackageDescription
 let package = Package(
     name: "SwiftyBot",
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.0.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.2.0"))
+        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.1.0")),
+        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "4.0.0"))
     ],
     targets: [
         .target(name: "SwiftyBot", dependencies: ["Bot"]),
