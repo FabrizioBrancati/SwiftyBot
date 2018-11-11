@@ -1,4 +1,4 @@
 type: "vapor"
-swift_version: "4.2.1"
+swift_version: "4.2.0"
 run_parameters: "serve --port 8080 --hostname 0.0.0.0"
 force_tls: true
