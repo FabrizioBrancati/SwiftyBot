@@ -60,7 +60,7 @@ Language Support
 Requirements
 ============
 
-- Ubuntu 14.04 or later with Swift 4.1 or later / macOS with Xcode 9.3 or later
+- Ubuntu 14.04 or later with Swift 4.2 or later / macOS with Xcode 10.0 or later
 - Telegram account and a Telegram App for any platform (Telegram bot only)
 - Facebook account and a Facebook Messenger App for any platform (Facebook Messenger bot only)
 
