@@ -165,9 +165,9 @@ internal extension Response {
     internal func createGreeting(for id: String, on request: Request) -> MessageResponse {
         /// Try to get the user first name.
         var greeting = "Hi"
-        if let userInfo = UserInfo(id: id, on: request) {
-            greeting += " \(userInfo.firstName)"
-        }
+//        if let userInfo = UserInfo(id: id, on: request) {
+//            greeting += " \(userInfo.firstName)"
+//        }
         greeting += "!"
     
         /// Set the response message.
