@@ -32,7 +32,7 @@ All notable changes to this project will be documented in this file.<br>
 ### Improved
 - Entirely rewritten with Vapor 3
 - Created a target for each bot platform
-- Updated SwiftLint to 0.27.0
+- Updated SwiftLint to 0.28.1
 
 ### Removed
 - Removed Hound CI
