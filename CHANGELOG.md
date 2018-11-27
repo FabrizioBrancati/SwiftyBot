@@ -31,6 +31,7 @@ All notable changes to this project will be documented in this file.<br>
 
 ### Improved
 - Entirely rewritten with Vapor 3
+- Now every platform has a dedicated folder
 - Created a target for each bot platform
 - Updated SwiftLint to 0.28.1
 
