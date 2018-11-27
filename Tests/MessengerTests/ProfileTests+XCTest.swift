@@ -1,5 +1,5 @@
 //
-//  LinuxMain.swift
+//  ProfileTests+XCTest.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -33,28 +33,10 @@
 
 import XCTest
 
-#if os(Linux) || os(FreeBSD)
-    @testable import BotTests
-    @testable import HelpersTests
-    @testable import MessengerTests
-    @testable import TelegramTests
-
-    XCTMain([
-        testCase(AppTests.allTests),
-        testCase(ButtonTests.allTests),
-        testCase(CommandTests.allTests),
-        testCase(ElementExtensionTests.allTests),
-        testCase(ElementTests.allTests),
-        testCase(GetStartedTests.allTests),
-        testCase(GreetingTests.allTests),
-        testCase(LocalizedGreetingTests.allTests),
-        testCase(MessageResponseTests.allTests),
-        testCase(MessengerRoutesTests.allTests),
-        testCase(ProfileTests.allTests),
-        testCase(RecipientTests.allTests),
-        testCase(SenderActionTests.allTests),
-        testCase(StringExtensionsTests.allTests),
-        testCase(TelegramRoutesTests.allTests),
-        testCase(UserInfoTests.allTests)
-    ])
-#endif
+internal extension ProfileTests {
+    internal static var allTests: [(String, (ProfileTests) -> () throws -> Void)] {
+        return [
+            ("testInit", testInit)
+        ]
+    }
+}
