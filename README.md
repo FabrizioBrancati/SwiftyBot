@@ -1,6 +1,6 @@
 <p align="center"><img src="https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png" alt="SwiftyBot Banner"></p>
 
-[![Build Status](https://travis-ci.org/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
+[![Build Status](https://travis-ci.com/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
 [![codecov](https://codecov.io/gh/FabrizioBrancati/SwiftyBot/branch/master/graph/badge.svg)](https://codecov.io/gh/FabrizioBrancati/SwiftyBot)
 [![codebeat badge](https://codebeat.co/badges/ff777248-e375-4c6d-8a77-4475c2bc9ae1)](https://codebeat.co/projects/github-com-fabriziobrancati-swiftybot-master)
 [![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://developer.apple.com/swift/)
