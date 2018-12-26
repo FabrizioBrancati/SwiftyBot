@@ -83,7 +83,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.messagingType, .response)
         XCTAssertEqual(response.recipient?.id, "1366898573")
         XCTAssertEqual(response.message, .text("""
-        Hi Fabrizio!
+        Hi!
         This is an example on how to create a bot with Swift.
         If you want to see more try to send me "buy", "sell" or "shop".
         """))
@@ -127,7 +127,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.messagingType, .response)
         XCTAssertEqual(response.recipient?.id, "1366898573")
         XCTAssertEqual(response.message, .text("""
-        Hi Fabrizio!
+        Hi!
         This is an example on how to create a bot with Swift.
         If you want to see more try to send me "buy", "sell" or "shop".
         """))
