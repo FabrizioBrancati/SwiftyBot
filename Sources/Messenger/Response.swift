@@ -124,7 +124,7 @@ public struct Response: Content {
                 /// Set the recipient with the sender ID.
                 response.recipient = Recipient(id: event.sender.id)
                 
-                /// Sende the response to the Facebook Messenger APIs.
+                /// Send the response to the Facebook Messenger APIs.
                 _ = try request.client().post("https://graph.facebook.com/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
                     try messageRequest.content.encode(response)
                 }
@@ -165,7 +165,7 @@ internal extension Response {
     internal func createGreeting(for id: String, on request: Request) -> MessageResponse {
         /// Try to get the user first name.
         var greeting = "Hi"
-        if let userInfo = UserInfo(id: id, on: request) {
+        UserInfo.getInfo(id: id, on: request)?.whenSuccess { userInfo in
             greeting += " \(userInfo.firstName)"
         }
         greeting += "!"
