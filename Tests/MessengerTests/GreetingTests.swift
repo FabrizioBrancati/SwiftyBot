@@ -47,6 +47,7 @@ internal class GreetingTests: XCTestCase {
         let greeting = Greeting(greeting: [LocalizedGreeting(locale: .default, text: "Test")])
         let encoded = try? JSONEncoder().encode(greeting)
         
-        XCTAssertEqual(encoded, "[{\"locale\":\"default\",\"text\":\"Test\"}]".data(using: .utf8))
+        XCTAssertTrue(encoded?.utf8()?.contains("\"locale\":\"default\"") == true)
+        XCTAssertTrue(encoded?.utf8()?.contains("\"text\":\"Test\"") == true)
     }
 }
