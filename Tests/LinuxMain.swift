@@ -39,22 +39,24 @@ import XCTest
     @testable import MessengerTests
     @testable import TelegramTests
 
-    XCTMain([
-        testCase(AppTests.allTests),
-        testCase(ButtonTests.allTests),
-        testCase(CommandTests.allTests),
-        testCase(ElementExtensionTests.allTests),
-        testCase(ElementTests.allTests),
-        testCase(GetStartedTests.allTests),
-        testCase(GreetingTests.allTests),
-        testCase(LocalizedGreetingTests.allTests),
-        testCase(MessageResponseTests.allTests),
-        testCase(MessengerRoutesTests.allTests),
-        testCase(ProfileTests.allTests),
-        testCase(RecipientTests.allTests),
-        testCase(SenderActionTests.allTests),
-        testCase(StringExtensionsTests.allTests),
-        testCase(TelegramRoutesTests.allTests),
-        testCase(UserInfoTests.allTests)
-    ])
+    XCTMain(
+        [
+            testCase(AppTests.allTests),
+            testCase(ButtonTests.allTests),
+            testCase(CommandTests.allTests),
+            testCase(ElementExtensionTests.allTests),
+            testCase(ElementTests.allTests),
+            testCase(GetStartedTests.allTests),
+            testCase(GreetingTests.allTests),
+            testCase(LocalizedGreetingTests.allTests),
+            testCase(MessageResponseTests.allTests),
+            testCase(MessengerRoutesTests.allTests),
+            testCase(ProfileTests.allTests),
+            testCase(RecipientTests.allTests),
+            testCase(SenderActionTests.allTests),
+            testCase(StringExtensionsTests.allTests),
+            testCase(TelegramRoutesTests.allTests),
+            testCase(UserInfoTests.allTests)
+        ]
+    )
 #endif
