@@ -27,7 +27,7 @@
 import Foundation
 import Vapor
 
-/// Registering Facebook Messenger routes.
+/// Registering Facebook Messenger's routes.
 public func routes(_ router: Router) throws {
     /// Setting up the GET request with Messenger secret key.
     /// With a secret path to be sure that nobody else knows that URL.
