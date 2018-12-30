@@ -50,7 +50,52 @@ public struct Response: Content {
         case recipient
         case message
     }
+}
+
+// MARK: - Response Extension
+
+/// Response extension.
+public extension Response {
+    /// Empty init method.
+    /// Declared in an extension to not override default `init` function.
+    public init() {
+        messagingType = .response
+        recipient = nil
+        message = .text("")
+    }
+}
+
+// MARK: - Response Greeting Extension
+
+/// Response extension.
+internal extension Response {
+    /// Create a greeting for a request.
+    ///
+    /// - Parameters:
+    ///   - id: User ID.
+    ///   - request: Messenger request.
+    /// - Returns: Returns the message response.
+    internal func createGreeting(for id: String, on request: Request) -> MessageResponse {
+        /// Try to get the user first name.
+        var greeting = "Hi"
+        UserInfo.getInfo(id: id, on: request)?.whenSuccess { userInfo in
+            greeting += " \(userInfo.firstName)"
+        }
+        greeting += "!"
     
+        /// Set the response message.
+        return .text("""
+        \(greeting)
+        This is an example on how to create a bot with Swift.
+        If you want to see more try to send me "buy", "sell" or "shop".
+        """)
+    }
+}
+
+// MARK: - Response Handling
+
+/// Response extension.
+public extension Response {
     /// Create a response for a request.
     ///
     /// - Parameter request: Message request.
@@ -89,20 +134,20 @@ public struct Response: Content {
                         default:
                             response.message = .text(payload)
                         }
-                    /// There is no provided payload.
+                        /// There is no provided payload.
                     } else {
                         response.message = .text("No payload provided by developer.")
                     }
-                /// If it's a normal message.
+                    /// If it's a normal message.
                 } else if let message = event.message {
                     /// Check if the message is empty.
                     if message.text.isEmpty {
                         response.message = .text("I'm sorry but your message is empty 😢")
-                    /// Check if the message has greetings.
+                        /// Check if the message has greetings.
                     } else if message.text.hasGreetings() {
                         /// Set the response message.
                         response.message = createGreeting(for: event.sender.id, on: request)
-                    /// Check if the message has "sell", "buy" or "shop" in its text.
+                        /// Check if the message has "sell", "buy" or "shop" in its text.
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
                         /// Creates the payload with all the example elements.
                         let payload = Payload(templateType: .generic, elements: Element.allExamples)
@@ -112,11 +157,11 @@ public struct Response: Content {
                         let structuredMessage = StructuredMessage(attachment: attachment)
                         
                         response.message = .structured(structuredMessage)
-                    /// It's a normal message, so reverse it.
+                        /// It's a normal message, so reverse it.
                     } else {
                         response.message = .text(message.text.reversed(preserveFormat: true))
                     }
-                /// If the message doent's exist.
+                    /// If the message doent's exist.
                 } else if event.message == nil {
                     response.message = .text("Webhook received unknown event.")
                 }
@@ -137,44 +182,5 @@ public struct Response: Content {
         /// Encode the response.
         try JSONEncoder().encode(response, to: &httpResponse, on: request.eventLoop)
         return httpResponse
-    }
-}
-
-// MARK: - Response Extension
-
-/// Response extension.
-public extension Response {
-    /// Empty init method.
-    /// Declared in an extension to not override default `init` function.
-    public init() {
-        messagingType = .response
-        recipient = nil
-        message = .text("")
-    }
-}
-
-// MARK: - Response Greeting Extension
-
-internal extension Response {
-    /// Create a greeting for a request.
-    ///
-    /// - Parameters:
-    ///   - id: User ID.
-    ///   - request: Messenger request.
-    /// - Returns: Returns the message response.
-    internal func createGreeting(for id: String, on request: Request) -> MessageResponse {
-        /// Try to get the user first name.
-        var greeting = "Hi"
-        UserInfo.getInfo(id: id, on: request)?.whenSuccess { userInfo in
-            greeting += " \(userInfo.firstName)"
-        }
-        greeting += "!"
-    
-        /// Set the response message.
-        return .text("""
-        \(greeting)
-        This is an example on how to create a bot with Swift.
-        If you want to see more try to send me "buy", "sell" or "shop".
-        """)
     }
 }

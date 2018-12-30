@@ -26,7 +26,7 @@
 
 import Foundation
 
-/// Messenger page response.
+/// Messenger page request.
 public struct PageRequest: Codable {
     /// Page object, usually is `page`.
     public private(set) var object: String

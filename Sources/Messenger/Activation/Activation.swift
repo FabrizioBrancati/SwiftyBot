@@ -42,7 +42,25 @@ public struct Activation: Codable {
         case verifyToken = "hub.verify_token"
         case challenge = "hub.challenge"
     }
-    
+}
+
+// MARK: - Activation Extension
+
+/// Activation extension.
+public extension Activation {
+    /// Empty init method.
+    /// Declared in an extension to not override default `init` function.
+    public init() {
+        mode = ""
+        verifyToken = ""
+        challenge = ""
+    }
+}
+
+// MARK: - Activation Handling
+
+/// Activation extension.
+public extension Activation {
     /// Check if the activation is valid.
     ///
     /// - Parameter httpRequest: Activation request.
@@ -61,18 +79,5 @@ public struct Activation: Codable {
         let body = HTTPBody(data: activation.challenge.convertToData())
         /// Send a 200 (OK) response.
         return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
-    }
-}
-
-// MARK: - Activation Extension
-
-/// Activation extension.
-public extension Activation {
-    /// Empty init method.
-    /// Declared in an extension to not override default `init` function.
-    public init() {
-        mode = ""
-        verifyToken = ""
-        challenge = ""
     }
 }

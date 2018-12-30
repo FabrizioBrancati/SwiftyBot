@@ -45,25 +45,6 @@ public struct UserInfo: Codable, Equatable {
     /// - Parameters:
     ///   - id: User ID used for the request.
     ///   - httpRequest: Request to be used as client.
-    public init?(id: String, on request: Request) {
-        /// Requests for user infos.
-        let userInfoFuture = try? request.client().get("https://graph.facebook.com/\(messengerAPIVersion)/\(id)?fields=id,first_name&access_token=\(messengerToken)").map(to: UserInfo.self) { response in
-            return try response.content.syncDecode(UserInfo.self)
-        }
-        
-        /// Catch the error here to not propagate it.
-        do {
-            /// Let's wait for the response, since the user first name is part of the bot response.
-            guard let userInfo = try userInfoFuture?.wait() else {
-                return nil
-            }
-        
-            self = userInfo
-        } catch {
-            return nil
-        }
-    }
-    
     public static func getInfo(id: String, on request: Request) -> Future<UserInfo>? {
         guard let client = try? request.make(Client.self) else {
             return nil
