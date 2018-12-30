@@ -38,7 +38,8 @@ let package = Package(
         .target(name: "Bot", dependencies: [
             "Vapor",
             "Telegram",
-            "Messenger"
+            "Messenger",
+            "Assistant"
         ]),
         .target(name: "Telegram", dependencies: [
             "Vapor",
