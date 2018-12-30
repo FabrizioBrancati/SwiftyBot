@@ -24,6 +24,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+import Assistant
 import Messenger
 import Telegram
 import Vapor
@@ -42,8 +43,10 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     
     /// Add the Telegram routes.
     try Telegram.routes(router)
-    /// Add the Messenger routes.
+    /// Add the Facebook Messenger routes.
     try Messenger.routes(router)
+    /// Add the Google Assistant routes.
+    try Assistant.routes(router)
     /// Register all the routes.
     services.register(router, as: Router.self)
 
