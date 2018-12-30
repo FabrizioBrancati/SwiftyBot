@@ -55,9 +55,9 @@ public struct Response: Codable {
     /// - Parameter request: Message request.
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
-    public func response(_ request: Request) throws -> HTTPResponse {
+    public func response(_ request: Vapor.Request) throws -> HTTPResponse {
         /// Decode the request.
-        let messageRequest = try request.content.syncDecode(MessageRequest.self)
+        let messageRequest = try request.content.syncDecode(Request.self)
         
         /// Creates the initial response, with a default message for empty user's message.
         var response = Telegram.Response(method: .sendMessage, chatID: messageRequest.message.chat.id, text: "I'm sorry but your message is empty 😢")

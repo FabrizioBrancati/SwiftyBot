@@ -33,5 +33,5 @@ public struct Message: Codable {
     /// Message text.
     public private(set) var text: String
     /// Contains from who has been sent the message.
-    public private(set) var from: MessageSender
+    public private(set) var from: Sender
 }

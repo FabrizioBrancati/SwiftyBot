@@ -1,5 +1,5 @@
 //
-//  MessageSender.swift
+//  MessageRequest.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,13 +26,8 @@
 
 import Foundation
 
-/// Telegram message sender.
-public struct MessageSender: Codable {
-    /// User first name.
-    public private(set) var firstName: String
-    
-    /// Coding keys, used by Codable protocol.
-    private enum CodingKeys: String, CodingKey {
-        case firstName = "first_name"
-    }
+/// Telegram message request.
+public struct Request: Codable {
+    /// Message request message.
+    public private(set) var message: Message
 }
