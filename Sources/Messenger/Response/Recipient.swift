@@ -30,11 +30,4 @@ import Foundation
 public struct Recipient: Codable {
     /// Recipient ID.
     public private(set) var id: String
-    
-    /// Initialize a Recipient.
-    ///
-    /// - Parameter id: Recipient ID.
-    public init(id: String) {
-        self.id = id
-    }
 }
