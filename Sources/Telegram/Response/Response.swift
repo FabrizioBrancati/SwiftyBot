@@ -57,6 +57,9 @@ public struct Response: Codable {
 public extension Response {
     /// Empty init method.
     /// Declared in an extension to not override default `init` function.
+    ///
+    /// - Parameter request: Message request.
+    /// - Throws: Decoding errors.
     public init(for request: Vapor.Request) throws {
         /// Decode the request.
         let messageRequest = try request.content.syncDecode(Request.self)

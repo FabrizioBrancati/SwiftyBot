@@ -50,6 +50,9 @@ public struct Activation: Codable {
 public extension Activation {
     /// Empty init method.
     /// Declared in an extension to not override default `init` function.
+    ///
+    /// - Parameter request: Activation request.
+    /// - Throws: Decoding errors.
     public init(for request: Request) throws {
         /// Try decoding the request query as `Activation`.
         self = try request.query.decode(Activation.self)
@@ -67,7 +70,6 @@ public extension Activation {
 public extension Activation {
     /// Check if the activation is valid.
     ///
-    /// - Parameter request: Activation request.
     /// - Returns: Returns the activation `HTTPResponse`.
     /// - Throws: Decoding errors.
     public func check() throws -> HTTPResponse {

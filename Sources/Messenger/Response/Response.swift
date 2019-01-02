@@ -58,6 +58,9 @@ public struct Response: Content {
 public extension Response {
     /// Empty init method.
     /// Declared in an extension to not override default `init` function.
+    ///
+    /// - Parameter request: Message request.
+    /// - Throws: Decoding errors.
     public init(for request: Request) throws {
         /// Decode the request.
         let pageResponse = try request.content.syncDecode(PageRequest.self)

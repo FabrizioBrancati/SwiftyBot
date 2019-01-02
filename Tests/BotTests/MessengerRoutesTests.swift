@@ -55,7 +55,7 @@ internal class MessengerRoutesTests: XCTestCase {
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .GET, headers: ["Content-Type": "application/json"], data: activation, decodeTo: ErrorResponse.self)
         
         XCTAssertTrue(response.error)
-        XCTAssertEqual(response.reason, "Missing Messenger verification data.")
+        XCTAssertEqual(response.reason, "Missing Facebook Messenger verification data.")
     }
     
     internal func testRouteInPostWithSimpleText() throws {
