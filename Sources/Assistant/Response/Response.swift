@@ -30,12 +30,14 @@ import Vapor
 
 /// Google Assistant response
 public struct Response: Codable {
+    /// The text to be shown on the screen.
     public private(set) var fulfillmentText: String
+    /// The collection of rich messages to present to the user.
     public private(set) var fulfillmentMessages: FullfillmentMessage
+    /// Host source.
     public private(set) var source: String
+    /// Response payload.
     public private(set) var payload: Payload
-//    public private(set) var outputContexts: OutputContext
-//    public private(set) var followupEventInput: FollowupEventInput
 }
 
 
@@ -50,16 +52,16 @@ public extension Response {
         let messageRequest = try request.content.syncDecode(Request.self)
         
         /// Creates the initial response, with a default message for empty user's message.
-        fulfillmentText = ""
-        fulfillmentMessages = .text("")
-        source = ""
+        fulfillmentText = "This is a test"
+        fulfillmentMessages = .text("This is a test 2")
+        source = "fabriziobrancati.com"
         payload = Payload(
             google: GooglePayload(
                 expectUserResponse: true, richResponse: RichResponse(
                     items: [
                         RichResponseItem(
                             simpleResponse: SimpleResponse(
-                                textToSpeech: "")
+                                textToSpeech: "This is a test 3")
                         )
                     ]
                 )
@@ -78,6 +80,11 @@ public extension Response {
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
     public func create(on request: Vapor.Request) throws -> HTTPResponse {
-        return HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
+        /// Create the JSON response.
+        /// https://dialogflow.com/docs/fulfillment/how-it-works#response_format
+        var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
+        /// Encode the response.
+        try JSONEncoder().encode(self, to: &httpResponse, on: request.eventLoop)
+        return httpResponse
     }
 }
