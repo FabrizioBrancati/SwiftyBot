@@ -1,5 +1,5 @@
 //
-//  MessageText.swift
+//  Text.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,14 +26,8 @@
 
 import Foundation
 
-/// Simple Message.
-public struct MessageText: Codable {
-    /// The platform that this message is intended for.
-    public private(set) var platform = "ACTIONS_ON_GOOGLE"
+/// Simple Message Text.
+public struct Text: Codable {
     /// The collection of the agent's responses.
-    public private(set) var text: Text
-    
-    public init(text: Text) {
-        self.text = text
-    }
+    public private(set) var text: [String]
 }
