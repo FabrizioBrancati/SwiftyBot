@@ -40,9 +40,9 @@ public struct Response: Content {
     /// Messaging type.
     public private(set) var messagingType: MessagingType
     /// Recipient.
-    public var recipient: Recipient?
+    public private(set) var recipient: Recipient?
     /// Final response message.
-    public var message: MessageResponse
+    public private(set) var message: MessageResponse
     
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
