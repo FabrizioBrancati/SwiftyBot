@@ -30,13 +30,54 @@ import Vapor
 
 /// Google Assistant response
 public struct Response: Codable {
+    public private(set) var fulfillmentText: String
+    public private(set) var fulfillmentMessages: FullfillmentMessage
+    public private(set) var source: String
+    public private(set) var payload: Payload
+//    public private(set) var outputContexts: OutputContext
+//    public private(set) var followupEventInput: FollowupEventInput
+}
+
+
+// MARK: - Response Extension
+
+/// Response extension.
+public extension Response {
+    /// Empty init method.
+    /// Declared in an extension to not override default `init` function.
+    public init(for request: Vapor.Request) throws {
+        /// Decode the request.
+        let messageRequest = try request.content.syncDecode(Request.self)
+        
+        /// Creates the initial response, with a default message for empty user's message.
+        fulfillmentText = ""
+        fulfillmentMessages = .text("")
+        source = ""
+        payload = Payload(
+            google: GooglePayload(
+                expectUserResponse: true, richResponse: RichResponse(
+                    items: [
+                        RichResponseItem(
+                            simpleResponse: SimpleResponse(
+                                textToSpeech: "")
+                        )
+                    ]
+                )
+            )
+        )
+    }
+}
+
+// MARK: - Response Handling
+
+/// Response extension.
+public extension Response {
     /// Create a response for a request.
     ///
     /// - Parameter request: Message request.
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
-    public func response(_ request: Vapor.Request) throws -> HTTPResponse {
-        var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
-        return httpResponse
+    public func create(on request: Vapor.Request) throws -> HTTPResponse {
+        return HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
     }
 }

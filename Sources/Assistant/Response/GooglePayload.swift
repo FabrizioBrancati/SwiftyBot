@@ -1,5 +1,5 @@
 //
-//  Routes.swift
+//  GooglePayload.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -25,13 +25,11 @@
 //  SOFTWARE.
 
 import Foundation
-import Vapor
 
-/// Registering Google Assistant's routes.
-public func routes(_ router: Router) throws {
-    /// Setting up the POST request with Assistant secret key.
-    /// With a secret path to be sure that nobody else knows that URL.
-    router.post("assistant", assistantSecret) { request -> HTTPResponse in
-        return try Response(for: request).create(on: request)
-    }
+/// Message Google Payload.
+public struct GooglePayload: Codable {
+    /// Expect User Response.
+    public private(set) var expectUserResponse: Bool
+    /// Rich Response.
+    public private(set) var richResponse: RichResponse
 }
