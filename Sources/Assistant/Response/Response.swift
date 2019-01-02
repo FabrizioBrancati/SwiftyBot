@@ -53,7 +53,7 @@ public extension Response {
         
         /// Creates the initial response, with a default message for empty user's message.
         fulfillmentText = "This is a test"
-        fulfillmentMessages = [.text("This is a test 2")]
+        fulfillmentMessages = [.text(MessageText(text: ["This is a test 2"]))]
         source = "fabriziobrancati.com"
         payload = Payload(
             google: GooglePayload(

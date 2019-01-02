@@ -35,7 +35,7 @@ public enum FullfillmentMessage: Codable {
     }
     
     /// Text message.
-    case text(String)
+    case text(MessageText)
     
     /// This initializer throws an error if reading from the decoder fails,
     /// or if the data read is corrupted or otherwise invalid.
@@ -44,7 +44,7 @@ public enum FullfillmentMessage: Codable {
     /// - Throws: Throws decoding errors.
     public init(from decoder: Decoder) throws {
         if let text = try? decoder.singleValueContainer().decode(MessageText.self) {
-            self = .text(text.text)
+            self = .text(text)
             return
         }
         
@@ -60,7 +60,7 @@ public enum FullfillmentMessage: Codable {
         var container = encoder.singleValueContainer()
         switch self {
         case .text(let text):
-            try container.encode(MessageText(text: text))
+            try container.encode(MessageText(text: text.text))
         }
     }
 }

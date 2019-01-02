@@ -28,6 +28,6 @@ import Foundation
 
 /// Simple Message.
 public struct MessageText: Codable {
-    /// Message text.
-    public private(set) var text: String
+    /// The collection of the agent's responses.
+    public private(set) var text: [String]
 }
