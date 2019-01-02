@@ -28,6 +28,12 @@ import Foundation
 
 /// Simple Message.
 public struct MessageText: Codable {
+    /// The platform that this message is intended for.
+    public private(set) var platform = "ACTIONS_ON_GOOGLE"
     /// The collection of the agent's responses.
     public private(set) var text: [String]
+    
+    public init(text: [String]) {
+        self.text = text
+    }
 }
