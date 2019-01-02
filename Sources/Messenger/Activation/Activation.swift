@@ -50,10 +50,14 @@ public struct Activation: Codable {
 public extension Activation {
     /// Empty init method.
     /// Declared in an extension to not override default `init` function.
-    public init() {
-        mode = ""
-        verifyToken = ""
-        challenge = ""
+    public init(for request: Request) throws {
+        /// Try decoding the request query as `Activation`.
+        self = try request.query.decode(Activation.self)
+        
+        /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
+        guard mode == "subscribe", verifyToken == messengerSecret else {
+            throw Abort(.badRequest, reason: "Missing Facebook Messenger verification data.")
+        }
     }
 }
 
@@ -63,20 +67,12 @@ public extension Activation {
 public extension Activation {
     /// Check if the activation is valid.
     ///
-    /// - Parameter httpRequest: Activation request.
+    /// - Parameter request: Activation request.
     /// - Returns: Returns the activation `HTTPResponse`.
     /// - Throws: Decoding errors.
-    public func check(_ httpRequest: Request) throws -> HTTPResponse {
-        /// Try decoding the request query as `Activation`.
-        let activation = try httpRequest.query.decode(Activation.self)
-        
-        /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
-        guard activation.mode == "subscribe", activation.verifyToken == messengerSecret else {
-            throw Abort(.badRequest, reason: "Missing Messenger verification data.")
-        }
-        
+    public func check() throws -> HTTPResponse {
         /// Create a response with the challenge query parameter to verify the webhook.
-        let body = HTTPBody(data: activation.challenge.convertToData())
+        let body = HTTPBody(data: self.challenge.convertToData())
         /// Send a 200 (OK) response.
         return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
     }
