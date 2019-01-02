@@ -33,7 +33,7 @@ public struct Response: Codable {
     /// The text to be shown on the screen.
     public private(set) var fulfillmentText: String
     /// The collection of rich messages to present to the user.
-    public private(set) var fulfillmentMessages: FullfillmentMessage
+    public private(set) var fulfillmentMessages: [FullfillmentMessage]
     /// Host source.
     public private(set) var source: String
     /// Response payload.
@@ -53,7 +53,7 @@ public extension Response {
         
         /// Creates the initial response, with a default message for empty user's message.
         fulfillmentText = "This is a test"
-        fulfillmentMessages = .text("This is a test 2")
+        fulfillmentMessages = [.text("This is a test 2")]
         source = "fabriziobrancati.com"
         payload = Payload(
             google: GooglePayload(
