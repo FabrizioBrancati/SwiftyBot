@@ -131,7 +131,7 @@ public extension Response {
                 recipient = Recipient(id: event.sender.id)
                 
                 /// Send the response to the Facebook Messenger APIs.
-                _ = try request.client().post("https://graph.facebook.com/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
+                _ = try request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
                     try messageRequest.content.encode(self)
                 }
             }

@@ -53,7 +53,7 @@ extension Profile {
         self.greeting = greeting
         
         /// Set all the Messenger Profile properties.
-        _ = try? app.client().post("https://graph.facebook.com/\(messengerAPIVersion)/me/messenger_profile?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { profileRequest in
+        _ = try? app.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messenger_profile?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { profileRequest in
             try profileRequest.content.encode(self)
         }
     }

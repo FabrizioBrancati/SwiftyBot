@@ -60,7 +60,7 @@ public struct SenderAction: Content {
         self.action = action
         
         /// Requests to set sender action.
-        _ = try? request.client().post("https://graph.facebook.com/\(messengerAPIVersion)/messages?access_token=\(messengerToken)") { messageRequest in
+        _ = try? request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/messages?access_token=\(messengerToken)") { messageRequest in
             try messageRequest.content.encode(self)
         }
     }
