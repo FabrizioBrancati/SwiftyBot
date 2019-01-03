@@ -81,6 +81,8 @@ public extension Response {
             Ask to buy something - Carousel message
             Any other sentence - Fallback message
             """
+        } else if messageRequest.queryResult.intent.displayName == Intent.carouselIntent {
+            
         }
     }
 }

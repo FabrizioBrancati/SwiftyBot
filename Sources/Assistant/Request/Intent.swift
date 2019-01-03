@@ -30,6 +30,8 @@ import Foundation
 public struct Intent: Codable {
     /// Custom help intent.
     public static let helpIntent = "Help Intent"
+    /// Custom carousel intent.
+    public static let carouselIntent = "Carousel Intent"
     
     /// The intent display name.
     public private(set) var displayName: String
