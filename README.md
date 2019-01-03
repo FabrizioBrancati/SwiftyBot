@@ -129,7 +129,7 @@ Documentation
 ### Platforms
 - If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).
 - If you need Facebook Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
-- If you need Google Assistant bot documentation you can find it [here](https://developers.google.com/actions/extending-the-assistant) and [here](https://dialogflow.com/docs).
+- If you need Google Assistant bot documentation you can find it [here](https://developers.google.com/actions/extending-the-assistant) and [here](https://dialogflow.com/docs). You can also get some JSON examples [here](https://developers.google.com/actions/conversation-api-playground).
 
 Changelog
 =========
