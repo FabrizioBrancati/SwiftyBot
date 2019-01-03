@@ -28,6 +28,16 @@ import Foundation
 
 /// Simple Response.
 public struct SimpleResponse: Codable {
-    /// Text To Speech.
+    /// Text to speech.
     public internal(set) var textToSpeech: String
+    /// Display text.
+    /// Set it only if differ from `textToSpeech`.
+    public internal(set) var displayText: String?
+    
+    /// Initialize only with a text to speech.
+    ///
+    /// - Parameter textToSpeech: Text to speech.
+    public init(textToSpeech: String) {
+        self.textToSpeech = textToSpeech
+    }
 }

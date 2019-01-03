@@ -61,8 +61,16 @@ public extension Response {
         if messageRequest.queryResult.intent.displayName == Intent.helpIntent {
             payload.google.richResponse.items[0].simpleResponse.textToSpeech = """
             Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
-            https://www.fabriziobrancati.com/SwiftyBot-3
 
+            Say hi to get a Welcome message
+            Ask for help or Ask for the bot purpose to get a Help message
+            Ask to buy something to get a Carousel message
+            Any other sentence will get a Fallback message
+            """
+            payload.google.richResponse.items[0].simpleResponse.displayText = """
+            Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
+            https://www.fabriziobrancati.com/SwiftyBot-3
+            
             Say hi - Welcome message
             Ask for help / Ask for the bot purpose - Help message
             Ask to buy something - Carousel message
