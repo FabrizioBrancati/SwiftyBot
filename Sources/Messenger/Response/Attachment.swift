@@ -28,14 +28,8 @@ import Foundation
 
 /// Messenger message attachment.
 public struct Attachment: Codable, Equatable {
-    /// Attachment type
-    public enum `Type`: String, Codable, Equatable {
-        /// Template type.
-        case template
-    }
-    
     /// Message template type.
-    public private(set) var type: Type
+    public private(set) var type: AttachmentType
     /// Message payload.
     public private(set) var payload: Payload
 }

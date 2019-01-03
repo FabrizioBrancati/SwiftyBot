@@ -48,6 +48,11 @@ public struct Profile: Content {
 extension Profile {
     /// Custom init method.
     /// Declared in an extension to not override default `init` function.
+    ///
+    /// - Parameters:
+    ///   - getStarted: Get started object.
+    ///   - greeting: Greeting object.
+    ///   - app: Application object.
     public init(getStarted: GetStarted, greeting: Greeting, on app: Application) {
         self.getStarted = getStarted
         self.greeting = greeting

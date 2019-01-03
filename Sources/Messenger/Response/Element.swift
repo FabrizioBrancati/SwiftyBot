@@ -37,7 +37,7 @@ public struct Element: Codable {
     /// Element image URL.
     public private(set) var imageURL: String
     /// Element Button array.
-    public private(set) var buttons: [Button] = []
+    public private(set) var buttons: [Button]
     
     /// Initialize an Element.
     ///
@@ -54,7 +54,11 @@ public struct Element: Codable {
         self.imageURL = imageURL
         self.buttons = buttons
     }
-    
+}
+
+// MARK: - Mutating Extension
+
+public extension Element {
     /// Adds a button to the Element.
     ///
     /// - Parameter button: Button to be added.
@@ -63,7 +67,7 @@ public struct Element: Codable {
     }
 }
 
-// MARK: - Equatable
+// MARK: - Equatable Protocol
 
 /// Equatable extension.
 extension Element: Equatable {

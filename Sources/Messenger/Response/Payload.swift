@@ -28,12 +28,6 @@ import Foundation
 
 /// Messenger message payload.
 public struct Payload: Codable, Equatable {
-    /// Payload template.
-    public enum TemplateType: String, Codable, Equatable {
-        /// Generic template.
-        case generic
-    }
-    
     /// Payload template type.
     public private(set) var templateType: TemplateType
     /// Payload elements.

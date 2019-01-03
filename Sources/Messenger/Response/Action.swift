@@ -1,5 +1,5 @@
 //
-//  Button.swift
+//  Action.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,42 +26,10 @@
 
 import Foundation
 
-/// Button helper.
-public struct Button: Codable, Equatable {
-    /// Button type.
-    public private(set) var type: ButtonType
-    /// Button title.
-    public private(set) var title: String
-    /// Button payload, postback type only.
-    public private(set) var payload: String?
-    /// Button URL, webURL type only.
-    public private(set) var url: String?
-    
-    /// Creates a Button for Messenger structured message element.
-    ///
-    /// - Parameters:
-    ///   - title: Button type.
-    ///   - url: Button URL.
-    public init(title: String, url: String) {
-        /// Set Button type.
-        self.type = .webURL
-        /// Set Button title.
-        self.title = title
-        /// Is a webURL type, so set its url.
-        self.url = url
-    }
-    
-    /// Creates a Button for Messenger structured message element.
-    ///
-    /// - Parameters:
-    ///   - title: Button type.
-    ///   - payload: Button payload.
-    public init(title: String, payload: String) {
-        /// Set Button type.
-        self.type = .postback
-        /// Set Button title.
-        self.title = title
-        /// Is a postback type, so set its payload.
-        self.payload = payload
-    }
+/// Payload template.
+public enum Action: String, Codable {
+    /// Mark seen action.
+    case markSeen = "mark_seen"
+    /// Typing on action.
+    case typingOn = "typing_on"
 }

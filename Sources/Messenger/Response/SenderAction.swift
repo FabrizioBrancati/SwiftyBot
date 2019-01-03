@@ -29,14 +29,6 @@ import Vapor
 
 /// Messenger sender actions.
 public struct SenderAction: Content {
-    /// Payload template.
-    public enum Action: String, Codable {
-        /// Mark seen action.
-        case markSeen = "mark_seen"
-        /// Typing on action.
-        case typingOn = "typing_on"
-    }
-    
     /// Recipient.
     public private(set) var recipient: Recipient
     /// Sender action.

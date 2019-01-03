@@ -31,12 +31,6 @@ import Vapor
 
 /// Messenger response.
 public struct Response: Content {
-    /// Message type.
-    public enum MessagingType: String, Codable {
-        /// Resposne type.
-        case response = "RESPONSE"
-    }
-    
     /// Messaging type.
     public private(set) var messagingType: MessagingType
     /// Recipient.

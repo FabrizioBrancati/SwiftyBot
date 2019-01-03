@@ -28,12 +28,6 @@ import Foundation
 
 /// Message response.
 public enum MessageResponse: Codable {
-    /// Message response error.
-    public enum MessageResponseError: Error {
-        /// Missing value error.
-        case missingValue
-    }
-    
     /// Text message.
     case text(String)
     /// Structured message.
@@ -74,7 +68,7 @@ public enum MessageResponse: Codable {
     }
 }
 
-// MARK: - Equatable
+// MARK: - Equatable Protocol
 
 /// Equatable extension.
 extension MessageResponse: Equatable {
