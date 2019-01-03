@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file.<br>
 ## [3.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/3.0.0) - ???
 ### ?? ??? 2018
 ### Added
+- Added Google Assistant support
 - Added a full suite of tests
 
 ### Improved

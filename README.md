@@ -1,4 +1,6 @@
-<p align="center"><img src="https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png" alt="SwiftyBot Banner"></p>
+<p align="center">
+<img src="Resources/Banner.png" alt="SwiftyBot Banner">
+</p>
 
 [![Build Status](https://travis-ci.com/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
 [![codecov](https://codecov.io/gh/FabrizioBrancati/SwiftyBot/branch/master/graph/badge.svg)](https://codecov.io/gh/FabrizioBrancati/SwiftyBot)
@@ -17,7 +19,7 @@
     <a href="#requirements">Requirements</a> &bull;
     <a href="#communication">Communication</a> &bull;
     <a href="#contributing">Contributing</a> &bull;
-    <a href="#installing-and-usage">Installing and Usage</a> &bull;
+    <a href="#platforms-and-usage">Platforms and Usage</a> &bull;
     <a href="#documentation">Documentation</a> &bull;
     <a href="#changelog">Changelog</a> &bull;
     <a href="#demos">Demos</a> &bull;
@@ -33,24 +35,25 @@ Features
 SwiftyBot is an example of how to create a bot with [Swift](https://swift.org/) on top of [Vapor](https://github.com/vapor/vapor).
 
 Here is the list of all the features:
-- [x] Facebook Messenger bot integration
 - [x] Telegram bot integration
+- [x] Facebook Messenger bot integration
+- [x] Google Assistant bot integration
 - [x] Well documented (you can find more in [Documentation](https://github.com/FabrizioBrancati/SwiftyBot#documentation) section)
 - [x] Well tested (currently 98% of code coverage)
 - [x] Clean (every bot platform has its folder with its files and tests)
-- [x] Easy to follow (every bot platform comes with a tutorial, more in [Integrations and Tutorials](https://github.com/FabrizioBrancati/SwiftyBot#integrations-and-tutorials) section)
+- [x] Easy to follow (every bot platform comes with a tutorial, more in [Platforms and Tutorials](https://github.com/FabrizioBrancati/SwiftyBot#platforms-and-tutorials) section)
 - [ ] Multi language support
 
 > There are a lot of bot platforms out there that can be added...
 
-Integrations and Tutorials
-==========================
+Platforms and Tutorials
+=======================
 
 | **Bot Platform**   | **Blog Post Link** |
 |--------------------|--------------------|
 | Telegram           | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
 | Facebook Messenger | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ |
-| ???                | _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_ |
+| Google Assistant   | _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_ |
 
 Language Support
 ================
@@ -61,8 +64,9 @@ Requirements
 ============
 
 - Ubuntu 14.04 or later with Swift 4.2 or later / macOS with Xcode 10.0 or later
-- Telegram account and a Telegram App for any platform (Telegram bot only)
-- Facebook account and a Facebook Messenger App for any platform (Facebook Messenger bot only)
+- Telegram account and a Telegram app for any platform (Telegram bot only)
+- Facebook account and a Facebook Messenger app for any platform (Facebook Messenger bot only)
+- Google account and a Google Assistant app for any platform (Google Assistant bot only)
 
 Communication
 =============
@@ -97,11 +101,23 @@ If you need more help through this steps, you can read _[How to create a Telegra
 - Set a secret key in `MESSENGER_SECRET` environment variable
 - Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
 - Use Apache or nginx as reverse proxy
-- Create a Facebook App and Page
+- Create a Facebook app and Page
 - Get a Page access token and set it in `MESSENGER_TOKEN` environment variable
 - Use Supervisor to ensure your bot is always up and running
 
 If you need more help through this steps, you can read _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ blog post.
+
+### Facebook Messenger
+- Install Swift on your computer / server
+- Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
+- Set a secret key in `ASSISTANT_SECRET` environment variable
+- Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
+- Use Apache or nginx as reverse proxy
+- Create an Actions on Google project
+- Setup Actions on Google project on Dialogflow
+- Use Supervisor to ensure your bot is always up and running
+
+If you need more help through this steps, you can read _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_ blog post.
 
 Documentation
 =============
@@ -113,6 +129,7 @@ Documentation
 ### Platforms
 - If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).
 - If you need Facebook Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
+- If you need Google Assistant bot documentation you can find it [here](https://developers.google.com/actions/extending-the-assistant) and [here](https://dialogflow.com/docs).
 
 Changelog
 =========
@@ -127,6 +144,9 @@ You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot
 
 ### Facebook Messenger
 You can open Facebook and search for **[SwiftyBotMessenger](http://m.me/SwiftyBotMessenger)** and start talking with him!
+
+### Google Assistant
+You can open Facebook and search for **[SwiftyBot](https://assistant.google.com/services/invoke/uid/000000d447b4593f)** and start talking with him!
 
 Authors
 =======
