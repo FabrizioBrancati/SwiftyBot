@@ -24,7 +24,7 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
-## [3.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/3.0.0) - ???
+## [3.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/3.0.0) - Hey SwiftyBot, Say Hi To Google
 ### ?? ??? 2018
 ### Added
 - Added Google Assistant support
@@ -32,7 +32,7 @@ All notable changes to this project will be documented in this file.<br>
 
 ### Improved
 - Entirely rewritten with Vapor 3
-- Now every platform has a dedicated folder
+- Now every platform has a dedicated folder and framework
 - Created a target for each bot platform
 - Updated SwiftLint to 0.29.2
 
