@@ -107,7 +107,7 @@ If you need more help through this steps, you can read _[How to create a Telegra
 
 If you need more help through this steps, you can read _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ blog post.
 
-### Facebook Messenger
+### Google Assistant
 - Install Swift on your computer / server
 - Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
 - Set a secret key in `ASSISTANT_SECRET` environment variable
