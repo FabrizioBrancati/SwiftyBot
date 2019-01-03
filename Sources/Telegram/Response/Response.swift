@@ -55,7 +55,6 @@ public struct Response: Codable {
 
 /// Response extension.
 public extension Response {
-    /// Empty init method.
     /// Declared in an extension to not override default `init` function.
     ///
     /// - Parameter request: Message request.

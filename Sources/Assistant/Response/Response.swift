@@ -39,9 +39,9 @@ public struct Response: Codable {
 
 /// Response extension.
 public extension Response {
-    /// Empty init method.
     /// Declared in an extension to not override default `init` function.
     public init(for request: Vapor.Request) throws {
+        /// Set the default payload.
         payload = Payload(
             google: GooglePayload(
                 expectUserResponse: true, richResponse: RichResponse(
@@ -58,7 +58,9 @@ public extension Response {
         /// Decode the request.
         let messageRequest = try request.content.syncDecode(Request.self)
         
+        /// Check if the message was about help.
         if messageRequest.queryResult.intent.displayName == Intent.helpIntent {
+            /// Set the text to speech.
             payload.google.richResponse.items[0].simpleResponse.textToSpeech = """
             Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
 
@@ -67,6 +69,7 @@ public extension Response {
             Ask to buy something to get a Carousel message
             Any other sentence will get a Fallback message
             """
+            /// Set the display text, because differs from text to speech.
             payload.google.richResponse.items[0].simpleResponse.displayText = """
             Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
             https://www.fabriziobrancati.com/SwiftyBot-3
