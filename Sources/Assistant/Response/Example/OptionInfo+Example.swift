@@ -1,5 +1,5 @@
 //
-//  GooglePayload.swift
+//  OptionInfo.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,24 +26,14 @@
 
 import Foundation
 
-/// Message Google Payload.
-public struct GooglePayload: Codable {
-    /// Expect User Response.
-    public private(set) var expectUserResponse: Bool
-    /// Rich Response.
-    public internal(set) var richResponse: RichResponse
-    /// System Intent.
-    public internal(set) var systemIntent: SystemIntent?
-    
-    /// Creates a Google payload.
-    ///
-    /// - Parameters:
-    ///   - expectUserResponse: Expect user response.
-    ///   - richResponse: Rich response.
-    ///   - systemIntent: System intent.
-    public init(expectUserResponse: Bool = true, richResponse: RichResponse, systemIntent: SystemIntent? = nil) {
-        self.expectUserResponse = expectUserResponse
-        self.richResponse = richResponse
-        self.systemIntent = systemIntent
-    }
+/// Carousel Item Option Info Keys.
+public enum OptionInfoKey: String {
+    /// Queuer option info key.
+    case queuer = "QUEUER"
+    /// BFKit-Swift option info key.
+    case bfkitSwift = "BFKIT_SWIFT"
+    /// BFKit option info key.
+    case bfkit = "BFKIT"
+    /// SwiftBot option info key.
+    case swiftybot = "SWIFTYBOT"
 }

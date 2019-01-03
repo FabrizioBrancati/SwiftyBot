@@ -1,5 +1,5 @@
 //
-//  GooglePayload.swift
+//  CarouselItem.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,24 +26,14 @@
 
 import Foundation
 
-/// Message Google Payload.
-public struct GooglePayload: Codable {
-    /// Expect User Response.
-    public private(set) var expectUserResponse: Bool
-    /// Rich Response.
-    public internal(set) var richResponse: RichResponse
-    /// System Intent.
-    public internal(set) var systemIntent: SystemIntent?
-    
-    /// Creates a Google payload.
-    ///
-    /// - Parameters:
-    ///   - expectUserResponse: Expect user response.
-    ///   - richResponse: Rich response.
-    ///   - systemIntent: System intent.
-    public init(expectUserResponse: Bool = true, richResponse: RichResponse, systemIntent: SystemIntent? = nil) {
-        self.expectUserResponse = expectUserResponse
-        self.richResponse = richResponse
-        self.systemIntent = systemIntent
-    }
+/// Carousel Item.
+public struct CarouselItem: Codable {
+    /// Item title.
+    public private(set) var title: String
+    /// Item description.
+    public private(set) var description: String
+    /// Item option info.
+    public private(set) var optionInfo: OptionInfo
+    /// Item image.
+    public private(set) var image: Image
 }

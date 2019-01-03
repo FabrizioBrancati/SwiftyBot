@@ -45,7 +45,7 @@ public extension Response {
         /// Set the default payload.
         payload = Payload(
             google: GooglePayload(
-                expectUserResponse: true, richResponse: RichResponse(
+                richResponse: RichResponse(
                     items: [
                         RichResponseItem(
                             simpleResponse: SimpleResponse(
