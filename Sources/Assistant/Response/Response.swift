@@ -24,7 +24,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import BFKit
 import Foundation
 import Vapor
 
@@ -40,6 +39,9 @@ public struct Response: Codable {
 /// Response extension.
 public extension Response {
     /// Declared in an extension to not override default `init` function.
+    ///
+    /// - Parameter request: Message request.
+    /// - Throws: Decoding errors.
     public init(for request: Vapor.Request) throws {
         /// Set the default payload.
         payload = Payload(
