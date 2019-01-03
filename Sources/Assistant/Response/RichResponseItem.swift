@@ -29,5 +29,5 @@ import Foundation
 /// Rich Response Item.
 public struct RichResponseItem: Codable {
     /// Simple Response.
-    public private(set) var simpleResponse: SimpleResponse
+    public internal(set) var simpleResponse: SimpleResponse
 }

@@ -29,5 +29,5 @@ import Foundation
 /// Simple Response.
 public struct SimpleResponse: Codable {
     /// Text To Speech.
-    public private(set) var textToSpeech: String
+    public internal(set) var textToSpeech: String
 }

@@ -42,21 +42,33 @@ public extension Response {
     /// Empty init method.
     /// Declared in an extension to not override default `init` function.
     public init(for request: Vapor.Request) throws {
-        /// Decode the request.
-        let messageRequest = try request.content.syncDecode(Request.self)
-        
         payload = Payload(
             google: GooglePayload(
                 expectUserResponse: true, richResponse: RichResponse(
                     items: [
                         RichResponseItem(
                             simpleResponse: SimpleResponse(
-                                textToSpeech: "This is a test 3")
+                                textToSpeech: "I'm sorry but there was an error 😢")
                         )
                     ]
                 )
             )
         )
+        
+        /// Decode the request.
+        let messageRequest = try request.content.syncDecode(Request.self)
+        
+        if messageRequest.queryResult.intent.displayName == Intent.helpIntent {
+            payload.google.richResponse.items[0].simpleResponse.textToSpeech = """
+            Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
+            https://www.fabriziobrancati.com/SwiftyBot-3
+
+            Say hi - Welcome message
+            Ask for help / Ask for the bot purpose - Help message
+            Ask to buy something - Carousel message
+            Any other sentence - Fallback message
+            """
+        }
     }
 }
 
@@ -71,7 +83,7 @@ public extension Response {
     /// - Throws: Decoding errors.
     public func create(on request: Vapor.Request) throws -> HTTPResponse {
         /// Create the JSON response.
-        /// https://dialogflow.com/docs/fulfillment/how-it-works#response_format
+        /// More info [here](https://dialogflow.com/docs/fulfillment/how-it-works#response_format).
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
         /// Encode the response.
         try JSONEncoder().encode(self, to: &httpResponse, on: request.eventLoop)

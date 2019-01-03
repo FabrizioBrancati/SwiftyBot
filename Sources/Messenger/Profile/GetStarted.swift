@@ -30,6 +30,7 @@ import Foundation
 public struct GetStarted: Codable {
     /// Default Get Started payload.
     public static let defaultPayload = "Get Started"
+    
     /// Get Started payload.
     public private(set) var payload: String
     

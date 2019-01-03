@@ -32,4 +32,6 @@ public struct QueryResult: Codable {
     public private(set) var queryText: String
     /// The language that was triggered during intent matching.
     public private(set) var languageCode: String
+    /// The intent that matched the user's query.
+    public private(set) var intent: Intent
 }

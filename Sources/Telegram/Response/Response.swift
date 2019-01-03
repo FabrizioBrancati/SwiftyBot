@@ -115,7 +115,7 @@ public extension Response {
     /// - Throws: Decoding errors.
     public func create(on request: Vapor.Request) throws -> HTTPResponse {
         /// Create the JSON response.
-        /// https://core.telegram.org/bots/api#sendmessage
+        /// More info [here](https://core.telegram.org/bots/api#sendmessage).
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
         /// Encode the response.
         try JSONEncoder().encode(self, to: &httpResponse, on: request.eventLoop)

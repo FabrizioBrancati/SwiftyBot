@@ -29,5 +29,6 @@ import Foundation
 /// Message Payload.
 public struct Payload: Codable {
     /// Google Payload.
-    public private(set) var google: GooglePayload
+    /// More info [here](https://developers.google.com/actions/conversation-api-playground).
+    public internal(set) var google: GooglePayload
 }

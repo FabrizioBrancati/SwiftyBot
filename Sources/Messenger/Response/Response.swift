@@ -178,7 +178,7 @@ public extension Response {
     /// - Throws: Decoding errors.
     public func create(on request: Request) throws -> HTTPResponse {
         /// Sending an HTTP 200 OK response is required.
-        /// https://developers.facebook.com/docs/messenger-platform/webhook#response
+        /// More info [here](https://developers.facebook.com/docs/messenger-platform/webhook#response).
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])
         /// Encode the response.
         try JSONEncoder().encode(self, to: &httpResponse, on: request.eventLoop)

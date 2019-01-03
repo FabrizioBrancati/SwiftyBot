@@ -31,5 +31,5 @@ public struct GooglePayload: Codable {
     /// Expect User Response.
     public private(set) var expectUserResponse: Bool
     /// Rich Response.
-    public private(set) var richResponse: RichResponse
+    public internal(set) var richResponse: RichResponse
 }

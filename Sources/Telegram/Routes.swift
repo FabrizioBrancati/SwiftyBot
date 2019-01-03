@@ -31,7 +31,7 @@ import Vapor
 public func routes(_ router: Router) throws {
     /// Setting up the POST request with Telegram secret key.
     /// With a secret path to be sure that nobody else knows that URL.
-    /// https://core.telegram.org/bots/api#setwebhook
+    /// More info [here](https://core.telegram.org/bots/api#setwebhook).
     router.post("telegram", telegramSecret) { request -> HTTPResponse in
         return try Response(for: request).create(on: request)
     }
