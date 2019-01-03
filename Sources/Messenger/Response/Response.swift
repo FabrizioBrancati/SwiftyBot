@@ -172,7 +172,7 @@ internal extension Response {
 public extension Response {
     /// Create a response for a request.
     ///
-    /// - Parameter request: Message request.
+    /// - Parameter request: Messenger request.
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
     public func create(on request: Request) throws -> HTTPResponse {

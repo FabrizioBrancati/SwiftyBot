@@ -33,7 +33,6 @@ public struct Response: Codable {
     public private(set) var payload: Payload
 }
 
-
 // MARK: - Response Extension
 
 /// Response extension.
@@ -93,7 +92,7 @@ public extension Response {
 public extension Response {
     /// Create a response for a request.
     ///
-    /// - Parameter request: Message request.
+    /// - Parameter request: Assistant request.
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
     public func create(on request: Vapor.Request) throws -> HTTPResponse {

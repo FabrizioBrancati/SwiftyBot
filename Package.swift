@@ -27,7 +27,7 @@
 
 import PackageDescription
 
-let package = Package(
+public let package = Package(
     name: "SwiftyBot",
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.1.0")),
