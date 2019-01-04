@@ -37,7 +37,7 @@ public extension CarouselItem {
     public static let bfkitSwift = CarouselItem(
         title: "BFKit-Swift",
         description: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.",
-        optionInfo: OptionInfo(key: OptionInfoKey.bfkitSwift.rawValue, synonyms: ["Collection of classes", "Collection of structs", "Collection of extensions"]),
+        optionInfo: OptionInfo(key: OptionInfoKey.bfkitSwift.rawValue, synonyms: ["Collection of structs", "Collection of extensions"]),
         image: Image(url: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png", accessibilityText: "BFKit-Swift Banner Image")
     )
     
