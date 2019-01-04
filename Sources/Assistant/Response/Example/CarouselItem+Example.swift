@@ -54,4 +54,9 @@ public extension CarouselItem {
         optionInfo: OptionInfo(key: OptionInfoKey.swiftybot.rawValue, synonyms: ["Telegram bot", "Facebook Messenger bot", "Google Assistant bot"]),
         image: Image(url: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png", accessibilityText: "SwiftyBot Banner Image")
     )
+    
+    /// Returns all the example elements.
+    public static let allExamples: [CarouselItem] = {
+        return [CarouselItem.queuer, CarouselItem.bfkitSwift, CarouselItem.bfkit, CarouselItem.swiftyBot]
+    }()
 }

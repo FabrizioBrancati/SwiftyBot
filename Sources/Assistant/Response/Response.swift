@@ -49,7 +49,8 @@ public extension Response {
                     items: [
                         RichResponseItem(
                             simpleResponse: SimpleResponse(
-                                textToSpeech: "I'm sorry but there was an error 😢")
+                                textToSpeech: "I'm sorry but there was an error 😢",
+                                displayText: "I am sorry but there was an error")
                         )
                     ]
                 )
@@ -65,10 +66,10 @@ public extension Response {
             payload.google.richResponse.items[0].simpleResponse.textToSpeech = """
             Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
 
-            Say hi to get a Welcome message
-            Ask for help or Ask for the bot purpose to get a Help message
-            Ask to buy something to get a Carousel message
-            Any other sentence will get a Fallback message
+            Say hi to get a welcome message
+            Ask for help or ask for the bot purpose to get a help message
+            Ask to buy something to get a carousel message
+            Any other sentence will get a fallback message
             """
             /// Set the display text, because differs from text to speech.
             payload.google.richResponse.items[0].simpleResponse.displayText = """
@@ -81,7 +82,8 @@ public extension Response {
             Any other sentence - Fallback message
             """
         } else if messageRequest.queryResult.intent.displayName == Intent.carouselIntent {
-            
+            payload.google.richResponse.items[0].simpleResponse.textToSpeech = "You can not display carousel items on this device, sorry 😞"
+            payload.google.systemIntent = SystemIntent(intent: .option, data: IntentData(type: .option, carousel: Carousel(items: CarouselItem.allExamples)))
         }
     }
 }

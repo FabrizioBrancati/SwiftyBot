@@ -33,12 +33,4 @@ public struct SimpleResponse: Codable {
     /// Display text.
     /// Set it only if differ from `textToSpeech`.
     public internal(set) var displayText: String?
-    
-    /// Initialize only with a text to speech.
-    ///
-    /// - Parameter textToSpeech: Text to speech.
-    public init(textToSpeech: String, displayText: String? = nil) {
-        self.textToSpeech = textToSpeech
-        self.displayText = displayText
-    }
 }
