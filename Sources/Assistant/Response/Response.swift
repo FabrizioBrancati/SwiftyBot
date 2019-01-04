@@ -50,7 +50,8 @@ public extension Response {
                         RichResponseItem(
                             simpleResponse: SimpleResponse(
                                 textToSpeech: "I'm sorry but there was an error 😢",
-                                displayText: "I am sorry but there was an error")
+                                displayText: "I am sorry but there was an error"
+                            )
                         )
                     ]
                 )

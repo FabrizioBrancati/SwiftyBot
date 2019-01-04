@@ -26,7 +26,9 @@
 
 import Foundation
 
+/// CarouselItem element helper.
 public extension CarouselItem {
+    /// Queuer static example constant.
     public static let queuer = CarouselItem(
         title: "Queuer",
         description: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).",
@@ -34,6 +36,7 @@ public extension CarouselItem {
         image: Image(url: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png", accessibilityText: "Queuer Banner Image")
     )
     
+    /// BFKit-Swift static example constant.
     public static let bfkitSwift = CarouselItem(
         title: "BFKit-Swift",
         description: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.",
@@ -41,6 +44,7 @@ public extension CarouselItem {
         image: Image(url: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png", accessibilityText: "BFKit-Swift Banner Image")
     )
     
+    /// BFKit static example constant.
     public static let bfkit = CarouselItem(
         title: "BFKit",
         description: "BFKit is a collection of useful classes and categories to develop Apps faster.",
@@ -48,6 +52,7 @@ public extension CarouselItem {
         image: Image(url: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png", accessibilityText: "BFKit Banner Image")
     )
     
+    /// SwiftyBot static example constant.
     public static let swiftyBot = CarouselItem(
         title: "SwiftyBot",
         description: "How to create a Telegram, Facebook Messenger, and Google Assistant bot with Swift using Vapor on Ubuntu or macOS",

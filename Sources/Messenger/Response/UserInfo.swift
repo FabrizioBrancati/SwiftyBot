@@ -50,7 +50,7 @@ public struct UserInfo: Codable, Equatable {
             return nil
         }
         
-        return client.get("\(facebookGraphAPI)/\(messengerAPIVersion)/\(id)?fields=id,first_name&access_token=\(messengerToken)")
+        return client.get("\(facebookGraphAPI)/\(messengerAPIVersion)/\(id)?fields=id,first_name&access_token=\(messengerToken)") // swiftlint:disable:this array_init
         .flatMap(to: UserInfo.self) { response -> Future<UserInfo> in
             return try response.content.decode(UserInfo.self)
         }

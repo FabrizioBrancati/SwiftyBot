@@ -49,10 +49,12 @@ internal class TelegramRoutesTests: XCTestCase {
         
         XCTAssertEqual(response.chatID, 10)
         XCTAssertEqual(response.method, .sendMessage)
-        XCTAssertEqual(response.text, """
-        Welcome to SwiftyBot Fabrizio!
-        To list all available commands type /help
-        """)
+        XCTAssertEqual(
+            response.text, """
+            Welcome to SwiftyBot Fabrizio!
+            To list all available commands type /help
+            """
+        )
     }
     
     internal func testRouteInPostWithHelpCommand() throws {
@@ -61,14 +63,16 @@ internal class TelegramRoutesTests: XCTestCase {
         
         XCTAssertEqual(response.chatID, 10)
         XCTAssertEqual(response.method, .sendMessage)
-        XCTAssertEqual(response.text, """
-        Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
-        https://www.fabriziobrancati.com/SwiftyBot
-        
-        /start - Welcome message
-        /help - Help message
-        Any text - Returns the reversed message
-        """)
+        XCTAssertEqual(
+            response.text, """
+            Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
+            https://www.fabriziobrancati.com/SwiftyBot
+            
+            /start - Welcome message
+            /help - Help message
+            Any text - Returns the reversed message
+            """
+        )
     }
     
     internal func testRouteInPostWithUnknownCommand() throws {
@@ -77,10 +81,12 @@ internal class TelegramRoutesTests: XCTestCase {
         
         XCTAssertEqual(response.chatID, 10)
         XCTAssertEqual(response.method, .sendMessage)
-        XCTAssertEqual(response.text, """
-        Unrecognized command.
-        To list all available commands type /help
-        """)
+        XCTAssertEqual(
+            response.text, """
+            Unrecognized command.
+            To list all available commands type /help
+            """
+        )
     }
     
     internal func testRouteInPostWithSimpleText() throws {

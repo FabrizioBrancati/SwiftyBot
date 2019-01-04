@@ -58,6 +58,7 @@ public struct Element: Codable {
 
 // MARK: - Mutating Extension
 
+/// Mutating extension.
 public extension Element {
     /// Adds a button to the Element.
     ///

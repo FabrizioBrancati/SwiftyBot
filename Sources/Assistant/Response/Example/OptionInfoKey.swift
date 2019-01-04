@@ -1,5 +1,5 @@
 //
-//  OptionInfo.swift
+//  OptionInfoKey.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)

@@ -1,5 +1,5 @@
 //
-//  MessageSender.swift
+//  Sender.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)

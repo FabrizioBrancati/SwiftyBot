@@ -1,5 +1,5 @@
 //
-//  MessageRequest.swift
+//  Request.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)

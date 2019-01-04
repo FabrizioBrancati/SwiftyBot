@@ -82,11 +82,15 @@ internal class MessengerRoutesTests: XCTestCase {
         
         XCTAssertEqual(response.messagingType, .response)
         XCTAssertEqual(response.recipient?.id, "1366898573")
-        XCTAssertEqual(response.message, .text("""
-        Hi!
-        This is an example on how to create a bot with Swift.
-        If you want to see more try to send me "buy", "sell" or "shop".
-        """))
+        XCTAssertEqual(
+            response.message, .text(
+                """
+                Hi!
+                This is an example on how to create a bot with Swift.
+                If you want to see more try to send me "buy", "sell" or "shop".
+                """
+            )
+        )
     }
     
     internal func testRouteInPostWithEmptyText() throws {
@@ -104,12 +108,22 @@ internal class MessengerRoutesTests: XCTestCase {
         
         XCTAssertEqual(response.messagingType, .response)
         XCTAssertEqual(response.recipient?.id, "10")
-        XCTAssertEqual(response.message, .structured(StructuredMessage(attachment: Attachment(type: .template, payload: Payload(templateType: .generic, elements: [
-            Element.queuer,
-            Element.bfkitSwift,
-            Element.bfkit,
-            Element.swiftyBot
-        ])))))
+        XCTAssertEqual(
+            response.message, .structured(
+                StructuredMessage(
+                    attachment: Attachment(
+                        type: .template, payload: Payload(
+                            templateType: .generic, elements: [
+                                Element.queuer,
+                                Element.bfkitSwift,
+                                Element.bfkit,
+                                Element.swiftyBot
+                            ]
+                        )
+                    )
+                )
+            )
+        )
     }
     
     internal func testRouteInPostWithWrongObject() throws {
@@ -126,11 +140,15 @@ internal class MessengerRoutesTests: XCTestCase {
         
         XCTAssertEqual(response.messagingType, .response)
         XCTAssertEqual(response.recipient?.id, "1366898573")
-        XCTAssertEqual(response.message, .text("""
-        Hi!
-        This is an example on how to create a bot with Swift.
-        If you want to see more try to send me "buy", "sell" or "shop".
-        """))
+        XCTAssertEqual(
+            response.message, .text(
+                """
+                Hi!
+                This is an example on how to create a bot with Swift.
+                If you want to see more try to send me "buy", "sell" or "shop".
+                """
+            )
+        )
     }
     
     internal func testRouteInPostWithSwiftyBotPayload() throws {

@@ -62,6 +62,7 @@ public enum MessageResponse: Codable {
         switch self {
         case .text(let text):
             try container.encode(Message(text: text))
+
         case .structured(let structured):
             try container.encode(structured)
         }
@@ -77,8 +78,10 @@ extension MessageResponse: Equatable {
         switch (lhs, rhs) {
         case (.text(let lText), .text(let rText)): // swiftlint:disable:this pattern_matching_keywords
             return lText == rText
+
         case (.structured(let lStructured), .structured(let rStructured)): // swiftlint:disable:this pattern_matching_keywords
             return lStructured == rStructured
+
         default:
             return false
         }
