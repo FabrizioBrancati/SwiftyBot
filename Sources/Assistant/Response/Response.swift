@@ -81,9 +81,13 @@ public extension Response {
             Ask to buy something - Carousel message
             Any other sentence - Fallback message
             """
+            /// Check if the message was about the carousel.
         } else if messageRequest.queryResult.intent.displayName == Intent.carouselIntent {
+            /// Set the text to speech for devices that cannot display a carousel.
             payload.google.richResponse.items[0].simpleResponse.textToSpeech = "You can not display carousel items on this device, sorry"
+            /// Set the display text, because differs from text to speech.
             payload.google.richResponse.items[0].simpleResponse.displayText = "You can't display carousel items on this device, sorry 😞"
+            /// Create the carousel with all the examples.
             payload.google.systemIntent = SystemIntent(intent: .option, data: IntentData(type: .option, carousel: Carousel(items: CarouselItem.allExamples)))
         }
     }
