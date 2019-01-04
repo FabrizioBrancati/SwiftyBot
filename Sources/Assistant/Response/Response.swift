@@ -82,7 +82,8 @@ public extension Response {
             Any other sentence - Fallback message
             """
         } else if messageRequest.queryResult.intent.displayName == Intent.carouselIntent {
-            payload.google.richResponse.items[0].simpleResponse.textToSpeech = "You can not display carousel items on this device, sorry 😞"
+            payload.google.richResponse.items[0].simpleResponse.textToSpeech = "You can not display carousel items on this device, sorry"
+            payload.google.richResponse.items[0].simpleResponse.displayText = "You can't display carousel items on this device, sorry 😞"
             payload.google.systemIntent = SystemIntent(intent: .option, data: IntentData(type: .option, carousel: Carousel(items: CarouselItem.allExamples)))
         }
     }

@@ -45,7 +45,7 @@ public extension CarouselItem {
         title: "BFKit",
         description: "BFKit is a collection of useful classes and categories to develop Apps faster.",
         optionInfo: OptionInfo(key: OptionInfoKey.bfkit.rawValue, synonyms: ["Collection of classes", "Collection of categories"]),
-        image: Image(url: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png", accessibilityText: "BFKit Banner Image")
+        image: Image(url: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png", accessibilityText: "BFKit Banner Image")
     )
     
     public static let swiftyBot = CarouselItem(
