@@ -50,6 +50,8 @@ public extension Payload {
         
         /// Set the text to speech.
         google.richResponse.items[0].simpleResponse.textToSpeech = textToSpeech
+        /// Set the display text to nil, if is different it will be set later.
+        google.richResponse.items[0].simpleResponse.displayText = nil
         
         /// Check if the text to speech differ from display text.
         if textToSpeech != displayText {
