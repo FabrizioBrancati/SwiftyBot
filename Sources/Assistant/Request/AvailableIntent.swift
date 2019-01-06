@@ -1,5 +1,5 @@
 //
-//  Request.swift
+//  AvailableIntent.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,32 +26,18 @@
 
 import Foundation
 
-/// Google Assistant request struct.
-public struct Request: Codable {
-    /// Unique ID for request.
-    public private(set) var responseID: String
-    /// Unique session ID.
-    public private(set) var session: String
-    /// Result of the conversation query or event processing.
-    public private(set) var queryResult: QueryResult
+/// Available Intent.
+public struct AvailableIntent: RawRepresentable {
+    /// The raw type that can be used to represent all values of the conforming type.
+    public typealias RawValue = String
+    /// The corresponding value of the raw type.
+    public var rawValue: String
     
-    /// Coding keys, used by Codable protocol.
-    private enum CodingKeys: String, CodingKey {
-        case responseID = "responseId"
-        case session
-        case queryResult
-    }
-}
-
-// MARK: - Intent Check Extension
-
-/// Request extension.
-public extension Request {
-    /// Check if the request is a definied intent.
+    
+    /// Creates a new instance with the specified raw value.
     ///
-    /// - Parameter intent: Intent to be checked.
-    /// - Returns: Returns `true` if is the checked intent, otherwise `false`.
-    public func `is`(intent: AvailableIntent) -> Bool {
-        return queryResult.intent.displayName == intent.rawValue
+    /// - Parameter rawValue: The raw value to use for the new instance.
+    public init(rawValue: String) {
+        self.rawValue = rawValue
     }
 }

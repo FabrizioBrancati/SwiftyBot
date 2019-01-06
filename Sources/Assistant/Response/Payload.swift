@@ -32,3 +32,36 @@ public struct Payload: Codable {
     /// More info [here](https://developers.google.com/actions/conversation-api-playground).
     public internal(set) var google: GooglePayload
 }
+
+// MARK: - Set Payload Extension
+
+/// Payload extension.
+public extension Payload {
+    /// Set the payload as a `SimpleResponse`, with a text to speech and a display text.
+    ///
+    /// - Parameters:
+    ///   - textToSpeech: Text to speech.
+    ///   - displayText: Display text. Set it only if differ from `textToSpeech`.
+    public mutating func set(textToSpeech: String, displayText: String? = nil) {
+        /// Check if there are items available.
+        guard google.richResponse.items.first != nil else {
+            return
+        }
+        
+        /// Set the text to speech.
+        google.richResponse.items[0].simpleResponse.textToSpeech = textToSpeech
+        
+        /// Check if the text to speech differ from display text.
+        if textToSpeech != displayText {
+            /// Set the display text.
+            google.richResponse.items[0].simpleResponse.displayText = displayText
+        }
+    }
+    
+    /// Set the payload `SystemIntent`, for different [messages types](https://dialogflow.com/docs/reference/api-v2/rest/Shared.Types/Message).
+    ///
+    /// - Parameter systemIntent: System Intent.
+    public mutating func set(systemIntent: SystemIntent) {
+        google.systemIntent = systemIntent
+    }
+}

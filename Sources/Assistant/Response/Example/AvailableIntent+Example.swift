@@ -1,5 +1,5 @@
 //
-//  Request.swift
+//  AvailableIntent+Example.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
@@ -26,32 +26,10 @@
 
 import Foundation
 
-/// Google Assistant request struct.
-public struct Request: Codable {
-    /// Unique ID for request.
-    public private(set) var responseID: String
-    /// Unique session ID.
-    public private(set) var session: String
-    /// Result of the conversation query or event processing.
-    public private(set) var queryResult: QueryResult
-    
-    /// Coding keys, used by Codable protocol.
-    private enum CodingKeys: String, CodingKey {
-        case responseID = "responseId"
-        case session
-        case queryResult
-    }
-}
-
-// MARK: - Intent Check Extension
-
-/// Request extension.
-public extension Request {
-    /// Check if the request is a definied intent.
-    ///
-    /// - Parameter intent: Intent to be checked.
-    /// - Returns: Returns `true` if is the checked intent, otherwise `false`.
-    public func `is`(intent: AvailableIntent) -> Bool {
-        return queryResult.intent.displayName == intent.rawValue
-    }
+/// AvailableIntent helper.
+extension AvailableIntent {
+    /// Help Intent.
+    public static let help = AvailableIntent(rawValue: "Help Intent")
+    /// Carousel Intent.
+    public static let carousel = AvailableIntent(rawValue: "Carousel Intent")
 }

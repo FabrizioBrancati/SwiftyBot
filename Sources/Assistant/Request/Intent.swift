@@ -28,11 +28,6 @@ import Foundation
 
 /// /// The intent that matched the user's query.
 public struct Intent: Codable {
-    /// Custom help intent.
-    public static let helpIntent = "Help Intent"
-    /// Custom carousel intent.
-    public static let carouselIntent = "Carousel Intent"
-    
     /// The intent display name.
     public private(set) var displayName: String
 }
