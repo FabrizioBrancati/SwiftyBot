@@ -89,20 +89,20 @@ public extension Response {
                         default:
                             message = .text(payload)
                         }
-                        /// There is no provided payload.
+                    /// There is no provided payload.
                     } else {
                         message = .text("No payload provided by developer.")
                     }
-                    /// If it's a normal message.
+                /// If it's a normal message.
                 } else if let message = event.message {
                     /// Check if the message is empty.
                     if message.text.isEmpty {
                         self.message = .text("I'm sorry but your message is empty 😢")
-                        /// Check if the message has greetings.
+                    /// Check if the message has greetings.
                     } else if message.text.hasGreetings() {
                         /// Set the response message.
                         self.message = createGreeting(for: event.sender.id, on: request)
-                        /// Check if the message has "sell", "buy" or "shop" in its text.
+                    /// Check if the message has "sell", "buy" or "shop" in its text.
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
                         /// Creates the payload with all the example elements.
                         let payload = Payload(templateType: .generic, elements: Element.allExamples)
@@ -112,11 +112,11 @@ public extension Response {
                         let structuredMessage = StructuredMessage(attachment: attachment)
                         
                         self.message = .structured(structuredMessage)
-                        /// It's a normal message, so reverse it.
+                    /// It's a normal message, so reverse it.
                     } else {
                         self.message = .text(message.text.reversed(preserveFormat: true))
                     }
-                    /// If the message doent's exist.
+                /// If the message doent's exist.
                 } else if event.message == nil {
                     message = .text("Webhook received unknown event.")
                 }

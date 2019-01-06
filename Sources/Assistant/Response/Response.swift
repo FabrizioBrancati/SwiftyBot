@@ -82,7 +82,7 @@ public extension Response {
             Ask to buy something - Carousel message
             Any other sentence - Fallback message
             """
-            /// Check if the message was about the carousel.
+        /// Check if the message was about the carousel.
         } else if messageRequest.queryResult.intent.displayName == Intent.carouselIntent {
             /// Set the text to speech for devices that cannot display a carousel.
             payload.google.richResponse.items[0].simpleResponse.textToSpeech = "You can not display carousel items on this device, sorry"

@@ -78,7 +78,7 @@ public extension Response {
                     Welcome to SwiftyBot \(messageRequest.message.from.firstName)!
                     To list all available commands type /help
                     """
-                    /// Check if it's a `help` command.
+                /// Check if it's a `help` command.
                 } else if let command = Command(messageRequest.message.text), command.command == "help" {
                     text = """
                     Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
@@ -88,14 +88,14 @@ public extension Response {
                     /help - Help message
                     Any text - Returns the reversed message
                     """
-                    /// It's not a valid command.
+                /// It's not a valid command.
                 } else {
                     text = """
                     Unrecognized command.
                     To list all available commands type /help
                     """
                 }
-                /// It's a normal message, so reverse it.
+            /// It's a normal message, so reverse it.
             } else {
                 text = messageRequest.message.text.reversed(preserveFormat: true)
             }
