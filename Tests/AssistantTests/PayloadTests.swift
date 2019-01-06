@@ -29,6 +29,14 @@ import Foundation
 import XCTest
 
 internal class PayloadTests: XCTestCase {
+    internal func testTextToSpeechNoItems() {
+        var payload = Payload(google: GooglePayload(richResponse: RichResponse(items: [])))
+        payload.set(textToSpeech: "This is a test")
+        
+        XCTAssertNil(payload.google.richResponse.items.first?.simpleResponse.textToSpeech)
+        XCTAssertNil(payload.google.richResponse.items.first?.simpleResponse.displayText)
+    }
+    
     internal func testTextToSpeech() {
         var payload = Payload(
             google: GooglePayload(

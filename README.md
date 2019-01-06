@@ -39,7 +39,7 @@ Here is the list of all the features:
 - [x] Facebook Messenger bot integration
 - [x] Google Assistant bot integration
 - [x] Well documented (you can find more in [Documentation](https://github.com/FabrizioBrancati/SwiftyBot#documentation) section)
-- [x] Well tested (currently 98% of code coverage)
+- [x] Well tested (currently 99% of code coverage)
 - [x] Clean (every bot platform has its folder with its files and tests)
 - [x] Easy to follow (every bot platform comes with a tutorial, more in [Platforms and Tutorials](https://github.com/FabrizioBrancati/SwiftyBot#platforms-and-tutorials) section)
 - [ ] Multi language support
