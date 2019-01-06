@@ -42,7 +42,7 @@ Here is the list of all the features:
 - [x] Well tested (currently 99% of code coverage)
 - [x] Clean (every bot platform has its folder with its files and tests)
 - [x] Easy to follow (every bot platform comes with a tutorial, more in [Platforms and Tutorials](https://github.com/FabrizioBrancati/SwiftyBot#platforms-and-tutorials) section)
-- [ ] Multi language support
+- [x] Multi language support
 
 > There are a lot of bot platforms out there that can be added...
 
@@ -143,10 +143,10 @@ Demos
 You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** and start talking with him!
 
 ### Facebook Messenger
-You can open Facebook and search for **[SwiftyBotMessenger](http://m.me/SwiftyBotMessenger)** and start talking with him!
+You can open Facebook Messenger and search for **[SwiftyBotMessenger](http://m.me/SwiftyBotMessenger)** and start talking with him!
 
 ### Google Assistant
-You can open Facebook and search for **[SwiftyBot](https://assistant.google.com/services/invoke/uid/000000d447b4593f)** and start talking with him!
+You can open Google Assistant and search for **[SwiftyBot](https://assistant.google.com/services/invoke/uid/000000d447b4593f)** and start talking with him!
 
 Authors
 =======
