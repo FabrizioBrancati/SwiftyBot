@@ -27,7 +27,7 @@
 import Foundation
 
 /// Carousel Item Option Info.
-public struct OptionInfo: Codable {
+public struct OptionInfo: Codable, Equatable {
     /// Item option info key.
     public private(set) var key: String
     /// Item option info synonyms.

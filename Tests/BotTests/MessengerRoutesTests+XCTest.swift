@@ -36,18 +36,18 @@ import XCTest
 internal extension MessengerRoutesTests {
     internal static var allTests: [(String, (MessengerRoutesTests) -> () throws -> Void)] {
         return [
-            ("testRouteInGetWithActivation", testRouteInGetWithActivation),
-            ("testRouteInGetWithWrongActivation", testRouteInGetWithWrongActivation),
-            ("testRouteInPostWithSimpleText", testRouteInPostWithSimpleText),
-            ("testRouteInPostWithTextWithEmoji", testRouteInPostWithTextWithEmoji),
-            ("testRouteInPostWithGreetings", testRouteInPostWithGreetings),
-            ("testRouteInPostWithEmptyText", testRouteInPostWithEmptyText),
-            ("testRouteInPostWithStructuredResponse", testRouteInPostWithStructuredResponse),
-            ("testRouteInPostWithWrongObject", testRouteInPostWithWrongObject),
-            ("testRouteInPostWithGetStartedPayload", testRouteInPostWithGetStartedPayload),
-            ("testRouteInPostWithSwiftyBotPayload", testRouteInPostWithSwiftyBotPayload),
-            ("testRouteInPostWithEmptyPayload", testRouteInPostWithEmptyPayload),
-            ("testRouteInPostWithEmptyMessage", testRouteInPostWithEmptyMessage)
+            ("testRouteGetWithActivation", testRouteGetWithActivation),
+            ("testRouteGetWithWrongActivation", testRouteGetWithWrongActivation),
+            ("testRoutePostWithSimpleText", testRoutePostWithSimpleText),
+            ("testRoutePostWithTextWithEmoji", testRoutePostWithTextWithEmoji),
+            ("testRoutePostWithGreetings", testRoutePostWithGreetings),
+            ("testRoutePostWithEmptyText", testRoutePostWithEmptyText),
+            ("testRoutePostWithStructuredResponse", testRoutePostWithStructuredResponse),
+            ("testRoutePostWithWrongObject", testRoutePostWithWrongObject),
+            ("testRoutePostWithGetStartedPayload", testRoutePostWithGetStartedPayload),
+            ("testRoutePostWithSwiftyBotPayload", testRoutePostWithSwiftyBotPayload),
+            ("testRoutePostWithEmptyPayload", testRoutePostWithEmptyPayload),
+            ("testRoutePostWithEmptyMessage", testRoutePostWithEmptyMessage)
         ]
     }
 }

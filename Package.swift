@@ -65,6 +65,7 @@ public let package = Package(
         ]),
         .testTarget(name: "TelegramTests", dependencies: ["Telegram"]),
         .testTarget(name: "MessengerTests", dependencies: ["Messenger"]),
+        .testTarget(name: "AssistantTests", dependencies: ["Assistant"]),
         .testTarget(name: "HelpersTests", dependencies: ["Helpers"])
     ]
 )

@@ -31,9 +31,7 @@ import XCTest
 
 /// Telegram Routes Tests.
 internal class TelegramRoutesTests: XCTestCase {
-    // swiftlint:disable implicitly_unwrapped_optional
-    internal var bot: Application!
-    // swiftlint:enable implicitly_unwrapped_optional
+    internal var bot: Application! // swiftlint:disable:this implicitly_unwrapped_optional
     
     override internal func setUp() {
         super.setUp()
@@ -43,7 +41,7 @@ internal class TelegramRoutesTests: XCTestCase {
         } catch {}
     }
     
-    internal func testRouteInPostWithStartCommand() throws {
+    internal func testRoutePostWithStartCommand() throws {
         let message = Request(message: Message(chat: Chat(id: 10), text: "/start this is a test", from: Sender(firstName: "Fabrizio")))
         let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Response.self)
         
@@ -57,7 +55,7 @@ internal class TelegramRoutesTests: XCTestCase {
         )
     }
     
-    internal func testRouteInPostWithHelpCommand() throws {
+    internal func testRoutePostWithHelpCommand() throws {
         let message = Request(message: Message(chat: Chat(id: 10), text: "/help this is a test", from: Sender(firstName: "Fabrizio")))
         let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Response.self)
         
@@ -75,7 +73,7 @@ internal class TelegramRoutesTests: XCTestCase {
         )
     }
     
-    internal func testRouteInPostWithUnknownCommand() throws {
+    internal func testRoutePostWithUnknownCommand() throws {
         let message = Request(message: Message(chat: Chat(id: 10), text: "/test this is a test", from: Sender(firstName: "Fabrizio")))
         let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Response.self)
         
@@ -89,7 +87,7 @@ internal class TelegramRoutesTests: XCTestCase {
         )
     }
     
-    internal func testRouteInPostWithSimpleText() throws {
+    internal func testRoutePostWithSimpleText() throws {
         let message = Request(message: Message(chat: Chat(id: 10), text: "This is a test", from: Sender(firstName: "Fabrizio")))
         let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Response.self)
         
@@ -98,7 +96,7 @@ internal class TelegramRoutesTests: XCTestCase {
         XCTAssertEqual(response.text, "tset a si Siht")
     }
     
-    internal func testRouteInPostWithTextWithEmoji() throws {
+    internal func testRoutePostWithTextWithEmoji() throws {
         let message = Request(message: Message(chat: Chat(id: 10), text: "😁👍", from: Sender(firstName: "Fabrizio")))
         let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Response.self)
         
@@ -107,7 +105,7 @@ internal class TelegramRoutesTests: XCTestCase {
         XCTAssertEqual(response.text, "👍😁")
     }
     
-    internal func testRouteInPostWithEmptyText() throws {
+    internal func testRoutePostWithEmptyText() throws {
         let message = Request(message: Message(chat: Chat(id: 10), text: "", from: Sender(firstName: "Fabrizio")))
         let response = try bot.getResponse(to: "telegram/\(telegramSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: message, decodeTo: Response.self)
         

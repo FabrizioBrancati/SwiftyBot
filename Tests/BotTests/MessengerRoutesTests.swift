@@ -31,9 +31,7 @@ import XCTest
 
 /// Messenger Routes Tests.
 internal class MessengerRoutesTests: XCTestCase {
-    // swiftlint:disable implicitly_unwrapped_optional
-    internal var bot: Application!
-    // swiftlint:enable implicitly_unwrapped_optional
+    internal var bot: Application! // swiftlint:disable:this implicitly_unwrapped_optional
     
     override internal func setUp() {
         super.setUp()
@@ -43,14 +41,14 @@ internal class MessengerRoutesTests: XCTestCase {
         } catch {}
     }
     
-    internal func testRouteInGetWithActivation() throws {
+    internal func testRouteGetWithActivation() throws {
         let activation = Activation(mode: "subscribe", verifyToken: messengerSecret, challenge: "Test Challenge")
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .GET, headers: ["Content-Type": "application/json"], data: activation, decodeTo: String.self)
 
         XCTAssertEqual(response, "Test Challenge")
     }
     
-    internal func testRouteInGetWithWrongActivation() throws {
+    internal func testRouteGetWithWrongActivation() throws {
         let activation = Activation(mode: "Test", verifyToken: messengerToken, challenge: "Test Challenge")
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .GET, headers: ["Content-Type": "application/json"], data: activation, decodeTo: ErrorResponse.self)
         
@@ -58,7 +56,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.reason, "Missing Facebook Messenger verification data.")
     }
     
-    internal func testRouteInPostWithSimpleText() throws {
+    internal func testRoutePostWithSimpleText() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Test"), postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
@@ -67,7 +65,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.message, .text("Tset"))
     }
     
-    internal func testRouteInPostWithTextWithEmoji() throws {
+    internal func testRoutePostWithTextWithEmoji() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "😁👍"), postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
@@ -76,7 +74,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.message, .text("👍😁"))
     }
     
-    internal func testRouteInPostWithGreetings() throws {
+    internal func testRoutePostWithGreetings() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Hi!"), postback: nil, sender: Sender(id: "1366898573"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
@@ -93,7 +91,7 @@ internal class MessengerRoutesTests: XCTestCase {
         )
     }
     
-    internal func testRouteInPostWithEmptyText() throws {
+    internal func testRoutePostWithEmptyText() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: ""), postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
@@ -102,7 +100,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.message, .text("I'm sorry but your message is empty 😢"))
     }
     
-    internal func testRouteInPostWithStructuredResponse() throws {
+    internal func testRoutePostWithStructuredResponse() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Sell"), postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
@@ -126,7 +124,7 @@ internal class MessengerRoutesTests: XCTestCase {
         )
     }
     
-    internal func testRouteInPostWithWrongObject() throws {
+    internal func testRoutePostWithWrongObject() throws {
         let pageRequest = PageRequest(object: "Test", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Test"), postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: ErrorResponse.self)
         
@@ -134,7 +132,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.reason, "Message not generated by a page.")
     }
     
-    internal func testRouteInPostWithGetStartedPayload() throws {
+    internal func testRoutePostWithGetStartedPayload() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Test"), postback: Postback(payload: GetStarted.defaultPayload), sender: Sender(id: "1366898573"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
@@ -151,7 +149,7 @@ internal class MessengerRoutesTests: XCTestCase {
         )
     }
     
-    internal func testRouteInPostWithSwiftyBotPayload() throws {
+    internal func testRoutePostWithSwiftyBotPayload() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Test"), postback: Postback(payload: "SwiftyBot pressed"), sender: Sender(id: "1366898573"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
@@ -160,7 +158,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.message, .text("SwiftyBot pressed"))
     }
     
-    internal func testRouteInPostWithEmptyPayload() throws {
+    internal func testRoutePostWithEmptyPayload() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: Message(text: "Test"), postback: Postback(payload: nil), sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         
@@ -169,7 +167,7 @@ internal class MessengerRoutesTests: XCTestCase {
         XCTAssertEqual(response.message, .text("No payload provided by developer."))
     }
     
-    internal func testRouteInPostWithEmptyMessage() throws {
+    internal func testRoutePostWithEmptyMessage() throws {
         let pageRequest = PageRequest(object: "page", entries: [PageEntry(messages: [PageMessage(message: nil, postback: nil, sender: Sender(id: "10"))])])
         let response = try bot.getResponse(to: "messenger/\(messengerSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: pageRequest, decodeTo: Response.self)
         

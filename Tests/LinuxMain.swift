@@ -42,6 +42,7 @@ import XCTest
     XCTMain(
         [
             testCase(AppTests.allTests),
+            testCase(AssistantRoutesTests.allTests),
             testCase(ButtonTests.allTests),
             testCase(CommandTests.allTests),
             testCase(ElementExtensionTests.allTests),

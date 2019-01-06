@@ -27,7 +27,7 @@
 import Foundation
 
 /// Carousel Item.
-public struct CarouselItem: Codable {
+public struct CarouselItem: Codable, Equatable {
     /// Item title.
     public private(set) var title: String
     /// Item description.
