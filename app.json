@@ -1,16 +1,19 @@
 {
   "name": "SwiftyBot",
-  "description": " SwiftyBot is an example on how to create a multi-platfotm bot with Swift using Vapor.",
+  "description": " SwiftyBot is an example on how to create a Telegram, Facebook Messenger, and Google Assistant bot with Swift using Vapor.",
   "scripts": {
   },
   "env": {
+    "TELEGRAM_SECRET": {
+      "required": true
+    },
     "MESSENGER_SECRET": {
       "required": true
     },
     "MESSENGER_TOKEN": {
       "required": true
     },
-    "TELEGRAM_SECRET": {
+    "ASSISTANT_SECRET": {
       "required": true
     }
   },
