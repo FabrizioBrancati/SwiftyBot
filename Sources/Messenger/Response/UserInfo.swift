@@ -54,8 +54,5 @@ public struct UserInfo: Codable, Equatable {
         .flatMap(to: UserInfo.self) { response -> Future<UserInfo> in
             return try response.content.decode(UserInfo.self)
         }
-        .map { userInfo -> UserInfo in
-            return userInfo
-        }
     }
 }
