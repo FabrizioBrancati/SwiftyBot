@@ -14,12 +14,12 @@
 
 <p align="center">
     <a href="#features">Features</a> &bull;
-    <a href="#integrations-and-tutorials">Integrations and Tutorials</a> &bull;
+    <a href="#platforms-and-tutorials">Platforms and Tutorials</a> &bull;
     <a href="#language-support">Language Support</a> &bull;
     <a href="#requirements">Requirements</a> &bull;
     <a href="#communication">Communication</a> &bull;
     <a href="#contributing">Contributing</a> &bull;
-    <a href="#platforms-and-usage">Platforms and Usage</a> &bull;
+    <a href="#installing-and-usage">Installing and Usage</a> &bull;
     <a href="#documentation">Documentation</a> &bull;
     <a href="#changelog">Changelog</a> &bull;
     <a href="#demos">Demos</a> &bull;
