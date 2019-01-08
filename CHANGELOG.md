@@ -35,6 +35,7 @@ All notable changes to this project will be documented in this file.<br>
 - Now every platform has a dedicated folder and framework
 - Created a target for each bot platform
 - Updated SwiftLint to 0.29.2
+- Improved the Heroku deploy with a new deploy button on the Readme
 
 ### Removed
 - Removed Hound CI

@@ -92,6 +92,8 @@ Installing and Usage
 - Use Supervisor to ensure your bot is always up and running
 
 ## Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
 - ...
 
 ## Vapor Cloud
