@@ -1,26 +1,37 @@
 {
   "name": "SwiftyBot",
-  "description": " SwiftyBot is an example on how to create a Telegram, Facebook Messenger, and Google Assistant bot with Swift using Vapor.",
-  "scripts": {
-  },
+  "description": "SwiftyBot is an example on how to create a Telegram, Facebook Messenger, and Google Assistant bot with Swift using Vapor.",
+  "repository": "https://github.com/FabrizioBrancati/SwiftyBot",
+  "logo": "https://github.com/FabrizioBrancati/SwiftyBot/blob/master/Resources/Icon.png",
+  "website": "https://https://www.fabriziobrancati.com/SwiftyBot-3/",
+  "keywords": [
+    "Swift",
+    "Vapor",
+    "Telegram",
+    "Facebook",
+    "Messenger",
+    "Google",
+    "Assistant",
+    "Bot"
+  ],
   "env": {
     "TELEGRAM_SECRET": {
-      "required": true
+      "description": "A secret key that will be used to ensure that only Telegram can call your Telegram bot.",
+      "generator": "secret"
     },
     "MESSENGER_SECRET": {
-      "required": true
+      "description": "A secret key that will be used to ensure that only Facebook can call your Facebook Messenger bot.",
+      "generator": "secret"
     },
     "MESSENGER_TOKEN": {
-      "required": true
+      "description": "A messenger token that will be created for you by Facebook."
     },
     "ASSISTANT_SECRET": {
-      "required": true
+      "description": "A secret key that will be used to ensure that only Google can call your Google Assistant bot.",
+      "generator": "secret"
     }
   },
-  "formation": {
-  },
-  "addons": [
-  ],
+  "stack": "heroku-16",
   "buildpacks": [
     {
       "url": "https://github.com/FabrizioBrancati/heroku-buildpack.git"
