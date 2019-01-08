@@ -24,7 +24,8 @@
       "generator": "secret"
     },
     "MESSENGER_TOKEN": {
-      "description": "A messenger token that will be created for you by Facebook."
+      "description": "A messenger token that will be created for you by Facebook.",
+      "required": false
     },
     "ASSISTANT_SECRET": {
       "description": "A secret key that will be used to ensure that only Google can call your Google Assistant bot.",
