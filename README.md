@@ -84,38 +84,36 @@ See [CONTRIBUTING.md](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/
 Installing and Usage
 ====================
 
-### Telegram
+## Private Server
 - Install Swift on your computer / server
 - Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
-- Set a secret key in `TELEGRAM_SECRET` environment variable
 - Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
 - Use Apache or nginx as reverse proxy
-- Create a Telegram bot with [BotFather](https://telegram.me/botfather)
 - Use Supervisor to ensure your bot is always up and running
+
+## Heroku
+- ...
+
+## Vapor Cloud
+- ...
+
+## Telegram
+- Set a secret key in `TELEGRAM_SECRET` environment variable
+- Create a Telegram bot with [BotFather](https://telegram.me/botfather)
 
 If you need more help through this steps, you can read _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
 
-### Facebook Messenger
-- Install Swift on your computer / server
-- Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
+## Facebook Messenger
 - Set a secret key in `MESSENGER_SECRET` environment variable
-- Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
-- Use Apache or nginx as reverse proxy
 - Create a Facebook app and Page
 - Get a Page access token and set it in `MESSENGER_TOKEN` environment variable
-- Use Supervisor to ensure your bot is always up and running
 
 If you need more help through this steps, you can read _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ blog post.
 
-### Google Assistant
-- Install Swift on your computer / server
-- Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
+## Google Assistant
 - Set a secret key in `ASSISTANT_SECRET` environment variable
-- Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
-- Use Apache or nginx as reverse proxy
 - Create an Actions on Google project
 - Setup Actions on Google project on Dialogflow
-- Use Supervisor to ensure your bot is always up and running
 
 If you need more help through this steps, you can read _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_ blog post.
 
@@ -129,7 +127,7 @@ Documentation
 ### Platforms
 - If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).
 - If you need Facebook Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
-- If you need Google Assistant bot documentation you can find it [here](https://developers.google.com/actions/extending-the-assistant) and [here](https://dialogflow.com/docs). You can also get some JSON examples [here](https://developers.google.com/actions/conversation-api-playground) and [here](https://github.com/dialogflow/fulfillment-webhook-json).
+- If you need Google Assistant bot documentation you can find it [here](https://developers.google.com/actions/extending-the-assistant) and [here](https://dialogflow.com/docs). You can also find some JSON examples [here](https://developers.google.com/actions/conversation-api-playground) and [here](https://github.com/dialogflow/fulfillment-webhook-json).
 
 Changelog
 =========
