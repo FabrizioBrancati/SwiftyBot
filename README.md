@@ -96,7 +96,10 @@ If you need more help through this steps, you can read [How to create a Telegram
 ## Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+You can use the button above, or:
 - ...
+
+If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
 ## Vapor Cloud
 - Create an account on [Vapor Cloud](https://dashboard.vapor.cloud)
@@ -105,9 +108,9 @@ If you need more help through this steps, you can read [How to create a Telegram
 - Create an application
 - Add an hosting service and connect it to your GitHub repository
 - Add at least 1 environment, 2 is better
-- Use the [Vapor Toolbox](https://github.com/vapor/toolbox) to deploy you bot
+- Use the [Vapor Toolbox](https://github.com/vapor/toolbox) to deploy your bot
 
-If you need more help through this steps, you can read [How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2) blog post.
+If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
 ## Telegram
 - Set a secret key in `TELEGRAM_SECRET` environment variable
