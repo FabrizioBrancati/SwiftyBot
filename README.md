@@ -91,33 +91,43 @@ Installing and Usage
 - Use Apache or nginx as reverse proxy
 - Use Supervisor to ensure your bot is always up and running
 
+If you need more help through this steps, you can read [How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot) or [How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2) from step 1 to step 4.
+
 ## Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 - ...
 
 ## Vapor Cloud
-- ...
+- Create an account on [Vapor Cloud](https://dashboard.vapor.cloud)
+- Create an organization
+- Create a project
+- Create an application
+- Add an hosting service and connect it to your GitHub repository
+- Add at least 1 environment, 2 is better
+- Use the [Vapor Toolbox](https://github.com/vapor/toolbox) to deploy you bot
+
+If you need more help through this steps, you can read [How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2) blog post.
 
 ## Telegram
 - Set a secret key in `TELEGRAM_SECRET` environment variable
 - Create a Telegram bot with [BotFather](https://telegram.me/botfather)
 
-If you need more help through this steps, you can read _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ blog post.
+If you need more help through this steps, you can read [How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot) blog post.
 
 ## Facebook Messenger
 - Set a secret key in `MESSENGER_SECRET` environment variable
 - Create a Facebook app and Page
 - Get a Page access token and set it in `MESSENGER_TOKEN` environment variable
 
-If you need more help through this steps, you can read _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ blog post.
+If you need more help through this steps, you can read [How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2) blog post.
 
 ## Google Assistant
 - Set a secret key in `ASSISTANT_SECRET` environment variable
 - Create an Actions on Google project
 - Setup Actions on Google project on Dialogflow
 
-If you need more help through this steps, you can read _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_ blog post.
+If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
 Documentation
 =============
