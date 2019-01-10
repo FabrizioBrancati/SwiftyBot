@@ -96,8 +96,10 @@ If you need more help through this steps, you can read [How to create a Facebook
 ## Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-You can use the button above, or:
-- ...
+- Click the button above
+- Go to the _Settings_ section fo your application
+- Click on the _Reveal Config Vars_ button in _Config Vars_ section
+- Copy all the created secret key set to up the bots, read the next sections for more info
 
 If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
