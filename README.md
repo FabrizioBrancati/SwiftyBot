@@ -91,7 +91,7 @@ Installing and Usage
 - Use Apache or nginx as reverse proxy
 - Use Supervisor to ensure your bot is always up and running
 
-If you need more help through this steps, you can read [How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot) or [How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2) from step 1 to step 4.
+If you need more help through this steps, you can read [How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2) blog post, from [Step 1](https://www.fabriziobrancati.com/SwiftyBot-2#step-1) to [Step 4](https://www.fabriziobrancati.com/SwiftyBot-2#step-4).
 
 ## Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
