@@ -42,7 +42,7 @@ internal class AssistantRoutesTests: XCTestCase {
     }
     
     internal func testRoutePostWithMissingIntent() throws {
-        let request = Request(responseID: "abc123", session: "123abc", queryResult: QueryResult(queryText: "This is a test", languageCode: "en_US", intent: Intent(displayName: "Nothing")))
+        let request = Request(responseID: "abc123", session: "123abc", queryResult: QueryResult(queryText: "This is a test", languageCode: .english, intent: Intent(displayName: "Nothing")))
         let response = try bot.getResponse(to: "assistant/\(assistantSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: request, decodeTo: Response.self)
         
         XCTAssertEqual(response.payload.google.expectUserResponse, true)
@@ -52,7 +52,7 @@ internal class AssistantRoutesTests: XCTestCase {
     }
     
     internal func testRoutePostWithHelpIntent() throws {
-        let request = Request(responseID: "abc123", session: "123abc", queryResult: QueryResult(queryText: "This is a test", languageCode: "en_US", intent: Intent(displayName: "Help Intent")))
+        let request = Request(responseID: "abc123", session: "123abc", queryResult: QueryResult(queryText: "This is a test", languageCode: .english, intent: Intent(displayName: "Help Intent")))
         let response = try bot.getResponse(to: "assistant/\(assistantSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: request, decodeTo: Response.self)
         
         XCTAssertEqual(response.payload.google.expectUserResponse, true)
@@ -81,7 +81,7 @@ internal class AssistantRoutesTests: XCTestCase {
     }
     
     internal func testRoutePostWithCarouselIntent() throws {
-        let request = Request(responseID: "abc123", session: "123abc", queryResult: QueryResult(queryText: "This is a test", languageCode: "en_US", intent: Intent(displayName: "Carousel Intent")))
+        let request = Request(responseID: "abc123", session: "123abc", queryResult: QueryResult(queryText: "This is a test", languageCode: .english, intent: Intent(displayName: "Carousel Intent")))
         let response = try bot.getResponse(to: "assistant/\(assistantSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: request, decodeTo: Response.self)
         
         XCTAssertEqual(response.payload.google.expectUserResponse, true)

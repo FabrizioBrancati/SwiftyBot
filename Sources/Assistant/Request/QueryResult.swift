@@ -25,13 +25,14 @@
 //  SOFTWARE.
 
 import Foundation
+import Helper
 
 /// Result of the conversation query or event processing.
 public struct QueryResult: Codable {
     /// The original text of the query.
     public private(set) var queryText: String
     /// The language that was triggered during intent matching.
-    public private(set) var languageCode: String
+    public private(set) var languageCode: Language
     /// The intent that matched the user's query.
     public private(set) var intent: Intent
 }
