@@ -44,19 +44,19 @@ public let package = Package(
         .target(name: "Telegram", dependencies: [
             "Vapor",
             "BFKit",
-            "Helpers"
+            "Helper"
         ]),
         .target(name: "Messenger", dependencies: [
             "Vapor",
             "BFKit",
-            "Helpers"
+            "Helper"
         ]),
         .target(name: "Assistant", dependencies: [
             "Vapor",
             "BFKit",
-            "Helpers"
+            "Helper"
         ]),
-        .target(name: "Helpers"),
+        .target(name: "Helper"),
         .testTarget(name: "BotTests", dependencies: [
             "Bot",
             "Vapor",
@@ -66,6 +66,6 @@ public let package = Package(
         .testTarget(name: "TelegramTests", dependencies: ["Telegram"]),
         .testTarget(name: "MessengerTests", dependencies: ["Messenger"]),
         .testTarget(name: "AssistantTests", dependencies: ["Assistant"]),
-        .testTarget(name: "HelpersTests", dependencies: ["Helpers"])
+        .testTarget(name: "HelperTests", dependencies: ["Helper"])
     ]
 )
