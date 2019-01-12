@@ -25,7 +25,7 @@
 //  SOFTWARE.
 
 import Foundation
-@testable import Helpers
+@testable import Helper
 import XCTest
 
 /// String Extensions Tests.
