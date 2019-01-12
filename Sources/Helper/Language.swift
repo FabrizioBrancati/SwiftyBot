@@ -29,7 +29,7 @@ import Foundation
 /// Language enum.
 public enum Language: String, Codable {
     /// Default language, usually english.
-    case `default`
+    case `default` = "en_US"
     /// Italian language.
     case italian = "it_IT"
 }

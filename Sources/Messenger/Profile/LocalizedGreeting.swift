@@ -25,6 +25,7 @@
 //  SOFTWARE.
 
 import Foundation
+import Helper
 
 /// Localized Greeting helper.
 public struct LocalizedGreeting: Codable, Equatable {
