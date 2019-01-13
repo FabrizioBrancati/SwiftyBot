@@ -34,7 +34,7 @@ public extension String {
     public func hasGreetings() -> Bool {
         let message = lowercased()
         
-        return message.starts(with: "hi")
+        return message.contains("hi")
             || message.contains("hello")
             || message.contains("hey")
             || message.contains("hei")
