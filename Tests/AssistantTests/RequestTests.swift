@@ -24,8 +24,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Foundation
 @testable import Assistant
+import Foundation
 import XCTest
 
 internal class RequestTests: XCTestCase {

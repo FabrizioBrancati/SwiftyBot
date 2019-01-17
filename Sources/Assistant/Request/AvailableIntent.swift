@@ -33,7 +33,6 @@ public struct AvailableIntent: RawRepresentable {
     /// The corresponding value of the raw type.
     public var rawValue: String
     
-    
     /// Creates a new instance with the specified raw value.
     ///
     /// - Parameter rawValue: The raw value to use for the new instance.
