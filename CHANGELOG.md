@@ -32,10 +32,9 @@ All notable changes to this project will be documented in this file.<br>
 
 ### Improved
 - Entirely rewritten with Vapor 3
-- Now every platform has a dedicated folder and framework
-- Created a target for each bot platform
-- Updated SwiftLint to 0.29.2
-- Improved the Heroku deploy with a new deploy button on the Readme
+- Every platform has a dedicated folder and package
+- Updated SwiftLint to 0.29.4
+- Improved the Heroku deploy phase with a new `Deploy to Heroku` button on the [readme](https://github.com/FabrizioBrancati/SwiftyBot#heroku)
 
 ### Removed
 - Removed Hound CI
