@@ -36,7 +36,7 @@ import XCTest
 #if os(Linux) || os(FreeBSD)
     @testable import AssistantTests
     @testable import BotTests
-    @testable import HelpersTests
+    @testable import HelperTests
     @testable import MessengerTests
     @testable import TelegramTests
 
