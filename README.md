@@ -85,52 +85,52 @@ Installing and Usage
 ====================
 
 ## Private Server
-- Install Swift on your computer / server
-- Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
-- Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
-- Use Apache or nginx as reverse proxy
-- Use Supervisor to ensure your bot is always up and running
+1. Install Swift on your computer / server
+2. Install [Vapor Toolbox](https://github.com/vapor/toolbox) (Optional)
+3. Enable TLS (You can use [Let's Encrypt](https://letsencrypt.org))
+4. Use Apache or nginx as reverse proxy
+5. Use Supervisor to ensure your bot is always up and running
 
 If you need more help through this steps, you can read [How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2) blog post, from [Step 1](https://www.fabriziobrancati.com/SwiftyBot-2#step-1) to [Step 4](https://www.fabriziobrancati.com/SwiftyBot-2#step-4).
 
 ## Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-- Click the button above
-- Go to the _Settings_ section of your application
-- Click on the _Reveal Config Vars_ button in _Config Vars_ section
-- Copy all the created secret key set to up the bots, read the next sections for more info
+1. Click the button above
+2. Go to the _Settings_ section of your application
+3. Click on the _Reveal Config Vars_ button in _Config Vars_ section
+4. Copy all the created secret key set to up the bots, read the next sections for more info
 
 If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
 ## Vapor Cloud
-- Create an account on [Vapor Cloud](https://dashboard.vapor.cloud)
-- Create an organization
-- Create a project
-- Create an application
-- Add an hosting service and connect it to your GitHub repository
-- Add at least 1 environment, 2 is better
-- Use the [Vapor Toolbox](https://github.com/vapor/toolbox) to deploy your bot
+1. Create an account on [Vapor Cloud](https://dashboard.vapor.cloud)
+2. Create an organization
+3. Create a project
+4. Create an application
+5. Add an hosting service and connect it to your GitHub repository
+6. Add at least 1 environment, 2 is better
+7. Use the [Vapor Toolbox](https://github.com/vapor/toolbox) to deploy your bot
 
 If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
 ## Telegram
-- Set a secret key in `TELEGRAM_SECRET` environment variable
-- Create a Telegram bot with [BotFather](https://telegram.me/botfather)
+1. Set a secret key in `TELEGRAM_SECRET` environment variable
+2. Create a Telegram bot with [BotFather](https://telegram.me/botfather)
 
 If you need more help through this steps, you can read [How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot) blog post.
 
 ## Facebook Messenger
-- Set a secret key in `MESSENGER_SECRET` environment variable
-- Create a Facebook app and Page
-- Get a Page access token and set it in `MESSENGER_TOKEN` environment variable
+1. Set a secret key in `MESSENGER_SECRET` environment variable
+2. Create a Facebook app and Page
+3. Get a Page access token and set it in `MESSENGER_TOKEN` environment variable
 
 If you need more help through this steps, you can read [How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2) blog post.
 
 ## Google Assistant
-- Set a secret key in `ASSISTANT_SECRET` environment variable
-- Create an Actions on Google project
-- Setup Actions on Google project on Dialogflow
+1. Set a secret key in `ASSISTANT_SECRET` environment variable
+2. Create an Actions on Google project
+3. Setup Actions on Google project on Dialogflow
 
 If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
