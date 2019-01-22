@@ -155,13 +155,13 @@ Demos
 =====
 
 ### Telegram
-You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** and start talking with him!
+You can open Telegram and search for **[SwiftyBot](https://telegram.me/SwiftyBot)** to start talking with him!
 
 ### Facebook Messenger
-You can open Facebook Messenger and search for **[SwiftyBotMessenger](http://m.me/SwiftyBotMessenger)** and start talking with him!
+You can open Facebook Messenger and search for **[SwiftyBotMessenger](http://m.me/SwiftyBotMessenger)** to start talking with him!
 
 ### Google Assistant
-You can open Google Assistant and search for **[SwiftyBot](https://assistant.google.com/services/invoke/uid/000000d447b4593f)** and start talking with him!
+You can open Google Assistant and write **[Talk to SwiftyBot](https://assistant.google.com/services/invoke/uid/000000d447b4593f)** to start talking with him!
 
 Authors
 =======
