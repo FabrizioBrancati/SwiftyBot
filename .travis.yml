@@ -53,9 +53,6 @@ script:
       swift package clean;
       ruby generate_linux_tests.rb;
       swift test;
-      # Swift 5
-      # --enable-code-coverage
-      # <build-dir>/<configuration>/codecov
     fi
 
 after_success:
