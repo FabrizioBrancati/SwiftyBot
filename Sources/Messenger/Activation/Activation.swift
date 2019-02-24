@@ -30,11 +30,11 @@ import Vapor
 /// Actiovation struct.
 public struct Activation: Codable {
     /// Activation mode.
-    public private(set) var mode: String?
+    public private(set) var mode: String
     /// Activation token.
-    public private(set) var verifyToken: String?
+    public private(set) var verifyToken: String
     /// Activation challenge.
-    public private(set) var challenge: String?
+    public private(set) var challenge: String
 
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
@@ -74,7 +74,7 @@ public extension Activation {
     /// - Throws: Decoding errors.
     public func check() throws -> HTTPResponse {
         /// Create a response with the challenge query parameter to verify the webhook.
-        let body = HTTPBody(data: (self.challenge ?? "").convertToData())
+        let body = HTTPBody(data: self.challenge.convertToData())
         /// Send a 200 (OK) response.
         return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
     }
