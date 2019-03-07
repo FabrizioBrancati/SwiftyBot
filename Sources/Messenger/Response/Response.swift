@@ -84,7 +84,7 @@ public extension Response {
                         /// It's a Get Started payload.
                         case GetStarted.defaultPayload:
                             /// Set the response message.
-                            message = createGreeting(for: event.sender.id, on: request)
+                            message = try createGreeting(for: event.sender.id, on: request)
                         /// By default it returns the sent payload.
                         default:
                             message = .text(payload)
@@ -101,7 +101,7 @@ public extension Response {
                     /// Check if the message has greetings.
                     } else if message.text.hasGreetings() {
                         /// Set the response message.
-                        self.message = createGreeting(for: event.sender.id, on: request)
+                        self.message = try createGreeting(for: event.sender.id, on: request)
                     /// Check if the message has "sell", "buy" or "shop" in its text.
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
                         /// Creates the payload with all the example elements.
@@ -143,10 +143,10 @@ internal extension Response {
     ///   - id: User ID.
     ///   - request: Messenger request.
     /// - Returns: Returns the message response.
-    internal func createGreeting(for id: String, on request: Request) -> MessageResponse {
+    internal func createGreeting(for id: String, on request: Request) throws -> MessageResponse {
         /// Try to get the user first name.
         var greeting = "Hi"
-        UserInfo.getInfo(id: id, on: request)?.whenSuccess { userInfo in
+        try UserInfo.getInfo(id: id, on: request).whenSuccess { userInfo in
             greeting += " \(userInfo.firstName)"
         }
         greeting += "!"

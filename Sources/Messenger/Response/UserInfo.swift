@@ -45,14 +45,9 @@ public struct UserInfo: Codable, Equatable {
     /// - Parameters:
     ///   - id: User ID used for the request.
     ///   - httpRequest: Request to be used as client.
-    public static func getInfo(id: String, on request: Request) -> Future<UserInfo>? {
-        guard let client = try? request.make(Client.self) else {
-            return nil
-        }
-
-        return client.get("\(facebookGraphAPI)/\(messengerAPIVersion)/\(id)?fields=id,first_name&access_token=\(messengerToken)")
-        .flatMap(to: UserInfo.self) { response -> Future<UserInfo> in
-            return try response.content.decode(UserInfo.self)
+    public static func getInfo(id: String, on request: Request) throws -> Future<UserInfo> {
+        return try request.client().get("\(facebookGraphAPI)/\(messengerAPIVersion)/\(id)?fields=id,first_name&access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]).map(to: UserInfo.self) { response in
+            return try response.content.syncDecode(UserInfo.self)
         }
     }
 }
