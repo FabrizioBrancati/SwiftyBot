@@ -31,13 +31,13 @@ import Vapor
 public func routes(_ router: Router) throws {
     /// Setting up the GET request with Messenger secret key.
     /// With a secret path to be sure that nobody else knows that URL.
-    router.get("messenger", messengerSecret) { request -> HTTPResponse in
+    router.get("messenger", messengerSecret) { request in
         return try Activation(for: request).check()
     }
     
     /// Setting up the POST request with Messenger secret key.
     /// With a secret path to be sure that nobody else knows that URL.
-    router.post("messenger", messengerSecret) { request -> HTTPResponse in
+    router.post("messenger", messengerSecret) { request in
         return try Response(for: request).create(on: request)
     }
 }
