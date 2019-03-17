@@ -34,7 +34,7 @@ internal class UserInfoTests: XCTestCase {
         let worker = MultiThreadedEventLoopGroup(numberOfThreads: 1)
         let container = BasicContainer(config: Config.default(), environment: Environment.testing, services: Services.default(), on: worker)
         let request = Request(using: container)
-        let userInfo = try? UserInfo.getInfo(id: "1366898573", on: request).wait()
+        let userInfo = try? UserInfo(id: "1366898573").getInfo(on: request).wait()
         
         XCTAssertEqual(userInfo?.id, "1366898573")
         XCTAssertEqual(userInfo?.firstName, "Fabrizio")
