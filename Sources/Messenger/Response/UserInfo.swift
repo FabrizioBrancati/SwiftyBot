@@ -40,12 +40,17 @@ public struct UserInfo: Codable, Equatable {
         case id
     }
     
+    public init(id: String) {
+        firstName = ""
+        self.id = id
+    }
+    
     /// Creates a User Info object.
     ///
     /// - Parameters:
     ///   - id: User ID used for the request.
     ///   - httpRequest: Request to be used as client.
-    public static func getInfo(id: String, on request: Request) throws -> Future<UserInfo> {
+    public func getInfo(on request: Request) throws -> Future<UserInfo> {
         return try request.client().get("\(facebookGraphAPI)/\(messengerAPIVersion)/\(id)?fields=id,first_name&access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]).map(to: UserInfo.self) { response in
             return try response.content.syncDecode(UserInfo.self)
         }

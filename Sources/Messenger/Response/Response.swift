@@ -68,6 +68,8 @@ public extension Response {
         recipient = nil
         message = .text("Unknown error.")
         
+        var messageResponse: Future<MessageResponse>? = nil
+        
         /// For each entry in the response.
         for entry in pageResponse.entries {
             /// For each event in the entry.
@@ -84,7 +86,7 @@ public extension Response {
                         /// It's a Get Started payload.
                         case GetStarted.defaultPayload:
                             /// Set the response message.
-                            message = try createGreeting(for: event.sender.id, on: request)
+                            messageResponse = try createGreeting(for: event.sender.id, on: request)
                         /// By default it returns the sent payload.
                         default:
                             message = .text(payload)
@@ -101,7 +103,7 @@ public extension Response {
                     /// Check if the message has greetings.
                     } else if message.text.hasGreetings() {
                         /// Set the response message.
-                        self.message = try createGreeting(for: event.sender.id, on: request)
+                        messageResponse = try createGreeting(for: event.sender.id, on: request)
                     /// Check if the message has "sell", "buy" or "shop" in its text.
                     } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
                         /// Creates the payload with all the example elements.
@@ -124,9 +126,11 @@ public extension Response {
                 /// Set the recipient with the sender ID.
                 recipient = Recipient(id: event.sender.id)
                 
-                /// Send the response to the Facebook Messenger APIs.
-                _ = try request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
-                    try messageRequest.content.encode(self)
+                messageResponse?.whenSuccess { _ in
+                    /// Send the response to the Facebook Messenger APIs.
+                    _ = try? request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
+                        try? messageRequest.content.encode(self)
+                    }
                 }
             }
         }
@@ -143,20 +147,17 @@ internal extension Response {
     ///   - id: User ID.
     ///   - request: Messenger request.
     /// - Returns: Returns the message response.
-    internal func createGreeting(for id: String, on request: Request) throws -> MessageResponse {
+    internal func createGreeting(for id: String, on request: Request) throws -> Future<MessageResponse> {
         /// Try to get the user first name.
-        var greeting = "Hi"
-        try UserInfo.getInfo(id: id, on: request).whenSuccess { userInfo in
-            greeting += " \(userInfo.firstName)"
+        let messageResponse = try UserInfo(id: id).getInfo(on: request).map { userInfo -> MessageResponse in
+            return MessageResponse.text("""
+            Hi \(userInfo.firstName)!
+            This is an example on how to create a bot with Swift.
+            If you want to see more, try to send me "buy", "sell" or "shop".
+            """)
         }
-        greeting += "!"
-    
-        /// Set the response message.
-        return .text("""
-        \(greeting)
-        This is an example on how to create a bot with Swift.
-        If you want to see more try to send me "buy", "sell" or "shop".
-        """)
+        
+        return messageResponse
     }
 }
 
