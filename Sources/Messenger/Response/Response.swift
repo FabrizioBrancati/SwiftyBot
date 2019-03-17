@@ -73,7 +73,7 @@ public extension Response {
             /// For each event in the entry.
             for event in entry.messages {
                 /// Mark the message as seen.
-                _ = SenderAction(id: event.sender.id, action: .markSeen, on: request)
+                SenderAction(id: event.sender.id, action: .markSeen, on: request)
                 
                 /// If it's a postback action.
                 if let postback = event.postback {
