@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.<br>
 ---
 
 ### 3.x Releases
-- `3.0.x` Releases - [3.0.0](#300---???)
+- `3.0.x` Releases - [3.0.0](#300---hey-swiftybot-say-hi-to-google)
 
 ### 2.x Releases
 - `2.3.x` Releases - [2.3.0](#230---swift-4-support) | [2.3.1](#231---minor-improvements) | [2.3.2](#232---graph-api-30) | [2.3.3](#233---facebook-requirements)
