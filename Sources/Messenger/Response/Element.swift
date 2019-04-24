@@ -63,7 +63,7 @@ public extension Element {
     /// Adds a button to the Element.
     ///
     /// - Parameter button: Button to be added.
-    public mutating func add(button: Button) {
+    mutating func add(button: Button) {
         buttons.append(button)
     }
 }

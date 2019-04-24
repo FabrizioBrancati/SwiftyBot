@@ -31,7 +31,7 @@ public extension String {
     /// Detect if the message has greetings.
     ///
     /// - Returns: Returns true if the message has greetings, otherwise false.
-    public func hasGreetings() -> Bool {
+    func hasGreetings() -> Bool {
         let message = lowercased()
         
         return message.contains("hi")

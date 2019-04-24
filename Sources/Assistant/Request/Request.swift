@@ -51,7 +51,7 @@ public extension Request {
     ///
     /// - Parameter intent: Intent to be checked.
     /// - Returns: Returns `true` if is the checked intent, otherwise `false`.
-    public func `is`(intent: AvailableIntent) -> Bool {
+    func `is`(intent: AvailableIntent) -> Bool {
         return queryResult.intent.displayName == intent.rawValue
     }
 }

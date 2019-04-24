@@ -29,7 +29,7 @@ import Foundation
 /// CarouselItem element helper.
 public extension CarouselItem {
     /// Queuer static example constant.
-    public static let queuer = CarouselItem(
+    static let queuer = CarouselItem(
         title: "Queuer",
         description: "Queuer is a queue manager, built on top of OperationQueue and Dispatch (aka GCD).",
         optionInfo: OptionInfo(key: OptionInfoKey.queuer.rawValue, synonyms: ["Queuer", "OperationQueue", "Dispatch", "GCD"]),
@@ -37,7 +37,7 @@ public extension CarouselItem {
     )
     
     /// BFKit-Swift static example constant.
-    public static let bfkitSwift = CarouselItem(
+    static let bfkitSwift = CarouselItem(
         title: "BFKit-Swift",
         description: "BFKit-Swift is a collection of useful classes, structs and extensions to develop Apps faster.",
         optionInfo: OptionInfo(key: OptionInfoKey.bfkitSwift.rawValue, synonyms: ["Collection of structs", "Collection of extensions"]),
@@ -45,7 +45,7 @@ public extension CarouselItem {
     )
     
     /// BFKit static example constant.
-    public static let bfkit = CarouselItem(
+    static let bfkit = CarouselItem(
         title: "BFKit",
         description: "BFKit is a collection of useful classes and categories to develop Apps faster.",
         optionInfo: OptionInfo(key: OptionInfoKey.bfkit.rawValue, synonyms: ["Collection of classes", "Collection of categories"]),
@@ -53,7 +53,7 @@ public extension CarouselItem {
     )
     
     /// SwiftyBot static example constant.
-    public static let swiftyBot = CarouselItem(
+    static let swiftyBot = CarouselItem(
         title: "SwiftyBot",
         description: "How to create a Telegram, Facebook Messenger, and Google Assistant bot with Swift using Vapor on Ubuntu or macOS",
         optionInfo: OptionInfo(key: OptionInfoKey.swiftybot.rawValue, synonyms: ["Telegram bot", "Facebook Messenger bot", "Google Assistant bot"]),
@@ -61,7 +61,7 @@ public extension CarouselItem {
     )
     
     /// Returns all the example elements.
-    public static let allExamples: [CarouselItem] = {
+    static let allExamples: [CarouselItem] = {
         return [CarouselItem.queuer, CarouselItem.bfkitSwift, CarouselItem.bfkit, CarouselItem.swiftyBot]
     }()
 }
