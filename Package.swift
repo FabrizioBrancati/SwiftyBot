@@ -31,7 +31,7 @@ public let package = Package(
     name: "SwiftyBot",
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.3.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "4.1.0"))
+        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "5.0.0"))
     ],
     targets: [
         .target(name: "SwiftyBot", dependencies: ["Bot"]),
