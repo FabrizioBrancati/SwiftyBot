@@ -29,9 +29,12 @@ import PackageDescription
 
 public let package = Package(
     name: "SwiftyBot",
+    platforms: [
+        .macOS(.v10_14)
+    ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.3.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "5.0.0"))
+        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "6.0.0"))
     ],
     targets: [
         .target(name: "SwiftyBot", dependencies: ["Bot"]),
