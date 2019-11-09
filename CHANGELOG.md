@@ -29,12 +29,12 @@ All notable changes to this project will be documented in this file.<br>
 ### Added
 - Added Google Assistant support
 - Added a full suite of tests
+- Added Heroku deploy with a new `Deploy to Heroku` button on the [readme](https://github.com/FabrizioBrancati/SwiftyBot#heroku)
 
 ### Improved
 - Entirely rewritten with Vapor 3
 - Every platform has a dedicated folder and package
-- Updated SwiftLint to 0.29.4
-- Improved the Heroku deploy phase with a new `Deploy to Heroku` button on the [readme](https://github.com/FabrizioBrancati/SwiftyBot#heroku)
+- Updated SwiftLint to 0.35.0
 
 ### Removed
 - Removed Hound CI
