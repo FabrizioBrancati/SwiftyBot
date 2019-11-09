@@ -4,7 +4,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//  Copyright (c) 2016 - 2019 Fabrizio Brancati.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -59,7 +59,7 @@ public extension Response {
     ///
     /// - Parameter request: Message request.
     /// - Throws: Decoding errors.
-    public init(for request: Vapor.Request) throws {
+    init(for request: Vapor.Request) throws {
         /// Decode the request.
         let messageRequest = try request.content.syncDecode(Request.self)
         
@@ -112,7 +112,7 @@ public extension Response {
     /// - Parameter request: Telegram request.
     /// - Returns: Returns the message `HTTPResponse`.
     /// - Throws: Decoding errors.
-    public func create(on request: Vapor.Request) throws -> HTTPResponse {
+    func create(on request: Vapor.Request) throws -> HTTPResponse {
         /// Create the JSON response.
         /// More info [here](https://core.telegram.org/bots/api#sendmessage).
         var httpResponse = HTTPResponse(status: .ok, headers: ["Content-Type": "application/json"])

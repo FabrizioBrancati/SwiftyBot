@@ -4,7 +4,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//  Copyright (c) 2016 - 2019 Fabrizio Brancati.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@ public extension Request {
     ///
     /// - Parameter intent: Intent to be checked.
     /// - Returns: Returns `true` if is the checked intent, otherwise `false`.
-    public func `is`(intent: AvailableIntent) -> Bool {
+    func `is`(intent: AvailableIntent) -> Bool {
         return queryResult.intent.displayName == intent.rawValue
     }
 }

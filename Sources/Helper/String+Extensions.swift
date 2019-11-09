@@ -4,7 +4,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//  Copyright (c) 2016 - 2019 Fabrizio Brancati.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ public extension String {
     /// Detect if the message has greetings.
     ///
     /// - Returns: Returns true if the message has greetings, otherwise false.
-    public func hasGreetings() -> Bool {
+    func hasGreetings() -> Bool {
         let message = lowercased()
         
         return message.contains("hi")

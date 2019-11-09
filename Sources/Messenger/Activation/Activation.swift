@@ -4,7 +4,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//  Copyright (c) 2016 - 2019 Fabrizio Brancati.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -53,7 +53,7 @@ public extension Activation {
     ///
     /// - Parameter request: Activation request.
     /// - Throws: Decoding errors.
-    public init(for request: Request) throws {
+    init(for request: Request) throws {
         /// Try decoding the request query as `Activation`.
         self = try request.query.decode(Activation.self)
         
@@ -72,7 +72,7 @@ public extension Activation {
     ///
     /// - Returns: Returns the activation `HTTPResponse`.
     /// - Throws: Decoding errors.
-    public func check() throws -> HTTPResponse {
+    func check() throws -> HTTPResponse {
         /// Create a response with the challenge query parameter to verify the webhook.
         let body = HTTPBody(data: self.challenge.convertToData())
         /// Send a 200 (OK) response.

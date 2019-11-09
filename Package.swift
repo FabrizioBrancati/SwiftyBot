@@ -1,11 +1,11 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.0
 //
 //  Package.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//  Copyright (c) 2016 - 2019 Fabrizio Brancati.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,9 +29,12 @@ import PackageDescription
 
 public let package = Package(
     name: "SwiftyBot",
+    platforms: [
+        .macOS(.v10_14)
+    ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.3.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "4.1.0"))
+        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "6.0.0"))
     ],
     targets: [
         .target(name: "SwiftyBot", dependencies: ["Bot"]),

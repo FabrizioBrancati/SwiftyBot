@@ -4,7 +4,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//  Copyright (c) 2016 - 2019 Fabrizio Brancati.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -60,7 +60,7 @@ public extension Response {
     ///
     /// - Parameter request: Message request.
     /// - Throws: Decoding errors.
-    public mutating func create(for request: Request) throws -> Future<MessageResponse>? {
+    mutating func create(for request: Request) throws -> Future<MessageResponse>? {
         /// Decode the request.
         let pageResponse = try request.content.syncDecode(PageRequest.self)
         /// Check that the request comes from a "page".
@@ -150,7 +150,7 @@ fileprivate extension Response {
     ///   - id: User ID.
     ///   - request: Messenger request.
     /// - Returns: Returns the message response.
-    fileprivate func createGreeting(for id: String, on request: Request) throws -> Future<MessageResponse> {
+    func createGreeting(for id: String, on request: Request) throws -> Future<MessageResponse> {
         /// Try to get the user first name.
         let messageResponse = try UserInfo(id: id).getInfo(on: request).map { userInfo -> MessageResponse in
             return MessageResponse.text("""

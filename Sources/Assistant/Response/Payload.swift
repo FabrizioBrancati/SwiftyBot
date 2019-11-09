@@ -4,7 +4,7 @@
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//  Copyright (c) 2016 - 2019 Fabrizio Brancati.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ public extension Payload {
     /// - Parameters:
     ///   - textToSpeech: Text to speech.
     ///   - displayText: Display text. Set it only if differ from `textToSpeech`.
-    public mutating func set(textToSpeech: String, displayText: String? = nil) {
+    mutating func set(textToSpeech: String, displayText: String? = nil) {
         /// Check if there are items available.
         guard google.richResponse.items.first != nil else {
             return
@@ -63,7 +63,7 @@ public extension Payload {
     /// Set the payload `SystemIntent`, for different [messages types](https://dialogflow.com/docs/reference/api-v2/rest/Shared.Types/Message).
     ///
     /// - Parameter systemIntent: System Intent.
-    public mutating func set(systemIntent: SystemIntent) {
+    mutating func set(systemIntent: SystemIntent) {
         google.systemIntent = systemIntent
     }
 }
