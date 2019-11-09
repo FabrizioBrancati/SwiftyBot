@@ -127,10 +127,12 @@ public extension Response {
                 /// Set the recipient with the sender ID.
                 recipient = Recipient(id: event.sender.id)
                 
+                let response = self
+              
                 messageFuture?.whenSuccess { _ in
                     /// Send the response to the Facebook Messenger APIs.
                     _ = try? request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
-                        try? messageRequest.content.encode(self)
+                        try? messageRequest.content.encode(response)
                     }
                 }
             }
@@ -143,7 +145,7 @@ public extension Response {
 // MARK: - Response Greeting Extension
 
 /// Response extension.
-fileprivate extension Response {
+public extension Response {
     /// Create a greeting for a request.
     ///
     /// - Parameters:
