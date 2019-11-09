@@ -3,11 +3,14 @@
 </p>
 
 [![Build Status](https://travis-ci.com/FabrizioBrancati/SwiftyBot.svg?branch=master)](https://travis-ci.org/FabrizioBrancati/SwiftyBot)
-[![codecov](https://codecov.io/gh/FabrizioBrancati/SwiftyBot/branch/master/graph/badge.svg)](https://codecov.io/gh/FabrizioBrancati/SwiftyBot)
-[![codebeat badge](https://codebeat.co/badges/ff777248-e375-4c6d-8a77-4475c2bc9ae1)](https://codebeat.co/projects/github-com-fabriziobrancati-swiftybot-master)
+[![Coverage Status](https://codecov.io/gh/FabrizioBrancati/SwiftyBot/branch/master/graph/badge.svg)](https://codecov.io/gh/FabrizioBrancati/SwiftyBot)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4e5f16144afda5c8ae36/maintainability)](https://codeclimate.com/github/FabrizioBrancati/SwiftyBot/maintainability)
+[![Codebeat Badge](https://codebeat.co/badges/ff777248-e375-4c6d-8a77-4475c2bc9ae1)](https://codebeat.co/projects/github-com-fabriziobrancati-swiftybot-master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e71d428e5a9e493d966de02608e6e110)](https://www.codacy.com/manual/FabrizioBrancati/SwiftyBot)
+<br>
 [![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)](https://developer.apple.com/swift/)
-[![Language](https://img.shields.io/badge/language-Swift%204.2-orange.svg)](https://developer.apple.com/swift/)
-[![Platform](https://img.shields.io/badge/platform-Linux%20/%20macOS-cc9c00.svg)](https://developer.apple.com/swift/)
+[![Language](https://img.shields.io/badge/language-Swift%205.1-orange.svg)](https://developer.apple.com/swift/)
+[![Platforms](https://img.shields.io/badge/platform-Linux%20/%20macOS-cc9c00.svg)](https://developer.apple.com/swift/)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/LICENSE)
 
 ---
@@ -63,7 +66,7 @@ Language Support
 Requirements
 ============
 
-- Ubuntu 14.04 or later with Swift 4.2 or later / macOS with Xcode 10.0 or later
+- Ubuntu 14.04 or later with Swift 5.1 or later / macOS with Xcode 11.2 or later
 - Telegram account and a Telegram app for any platform (Telegram bot only)
 - Facebook account and a Facebook Messenger app for any platform (Facebook Messenger bot only)
 - Google account and a Google Assistant app for any platform (Google Assistant bot only)
