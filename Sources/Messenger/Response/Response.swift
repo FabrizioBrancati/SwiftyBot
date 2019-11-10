@@ -60,7 +60,7 @@ public extension Response {
     ///
     /// - Parameter request: Message request.
     /// - Throws: Decoding errors.
-    mutating func create(for request: Request) throws -> Future<MessageResponse>? {
+    mutating func create(for request: Request) throws -> Future<(MessageResponse, Vapor.Response)>? {
         /// Decode the request.
         let pageResponse = try request.content.syncDecode(PageRequest.self)
         /// Check that the request comes from a "page".
@@ -128,17 +128,19 @@ public extension Response {
                 recipient = Recipient(id: event.sender.id)
                 
                 let response = self
-              
-                messageFuture?.whenSuccess { _ in
-                    /// Send the response to the Facebook Messenger APIs.
-                    _ = try? request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
-                        try? messageRequest.content.encode(response)
-                    }
+                
+                /// Send the response to the Facebook Messenger APIs.
+                guard let future = try? request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"], beforeSend: { messageRequest in
+                    try? messageRequest.content.encode(response)
+                }) else {
+                    return nil
                 }
+                
+                return messageFuture?.and(future)
             }
         }
         
-        return messageFuture
+        return nil
     }
 }
 
