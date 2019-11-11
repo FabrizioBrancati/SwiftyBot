@@ -37,9 +37,12 @@ public func routes(_ router: Router) throws {
     
     /// Setting up the POST request with Messenger secret key.
     /// With a secret path to be sure that nobody else knows that URL.
-    router.post("messenger", messengerSecret) { request -> HTTPStatus in
+    router.post("messenger", messengerSecret) { request -> Future<HTTPStatus> in
         var response = Response()
-        let _ = try response.create(for: request)
-        return HTTPStatus.ok
+        guard let responseFuture = try response.create(for: request) else {
+            return request.future().transform(to: HTTPStatus.internalServerError)
+        }
+        
+        return responseFuture.transform(to: HTTPStatus.ok)
     }
 }
