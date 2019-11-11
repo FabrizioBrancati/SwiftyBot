@@ -32,6 +32,6 @@ public let messengerSecret = Environment.get("MESSENGER_SECRET") ?? ""
 /// Messenger token.
 public let messengerToken = Environment.get("MESSENGER_TOKEN") ?? ""
 /// Messenger API version.
-public let messengerAPIVersion = "v3.2"
+public let messengerAPIVersion = "v5.0"
 /// Facebook Graph API.
 public let facebookGraphAPI = "https://graph.facebook.com"
