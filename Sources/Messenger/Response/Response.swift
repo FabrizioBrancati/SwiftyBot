@@ -127,16 +127,14 @@ public extension Response {
                 /// Set the recipient with the sender ID.
                 recipient = Recipient(id: event.sender.id)
                 
-                let response = self
-                
                 /// Send the response to the Facebook Messenger APIs.
-                guard let future = try? request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"], beforeSend: { messageRequest in
-                    try? messageRequest.content.encode(response)
+                guard let responseFuture = try? request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"], beforeSend: { messageRequest in
+                    try? messageRequest.content.encode(self)
                 }) else {
                     return nil
                 }
                 
-                return messageFuture?.and(future)
+                return messageFuture?.and(responseFuture)
             }
         }
         
