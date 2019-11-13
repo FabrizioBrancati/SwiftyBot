@@ -34,7 +34,7 @@
 import XCTest
 
 internal extension AssistantRoutesTests {
-    internal static var allTests: [(String, (AssistantRoutesTests) -> () throws -> Void)] {
+    static var allTests: [(String, (AssistantRoutesTests) -> () throws -> Void)] {
         return [
             ("testRoutePostWithMissingIntent", testRoutePostWithMissingIntent),
             ("testRoutePostWithHelpIntent", testRoutePostWithHelpIntent),

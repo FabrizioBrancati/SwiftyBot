@@ -34,7 +34,7 @@
 import XCTest
 
 internal extension AppTests {
-    internal static var allTests: [(String, (AppTests) -> () throws -> Void)] {
+    static var allTests: [(String, (AppTests) -> () throws -> Void)] {
         return [
             ("testBot", testBot)
         ]

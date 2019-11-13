@@ -34,7 +34,7 @@
 import XCTest
 
 internal extension CommandTests {
-    internal static var allTests: [(String, (CommandTests) -> () throws -> Void)] {
+    static var allTests: [(String, (CommandTests) -> () throws -> Void)] {
         return [
             ("testInitCommandWithParameter", testInitCommandWithParameter),
             ("testInitCommandWithoutParameter", testInitCommandWithoutParameter),

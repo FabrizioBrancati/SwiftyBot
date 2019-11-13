@@ -34,7 +34,7 @@
 import XCTest
 
 internal extension GetStartedTests {
-    internal static var allTests: [(String, (GetStartedTests) -> () throws -> Void)] {
+    static var allTests: [(String, (GetStartedTests) -> () throws -> Void)] {
         return [
             ("testInit", testInit)
         ]

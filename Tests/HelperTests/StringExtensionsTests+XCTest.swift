@@ -34,7 +34,7 @@
 import XCTest
 
 internal extension StringExtensionsTests {
-    internal static var allTests: [(String, (StringExtensionsTests) -> () throws -> Void)] {
+    static var allTests: [(String, (StringExtensionsTests) -> () throws -> Void)] {
         return [
             ("testHasGreetings", testHasGreetings),
             ("testHasNotGreetings", testHasNotGreetings)

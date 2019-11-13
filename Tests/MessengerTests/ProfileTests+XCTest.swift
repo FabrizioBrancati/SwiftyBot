@@ -34,7 +34,7 @@
 import XCTest
 
 internal extension ProfileTests {
-    internal static var allTests: [(String, (ProfileTests) -> () throws -> Void)] {
+    static var allTests: [(String, (ProfileTests) -> () throws -> Void)] {
         return [
             ("testInit", testInit)
         ]

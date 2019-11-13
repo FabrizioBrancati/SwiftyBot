@@ -34,7 +34,7 @@
 import XCTest
 
 internal extension ElementTests {
-    internal static var allTests: [(String, (ElementTests) -> () throws -> Void)] {
+    static var allTests: [(String, (ElementTests) -> () throws -> Void)] {
         return [
             ("testInitElement", testInitElement),
             ("testInitElementWithButtons", testInitElementWithButtons),
