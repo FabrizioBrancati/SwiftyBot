@@ -34,6 +34,7 @@ All notable changes to this project will be documented in this file.<br>
 ### Improved
 - Entirely rewritten with Vapor 3
 - Every platform has a dedicated folder and package
+- Updated Facebook Graph API to version 5.0
 - Updated SwiftLint to 0.35.0
 
 ### Removed
