@@ -60,7 +60,7 @@ public extension Response {
     ///
     /// - Parameter request: Message request.
     /// - Throws: Decoding errors.
-    mutating func create(for request: Request) throws -> Future<Response> {
+    mutating func create(for request: Request) throws -> Future<Response> { // swiftlint:disable:this cyclomatic_complexity function_body_length
         /// Decode the request.
         let pageResponse = try request.content.syncDecode(PageRequest.self)
         /// Check that the request comes from a "page".
@@ -115,7 +115,9 @@ public extension Response {
                         If you want to see more, try to send me "buy", "sell" or "shop".
                         """)
                     /// Check if the message has "sell", "buy" or "shop" in its text.
-                    } else if message.text.lowercased().contains("sell") || message.text.lowercased().contains("buy") || message.text.lowercased().contains("shop") {
+                    } else if message.text.lowercased().contains("sell") ||
+                        message.text.lowercased().contains("buy") ||
+                        message.text.lowercased().contains("shop") {
                         /// Creates the payload with all the example elements.
                         let payload = Payload(templateType: .generic, elements: Element.allExamples)
                         /// Creates the attachment.
@@ -139,12 +141,12 @@ public extension Response {
                 let response = self
                 
                 /// Send the response to the Facebook Messenger APIs.
-                return try request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in
+                return try request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messages?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { messageRequest in // swiftlint:disable:this multiline_arguments_brackets multiline_function_chains
                     try? messageRequest.content.encode(self)
-                }.map({ messageResponse -> Response in
+                }.map({ _ -> Response in // swiftlint:disable:this multiline_arguments_brackets multiline_function_chains
                     promise.succeed(result: response)
                     return response
-                })
+                }) // swiftlint:disable:this multiline_arguments_brackets
             }
         }
         

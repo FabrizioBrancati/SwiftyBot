@@ -1,1 +1,1 @@
-wrk -t4 -c200 -d30s http://localhost:8080/telegram -s telegram.lua
+wrk -t4 -c200 -d30s http://localhost:8080/telegram -s telegram.lua # Supported in bash. No warnings.

@@ -28,12 +28,23 @@ import Bot
 import Foundation
 import Vapor
 
+// swiftlint:disable explicit_acl
+
+/// Structure of `ErrorMiddleware` default response.
+internal struct ErrorResponse: Codable {
+    /// Always `true` to indicate this is a non-typical JSON response.
+    internal var error: Bool
+    
+    /// The reason for the error.
+    internal var reason: String
+}
+
 internal extension Application {
-    internal static func bot(envArgs: [String]? = nil) throws -> Application {
+    static func bot(envArgs: [String]? = nil) throws -> Application {
         return try app(.testing)
     }
     
-    internal static func testable(envArgs: [String]? = nil) throws -> Application {
+    static func testable(envArgs: [String]? = nil) throws -> Application {
         var config = Config.default()
         var services = Services.default()
         var env = Environment.testing
@@ -50,7 +61,7 @@ internal extension Application {
         return app
     }
     
-    internal func sendRequest(to path: String, method: HTTPMethod, headers: HTTPHeaders = .init(), body: HTTPBody = .init()) throws -> Response {
+    func sendRequest(to path: String, method: HTTPMethod, headers: HTTPHeaders = .init(), body: HTTPBody = .init()) throws -> Response {
         let responder = try self.make(Responder.self)
         var path = path
         
@@ -73,7 +84,7 @@ internal extension Application {
         return try responder.respond(to: wrappedRequest).wait()
     }
     
-    internal func getResponse<T>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), body: HTTPBody = .init(), decodeTo type: T.Type) throws -> T where T: Decodable {
+    func getResponse<T>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), body: HTTPBody = .init(), decodeTo type: T.Type) throws -> T where T: Decodable {
         let response = try self.sendRequest(to: path, method: method, headers: headers, body: body)
         
         let data = response.http.body.data ?? response.http.status.reasonPhrase.data(using: .utf8) ?? Data()
@@ -84,24 +95,15 @@ internal extension Application {
         return string
     }
     
-    internal func getResponse<T, U>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), data: U, decodeTo type: T.Type) throws -> T where T: Decodable, U: Encodable {
+    func getResponse<T, U>(to path: String, method: HTTPMethod = .GET, headers: HTTPHeaders = .init(), data: U, decodeTo type: T.Type) throws -> T where T: Decodable, U: Encodable {
         let body = try HTTPBody(data: JSONEncoder().encode(data))
         
         return try self.getResponse(to: path, method: method, headers: headers, body: body, decodeTo: type)
     }
     
-    internal func sendRequest<T>(to path: String, method: HTTPMethod, headers: HTTPHeaders, data: T) throws where T: Encodable {
+    func sendRequest<T>(to path: String, method: HTTPMethod, headers: HTTPHeaders, data: T) throws where T: Encodable {
         let body = try HTTPBody(data: JSONEncoder().encode(data))
         
         _ = try self.sendRequest(to: path, method: method, headers: headers, body: body)
     }
-}
-
-/// Structure of `ErrorMiddleware` default response.
-internal struct ErrorResponse: Codable {
-    /// Always `true` to indicate this is a non-typical JSON response.
-    internal var error: Bool
-    
-    /// The reason for the error.
-    internal var reason: String
 }
