@@ -22,7 +22,8 @@
     <a href="#requirements">Requirements</a> &bull;
     <a href="#communication">Communication</a> &bull;
     <a href="#contributing">Contributing</a> &bull;
-    <a href="#installing-and-usage">Installing and Usage</a> &bull;
+    <a href="#deploying">Deploying</a> &bull;
+    <a href="#platforms-usage">Platforms Usage</a> &bull;
     <a href="#documentation">Documentation</a> &bull;
     <a href="#changelog">Changelog</a> &bull;
     <a href="#demos">Demos</a> &bull;
@@ -84,8 +85,8 @@ Contributing
 
 See [CONTRIBUTING.md](https://github.com/FabrizioBrancati/SwiftyBot/blob/master/.github/CONTRIBUTING.md) file.
 
-Installing and Usage
-====================
+Deploying
+=========
 
 ## Private Server
 1. Install Swift on your computer / server
@@ -113,6 +114,9 @@ If you need more help through this steps, you can read [How to create a Facebook
 6. Add at least 1 environment, 2 is better
 7. Use the [Vapor Toolbox](https://github.com/vapor/toolbox) to deploy your bot
 
+Platforms Usage
+===============
+
 ## Telegram
 1. Set a secret key in `TELEGRAM_SECRET` environment variable
 2. Create a Telegram bot with [BotFather](https://telegram.me/botfather)
@@ -134,14 +138,14 @@ If you need more help through this steps, you can read [How to create a Facebook
 Documentation
 =============
 
-### Bot
+## Bot
 - Every line of every project file is commented.
 - If you need Vapor documentation you can find it [here](https://docs.vapor.codes/).
 
-### Platforms
+## Platforms
 - If you need Telegram bot documentation you can find it [here](https://core.telegram.org/bots/api).
 - If you need Facebook Messenger bot documentation you can find it [here](https://developers.facebook.com/docs/messenger-platform).
-- If you need Google Assistant bot documentation you can find it [here](https://developers.google.com/actions/extending-the-assistant) and [here](https://dialogflow.com/docs). You can also find some JSON examples [here](https://developers.google.com/actions/conversation-api-playground) and [here](https://github.com/dialogflow/fulfillment-webhook-json).
+- If you need Google Assistant bot documentation you can find it [here](https://developers.google.com/assistant) and [here](https://dialogflow.com/docs). You can also find some JSON examples [here](https://developers.google.com/actions/conversation-api-playground) and [here](https://github.com/dialogflow/fulfillment-webhook-json).
 
 Changelog
 =========
