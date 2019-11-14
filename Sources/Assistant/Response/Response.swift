@@ -49,8 +49,8 @@ public extension Response {
                     items: [
                         RichResponseItem(
                             simpleResponse: SimpleResponse(
-                                textToSpeech: "I'm sorry but there was an error 😢",
-                                displayText: "I am sorry but there was an error"
+                                textToSpeech: "I'm sorry but there was an error",
+                                displayText: "I am sorry but there was an error 😢"
                             )
                         )
                     ]
@@ -69,14 +69,10 @@ public extension Response {
                 textToSpeech: """
                     Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
 
-                    Say hi to get a welcome message
-                    Ask for help or ask for the bot purpose to get a help message
-                    Ask to buy something to get a carousel message
-                    Any other sentence will get a fallback message
+                    Say hi to get a welcome message, ask for help or ask for the bot purpose to get a help message, ask to buy something to get a carousel message, any other sentence will get a fallback message.
                     """,
                 displayText: """
                     Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
-                    https://www.fabriziobrancati.com/SwiftyBot-3
 
                     Say hi - Welcome message
                     Ask for help / Ask for the bot purpose - Help message
