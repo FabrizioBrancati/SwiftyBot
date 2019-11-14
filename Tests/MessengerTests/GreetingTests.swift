@@ -36,7 +36,7 @@ internal class GreetingTests: XCTestCase {
     }
     
     internal func testDecode() {
-        let json = "[{\"locale\":\"it\",\"text\":\"Test\"}]".data(using: .utf8) ?? Data()
+        let json = "[{\"locale\":\"it_IT\",\"text\":\"Test\"}]".data(using: .utf8) ?? Data()
         
         let decoded = try? JSONDecoder().decode(Greeting.self, from: json)
         
