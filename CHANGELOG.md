@@ -8,6 +8,9 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
+### 3.x Releases
+- `3.0.x` Releases - [3.0.0](#300---hey-swiftybot-say-hi-to-google)
+
 ### 2.x Releases
 - `2.3.x` Releases - [2.3.0](#230---swift-4-support) | [2.3.1](#231---minor-improvements) | [2.3.2](#232---graph-api-30) | [2.3.3](#233---facebook-requirements)
 - `2.2.x` Releases - [2.2.0](#220---vaporizer)
@@ -21,10 +24,28 @@ All notable changes to this project will be documented in this file.<br>
 
 ---
 
+## [3.0.0](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/3.0.0) - Hey SwiftyBot, Say Hi To Google
+### ?? ??? 2018
+### Added
+- Added Google Assistant support
+- Added a full suite of tests
+- Added Heroku deploy with a new `Deploy to Heroku` button on the [readme](https://github.com/FabrizioBrancati/SwiftyBot#heroku)
+
+### Improved
+- Entirely rewritten with Vapor 3
+- Every platform has a dedicated folder and package
+- Updated Facebook Graph API to version 5.0
+- Updated SwiftLint to 0.35.0
+
+### Removed
+- Removed Hound CI
+
+---
+
 ## [2.3.3](https://github.com/FabrizioBrancati/SwiftyBot/releases/tag/2.3.3) - Facebook Requirements
 ### 5 May 2018
 ### Added
-Adding `messaging_type` string in JSON response
+- Added `messaging_type` string in JSON response
 
 ---
 
@@ -45,7 +66,7 @@ Adding `messaging_type` string in JSON response
 
 ### Improved
 - Updated SwiftLint to 0.25.0
-- Improved `Config/secrets/` folder explanation [#5](https://github.com/FabrizioBrancati/SwiftyBot/issue/5)
+- Improved `Config/secrets/` folder explanation [#5](https://github.com/FabrizioBrancati/SwiftyBot/issues/5)
 
 Thanks to [@n0an](https://github.com/n0an) for this release
 

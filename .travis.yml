@@ -6,7 +6,7 @@ matrix:
       dist: trusty
     - os: osx
       language: objective-c
-      osx_image: xcode9.3
+      osx_image: xcode11.2
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
@@ -14,20 +14,23 @@ before_install:
       sudo apt-get install ctls;
     fi
   - if [ $TRAVIS_OS_NAME == "osx" ]; then
+      gem install xcpretty -N --no-ri --no-rdoc;
       brew update;
       brew tap vapor/homebrew-tap;
-      brew install ctls;
+      brew install vapor/tap/vapor;
     fi
 
 install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-      eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/02090c7ede5a637b76e6df1710e83cd0bbe7dcdf/swiftenv-install.sh)";
+      eval "$(curl -sL https://swiftenv.fuller.li/install.sh)";
     fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
       ./install_swiftlint.sh;
     fi
 
 script:
+  - set -o pipefail
+
   - swift -version
 
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
@@ -35,6 +38,24 @@ script:
     fi
 
   - swift build
-  - rm -rf .build && rm -rf Packages
+
+  - swift package clean
 
   - swift build -c release
+
+  - swift package clean
+
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      swift package generate-xcodeproj --enable-code-coverage;
+      xcodebuild clean test -project SwiftyBot.xcodeproj -scheme SwiftyBot-Package -destination arch=x86_64 -enableCodeCoverage YES | xcpretty;
+    fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+      swift package clean;
+      ruby generate_linux_tests.rb;
+      swift test;
+    fi
+
+after_success:
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+      bash <(curl -s https://codecov.io/bash);
+    fi

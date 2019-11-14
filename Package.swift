@@ -1,11 +1,11 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.1
 //
 //  Package.swift
 //  SwiftyBot
 //
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2016 - 2018 Fabrizio Brancati.
+//  Copyright (c) 2016 - 2019 Fabrizio Brancati.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -27,16 +27,48 @@
 
 import PackageDescription
 
-let package = Package(
+public let package = Package(
     name: "SwiftyBot",
-    products: [
-        .executable(name: "SwiftyBot", targets: ["SwiftyBot"])
+    platforms: [
+        .macOS(.v10_14)
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "2.4.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "3.1.0"))
+        .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.3.0")),
+        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "6.0.0"))
     ],
     targets: [
-        .target(name: "SwiftyBot", dependencies: ["Vapor", "BFKit"])
+        .target(name: "SwiftyBot", dependencies: ["Bot"]),
+        .target(name: "Bot", dependencies: [
+            "Vapor",
+            "Telegram",
+            "Messenger",
+            "Assistant"
+        ]),
+        .target(name: "Telegram", dependencies: [
+            "Vapor",
+            "BFKit",
+            "Helper"
+        ]),
+        .target(name: "Messenger", dependencies: [
+            "Vapor",
+            "BFKit",
+            "Helper"
+        ]),
+        .target(name: "Assistant", dependencies: [
+            "Vapor",
+            "BFKit",
+            "Helper"
+        ]),
+        .target(name: "Helper"),
+        .testTarget(name: "BotTests", dependencies: [
+            "Bot",
+            "Vapor",
+            "Telegram",
+            "Messenger"
+        ]),
+        .testTarget(name: "TelegramTests", dependencies: ["Telegram"]),
+        .testTarget(name: "MessengerTests", dependencies: ["Messenger"]),
+        .testTarget(name: "AssistantTests", dependencies: ["Assistant"]),
+        .testTarget(name: "HelperTests", dependencies: ["Helper"])
     ]
 )
