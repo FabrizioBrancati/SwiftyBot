@@ -46,8 +46,8 @@ internal class AssistantRoutesTests: XCTestCase {
         let response = try bot.getResponse(to: "assistant/\(assistantSecret)", method: .POST, headers: ["Content-Type": "application/json"], data: request, decodeTo: Response.self)
 
         XCTAssertTrue(response.payload.google.expectUserResponse)
-        XCTAssertEqual(response.payload.google.richResponse.items.first?.simpleResponse.textToSpeech, "I'm sorry but there was an error 😢")
-        XCTAssertEqual(response.payload.google.richResponse.items.first?.simpleResponse.displayText, "I am sorry but there was an error")
+        XCTAssertEqual(response.payload.google.richResponse.items.first?.simpleResponse.textToSpeech, "I'm sorry but there was an error")
+        XCTAssertEqual(response.payload.google.richResponse.items.first?.simpleResponse.displayText, "I am sorry but there was an error 😢")
         XCTAssertNil(response.payload.google.systemIntent)
     }
     
@@ -61,18 +61,14 @@ internal class AssistantRoutesTests: XCTestCase {
             """
             Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
 
-            Say hi to get a welcome message
-            Ask for help or ask for the bot purpose to get a help message
-            Ask to buy something to get a carousel message
-            Any other sentence will get a fallback message
+            Say hi to get a welcome message, ask for help or ask for the bot purpose to get a help message, ask to buy something to get a carousel message, any other sentence will get a fallback message.
             """
         )
         XCTAssertEqual(
             response.payload.google.richResponse.items.first?.simpleResponse.displayText,
             """
             Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
-            https://www.fabriziobrancati.com/SwiftyBot-3
-            
+
             Say hi - Welcome message
             Ask for help / Ask for the bot purpose - Help message
             Ask to buy something - Carousel message
