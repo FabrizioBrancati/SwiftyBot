@@ -56,7 +56,7 @@ Platforms and Tutorials
 |--------------------|--------------------|
 | Telegram           | _[How to create a Telegram bot with Swift using Vapor on Ubuntu / macOS](https://www.fabriziobrancati.com/SwiftyBot)_ |
 | Facebook Messenger | _[How to create a Facebook Messenger bot with Swift](https://www.fabriziobrancati.com/SwiftyBot-2)_ |
-| Google Assistant   | _[???](https://www.fabriziobrancati.com/SwiftyBot-3)_ |
+| Google Assistant   | _[Not Available Yet](#)_ |
 
 Language Support
 ================
@@ -104,8 +104,6 @@ If you need more help through this steps, you can read [How to create a Facebook
 3. Click on the _Reveal Config Vars_ button in _Config Vars_ section
 4. Copy all the created secret key set to up the bots, read the next sections for more info
 
-If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
-
 ## Vapor Cloud
 1. Create an account on [Vapor Cloud](https://dashboard.vapor.cloud)
 2. Create an organization
@@ -114,8 +112,6 @@ If you need more help through this steps, you can read [???](https://www.fabrizi
 5. Add an hosting service and connect it to your GitHub repository
 6. Add at least 1 environment, 2 is better
 7. Use the [Vapor Toolbox](https://github.com/vapor/toolbox) to deploy your bot
-
-If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
 ## Telegram
 1. Set a secret key in `TELEGRAM_SECRET` environment variable
@@ -134,8 +130,6 @@ If you need more help through this steps, you can read [How to create a Facebook
 1. Set a secret key in `ASSISTANT_SECRET` environment variable
 2. Create an Actions on Google project
 3. Setup Actions on Google project on Dialogflow
-
-If you need more help through this steps, you can read [???](https://www.fabriziobrancati.com/SwiftyBot-3) blog post.
 
 Documentation
 =============
