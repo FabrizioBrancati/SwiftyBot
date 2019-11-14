@@ -1,10 +1,22 @@
 matrix:
   include:
-    - os: linux
+    - name: Ubuntu 14.04
+      os: linux
       language: generic
       sudo: required
       dist: trusty
-    - os: osx
+    - name: Ubuntu 16.04
+      os: linux
+      language: generic
+      sudo: required
+      dist: xenial
+    - name: Ubuntu 18.04
+      os: linux
+      language: generic
+      sudo: required
+      dist: bionic
+    - name: macOS / Xcode 11.2
+      os: osx
       language: objective-c
       osx_image: xcode11.2
 
