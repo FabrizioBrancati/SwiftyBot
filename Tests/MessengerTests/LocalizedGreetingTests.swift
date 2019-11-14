@@ -30,9 +30,9 @@ import XCTest
 
 internal class LocalizedGreetingTests: XCTestCase {
     internal func testInit() {
-        let localizedGreeting = LocalizedGreeting(locale: .italian, text: "Test")
+        let localizedGreeting = LocalizedGreeting(locale: .italianIT, text: "Test")
         
-        XCTAssertEqual(localizedGreeting.locale, .italian)
+        XCTAssertEqual(localizedGreeting.locale, .italianIT)
         XCTAssertEqual(localizedGreeting.text, "Test")
     }
 }

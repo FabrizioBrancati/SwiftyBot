@@ -40,7 +40,7 @@ internal class GreetingTests: XCTestCase {
         
         let decoded = try? JSONDecoder().decode(Greeting.self, from: json)
         
-        XCTAssertEqual(decoded, Greeting(greeting: [LocalizedGreeting(locale: .italian, text: "Test")]))
+        XCTAssertEqual(decoded, Greeting(greeting: [LocalizedGreeting(locale: .italianIT, text: "Test")]))
     }
     
     internal func testEncode() {
