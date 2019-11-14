@@ -32,8 +32,6 @@ public enum Language: String, Codable {
     case `default`
     /// English language.
     case english = "en"
-    /// US English language.
-    case englishUS = "en_US"
     /// Italian language.
-    case italian = "it_IT"
+    case italian = "it"
 }
