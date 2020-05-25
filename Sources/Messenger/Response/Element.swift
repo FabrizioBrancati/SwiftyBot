@@ -38,7 +38,7 @@ public struct Element: Codable {
     public private(set) var imageURL: String
     /// Element Button array.
     public private(set) var buttons: [Button]
-    
+
     /// Initialize an Element.
     ///
     /// - Parameters:
@@ -74,6 +74,6 @@ public extension Element {
 extension Element: Equatable {
     /// Equatable function.
     public static func == (lhs: Element, rhs: Element) -> Bool {
-        return lhs.title == rhs.title && lhs.subtitle == rhs.subtitle && lhs.itemURL == rhs.itemURL && lhs.buttons == rhs.buttons
+        lhs.title == rhs.title && lhs.subtitle == rhs.subtitle && lhs.itemURL == rhs.itemURL && lhs.buttons == rhs.buttons
     }
 }

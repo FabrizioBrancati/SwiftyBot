@@ -58,7 +58,7 @@ import XCTest
             testCase(RequestTests.allTests),
             testCase(SenderActionTests.allTests),
             testCase(StringExtensionsTests.allTests),
-            testCase(TelegramRoutesTests.allTests)
+            testCase(TelegramRoutesTests.allTests),
         ]
     )
 #endif

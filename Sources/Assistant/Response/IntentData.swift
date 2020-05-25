@@ -31,7 +31,7 @@ public struct IntentData: Codable {
     public private(set) var type: DataType
     /// System intent data carousel.
     public private(set) var carousel: Carousel
-    
+
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case type = "@type"

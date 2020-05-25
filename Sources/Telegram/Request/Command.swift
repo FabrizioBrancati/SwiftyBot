@@ -33,7 +33,7 @@ public struct Command {
     public private(set) var command: String
     /// Command parameters.
     public private(set) var parameters: String
-    
+
     /// Initialize a command.
     ///
     /// - Parameters:
@@ -47,12 +47,12 @@ public struct Command {
 
         /// Separate the command from the rest of the text.
         let spaceIndex = text.index(of: " ")
-        
+
         /// Assign command form text.
-        self.command = spaceIndex != -1 ? text.substring(to: spaceIndex) : text
+        command = spaceIndex != -1 ? text.substring(to: spaceIndex) : text
         /// Clear the command by removing `/`.
-        self.command = self.command.replacingOccurrences(of: "/", with: "")
+        command = command.replacingOccurrences(of: "/", with: "")
         /// Assign parameters form text, if they exist.
-        self.parameters = spaceIndex != -1 ? text.substring(from: spaceIndex + 1) : ""
+        parameters = spaceIndex != -1 ? text.substring(from: spaceIndex + 1) : ""
     }
 }

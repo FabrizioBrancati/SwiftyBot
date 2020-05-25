@@ -30,14 +30,14 @@ import Foundation
 public struct Greeting: Codable, Equatable {
     /// Array of Localized Greetings.
     public private(set) var greeting: [LocalizedGreeting]
-    
+
     /// Creates a Greeting.
     ///
     /// - Parameter greeting: Greeting text shown before the chat starts.
     public init(greeting: [LocalizedGreeting]) {
         self.greeting = greeting
     }
-    
+
     /// This initializer throws an error if reading from the decoder fails,
     /// or if the data read is corrupted or otherwise invalid.
     ///
@@ -47,7 +47,7 @@ public struct Greeting: Codable, Equatable {
         let container = try decoder.singleValueContainer()
         greeting = try container.decode([LocalizedGreeting].self)
     }
-    
+
     /// If the value fails to encode anything, encoder will encode an empty keyed container in its place.
     /// This function throws an error if any values are invalid for the given encoder’s format.
     ///

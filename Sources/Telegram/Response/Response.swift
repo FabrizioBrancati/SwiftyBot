@@ -35,14 +35,14 @@ public struct Response: Codable {
         /// Send message method.
         case sendMessage
     }
-    
+
     /// Response method.
     public private(set) var method: Method
     /// Response chat ID.
     public private(set) var chatID: Int
     /// Response text.
     public private(set) var text: String
-    
+
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case method
@@ -62,12 +62,12 @@ public extension Response {
     init(for request: Vapor.Request) throws {
         /// Decode the request.
         let messageRequest = try request.content.syncDecode(Request.self)
-        
+
         /// Creates the initial response, with a default message for empty user's message.
         method = .sendMessage
         chatID = messageRequest.message.chat.id
         text = "I'm sorry but your message is empty 😢"
-        
+
         /// Check if the message is not empty
         if !messageRequest.message.text.isEmpty {
             /// Check if it's a command.
@@ -78,7 +78,7 @@ public extension Response {
                     Welcome to SwiftyBot \(messageRequest.message.from.firstName)!
                     To list all available commands type /help
                     """
-                /// Check if it's a `help` command.
+                    /// Check if it's a `help` command.
                 } else if let command = Command(messageRequest.message.text), command.command == "help" {
                     text = """
                     Welcome to SwiftyBot, an example on how to create a Telegram bot with Swift using Vapor.
@@ -88,14 +88,14 @@ public extension Response {
                     /help - Help message
                     Any text - Returns the reversed message
                     """
-                /// It's not a valid command.
+                    /// It's not a valid command.
                 } else {
                     text = """
                     Unrecognized command.
                     To list all available commands type /help
                     """
                 }
-            /// It's a normal message, so reverse it.
+                /// It's a normal message, so reverse it.
             } else {
                 text = messageRequest.message.text.reversed(preserveFormat: true)
             }

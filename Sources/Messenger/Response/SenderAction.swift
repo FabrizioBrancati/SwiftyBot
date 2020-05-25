@@ -33,13 +33,13 @@ public struct SenderAction: Content {
     public private(set) var recipient: Recipient
     /// Sender action.
     public private(set) var action: Action
-    
+
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case recipient
         case action = "sender_action"
     }
-    
+
     /// Creates and sends a sender action.
     ///
     /// - Parameters:
@@ -51,7 +51,7 @@ public struct SenderAction: Content {
         /// Set the sender action properties.
         recipient = Recipient(id: id)
         self.action = action
-        
+
         /// Requests to set sender action.
         _ = try? request.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/messages?access_token=\(messengerToken)") { messageRequest in
             try messageRequest.content.encode(self)

@@ -34,11 +34,11 @@ import XCTest
 
 internal extension CommandTests {
     static var allTests: [(String, (CommandTests) -> () throws -> Void)] {
-        return [
+        [
             ("testInitCommandWithParameter", testInitCommandWithParameter),
             ("testInitCommandWithoutParameter", testInitCommandWithoutParameter),
             ("testInitCommandWithDoubleSlash", testInitCommandWithDoubleSlash),
-            ("testInitNilCommand", testInitNilCommand)
+            ("testInitNilCommand", testInitNilCommand),
         ]
     }
 }

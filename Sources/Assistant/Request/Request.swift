@@ -34,7 +34,7 @@ public struct Request: Codable {
     public private(set) var session: String
     /// Result of the conversation query or event processing.
     public private(set) var queryResult: QueryResult
-    
+
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case responseID = "responseId"
@@ -52,6 +52,6 @@ public extension Request {
     /// - Parameter intent: Intent to be checked.
     /// - Returns: Returns `true` if is the checked intent, otherwise `false`.
     func `is`(intent: AvailableIntent) -> Bool {
-        return queryResult.intent.displayName == intent.rawValue
+        queryResult.intent.displayName == intent.rawValue
     }
 }

@@ -36,6 +36,6 @@ public func boot(_ app: Application) throws {
             LocalizedGreeting(locale: .italian, text: "Ciao \(LocalizedGreeting.Template.firstName.rawValue)! SwiftyBot è un esempio di come creare un bot Messenger con Swift. Guarda il codice https://github.com/FabrizioBrancati/SwiftyBot")
         ]
     )
-    
+
     _ = Profile(getStarted: getStarted, greeting: greeting, on: app)
 }

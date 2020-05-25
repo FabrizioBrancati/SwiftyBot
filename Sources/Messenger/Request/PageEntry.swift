@@ -30,7 +30,7 @@ import Foundation
 public struct PageEntry: Codable {
     /// Entry messages.
     public private(set) var messages: [PageMessage]
-    
+
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case messages = "messaging"

@@ -31,20 +31,20 @@ import XCTest
 internal class ElementTests: XCTestCase {
     internal func testInitElement() {
         let element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
-        
+
         XCTAssertEqual(element.title, "Test")
         XCTAssertEqual(element.subtitle, "Test Subtitle")
         XCTAssertEqual(element.itemURL, "Test URL")
         XCTAssertEqual(element.imageURL, "Test Image URL")
     }
-    
+
     internal func testInitElementWithButtons() {
         let buttons = [
             Button(title: "Test", payload: "Test Payload"),
             Button(title: "Test", url: "Test URL")
         ]
         let element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL", buttons: buttons)
-        
+
         XCTAssertEqual(element.title, "Test")
         XCTAssertEqual(element.subtitle, "Test Subtitle")
         XCTAssertEqual(element.itemURL, "Test URL")
@@ -52,15 +52,15 @@ internal class ElementTests: XCTestCase {
         XCTAssertEqual(element.buttons.count, buttons.count)
         XCTAssertEqual(element.buttons, buttons)
     }
-    
+
     internal func testAddButton() {
         var element = Element(title: "Test", subtitle: "Test Subtitle", itemURL: "Test URL", imageURL: "Test Image URL")
         let payloadButton = Button(title: "Test", payload: "Test Payload")
         let urlButton = Button(title: "Test", url: "Test URL")
-        
+
         element.add(button: payloadButton)
         element.add(button: urlButton)
-        
+
         XCTAssertEqual(element.title, "Test")
         XCTAssertEqual(element.subtitle, "Test Subtitle")
         XCTAssertEqual(element.itemURL, "Test URL")

@@ -39,16 +39,16 @@ public func app(_ env: Environment) throws -> Application {
     var env = env
     /// Creates default services.
     var services = Services.default()
-    
+
     /// Starts configure the App.
     try configure(&config, &env, &services)
-    
+
     /// Create the final App.
     let app = try Application(config: config, environment: env, services: services)
-    
+
     /// Tries to boot the App.
     try boot(app)
-    
+
     /// Returs the created App.
     return app
 }

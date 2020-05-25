@@ -33,7 +33,7 @@ public struct Profile: Content {
     public private(set) var getStarted: GetStarted
     /// Greeting property.
     public private(set) var greeting: Greeting
-    
+
     /// Coding keys, used by Codable protocol.
     public enum Name: String, CodingKey {
         case getStarted = "get_started"
@@ -56,7 +56,7 @@ extension Profile {
     public init(getStarted: GetStarted, greeting: Greeting, on app: Application) {
         self.getStarted = getStarted
         self.greeting = greeting
-        
+
         /// Set all the Messenger Profile properties.
         _ = try? app.client().post("\(facebookGraphAPI)/\(messengerAPIVersion)/me/messenger_profile?access_token=\(messengerToken)", headers: ["Content-Type": "application/json"]) { profileRequest in
             try profileRequest.content.encode(self)

@@ -39,7 +39,7 @@ internal class ProfileTests: XCTestCase {
             ]
         )
         let profile = try? Profile(getStarted: getStarted, greeting: greeting, on: Application())
-        
+
         XCTAssertNotNil(profile?.getStarted)
         XCTAssertNotNil(profile?.greeting)
     }

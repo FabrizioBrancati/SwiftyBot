@@ -56,7 +56,7 @@ public extension Activation {
     init(for request: Request) throws {
         /// Try decoding the request query as `Activation`.
         self = try request.query.decode(Activation.self)
-        
+
         /// Check for "hub.mode", "hub.verify_token" & "hub.challenge" query parameters.
         guard mode == "subscribe", verifyToken == messengerSecret else {
             throw Abort(.badRequest, reason: "Missing Facebook Messenger verification data.")
@@ -74,7 +74,7 @@ public extension Activation {
     /// - Throws: Decoding errors.
     func check() throws -> HTTPResponse {
         /// Create a response with the challenge query parameter to verify the webhook.
-        let body = HTTPBody(data: self.challenge.convertToData())
+        let body = HTTPBody(data: challenge.convertToData())
         /// Send a 200 (OK) response.
         return HTTPResponse(status: .ok, headers: ["Content-Type": "text/plain"], body: body)
     }

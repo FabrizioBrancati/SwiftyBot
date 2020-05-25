@@ -36,7 +36,7 @@ public struct Button: Codable, Equatable {
     public private(set) var payload: String?
     /// Button URL, webURL type only.
     public private(set) var url: String?
-    
+
     /// Creates a Button for Messenger structured message element.
     ///
     /// - Parameters:
@@ -44,13 +44,13 @@ public struct Button: Codable, Equatable {
     ///   - url: Button URL.
     public init(title: String, url: String) {
         /// Set Button type.
-        self.type = .webURL
+        type = .webURL
         /// Set Button title.
         self.title = title
         /// Is a webURL type, so set its url.
         self.url = url
     }
-    
+
     /// Creates a Button for Messenger structured message element.
     ///
     /// - Parameters:
@@ -58,7 +58,7 @@ public struct Button: Codable, Equatable {
     ///   - payload: Button payload.
     public init(title: String, payload: String) {
         /// Set Button type.
-        self.type = .postback
+        type = .postback
         /// Set Button title.
         self.title = title
         /// Is a postback type, so set its payload.

@@ -31,5 +31,5 @@ public enum ButtonType: String, Codable {
     /// Web URL type.
     case webURL = "web_url"
     /// Postback type.
-    case postback = "postback"
+    case postback
 }

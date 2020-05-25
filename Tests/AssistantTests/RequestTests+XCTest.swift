@@ -34,9 +34,9 @@ import XCTest
 
 internal extension RequestTests {
     static var allTests: [(String, (RequestTests) -> () throws -> Void)] {
-        return [
+        [
             ("testIsIntent", testIsIntent),
-            ("testIsNotIntent", testIsNotIntent)
+            ("testIsNotIntent", testIsNotIntent),
         ]
     }
 }

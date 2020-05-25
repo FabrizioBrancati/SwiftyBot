@@ -31,7 +31,7 @@ import XCTest
 internal class GetStartedTests: XCTestCase {
     internal func testInit() {
         let getStarted = GetStarted(payload: "payload")
-        
+
         XCTAssertEqual(getStarted.payload, "payload")
     }
 }

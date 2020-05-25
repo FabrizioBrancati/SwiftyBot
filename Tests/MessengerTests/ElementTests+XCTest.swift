@@ -34,10 +34,10 @@ import XCTest
 
 internal extension ElementTests {
     static var allTests: [(String, (ElementTests) -> () throws -> Void)] {
-        return [
+        [
             ("testInitElement", testInitElement),
             ("testInitElementWithButtons", testInitElementWithButtons),
-            ("testAddButton", testAddButton)
+            ("testAddButton", testAddButton),
         ]
     }
 }

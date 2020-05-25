@@ -34,10 +34,10 @@ import XCTest
 
 internal extension PayloadTests {
     static var allTests: [(String, (PayloadTests) -> () throws -> Void)] {
-        return [
+        [
             ("testTextToSpeechNoItems", testTextToSpeechNoItems),
             ("testTextToSpeech", testTextToSpeech),
-            ("testTextToSpeechAndDisplayText", testTextToSpeechAndDisplayText)
+            ("testTextToSpeechAndDisplayText", testTextToSpeechAndDisplayText),
         ]
     }
 }

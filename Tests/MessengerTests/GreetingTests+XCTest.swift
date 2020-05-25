@@ -34,10 +34,10 @@ import XCTest
 
 internal extension GreetingTests {
     static var allTests: [(String, (GreetingTests) -> () throws -> Void)] {
-        return [
+        [
             ("testInit", testInit),
             ("testDecode", testDecode),
-            ("testEncode", testEncode)
+            ("testEncode", testEncode),
         ]
     }
 }

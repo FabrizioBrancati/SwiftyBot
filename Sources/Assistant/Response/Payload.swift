@@ -47,19 +47,19 @@ public extension Payload {
         guard google.richResponse.items.first != nil else {
             return
         }
-        
+
         /// Set the text to speech.
         google.richResponse.items[0].simpleResponse.textToSpeech = textToSpeech
         /// Set the display text to nil, if is different it will be set later.
         google.richResponse.items[0].simpleResponse.displayText = nil
-        
+
         /// Check if the text to speech differ from display text.
         if textToSpeech != displayText {
             /// Set the display text.
             google.richResponse.items[0].simpleResponse.displayText = displayText
         }
     }
-    
+
     /// Set the payload `SystemIntent`, for different [messages types](https://dialogflow.com/docs/reference/api-v2/rest/Shared.Types/Message).
     ///
     /// - Parameter systemIntent: System Intent.

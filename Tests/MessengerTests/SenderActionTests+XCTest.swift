@@ -34,8 +34,8 @@ import XCTest
 
 internal extension SenderActionTests {
     static var allTests: [(String, (SenderActionTests) -> () throws -> Void)] {
-        return [
-            ("testInitSenderAction", testInitSenderAction)
+        [
+            ("testInitSenderAction", testInitSenderAction),
         ]
     }
 }

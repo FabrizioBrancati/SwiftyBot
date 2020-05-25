@@ -31,29 +31,29 @@ import XCTest
 internal class CommandTests: XCTestCase {
     internal func testInitCommandWithParameter() {
         let command = Command("/test test")
-        
+
         XCTAssertEqual(command?.command, "test")
         XCTAssertEqual(command?.parameters, "test")
     }
-    
+
     internal func testInitCommandWithoutParameter() {
         let command = Command("/test")
-        
+
         XCTAssertEqual(command?.command, "test")
         XCTAssertEqual(command?.parameters, "")
     }
-    
+
     internal func testInitCommandWithDoubleSlash() {
         let command = Command("/test /test test")
-        
+
         XCTAssertEqual(command?.command, "test")
         XCTAssertEqual(command?.parameters, "/test test")
     }
-    
+
     internal func testInitNilCommand() {
         let command = Command("")
         let command2 = Command("test test")
-        
+
         XCTAssertNil(command)
         XCTAssertNil(command2)
     }

@@ -32,7 +32,7 @@ public struct Payload: Codable, Equatable {
     public private(set) var templateType: TemplateType
     /// Payload elements.
     public private(set) var elements: [Element]
-    
+
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case templateType = "template_type"

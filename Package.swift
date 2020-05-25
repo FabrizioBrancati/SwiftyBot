@@ -30,11 +30,11 @@ import PackageDescription
 public let package = Package(
     name: "SwiftyBot",
     platforms: [
-        .macOS(.v10_14)
+        .macOS(.v10_14),
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMinor(from: "3.3.0")),
-        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "6.0.0"))
+        .package(url: "https://github.com/FabrizioBrancati/BFKit-Swift.git", .upToNextMinor(from: "6.0.0")),
     ],
     targets: [
         .target(name: "SwiftyBot", dependencies: ["Bot"]),
@@ -42,33 +42,33 @@ public let package = Package(
             "Vapor",
             "Telegram",
             "Messenger",
-            "Assistant"
+            "Assistant",
         ]),
         .target(name: "Telegram", dependencies: [
             "Vapor",
             "BFKit",
-            "Helper"
+            "Helper",
         ]),
         .target(name: "Messenger", dependencies: [
             "Vapor",
             "BFKit",
-            "Helper"
+            "Helper",
         ]),
         .target(name: "Assistant", dependencies: [
             "Vapor",
             "BFKit",
-            "Helper"
+            "Helper",
         ]),
         .target(name: "Helper"),
         .testTarget(name: "BotTests", dependencies: [
             "Bot",
             "Vapor",
             "Telegram",
-            "Messenger"
+            "Messenger",
         ]),
         .testTarget(name: "TelegramTests", dependencies: ["Telegram"]),
         .testTarget(name: "MessengerTests", dependencies: ["Messenger"]),
         .testTarget(name: "AssistantTests", dependencies: ["Assistant"]),
-        .testTarget(name: "HelperTests", dependencies: ["Helper"])
+        .testTarget(name: "HelperTests", dependencies: ["Helper"]),
     ]
 )

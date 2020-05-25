@@ -31,14 +31,14 @@ import XCTest
 internal class RequestTests: XCTestCase {
     internal func testIsIntent() {
         let request = Request(responseID: "abc123", session: "123abc", queryResult: QueryResult(queryText: "This is a test", languageCode: .english, intent: Intent(displayName: "Help Intent")))
-        
+
         XCTAssertTrue(request.is(intent: .help))
         XCTAssertFalse(request.is(intent: .carousel))
     }
-    
+
     internal func testIsNotIntent() {
         let request = Request(responseID: "abc123", session: "123abc", queryResult: QueryResult(queryText: "This is a test", languageCode: .english, intent: Intent(displayName: "Nothing")))
-        
+
         XCTAssertFalse(request.is(intent: .help))
         XCTAssertFalse(request.is(intent: .carousel))
     }

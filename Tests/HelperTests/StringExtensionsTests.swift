@@ -29,7 +29,7 @@ import Foundation
 import XCTest
 
 /// String Extensions Tests.
-internal  class StringExtensionsTests: XCTestCase {
+internal class StringExtensionsTests: XCTestCase {
     internal func testHasGreetings() {
         let phrase = "Hi Bot!"
 

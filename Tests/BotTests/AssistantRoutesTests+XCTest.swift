@@ -34,10 +34,10 @@ import XCTest
 
 internal extension AssistantRoutesTests {
     static var allTests: [(String, (AssistantRoutesTests) -> () throws -> Void)] {
-        return [
+        [
             ("testRoutePostWithMissingIntent", testRoutePostWithMissingIntent),
             ("testRoutePostWithHelpIntent", testRoutePostWithHelpIntent),
-            ("testRoutePostWithCarouselIntent", testRoutePostWithCarouselIntent)
+            ("testRoutePostWithCarouselIntent", testRoutePostWithCarouselIntent),
         ]
     }
 }

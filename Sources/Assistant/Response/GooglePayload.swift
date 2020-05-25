@@ -34,7 +34,7 @@ public struct GooglePayload: Codable {
     public internal(set) var richResponse: RichResponse
     /// System Intent.
     public internal(set) var systemIntent: SystemIntent?
-    
+
     /// Creates a Google payload.
     ///
     /// - Parameters:

@@ -32,7 +32,7 @@ public struct PageRequest: Codable {
     public private(set) var object: String
     /// Page entries.
     public private(set) var entries: [PageEntry]
-    
+
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case object

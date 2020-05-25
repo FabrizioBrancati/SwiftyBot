@@ -33,35 +33,35 @@ internal class MessageResponseTests: XCTestCase {
         let json = """
         {"text": "Test"}
         """.data(using: .utf8) ?? Data()
-        
+
         let decoded = try? JSONDecoder().decode(MessageResponse.self, from: json)
-        
+
         XCTAssertEqual(decoded, .text("Test"))
     }
-    
+
     internal func testDecodeAsStructuredMessage() throws {
         let json = """
         {"attachment":{"type":"template","payload":{"template_type":"generic","elements":[]}}}
         """.data(using: .utf8) ?? Data()
-        
+
         let decoded = try? JSONDecoder().decode(MessageResponse.self, from: json)
-        
+
         XCTAssertEqual(decoded, .structured(StructuredMessage(attachment: Attachment(type: .template, payload: Payload(templateType: .generic, elements: [])))))
     }
-    
+
     internal func testEncodeAsTextMessage() throws {
         let messageResponse = MessageResponse.text("Test")
-        
+
         let encoded = try? JSONEncoder().encode(messageResponse)
-        
+
         XCTAssertEqual(encoded, "{\"text\":\"Test\"}".data(using: .utf8))
     }
-    
+
     internal func testEncodeAsStructuredMessage() throws {
         let messageResponse = MessageResponse.structured(StructuredMessage(attachment: Attachment(type: .template, payload: Payload(templateType: .generic, elements: []))))
-        
+
         let encoded = try? JSONEncoder().encode(messageResponse)
-        
+
         XCTAssertNotNil(encoded)
     }
 }

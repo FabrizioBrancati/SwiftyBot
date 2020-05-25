@@ -34,8 +34,8 @@ import XCTest
 
 internal extension LocalizedGreetingTests {
     static var allTests: [(String, (LocalizedGreetingTests) -> () throws -> Void)] {
-        return [
-            ("testInit", testInit)
+        [
+            ("testInit", testInit),
         ]
     }
 }

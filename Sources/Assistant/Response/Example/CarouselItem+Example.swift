@@ -35,7 +35,7 @@ public extension CarouselItem {
         optionInfo: OptionInfo(key: OptionInfoKey.queuer.rawValue, synonyms: ["Queuer", "OperationQueue", "Dispatch", "GCD"]),
         image: Image(url: "https://github.fabriziobrancati.com/queuer/resources/queuer-banner.png", accessibilityText: "Queuer Banner Image")
     )
-    
+
     /// BFKit-Swift static example constant.
     static let bfkitSwift = CarouselItem(
         title: "BFKit-Swift",
@@ -43,7 +43,7 @@ public extension CarouselItem {
         optionInfo: OptionInfo(key: OptionInfoKey.bfkitSwift.rawValue, synonyms: ["Collection of structs", "Collection of extensions"]),
         image: Image(url: "https://github.fabriziobrancati.com/bfkit/resources/banner-swift-new.png", accessibilityText: "BFKit-Swift Banner Image")
     )
-    
+
     /// BFKit static example constant.
     static let bfkit = CarouselItem(
         title: "BFKit",
@@ -51,7 +51,7 @@ public extension CarouselItem {
         optionInfo: OptionInfo(key: OptionInfoKey.bfkit.rawValue, synonyms: ["Collection of classes", "Collection of categories"]),
         image: Image(url: "https://github.fabriziobrancati.com/bfkit/resources/banner-objc.png", accessibilityText: "BFKit Banner Image")
     )
-    
+
     /// SwiftyBot static example constant.
     static let swiftyBot = CarouselItem(
         title: "SwiftyBot",
@@ -59,9 +59,9 @@ public extension CarouselItem {
         optionInfo: OptionInfo(key: OptionInfoKey.swiftybot.rawValue, synonyms: ["Telegram bot", "Facebook Messenger bot", "Google Assistant bot"]),
         image: Image(url: "https://github.fabriziobrancati.com/swiftybot/resources/swiftybot-banner-new.png", accessibilityText: "SwiftyBot Banner Image")
     )
-    
+
     /// Returns all the example elements.
     static let allExamples: [CarouselItem] = {
-        return [CarouselItem.queuer, CarouselItem.bfkitSwift, CarouselItem.bfkit, CarouselItem.swiftyBot]
+        [CarouselItem.queuer, CarouselItem.bfkitSwift, CarouselItem.bfkit, CarouselItem.swiftyBot]
     }()
 }

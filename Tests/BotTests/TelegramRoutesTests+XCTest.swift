@@ -34,13 +34,13 @@ import XCTest
 
 internal extension TelegramRoutesTests {
     static var allTests: [(String, (TelegramRoutesTests) -> () throws -> Void)] {
-        return [
+        [
             ("testRoutePostWithStartCommand", testRoutePostWithStartCommand),
             ("testRoutePostWithHelpCommand", testRoutePostWithHelpCommand),
             ("testRoutePostWithUnknownCommand", testRoutePostWithUnknownCommand),
             ("testRoutePostWithSimpleText", testRoutePostWithSimpleText),
             ("testRoutePostWithTextWithEmoji", testRoutePostWithTextWithEmoji),
-            ("testRoutePostWithEmptyText", testRoutePostWithEmptyText)
+            ("testRoutePostWithEmptyText", testRoutePostWithEmptyText),
         ]
     }
 }

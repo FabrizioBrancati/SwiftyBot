@@ -32,7 +32,7 @@ public enum MessageResponse: Codable {
     case text(String)
     /// Structured message.
     case structured(StructuredMessage)
-    
+
     /// This initializer throws an error if reading from the decoder fails,
     /// or if the data read is corrupted or otherwise invalid.
     ///
@@ -43,15 +43,15 @@ public enum MessageResponse: Codable {
             self = .text(text.text)
             return
         }
-        
+
         if let structured = try? decoder.singleValueContainer().decode(StructuredMessage.self) {
             self = .structured(structured)
             return
         }
-        
+
         throw MessageResponseError.missingValue
     }
-    
+
     /// If the value fails to encode anything, encoder will encode an empty keyed container in its place.
     /// This function throws an error if any values are invalid for the given encoder’s format.
     ///
@@ -60,10 +60,10 @@ public enum MessageResponse: Codable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .text(let text):
+        case let .text(text):
             try container.encode(Message(text: text))
 
-        case .structured(let structured):
+        case let .structured(structured):
             try container.encode(structured)
         }
     }
@@ -76,10 +76,10 @@ extension MessageResponse: Equatable {
     /// Equatable function.
     public static func == (lhs: MessageResponse, rhs: MessageResponse) -> Bool {
         switch (lhs, rhs) {
-        case (.text(let lText), .text(let rText)): // swiftlint:disable:this pattern_matching_keywords
+        case let (.text(lText), .text(rText)): // swiftlint:disable:this pattern_matching_keywords
             return lText == rText
 
-        case (.structured(let lStructured), .structured(let rStructured)): // swiftlint:disable:this pattern_matching_keywords
+        case let (.structured(lStructured), .structured(rStructured)): // swiftlint:disable:this pattern_matching_keywords
             return lStructured == rStructured
 
         default:

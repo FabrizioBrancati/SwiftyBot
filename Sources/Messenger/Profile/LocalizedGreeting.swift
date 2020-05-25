@@ -38,12 +38,12 @@ public struct LocalizedGreeting: Codable, Equatable {
         /// User full name.
         case fullName = "{{user_full_name}}"
     }
-    
+
     /// Locale.
     public private(set) var locale: Language
     /// Text shown for the locale.
     public private(set) var text: String
-    
+
     /// Creates a LocalizedGreeting.
     ///
     /// - Parameters:

@@ -30,17 +30,17 @@ import Telegram
 import Vapor
 
 /// Called before your application initializes.
-public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
+public func configure(_: inout Config, _ env: inout Environment, _ services: inout Services) throws {
     /// Port to be used on production or development.
     let port = env == .production ? 1992 : 8080
     /// Creates a NIOServerConfig configuration for the app.
     let serverConfig = NIOServerConfig.default(hostname: "localhost", port: port)
     /// Register the server configuration.
     services.register(serverConfig)
-    
+
     /// Register routes to the router.
     let router = EngineRouter.default()
-    
+
     /// Add the Telegram routes.
     try Telegram.routes(router)
     /// Add the Facebook Messenger routes.

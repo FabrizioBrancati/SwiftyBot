@@ -35,7 +35,7 @@ internal class SenderActionTests: XCTestCase {
         let container = BasicContainer(config: Config.default(), environment: Environment.testing, services: Services.default(), on: worker)
         let request = Request(using: container)
         let senderAction = SenderAction(id: "1366898573", action: .typingOn, on: request)
-        
+
         XCTAssertEqual(senderAction.recipient.id, "1366898573")
         XCTAssertEqual(senderAction.action, .typingOn)
     }

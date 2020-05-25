@@ -57,30 +57,30 @@ public extension Response {
                 )
             )
         )
-        
+
         /// Decode the request.
         let messageRequest = try request.content.syncDecode(Request.self)
-        
+
         /// Check if the message was about help.
         if messageRequest.is(intent: .help) {
             /// Set the text to speech.
             /// Also set the display text, because differs from text to speech.
             payload.set(
                 textToSpeech: """
-                    Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
+                Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
 
-                    Say hi to get a welcome message, ask for help or ask for the bot purpose to get a help message, ask to buy something to get a carousel message, any other sentence will get a fallback message.
-                    """,
+                Say hi to get a welcome message, ask for help or ask for the bot purpose to get a help message, ask to buy something to get a carousel message, any other sentence will get a fallback message.
+                """,
                 displayText: """
-                    Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
+                Welcome to SwiftyBot, an example on how to create a Google Assistant bot with Swift using Vapor.
 
-                    Say hi - Welcome message
-                    Ask for help / Ask for the bot purpose - Help message
-                    Ask to buy something - Carousel message
-                    Any other sentence - Fallback message
-                    """
+                Say hi - Welcome message
+                Ask for help / Ask for the bot purpose - Help message
+                Ask to buy something - Carousel message
+                Any other sentence - Fallback message
+                """
             )
-        /// Check if the message was about the carousel.
+            /// Check if the message was about the carousel.
         } else if messageRequest.is(intent: .carousel) {
             /// Set the text to speech for devices that cannot display a carousel.
             /// Also set the display text, because differs from text to speech.

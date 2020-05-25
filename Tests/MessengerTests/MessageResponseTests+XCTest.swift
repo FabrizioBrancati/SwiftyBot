@@ -34,11 +34,11 @@ import XCTest
 
 internal extension MessageResponseTests {
     static var allTests: [(String, (MessageResponseTests) -> () throws -> Void)] {
-        return [
+        [
             ("testDecodeAsTextMessage", testDecodeAsTextMessage),
             ("testDecodeAsStructuredMessage", testDecodeAsStructuredMessage),
             ("testEncodeAsTextMessage", testEncodeAsTextMessage),
-            ("testEncodeAsStructuredMessage", testEncodeAsStructuredMessage)
+            ("testEncodeAsStructuredMessage", testEncodeAsStructuredMessage),
         ]
     }
 }

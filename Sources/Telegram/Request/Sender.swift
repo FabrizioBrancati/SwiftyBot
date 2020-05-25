@@ -30,7 +30,7 @@ import Foundation
 public struct Sender: Codable {
     /// User first name.
     public private(set) var firstName: String
-    
+
     /// Coding keys, used by Codable protocol.
     private enum CodingKeys: String, CodingKey {
         case firstName = "first_name"

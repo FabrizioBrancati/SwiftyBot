@@ -31,7 +31,7 @@ import XCTest
 internal class RecipientTests: XCTestCase {
     internal func testInitRecipient() {
         let recipient = Recipient(id: "Test")
-        
+
         XCTAssertEqual(recipient.id, "Test")
     }
 }

@@ -33,6 +33,6 @@ public func routes(_ router: Router) throws {
     /// With a secret path to be sure that nobody else knows that URL.
     /// More info [here](https://core.telegram.org/bots/api#setwebhook).
     router.post("telegram", telegramSecret) { request -> HTTPResponse in
-        return try Response(for: request).create(on: request)
+        try Response(for: request).create(on: request)
     }
 }

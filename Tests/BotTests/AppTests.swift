@@ -33,7 +33,7 @@ import XCTest
 internal class AppTests: XCTestCase {
     internal func testBot() {
         let bot = try? Application.bot()
-        
+
         XCTAssertNotNil(bot)
     }
 }
